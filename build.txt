@@ -1,0 +1,3 @@
+displayName = Secrets of the Souls (Fargo&#39;s Souls X SOTS)
+author = Akira & ma3allim
+version = 0.1
