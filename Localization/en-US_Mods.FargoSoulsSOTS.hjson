@@ -29,12 +29,67 @@ Items: {
 
 	SecretForce: {
 		DisplayName: Force of Secrets
-		Tooltip: ""
+		Tooltip:
+		'''
+		[i:FargoSoulsSOTS/VesperaEnchant] Healing items temporarily grants void and potion sickness increases void regeneration
+		[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
+		'''
 	}
 
 	WormwoodEnchant: {
 		DisplayName: Wormwood Enchantment
-		Tooltip: ""
+		Tooltip:
+		'''
+		If you have any summons, pressing the ability key will put bloom hooks on your summons for 5 seconds.
+		Bloom hooks shoot flower bolts that deal low damage to enemies but have infinite pierce.
+		After 5 seconds it will despawn two of your summons if you have more than two active, and go on cooldown for 25 seconds.
+		Using a non Summon weapon during the ability will reduce the blooms damage to 5
+		Minions will inflict Slimed
+		'''
+	}
+
+	ElementalEnchant: {
+		DisplayName: Elemental Enchant
+		Tooltip:
+		'''
+		Activating your skill will teleport to you cursor.
+		You leave a relocator beam that deals high damage that freezes enemies and slows bosses by 25%
+		You can also bend and hit nearby enemies
+		The beam lasts for 15 seconds before leaving and going on cooldown for 25 seconds
+		You cannot teleport through TwilightAssassinEnchant
+		Also grants immunity to all types of dissolving matter 
+		“Chaos Control!”
+		'''
+	}
+
+	TwilightAssassinEnchant: {
+		DisplayName: Twilight Assassin Enchant
+		Tooltip:
+		'''
+		Every two void you use creates a ring of code bursts that deals 33 damage and gives Destable Curse
+		Once it is shot the next code bust will deal twice the damage
+		You shine like the brightest Stars”
+	}
+
+	FrigidEnchant: {
+		DisplayName: Frigid Enchant
+		Tooltip:
+		'''
+			During Void Shock, 3 Shatter Shards orbit around you dealing 10 damage 
+			Getting hit will break 1 of the shatter shards, giving the enemy the frozen debuff
+			When in Void Recover, Shatter Shards will become consumable and grants 5% Void, mana, and life regen for each consumed
+		'''
+	}
+
+	FrostArtifactEnchant: {
+		DisplayName: Frost Artifact Enchant
+		Tooltip:
+		'''
+		While in Void shock, three polar cannons orbit you 
+		They shoot polar bullets at the cursor that deal 25% of the held weapon's damage
+		When taking damage, they break and give enemies three random different frozen debuffs
+ 		When in void recovery, the polar cannons become snows cones that are consumable and give a 25% boost in void, mana, and heath regeneration
+		'''
 	}
 }
 
@@ -48,12 +103,20 @@ Buffs: {
 WizardEffect: {
 	Vespera: Healing items grant 50 void but only increases void regeneration by 5% while you have potion sickness
 	Vibrant: Now shoots 2 vibrant bolts and switching only reduces the damage by 20%
-	Wormwood: ""
+	Elemental: Now lasts for 25 seconds but now has a longer cooldown, 40 seconds
+	FrigidEnchant: Grants 6 Shatter shards, and deals the Frostbite Debuff when broken
+	FrostArtifactEnchant: Grants two more polar cannons
+	TwilightAssassinEnchant: Gives 3x the amount, but it cost 3 void now
+	Wormwood: Will only Despawn 1 summon if enough. Bloom Hooks last 10 seconds longer
 }
 
 Toggler: {
 	VesperaEffect: Vespera Effect
 	VibrantEffect: Vibrant Bolts
-	WormwoodEffect: ""
+	ElementalEffect: Chaos teleport
+	FrigidEffect: Orbiting Shatter Shards
+	FrostArtifactEffect: Polar Cannons
+	TwilightAssassinEffect: Code Bursts
+	WormwoodEffect: Bloom Hooks
 	VoidForceHeader: Force of Void
 }

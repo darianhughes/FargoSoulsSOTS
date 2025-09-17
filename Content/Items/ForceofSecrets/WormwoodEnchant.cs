@@ -7,13 +7,17 @@ using Terraria.ModLoader;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using SOTS.Items.Nature;
 using SOTS.Items.Slime;
+using FargoSoulsSOTS.Core.SoulToggles;
 
 namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
 {
     public class WormwoodEnchant : BaseEnchant
     {
         public override Color nameColor => new(248, 177, 191);
-
+        public override void SetStaticDefaults()
+        {
+            base.SetStaticDefaults();
+        }
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -39,17 +43,15 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
                 .AddTile(TileID.DemonAltar)
                 .Register();
         }
-    }
-
-    public class WormwoodEffect : AccessoryEffect
-    {
-        public override Header ToggleHeader => null;
-        public override int ToggleItemType => ModContent.ItemType<WormwoodEnchant>();
-        public override bool ActiveSkill => Main.LocalPlayer.HasEffectEnchant<WormwoodEffect>();
-
-        public static void ActivateBloomStrike(Player player)
+        public class WormwoodEffect : AccessoryEffect
         {
-            
+            public override Header ToggleHeader => Header.GetHeader<SecretForceHeader>();
+            public override int ToggleItemType => ModContent.ItemType<WormwoodEnchant>();
+            public override bool ActiveSkill => Main.LocalPlayer.HasEffectEnchant<WormwoodEffect>();
+            public static void ActivateBloomStrike(Player player)
+            {
+
+            }
         }
     }
 }
