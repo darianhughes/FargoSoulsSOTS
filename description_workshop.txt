@@ -1,1 +1,33 @@
-This description will show up on the steam page, check out https://steamcommunity.com/comment/Guide/formattinghelp.
+An unofficial addon to the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo's Souls Mod[/url] that makes it compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] Secrets of the Shadows[url].
+
+v0.1 includes support for Pre-Hardmode, and the mod will be continued to be worked on and gain regular updates.
+
+Features:
+[list]
+	[*] Adds enchantments & forces for the Secrets of the Shadows armors
+	[*] Adds a new essence & soul for the Void subclass
+	[*] Adds Fargo's Mutant quality of life support such as banner recipes & alternate summons for Secrets of the Shadows bosses.
+	[*] Eterity Debuffs & AI changes for Secrets of the Shadow's bosses
+	[*] Merges Secrets of the Shadows accessories trees such as the boot crafting tree or shield crafting tree with Fargo's Souls Mod accessories
+	[*] A toggle for a Secrets of the Shadows and Fargo's Souls pyrimid merge.
+	[*] Inlcudes support for other Fargo's addons such as the Calamity - Fargo's Souls DLC.
+[list]
+
+If your interested in more mods like this, check out some of my teams other mods:
+[list]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] Infernal Eclipse of Ragnaork[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3485175010] Infernal Eclipse of Ragnarok: Weapon DLC[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3557455275&searchtext=Homeward+Ragnaork] Homeward Ragnaork[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3535746309] Thrower Unification[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus' Calamity/Thorium Balancing[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3556808030] Infernum SOTS Sanctuary WorldGen Adjuster[/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3503267205] Permafrost Keep Quest Skipper[/url]
+[/list]
+
+If you want to support the development team, see our pateron page: https://www.patreon.com/c/InfernalEclipseofRagnarokTeam
+
+Special thanks to the Fargo's Souls & Secrets of the Shadows teams for thier mods, as well as [url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen[/url] for some of the eternity debuff code.
+
+Coding: Akira
+Sprites: ma3allim
+Localization: Pudd1ng (Simplified Chinese)

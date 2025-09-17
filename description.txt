@@ -1,1 +1,20 @@
-Modify this file with a description of your mod.
+An unofficial addon to the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo's Souls Mod[/url] that makes it compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] Secrets of the Shadows[url].
+
+v0.1 includes support for Pre-Hardmode, and the mod will be continued to be worked on and gain regular updates.
+
+Features:
+	- Adds enchantments & forces for the Secrets of the Shadows armors
+	- Adds a new essence & soul for the Void subclass
+	- Adds Fargo's Mutant quality of life support such as banner recipes & alternate summons for Secrets of the Shadows bosses.
+	- Eterity Debuffs & AI changes for Secrets of the Shadow's bosses
+	- Merges Secrets of the Shadows accessories trees such as the boot crafting tree or shield crafting tree with Fargo's Souls Mod accessories
+	- A toggle for a Secrets of the Shadows and Fargo's Souls pyrimid merge.
+	- Inlcudes support for other Fargo's addons such as the Calamity - Fargo's Souls DLC.
+
+If you run into any issues, have any suggestions, or want to report a bug please join the Discord server linked on the Steam Workshop page.
+
+Special thanks to the Fargo's Souls & Secrets of the Shadows teams for thier mods, as well as N0t_UNowen for some of the eternity debuff code.
+
+Coding: Akira
+Sprites: ma3allim
+Localization: Pudd1ng (Simplified Chinese)

@@ -1,2 +1,59 @@
-# This file will automatically update with entries for new content after a build and reload.
+Items: {
+	VesperaEnchant: {
+		Tooltip:
+			'''
+			Healing items grant 25 void for 25 seconds
+			Void regneration is increased by 15% while you have potion sickness
+			'''
+		DisplayName: Vespera Enchantment
+	}
 
+	VoidForce: {
+		Tooltip:
+			'''
+			[i:FargoSoulsSOTS/VesperaEnchant] Healing items temporarily grants void and potion sickness increases void regeneration
+			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
+			'''
+		DisplayName: Force of Void
+	}
+
+	VibrantEnchant: {
+		DisplayName: Vibrant Enchantment
+		Tooltip:
+			'''
+			Reduces void usage by 10%
+			Void weapons will shoot vibrant bolts that deal ranged damage
+			Switching to a non-Void weapon will reduce the damage of the vibrant bolt by 50% and gives Void Burn for 5 seconds
+			'''
+	}
+
+	SecretForce: {
+		DisplayName: Force of Secrets
+		Tooltip: ""
+	}
+
+	WormwoodEnchant: {
+		DisplayName: Wormwood Enchantment
+		Tooltip: ""
+	}
+}
+
+Buffs: {
+	VoidAttunement: {
+		Description: You are attuned to the void, increasing your max void
+		DisplayName: Void Attunement
+	}
+}
+
+WizardEffect: {
+	Vespera: Healing items grant 50 void but only increases void regeneration by 5% while you have potion sickness
+	Vibrant: Now shoots 2 vibrant bolts and switching only reduces the damage by 20%
+	Wormwood: ""
+}
+
+Toggler: {
+	VesperaEffect: Vespera Effect
+	VibrantEffect: Vibrant Bolts
+	WormwoodEffect: ""
+	VoidForceHeader: Force of Void
+}
