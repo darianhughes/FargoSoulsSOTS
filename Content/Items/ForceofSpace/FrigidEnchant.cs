@@ -40,10 +40,10 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSpace
                 .AddTile(TileID.DemonAltar)
                 .Register();
         }
-        public class FrigidEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<FrigidEnchant>();
-        }
+    }
+    public class FrigidEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
+        public override int ToggleItemType => ModContent.ItemType<FrigidEnchant>();
     }
 }

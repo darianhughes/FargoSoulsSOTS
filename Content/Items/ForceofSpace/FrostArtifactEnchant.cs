@@ -40,10 +40,10 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSpace
                 .AddTile(TileID.CrystalBall)
                 .Register();
         }
-        public class FrostArtifactEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<FrostArtifactEnchant>();
-        }
+    }
+    public class FrostArtifactEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
+        public override int ToggleItemType => ModContent.ItemType<FrostArtifactEnchant>();
     }
 }

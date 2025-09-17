@@ -41,10 +41,10 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSpace
             recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }
-        public class SpaceEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => null;
-            public override int ToggleItemType => ModContent.ItemType<SpaceForce>();
-        }
+    }
+    public class SpaceEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => null;
+        public override int ToggleItemType => ModContent.ItemType<SpaceForce>();
     }
 }

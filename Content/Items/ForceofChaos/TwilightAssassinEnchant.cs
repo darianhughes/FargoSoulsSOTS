@@ -41,10 +41,10 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
                 .AddTile(TileID.DemonAltar)
                 .Register();
         }
-        public class TwilightAssassinEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<TwilightAssassinEnchant>();
-        }
+    }
+    public class TwilightAssassinEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
+        public override int ToggleItemType => ModContent.ItemType<TwilightAssassinEnchant>();
     }
 }

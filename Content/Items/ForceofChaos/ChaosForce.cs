@@ -20,6 +20,11 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.AddEffect<ElementalEffect>(Item);
+            player.AddEffect<TwilightAssassinEffect>(Item);
+            player.AddEffect<WormwoodEffect>(Item);
+            player.AddEffect<BloomStrike>(Item);
+
         }
 
         public override void AddRecipes()

@@ -39,10 +39,10 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
                 .AddTile(TileID.CrystalBall)
                 .Register();
         }
-        public class ElementalEffect : AccessoryEffect
-        {
-            public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
-            public override int ToggleItemType => ModContent.ItemType<ElementalEnchant>();
-        }
+    }
+    public class ElementalEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
+        public override int ToggleItemType => ModContent.ItemType<ElementalEnchant>();
     }
 }

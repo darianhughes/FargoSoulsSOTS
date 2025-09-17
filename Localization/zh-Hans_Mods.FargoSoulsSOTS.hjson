@@ -8,13 +8,13 @@ Items: {
 		DisplayName: Vespera Enchantment
 	}
 
-	VoidForce: {
-		Tooltip:
+	ChaosForce: {
+		/* Tooltip:
 			'''
-			[i:FargoSoulsSOTS/VesperaEnchant] Healing items temporarily grants void and potion sickness increases void regeneration
-			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
-			'''
-		DisplayName: Force of Void
+			WIP
+			[i:FargoSoulsSOTS/WormwoodEnchant] Minions will inflict Slimed on hit
+			''' */
+		// DisplayName: Force of Chaos
 	}
 
 	VibrantEnchant: {
@@ -27,9 +27,13 @@ Items: {
 			'''
 	}
 
-	SecretForce: {
-		DisplayName: Force of Secrets
-		Tooltip: ""
+	SpaceForce: {
+		// DisplayName: Force of Space
+		/* Tooltip:
+			'''
+			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
+			// [i:FargoSoulsSOTS/VesperaEnchant] Healing items temporarily grants void and potion sickness increases void regeneration
+			''' */
 	}
 
 	WormwoodEnchant: {
@@ -47,7 +51,7 @@ Items: {
 			The beam lasts for 15 seconds before leaving and going on cooldown for 25 seconds
 			You cannot teleport through TwilightAssassinEnchant
 			Also grants immunity to all types of dissolving matter 
-			“Chaos Control!”
+			'Chaos Control!'
 			''' */
 	}
 
@@ -57,7 +61,7 @@ Items: {
 			'''
 			Every two void you use creates a ring of code bursts that deals 33 damage and gives Destable Curse
 			Once it is shot the next code bust will deal twice the damage
-			You shine like the brightest Stars”
+			'You shine like the brightest Stars'
 			''' */
 	}
 
