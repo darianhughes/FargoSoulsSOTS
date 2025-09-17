@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Common
+namespace FargoSoulsSOTS.Core.Systems
 {
-    public class FargoSOTSGlobalRecipe : ModSystem
+    public class FargoSOTSRecipeGroups : ModSystem
     {
         public override void AddRecipeGroups()
         {

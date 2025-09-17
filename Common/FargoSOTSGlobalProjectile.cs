@@ -1,4 +1,4 @@
-﻿using FargoSoulsSOTS.Content.Items.ForceofVoid;
+﻿using FargoSoulsSOTS.Content.Items.ForceofSpace;
 using FargoSoulsSOTS.Core.Players;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;

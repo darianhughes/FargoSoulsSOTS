@@ -39,12 +39,26 @@ Items: {
 
 	ElementalEnchant: {
 		// DisplayName: Elemental Enchant
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			Activating your skill will teleport to you cursor.
+			You leave a relocator beam that deals high damage that freezes enemies and slows bosses by 25%
+			You can also bend and hit nearby enemies
+			The beam lasts for 15 seconds before leaving and going on cooldown for 25 seconds
+			You cannot teleport through TwilightAssassinEnchant
+			Also grants immunity to all types of dissolving matter 
+			“Chaos Control!”
+			''' */
 	}
 
 	TwilightAssassinEnchant: {
 		// DisplayName: Twilight Assassin Enchant
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			Every two void you use creates a ring of code bursts that deals 33 damage and gives Destable Curse
+			Once it is shot the next code bust will deal twice the damage
+			You shine like the brightest Stars”
+			''' */
 	}
 
 	FrigidEnchant: {
@@ -66,25 +80,34 @@ Buffs: {
 
 	BloomStrikeCooldown: {
 		// DisplayName: Bloom Strike Cooldown
-		// Description: Mods.FargoSoulsSOTS.Buffs.BloomStrikeCooldown.Description
+		// Description: You can't activate Bloom Strike!
 	}
 }
 
 WizardEffect: {
 	Vespera: Healing items grant 50 void but only increases void regeneration by 5% while you have potion sickness
 	Vibrant: Now shoots 2 vibrant bolts and switching only reduces the damage by 20%
+	// Elemental: Now lasts for 25 seconds but now has a longer cooldown, 40 seconds
+	// FrigidEnchant: Grants 6 Shatter shards, and deals the Frostbite Debuff when broken
+	// FrostArtifactEnchant: Grants two more polar cannons
+	// TwilightAssassinEnchant: Gives 3x the amount, but it cost 3 void now
 	Wormwood: ""
 }
 
 Toggler: {
 	VesperaEffect: Vespera Effect
 	VibrantEffect: Vibrant Bolts
+	// ElementalEffect: Chaos teleport
+	// FrigidEffect: Orbiting Shatter Shards
+	// FrostArtifactEffect: Polar Cannons
+	// TwilightAssassinEffect: Code Bursts
 	WormwoodEffect: ""
 	VoidForceHeader: Force of Void
+	// SecretForceHeader: Force of Secrets
 }
 
 ActiveSkills: {
-	WormwoodEffect: {
+	BloomStrike: {
 		// DisplayName: Bloom Strike
 		/* Tooltip:
 			'''

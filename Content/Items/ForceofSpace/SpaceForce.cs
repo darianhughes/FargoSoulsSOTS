@@ -3,15 +3,11 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Core.Toggler;
-using static FargoSoulsSOTS.Content.Items.ForceofSecrets.ElementalEnchant;
-using static FargoSoulsSOTS.Content.Items.ForceofSecrets.WormwoodEnchant;
-using static FargoSoulsSOTS.Content.Items.ForceofSecrets.FrigidEnchant;
-using static FargoSoulsSOTS.Content.Items.ForceofSecrets.FrostArtifactEnchant;
-using static FargoSoulsSOTS.Content.Items.ForceofSecrets.TwilightAssassinEnchant;
+using static FargoSoulsSOTS.Content.Items.ForceofSpace.FrostArtifactEnchant;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
+namespace FargoSoulsSOTS.Content.Items.ForceofSpace
 {
-    public class SecretForce : BaseForce
+    public class SpaceForce : BaseForce
     {
         public override void SetStaticDefaults()
         {
@@ -19,11 +15,8 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
 
             Enchants[Type] =
             [
-                ModContent.ItemType<ElementalEnchant>(),
                 ModContent.ItemType<FrostArtifactEnchant>(),
-                ModContent.ItemType<TwilightAssassinEnchant>(),
-                ModContent.ItemType<FrigidEnchant>(),
-                ModContent.ItemType<WormwoodEnchant>(),
+                ModContent.ItemType<VibrantEnchant>(),
             ];
         }
         public override void SetDefaults()
@@ -34,12 +27,8 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             SetActive(player);
-            player.AddEffect<ElementalEffect>(Item);
             player.AddEffect<FrostArtifactEffect>(Item);
-            player.AddEffect<TwilightAssassinEffect>(Item);
-            player.AddEffect<FrigidEffect>(Item);
-            player.AddEffect<WormwoodEffect>(Item);
-            player.AddEffect<BloomStrike>(Item);
+            player.AddEffect<VibrantEffect>(Item);
         }
 
         public override void AddRecipes()
@@ -52,10 +41,10 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
             recipe.AddTile(ModContent.Find<ModTile>("Fargowiltas", "CrucibleCosmosSheet"));
             recipe.Register();
         }
-        public class SecretEffect : AccessoryEffect
+        public class SpaceEffect : AccessoryEffect
         {
             public override Header ToggleHeader => null;
-            public override int ToggleItemType => ModContent.ItemType<SecretForce>();
+            public override int ToggleItemType => ModContent.ItemType<SpaceForce>();
         }
     }
 }

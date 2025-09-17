@@ -8,7 +8,7 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargoSoulsSOTS.Core.SoulToggles;
 using SOTS.Items.Permafrost;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
+namespace FargoSoulsSOTS.Content.Items.ForceofSpace
 {
     public class FrigidEnchant : BaseEnchant
     {
@@ -42,7 +42,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
         }
         public class FrigidEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<SecretForceHeader>();
+            public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<FrigidEnchant>();
         }
     }

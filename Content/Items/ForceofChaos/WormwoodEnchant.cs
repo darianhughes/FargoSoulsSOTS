@@ -15,7 +15,7 @@ using FargowiltasSouls;
 using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Core.SoulToggles;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
+namespace FargoSoulsSOTS.Content.Items.ForceofChaos
 {
     public class WormwoodEnchant : BaseEnchant
     {
@@ -54,7 +54,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
 
     public class WormwoodEffect : AccessoryEffect
     {
-        public override Header ToggleHeader => Header.GetHeader<SecretForceHeader>();
+        public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
         public override int ToggleItemType => ModContent.ItemType<WormwoodEnchant>();
         public override void OnHitNPCWithProj(Player player, Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {

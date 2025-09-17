@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FargoSoulsSOTS.Content.Buffs;
-using FargoSoulsSOTS.Content.Items.ForceofVoid;
+using FargoSoulsSOTS.Content.Items.ForceofSpace;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using SOTS.Projectiles.Nature;

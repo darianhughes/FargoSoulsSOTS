@@ -4,23 +4,22 @@ using FargowiltasSouls.Core.Toggler;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofVoid
+namespace FargoSoulsSOTS.Content.Items.ForceofChaos
 {
-    public class VoidForce : BaseForce
+    public class ChaosForce : BaseForce
     {
         public override void SetStaticDefaults()
         {
             Enchants[Type] =
             [
-                 ModContent.ItemType<VesperaEnchant>(),
-                 ModContent.ItemType<VibrantEnchant>(),
+                ModContent.ItemType<ElementalEnchant>(),
+                ModContent.ItemType<TwilightAssassinEnchant>(),
+                ModContent.ItemType<WormwoodEnchant>()
             ];
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddEffect<VesperaEffect>(Item);
-            player.AddEffect<VibrantEffect>(Item);
         }
 
         public override void AddRecipes()
@@ -35,9 +34,9 @@ namespace FargoSoulsSOTS.Content.Items.ForceofVoid
         }
     }
 
-    public class VoidEffect : AccessoryEffect
+    public class ChoasEffect : AccessoryEffect
     {
         public override Header ToggleHeader => null;
-        public override int ToggleItemType => ModContent.ItemType<VoidForce>();
+        public override int ToggleItemType => ModContent.ItemType<ChaosForce>();
     }
 }

@@ -10,7 +10,7 @@ using SOTS.Items.SpiritStaves;
 using SOTS.Items.Wings;
 using FargoSoulsSOTS.Core.SoulToggles;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
+namespace FargoSoulsSOTS.Content.Items.ForceofChaos
 {
     public class TwilightAssassinEnchant : BaseEnchant
     {
@@ -43,7 +43,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
         }
         public class TwilightAssassinEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<SecretForceHeader>();
+            public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<TwilightAssassinEnchant>();
         }
     }

@@ -10,7 +10,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofVoid
+namespace FargoSoulsSOTS.Content.Items.ForceofSpace
 {
     public class VesperaEnchant : BaseEnchant
     {
@@ -45,7 +45,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofVoid
 
     public class VesperaEffect : AccessoryEffect
     {
-        public override Header ToggleHeader => Header.GetHeader<VoidForceHeader>();
+        public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
         public override int ToggleItemType => ModContent.ItemType<VesperaEnchant>();
     }
 }

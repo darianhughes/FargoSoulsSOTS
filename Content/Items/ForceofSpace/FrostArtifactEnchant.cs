@@ -9,7 +9,7 @@ using SOTS.Items.Chaos;
 using FargoSoulsSOTS.Core.SoulToggles;
 using SOTS.Items.Permafrost;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
+namespace FargoSoulsSOTS.Content.Items.ForceofSpace
 {
     public class FrostArtifactEnchant : BaseEnchant
     {
@@ -42,7 +42,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSecrets
         }
         public class FrostArtifactEffect : AccessoryEffect
         {
-            public override Header ToggleHeader => Header.GetHeader<SecretForceHeader>();
+            public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
             public override int ToggleItemType => ModContent.ItemType<FrostArtifactEnchant>();
         }
     }
