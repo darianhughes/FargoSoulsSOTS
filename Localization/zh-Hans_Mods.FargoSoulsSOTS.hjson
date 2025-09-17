@@ -43,6 +43,11 @@ Buffs: {
 		Description: You are attuned to the void, increasing your max void
 		DisplayName: Void Attunement
 	}
+
+	BloomStrikeCooldown: {
+		// DisplayName: Bloom Strike Cooldown
+		// Description: Mods.FargoSoulsSOTS.Buffs.BloomStrikeCooldown.Description
+	}
 }
 
 WizardEffect: {
@@ -56,4 +61,17 @@ Toggler: {
 	VibrantEffect: Vibrant Bolts
 	WormwoodEffect: ""
 	VoidForceHeader: Force of Void
+}
+
+ActiveSkills: {
+	WormwoodEffect: {
+		// DisplayName: Bloom Strike
+		/* Tooltip:
+			'''
+			Summons bloom hooks on your minions, which shoot flower bolts at nearby enemies, dealing summon damage
+			After 5 seconds, the bloom hooks will despawn, causing two of you summons to despawn as well
+			Using a non-summon weapon during the duration will reduce the flower bolts damage by 50%
+			This skill has a 25 second cooldown
+			''' */
+	}
 }

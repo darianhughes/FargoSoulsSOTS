@@ -1,5 +1,5 @@
 displayName = Secrets of the Souls (Fargo's Souls X SOTS)
 author = Akira, ma3allim, & the Infernal Eclipse of Ragnarok Team
 version = 0.1
-modReferences = Fargowiltas, FargowiltasSouls, SOTS, Luminance
+modReferences = Fargowiltas, FargowiltasSouls, SOTS, RevengeancePlus, Luminance
 homepage = https://discord.gg/RXdTXbKY

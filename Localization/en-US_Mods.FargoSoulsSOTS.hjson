@@ -4,6 +4,7 @@ Items: {
 			'''
 			Healing items grant 25 void for 25 seconds
 			Void regneration is increased by 15% while you have potion sickness
+			'Lamp...'
 			'''
 		DisplayName: Vespera Enchantment
 	}
@@ -24,17 +25,18 @@ Items: {
 			Reduces void usage by 10%
 			Void weapons will shoot vibrant bolts that deal ranged damage
 			Switching to a non-Void weapon will reduce the damage of the vibrant bolt by 50% and gives Void Burn for 5 seconds
+			'You illuminate every space you occupy'
 			'''
 	}
 
 	SecretForce: {
 		DisplayName: Force of Secrets
-		Tooltip: ""
+		Tooltip: "[i:FargoSoulsSOTS/WormwoodEnchant] Minions will inflict Slimed on hit"
 	}
 
 	WormwoodEnchant: {
 		DisplayName: Wormwood Enchantment
-		Tooltip: ""
+		Tooltip: Minions will inflict Slimed on hit
 	}
 }
 
@@ -43,17 +45,36 @@ Buffs: {
 		Description: You are attuned to the void, increasing your max void
 		DisplayName: Void Attunement
 	}
+
+	BloomStrikeCooldown: {
+		DisplayName: Bloom Strike Cooldown
+		Description: You can't activate Bloom Strike!
+	}
 }
 
 WizardEffect: {
 	Vespera: Healing items grant 50 void but only increases void regeneration by 5% while you have potion sickness
 	Vibrant: Now shoots 2 vibrant bolts and switching only reduces the damage by 20%
-	Wormwood: ""
+	Wormwood: Bloom hooks now last for 15 seconds and will only despawn 1 minion.
 }
 
 Toggler: {
 	VesperaEffect: Vespera Effect
 	VibrantEffect: Vibrant Bolts
-	WormwoodEffect: ""
+	WormwoodEffect: Wormwood Effect
 	VoidForceHeader: Force of Void
+	SecretForceHeader: Force of Secrets
+}
+
+ActiveSkills: {
+	BloomStrike: {
+		DisplayName: Bloom Strike
+		Tooltip:
+			'''
+			Summons bloom hooks on your minions, which shoot flower bolts at nearby enemies, dealing summon damage
+			After 5 seconds, the bloom hooks will despawn, causing two of you summons to despawn as well
+			Using a non-summon weapon during the duration will reduce the flower bolts damage by 50%
+			This skill has a 25 second cooldown
+			'''
+	}
 }

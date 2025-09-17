@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework;
 using SOTS.Projectiles.Earth;
 using SOTS.Void;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Common
@@ -38,6 +39,7 @@ namespace FargoSoulsSOTS.Common
         public override bool? UseItem(Item item, Player player)
         {
             VoidPlayer mp = VoidPlayer.ModPlayer(player);
+            FargoSOTSPlayer fargoSOTSPlayer = player.GetModPlayer<FargoSOTSPlayer>();
 
             if (item.ModItem is VoidItem)
             {
@@ -87,7 +89,23 @@ namespace FargoSoulsSOTS.Common
                 }
             }
 
+            if (fargoSOTSPlayer.BloomTimeLeft > 0 && IsWeapon(item) && !IsSummonWeapon(item))
+                fargoSOTSPlayer.BloomReduced = true;
+
             return base.UseItem(item, player);
+        }
+
+        private static bool IsWeapon(Item item)
+            => item.damage > 0
+               && item.useStyle != ItemUseStyleID.None
+               && !item.accessory
+               && item.ammo == AmmoID.None
+               && item.pick <= 0 && item.axe <= 0 && item.hammer <= 0;
+
+        private static bool IsSummonWeapon(Item item)
+        {
+            if (item == null || item.IsAir) return false;
+            return (item.DamageType == DamageClass.Summon || item.CountsAsClass(DamageClass.Summon) || item.DamageType == DamageClass.SummonMeleeSpeed || item.CountsAsClass(DamageClass.SummonMeleeSpeed));
         }
     }
 }
