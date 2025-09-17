@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Core.Toggler;
 using FargoSoulsSOTS.Content.Items.ForceofChaos;
+using System.Collections.Generic;
 
 namespace FargoSoulsSOTS.Content.Items
 {
@@ -15,6 +16,7 @@ namespace FargoSoulsSOTS.Content.Items
         {
             return true;
         }
+        public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

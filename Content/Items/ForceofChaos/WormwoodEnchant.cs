@@ -14,11 +14,13 @@ using FargoSoulsSOTS.Core.Players;
 using FargowiltasSouls;
 using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Core.SoulToggles;
+using FargoSoulsSOTS.Common.ProjectileChanges;
 
 namespace FargoSoulsSOTS.Content.Items.ForceofChaos
 {
     public class WormwoodEnchant : BaseEnchant
     {
+        public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
         public override Color nameColor => new(100, 173, 255);
         public override void SetStaticDefaults()
         {
@@ -128,6 +130,9 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
                     hook.originalDamage = damage;
                     hook.DamageType = DamageClass.Summon;
                     hook.timeLeft = 300;
+                    hook.netUpdate = true;
+                    hook.localAI[0] = minion.whoAmI + 1; // anchor to this minion
+                    hook.GetGlobalProjectile<BloomHookMinionAnchor>().MarkAsWormwood();
                     hook.netUpdate = true;
                 }
             }

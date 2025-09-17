@@ -1,4 +1,5 @@
-﻿using FargowiltasSouls.Content.Items.Accessories.Forces;
+﻿using System.Collections.Generic;
+using FargowiltasSouls.Content.Items.Accessories.Forces;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using Steamworks;
@@ -13,6 +14,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
         {
             return false;
         }
+        public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
         public override void SetStaticDefaults()
         {
             Enchants[Type] =
