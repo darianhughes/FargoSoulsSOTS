@@ -11,6 +11,9 @@ using Terraria.ID;
 using Terraria;
 using System.IO;
 using Terraria.ModLoader.IO;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
+using ReLogic.Content;
 
 namespace FargoSoulsSOTS.Common.ProjectileChanges
 {
@@ -43,8 +46,21 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
 
         // cache SOTS types
         private static int _bloomHookType = -1, _flowerBoltType = -1;
+        private static Asset<Texture2D> _vineTex;
         private static int BloomHookType { get { if (_bloomHookType == -1 && ModLoader.TryGetMod("SOTS", out var s)) _bloomHookType = s.Find<ModProjectile>("BloomingHook").Type; return _bloomHookType; } }
         private static int FlowerBoltType { get { if (_flowerBoltType == -1 && ModLoader.TryGetMod("SOTS", out var s)) _flowerBoltType = s.Find<ModProjectile>("FriendlyFlowerBolt").Type; return _flowerBoltType; } }
+        private static Texture2D VineTexture
+        {
+            get
+            {
+                if (_vineTex == null || !_vineTex.IsLoaded)
+                {
+                    // same asset SOTS uses
+                    _vineTex = ModContent.Request<Texture2D>("SOTS/Projectiles/Nature/BloomingVine", AssetRequestMode.ImmediateLoad);
+                }
+                return _vineTex.Value;
+            }
+        }
 
         public override bool AppliesToEntity(Projectile proj, bool lateInstantiation) => proj.type == BloomHookType;
 
@@ -61,16 +77,14 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
                 if (p.active && p.owner == hook.owner && p.minion && p.minionSlots > 0f)
                     return p;
             }
-
-            // reacquire nearest owned minion
-            int best = -1; float bestDist = float.MaxValue;
+            int best = -1; float bestD2 = float.MaxValue;
             for (int i = 0; i < Main.maxProjectiles; i++)
             {
                 ref Projectile p = ref Main.projectile[i];
                 if (p.active && p.owner == hook.owner && p.minion && p.minionSlots > 0f)
                 {
                     float d2 = Vector2.DistanceSquared(p.Center, hook.Center);
-                    if (d2 < bestDist) { bestDist = d2; best = i; }
+                    if (d2 < bestD2) { bestD2 = d2; best = i; }
                 }
             }
             if (best != -1) { SetAnchorIndex(hook, best); return Main.projectile[best]; }
@@ -231,6 +245,75 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
         {
             if (projectile.type != BloomHookType) return;
             FromWormwood = bitReader.ReadBit();
+        }
+
+        public override bool PreDraw(Projectile projectile, ref Color drawColor)
+        {
+            if (projectile.type != BloomHookType) return base.PreDraw(projectile, ref drawColor);
+
+            // Only intercept drawing for hooks spawned by Wormwood.
+            if (!projectile.GetGlobalProjectile<BloomHookMinionAnchor>().FromWormwood)
+                return base.PreDraw(projectile, ref drawColor);
+
+            // 1) Draw the vine between ANCHOR MINION and the hook (matches SOTS style math).
+            Projectile anchor = GetAnchorMinion(projectile);
+            if (anchor != null)
+            {
+                Texture2D vine = VineTexture;
+                Vector2 vineOrigin = new Vector2(vine.Width * 0.5f, vine.Height * 0.5f);
+
+                Vector2 delta = projectile.Center - anchor.Center;
+                float halfLen = delta.Length() / 2f;
+                if (delta.X < 0f) halfLen = -halfLen;
+                Vector2 mid = anchor.Center + delta / 2f;
+                float rot = delta.ToRotation();
+
+                // Same 9 segments as SOTS with subtle wave offset driven by ai[0]
+                float t = projectile.ai[0];
+                for (int i = 9; i > 0; --i)
+                {
+                    Vector2 arm = new Vector2(halfLen, 0f).RotatedBy(MathHelper.ToRadians(18 * i));
+                    arm.Y /= 4f; // flatten a bit like original
+                    Vector2 p = mid + arm.RotatedBy(rot);
+                    Vector2 wobble = new Vector2(2.5f, 0f).RotatedBy(MathHelper.ToRadians(i * 36) + t * 2f);
+                    Vector2 screenPos = p + wobble - Main.screenPosition;
+
+                    Main.spriteBatch.Draw(
+                        vine,
+                        screenPos,
+                        null,
+                        projectile.GetAlpha(drawColor),
+                        MathHelper.ToRadians(18 * i - 45) + rot,
+                        vineOrigin,
+                        projectile.scale,
+                        SpriteEffects.None,
+                        0f
+                    );
+                }
+            }
+
+            // 2) Draw the hook sprite itself (since we're blocking SOTS' PreDraw by returning false).
+            Texture2D projTex = TextureAssets.Projectile[projectile.type].Value;
+            int frames = Main.projFrames[projectile.type] > 0 ? Main.projFrames[projectile.type] : 1;
+            int frameHeight = projTex.Height / frames;
+            int frame = projectile.frame % frames;
+            Rectangle src = new Rectangle(0, frame * frameHeight, projTex.Width, frameHeight);
+            Vector2 origin = new Vector2(src.Width * 0.5f, src.Height * 0.5f);
+
+            Main.spriteBatch.Draw(
+                projTex,
+                projectile.Center - Main.screenPosition,
+                src,
+                projectile.GetAlpha(drawColor),
+                projectile.rotation,
+                origin,
+                projectile.scale,
+                SpriteEffects.None,
+                0f
+            );
+
+            // Block the original ModProjectile.PreDraw (which draws vine to the player).
+            return false;
         }
     }
 }

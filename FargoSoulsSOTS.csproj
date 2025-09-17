@@ -26,4 +26,9 @@
 
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Content\Items\Summons\SOTSCopy\" />
+	  <Folder Include="Content\Items\Summons\SwarmSummons\Energizers\" />
+	</ItemGroup>
+
 </Project>

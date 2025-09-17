@@ -57,7 +57,7 @@ namespace FargoSoulsSOTS.Content.Items
             recipe.Register();
         }
     }
-    public class SpaceEffect : AccessoryEffect
+    public class VoidEffect : AccessoryEffect
     {
         public override Header ToggleHeader => null;
         public override int ToggleItemType => ModContent.ItemType<VoidForce>();

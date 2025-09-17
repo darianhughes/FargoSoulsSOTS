@@ -21,6 +21,8 @@ namespace FargoSoulsSOTS.Core.Players
         public bool BloomReduced;
         public int CullCountPending;
 
+        public bool hasSpawnedShards = false;
+
         public override void PostUpdate()
         {
             if (BloomTimeLeft > 0)

@@ -32,7 +32,7 @@ Items: {
 		/* Tooltip:
 			'''
 			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
-			// [i:FargoSoulsSOTS/VesperaEnchant] Healing items temporarily grants void and potion sickness increases void regeneration
+			[i:FargoSoulsSOTS/FrigidEnchant] Grants 6 shatter shards when entering Void Shock, which inflicts Frostbite when broken & are consumed for recovery effects during Void Recovery
 			''' */
 	}
 
@@ -67,12 +67,29 @@ Items: {
 
 	FrigidEnchant: {
 		// DisplayName: Frigid Enchant
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			When you enter Void Shock, 3 void shards will orbit around you which deal melee damage when hitting an enemy
+			Getting hit will break one of the shards, freezing the enemy that hit you
+			When you enter Void Recovery, you will consume any remaining shards healing 10% of your max health and 5% of your max mana and void per shard consumed
+			'Everything you touch freezes'
+			''' */
 	}
 
 	FrostArtifactEnchant: {
 		// DisplayName: Frost Artifact Enchant
 		// Tooltip: ""
+	}
+
+	VoidForce: {
+		// DisplayName: Force of Void
+		/* Tooltip:
+			'''
+			[i:FargoSoulsSOTS/VesperaEnchant] Healing items temporarily grants void and potion sickness increases void regeneration
+			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
+			[i:FargoSoulsSOTS/WormwoodEnchant] Minions will inflict Slimed on hit
+			[i:FargoSoulsSOTS/FrigidEnchant] Grants 6 shatter shards when entering Void Shock, which inflicts Frostbite when broken & are consumed for recovery effects during Void Recovery
+			''' */
 	}
 }
 
@@ -96,18 +113,20 @@ WizardEffect: {
 	// FrostArtifactEnchant: Grants two more polar cannons
 	// TwilightAssassinEnchant: Gives 3x the amount, but it cost 3 void now
 	Wormwood: ""
+	// Frigid: Grants 6 shatter shards when entering Void Shock, and inflicts Frostbite when broken.
 }
 
 Toggler: {
 	VesperaEffect: Vespera Effect
 	VibrantEffect: Vibrant Bolts
 	// ElementalEffect: Chaos teleport
-	// FrigidEffect: Orbiting Shatter Shards
+	// FrigidEffect: Void Shards
 	// FrostArtifactEffect: Polar Cannons
 	// TwilightAssassinEffect: Code Bursts
 	WormwoodEffect: ""
+	// ChaosForceHeader: Force of Chaos
+	// SpaceForceHeader: Force of Space
 	VoidForceHeader: Force of Void
-	// SecretForceHeader: Force of Secrets
 }
 
 ActiveSkills: {
@@ -116,9 +135,11 @@ ActiveSkills: {
 		/* Tooltip:
 			'''
 			Summons bloom hooks on your minions, which shoot flower bolts at nearby enemies, dealing summon damage
-			After 5 seconds, the bloom hooks will despawn, causing two of you summons to despawn as well
+			After 5 seconds, the bloom hooks will despawn, causing two of you minions to despawn as well
 			Using a non-summon weapon during the duration will reduce the flower bolts damage by 50%
 			This skill has a 25 second cooldown
 			''' */
 	}
 }
+
+// Projectiles.VoidShatterShard.DisplayName: Void Shatter Shard
