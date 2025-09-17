@@ -36,6 +36,26 @@ Items: {
 		DisplayName: Wormwood Enchantment
 		Tooltip: ""
 	}
+
+	ElementalEnchant: {
+		// DisplayName: Elemental Enchant
+		// Tooltip: ""
+	}
+
+	TwilightAssassinEnchant: {
+		// DisplayName: Twilight Assassin Enchant
+		// Tooltip: ""
+	}
+
+	FrigidEnchant: {
+		// DisplayName: Frigid Enchant
+		// Tooltip: ""
+	}
+
+	FrostArtifactEnchant: {
+		// DisplayName: Frost Artifact Enchant
+		// Tooltip: ""
+	}
 }
 
 Buffs: {

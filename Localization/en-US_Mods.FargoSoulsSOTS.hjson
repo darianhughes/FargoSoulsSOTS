@@ -38,6 +38,50 @@ Items: {
 		DisplayName: Wormwood Enchantment
 		Tooltip: Minions will inflict Slimed on hit
 	}
+
+	ElementalEnchant: {
+		DisplayName: Elemental Enchant
+		Tooltip:
+		'''
+		Activating your skill will teleport to you cursor.
+		You leave a relocator beam that deals high damage that freezes enemies and slows bosses by 25%
+		You can also bend and hit nearby enemies
+		The beam lasts for 15 seconds before leaving and going on cooldown for 25 seconds
+		You cannot teleport through TwilightAssassinEnchant
+		Also grants immunity to all types of dissolving matter 
+		“Chaos Control!”
+		'''
+	}
+
+	TwilightAssassinEnchant: {
+		DisplayName: Twilight Assassin Enchant
+		Tooltip:
+		'''
+		Every two void you use creates a ring of code bursts that deals 33 damage and gives Destable Curse
+		Once it is shot the next code bust will deal twice the damage
+		You shine like the brightest Stars”
+	}
+
+	FrigidEnchant: {
+		DisplayName: Frigid Enchant
+		Tooltip:
+		'''
+			During Void Shock, 3 Shatter Shards orbit around you dealing 10 damage 
+			Getting hit will break 1 of the shatter shards, giving the enemy the frozen debuff
+			When in Void Recover, Shatter Shards will become consumable and grants 5% Void, mana, and life regen for each consumed
+		'''
+	}
+
+	FrostArtifactEnchant: {
+		DisplayName: Frost Artifact Enchant
+		Tooltip:
+		'''
+		While in Void shock, three polar cannons orbit you 
+		They shoot polar bullets at the cursor that deal 25% of the held weapon's damage
+		When taking damage, they break and give enemies three random different frozen debuffs
+ 		When in void recovery, the polar cannons become snows cones that are consumable and give a 25% boost in void, mana, and heath regeneration
+		'''
+	}
 }
 
 Buffs: {
@@ -55,12 +99,20 @@ Buffs: {
 WizardEffect: {
 	Vespera: Healing items grant 50 void but only increases void regeneration by 5% while you have potion sickness
 	Vibrant: Now shoots 2 vibrant bolts and switching only reduces the damage by 20%
+	Elemental: Now lasts for 25 seconds but now has a longer cooldown, 40 seconds
+	FrigidEnchant: Grants 6 Shatter shards, and deals the Frostbite Debuff when broken
+	FrostArtifactEnchant: Grants two more polar cannons
+	TwilightAssassinEnchant: Gives 3x the amount, but it cost 3 void now
 	Wormwood: Bloom hooks now last for 15 seconds and will only despawn 1 minion.
 }
 
 Toggler: {
 	VesperaEffect: Vespera Effect
 	VibrantEffect: Vibrant Bolts
+	ElementalEffect: Chaos teleport
+	FrigidEffect: Orbiting Shatter Shards
+	FrostArtifactEffect: Polar Cannons
+	TwilightAssassinEffect: Code Bursts
 	WormwoodEffect: Wormwood Effect
 	VoidForceHeader: Force of Void
 	SecretForceHeader: Force of Secrets
