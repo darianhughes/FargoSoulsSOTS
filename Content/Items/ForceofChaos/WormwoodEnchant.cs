@@ -19,7 +19,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
 {
     public class WormwoodEnchant : BaseEnchant
     {
-        public override Color nameColor => new(248, 177, 191);
+        public override Color nameColor => new(100, 173, 255);
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

@@ -1,17 +1,19 @@
-﻿using FargowiltasSouls.Content.Items.Accessories.Forces;
+﻿using FargoSoulsSOTS.Content.Items.ForceofSpace;
+using FargowiltasSouls.Content.Items.Accessories.Forces;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Core.Toggler;
-using static FargoSoulsSOTS.Content.Items.ForceofSpace.FrostArtifactEnchant;
+using FargoSoulsSOTS.Content.Items.ForceofChaos;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofSpace
+namespace FargoSoulsSOTS.Content.Items
 {
-    public class SpaceForce : BaseForce
+    //TEMPORARY FORCE UNTIL WE RELEASE THE HARDMODE UPDATE
+    public class VoidForce : BaseForce
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return false;
+            return true;
         }
         public override void SetStaticDefaults()
         {
@@ -19,8 +21,11 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSpace
 
             Enchants[Type] =
             [
-                ModContent.ItemType<FrostArtifactEnchant>(),
+                ModContent.ItemType<VesperaEnchant>(),
                 ModContent.ItemType<VibrantEnchant>(),
+                ModContent.ItemType<WormwoodEnchant>(),
+                ModContent.ItemType<FrigidEnchant>(),
+                ModContent.ItemType<TwilightAssassinEnchant>(),
             ];
         }
         public override void SetDefaults()
@@ -31,8 +36,12 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSpace
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             SetActive(player);
-            player.AddEffect<FrostArtifactEffect>(Item);
+            player.AddEffect<VesperaEffect>(Item);
             player.AddEffect<VibrantEffect>(Item);
+            player.AddEffect<WormwoodEffect>(Item);
+            player.AddEffect<BloomStrike>(Item);
+            player.AddEffect<FrigidEffect>(Item);
+            player.AddEffect<TwilightAssassinEffect>(Item);
         }
 
         public override void AddRecipes()
@@ -49,6 +58,6 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSpace
     public class SpaceEffect : AccessoryEffect
     {
         public override Header ToggleHeader => null;
-        public override int ToggleItemType => ModContent.ItemType<SpaceForce>();
+        public override int ToggleItemType => ModContent.ItemType<VoidForce>();
     }
 }

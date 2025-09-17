@@ -14,7 +14,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSpace
 {
     public class VibrantEnchant : BaseEnchant
     {
-        public override Color nameColor => new(237, 242, 225);
+        public override Color nameColor => new(181, 220, 97);
 
         public override void SetDefaults()
         {

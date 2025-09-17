@@ -1,6 +1,7 @@
 ﻿using FargowiltasSouls.Content.Items.Accessories.Forces;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
+using Steamworks;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -8,6 +9,10 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
 {
     public class ChaosForce : BaseForce
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
         public override void SetStaticDefaults()
         {
             Enchants[Type] =

@@ -33,8 +33,8 @@ Items: {
 		DisplayName: Force of Space
 		Tooltip:
 			'''
+			WIP
 			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
-			// [i:FargoSoulsSOTS/VesperaEnchant] Healing items temporarily grants void and potion sickness increases void regeneration
 			'''
 	}
 
@@ -76,6 +76,16 @@ Items: {
 		DisplayName: Frost Artifact Enchant
 		Tooltip: ""
 	}
+
+	VoidForce: {
+		DisplayName: Force of Void
+		Tooltip:
+			'''
+			[i:FargoSoulsSOTS/VesperaEnchant] Healing items temporarily grants void and potion sickness increases void regeneration
+			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
+			[i:FargoSoulsSOTS/WormwoodEnchant] Minions will inflict Slimed on hit
+			'''
+	}
 }
 
 Buffs: {
@@ -108,8 +118,9 @@ Toggler: {
 	FrostArtifactEffect: Polar Cannons
 	TwilightAssassinEffect: Code Bursts
 	WormwoodEffect: Wormwood Effect
+	ChaosForceHeader: Force of Chaos
+	SpaceForceHeader: Force of Space
 	VoidForceHeader: Force of Void
-	SecretForceHeader: Force of Secrets
 }
 
 ActiveSkills: {
