@@ -2,107 +2,109 @@ Items: {
 	VesperaEnchant: {
 		Tooltip:
 			'''
-			Healing items grant 25 void for 25 seconds
-			Void regneration is increased by 15% while you have potion sickness
+			治疗物品在25秒内为你提供25点虚空值
+			在药水疾病状态下，虚空回复速度提高15%
+			“灯……”
 			'''
-		DisplayName: Vespera Enchantment
+		DisplayName: 薄暮魔石
 	}
 
 	ChaosForce: {
-		/* Tooltip:
+		Tooltip:
 			'''
-			[i:FargoSoulsSOTS/WormwoodEnchant] Minions will inflict Slimed on hit
-			[i:FargoSoulsSOTS/PatchLeatherEnchant] Grants 3 snake whips that deal summon damage, with summons focusing struck enemies and inflicting Venom when being used with a summoner weapon
-			''' */
-		// DisplayName: Force of Chaos
+			[i:FargoSoulsSOTS/WormwoodEnchant] 仆从命中敌人时会施加史莱姆减益
+			[i:FargoSoulsSOTS/PatchLeatherEnchant] 获得3条造成召唤伤害的蛇鞭，使用召唤类武器时，仆从会优先攻击被击中的敌人并施加酸性毒液减益
+			'''
+		DisplayName: 混沌之力
 	}
 
 	VibrantEnchant: {
-		DisplayName: Vibrant Enchantment
+		DisplayName: 振荡魔石
 		Tooltip:
 			'''
-			Reduces void usage by 10%
-			Void weapons will shoot vibrant bolts that deal ranged damage
-			Switching to a non-Void weapon will reduce the damage of the vibrant bolt by 50% and gives Void Burn for 5 seconds
+			虚空值消耗降低10%
+			虚空武器会射出振荡弹，造成远程伤害
+			切换到非虚空武器时，振荡弹的伤害降低50%，并对你施加5秒的虚空灼烧减益
+			“你所占据的空间皆被你照亮”
 			'''
 	}
 
 	SpaceForce: {
-		// DisplayName: Force of Space
-		/* Tooltip:
+		DisplayName: 空间之力
+		Tooltip:
 			'''
-			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
-			[i:FargoSoulsSOTS/FrigidEnchant] Grants 6 shatter shards when entering Void Shock, which inflicts Frostbite when broken & are consumed for recovery effects during Void Recovery
-			''' */
+			[i:FargoSoulsSOTS/VibrantEnchant] 虚空武器会射出两枚造成远程伤害的振荡弹，切换至非虚空武器时，振荡弹的伤害会降低
+			[i:FargoSoulsSOTS/FrigidEnchant] 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
+			'''
 	}
 
 	WormwoodEnchant: {
-		DisplayName: Wormwood Enchantment
-		Tooltip: ""
+		DisplayName: 流胶木魔石
+		Tooltip: 仆从命中敌人时会施加史莱姆减益
 	}
 
 	ElementalEnchant: {
-		// DisplayName: Elemental Enchant
-		/* Tooltip:
+		DisplayName: 元素魔石
+		Tooltip:
 			'''
-			Activating your skill will teleport to you cursor.
-			You leave a relocator beam that deals high damage that freezes enemies and slows bosses by 25%
-			You can also bend and hit nearby enemies
-			The beam lasts for 15 seconds before leaving and going on cooldown for 25 seconds
-			You cannot teleport through TwilightAssassinEnchant
-			Also grants immunity to all types of dissolving matter 
-			'Chaos Control!'
-			''' */
+			激活技能时会瞬移至光标位置
+			你留下的定位器光束会造成高额伤害，使敌人冻结，并使Boss移动速度降低25%
+			光束还能弯曲击中附近敌人
+			光束在15秒后消失并进入25秒的冷却时间
+			你无法使用薄光刺客魔石进行传送
+			同时获得对一切液化元素效果的免疫
+			“混沌控制！”
+			'''
 	}
 
 	TwilightAssassinEnchant: {
-		// DisplayName: Twilight Assassin Enchant
-		/* Tooltip:
+		DisplayName: 薄光刺客魔石
+		Tooltip:
 			'''
-			Every two void you use creates a ring of code bursts that deals 33 damage and gives Destable Curse
-			Once it is shot the next code bust will deal twice the damage
-			'You shine like the brightest Stars'
-			''' */
+			每消耗2点虚空会生成一圈不稳定光束，造成33点伤害并造成不稳定化减益
+			在发射后，下一次的不稳定光束将造成双倍伤害
+			“你如最耀眼的星辰般闪耀”
+			'''
 	}
 
 	FrigidEnchant: {
-		// DisplayName: Frigid Enchant
-		/* Tooltip:
+		DisplayName: 极寒魔石
+		Tooltip:
 			'''
-			When you enter Void Shock, 3 void shards will orbit around you which deal melee damage when hitting an enemy
-			Getting hit will break one of the shards, freezing the enemy that hit you
-			When you enter Void Recovery, you will consume any remaining shards healing 10% of your max health and 5% of your max mana and void per shard consumed
-			'Everything you touch freezes'
-			''' */
+			获得虚空冲击减益时，3枚虚空碎片环绕在你身边，命中敌人时造成近战伤害
+			当你受到攻击时，一枚碎片会破碎，并冻结击中你的敌人
+			激活虚空回升增益时，会消耗剩余碎片，每消耗一枚碎片恢复10%最大生命值、5%最大法力值与5%最大虚空值
+			“你触碰的一切皆会冻结”
+			'''
 	}
 
 	FrostArtifactEnchant: {
-		// DisplayName: Frost Artifact Enchant
-		// Tooltip: ""
+		DisplayName: 霜冻遗物魔石
+		Tooltip: ""
 	}
 
 	VoidForce: {
-		// DisplayName: Force of Void
-		/* Tooltip:
+		DisplayName: 虚空之力
+		Tooltip:
 			'''
-			[i:FargoSoulsSOTS/VesperaEnchant] Healing items temporarily grants void and potion sickness increases void regeneration
-			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
-			[i:FargoSoulsSOTS/WormwoodEnchant] Minions will inflict Slimed on hit
-			[i:FargoSoulsSOTS/FrigidEnchant] Grants 6 shatter shards when entering Void Shock, which inflicts Frostbite when broken & are consumed for recovery effects during Void Recovery
-			[i:FargoSoulsSOTS/PatchLeatherEnchant] Grants 3 snake whips that deal summon damage, with summons focusing struck enemies and inflicting Venom when being used with a summoner weapon
-			''' */
+			[i:FargoSoulsSOTS/VesperaEnchant] 治疗物品会给予你临时虚空值，在药水疾病状态下，虚空回复速度提高
+			[i:FargoSoulsSOTS/VibrantEnchant] 虚空武器会射出两枚造成远程伤害的振荡弹，切换至非虚空武器时，振荡弹的伤害会降低
+			[i:FargoSoulsSOTS/WormwoodEnchant] 仆从命中敌人时会施加史莱姆减益
+			[i:FargoSoulsSOTS/FrigidEnchant] 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
+			[i:FargoSoulsSOTS/PatchLeatherEnchant] 获得3条造成召唤伤害的蛇鞭，使用召唤类武器时，仆从会优先攻击被击中的敌人并施加酸性毒液减益
+			'''
 	}
 
 	PatchLeatherEnchant: {
-		// DisplayName: Patch Leather Enchantment
-		/* Tooltip:
+		DisplayName: 补丁皮魔石
+		Tooltip:
 			'''
-			Grants a snake whip that attacks while using another weapon
-			The whip deals summon damage and has 1 summon tag damage
-			Your summons will focus struck enemies and will inflict Venom
-			If being used with a non-summoner weapon, the whip does 20% less damage and does not inflict Venom
-			'Why did it have to be snakes?'
-			''' */
+			获得一条在你使用其他武器时也会自动攻击的蛇鞭
+			蛇鞭造成召唤伤害，并附带1点召唤标记伤害
+			你的仆从会优先攻击被击中的敌人，并施加酸性毒液减益
+			若与非召唤类武器同时使用，蛇鞭伤害降低20%，且不再施加酸性毒液减益
+			“为什么偏偏是蛇？”
+			'''
 	}
 
 	EarthenEnchant: {
@@ -121,63 +123,62 @@ Items: {
 
 Buffs: {
 	VoidAttunement: {
-		Description: You are attuned to the void, increasing your max void
-		DisplayName: Void Attunement
+		Description: 你与虚空产生共鸣，最大虚空值提升
+		DisplayName: 虚空调谐
 	}
 
 	BloomStrikeCooldown: {
-		// DisplayName: Bloom Strike Cooldown
-		// Description: You can't activate Bloom Strike!
+		DisplayName: 盛花一击冷却
+		Description: 你无法释放盛花一击！
 	}
-
 	SnakeSummonTag: {
-		// DisplayName: Snake Summon Tag
-		// Description: Mods.FargoSoulsSOTS.Buffs.SnakeSummonTag.Description
+		DisplayName: 蛇鞭召唤标记
+		Description: Mods.FargoSoulsSOTS.Buffs.SnakeSummonTag.Description
 	}
 }
 
 WizardEffect: {
-	Vespera: Healing items grant 50 void but only increases void regeneration by 5% while you have potion sickness
-	Vibrant: Now shoots 2 vibrant bolts and switching only reduces the damage by 20%
-	// Elemental: Now lasts for 25 seconds but now has a longer cooldown, 40 seconds
-	// FrigidEnchant: Grants 6 Shatter shards, and deals the Frostbite Debuff when broken
-	// FrostArtifactEnchant: Grants two more polar cannons
-	// TwilightAssassinEnchant: Gives 3x the amount, but it cost 3 void now
-	Wormwood: ""
-	// Frigid: Grants 6 shatter shards when entering Void Shock, and inflicts Frostbite when broken
-	// PatchLeather: Grants 3 snake whips but are half the length
+	Vespera: 治疗物品会提供50点虚空值，但在药水疾病状态下虚空回复仅提升5%
+	Vibrant: 现在会发射2枚振荡弹，切换武器时伤害仅降低20%
+	Elemental: 持续时间延长至25秒，但冷却时间增加至40秒
+	FrigidEnchant: 获得6枚碎片，破碎时会施加冻伤减益
+	FrostArtifactEnchant: 额外获得2座极地炮
+	TwilightAssassinEnchant: 数量提升至3倍，但消耗变为3点虚空
+	Wormwood: 盛花钩的持续时间延长至15秒，且仅会使1个召唤物消失
+	Frigid: 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
+	PatchLeather: 获得3条蛇鞭，但它们的长度减半
 	// Earthen: You now get two stacks of Miner's Curse per hit
 }
 
 Toggler: {
-	VesperaEffect: Vespera Effect
-	VibrantEffect: Vibrant Bolts
-	// ElementalEffect: Chaos teleport
-	// FrigidEffect: Void Shards
-	// FrostArtifactEffect: Polar Cannons
-	// TwilightAssassinEffect: Code Bursts
-	WormwoodEffect: ""
-	// ChaosForceHeader: Force of Chaos
-	// SpaceForceHeader: Force of Space
-	VoidForceHeader: Force of Void
-	// PatchLeatherEffect: Snake Whip
+	VesperaEffect: 薄暮效果
+	VibrantEffect: 振荡弹
+	ElementalEffect: 混沌传送
+	FrigidEffect: 虚空碎片
+	FrostArtifactEffect: 极地炮
+	TwilightAssassinEffect: 不稳定光束
+	WormwoodEffect: 流胶木效果
+	ChaosForceHeader: 混沌之力
+	SpaceForceHeader: 空间之力
+	VoidForceHeader: 虚空之力
+	PatchLeatherEffect: 蛇鞭
 	// EarthenEffect: Miner's Curse
 }
 
 ActiveSkills: {
 	BloomStrike: {
-		// DisplayName: Bloom Strike
-		/* Tooltip:
+		DisplayName: 盛花一击
+		Tooltip:
 			'''
-			Summons bloom hooks on your minions, which shoot flower bolts at nearby enemies, dealing summon damage
-			After 5 seconds, the bloom hooks will despawn, causing two of you minions to despawn as well
-			Using a non-summon weapon during the duration will reduce the flower bolts damage by 50%
-			This skill has a 25 second cooldown
-			''' */
+			为你的召唤物附加盛花钩，它们会向附近敌人发射盛花弹，造成召唤伤害
+			5秒后盛花钩会消失，并同时使你的2个召唤物消失
+			在技能持续期间使用非召唤武器会使盛花弹的伤害降低50%
+			该技能有25秒冷却时间
+			'''
 	}
 }
 
 Projectiles: {
-	// VoidShatterShard.DisplayName: Void Shatter Shard
-	// SnakeWhipProjectile.DisplayName: Snake Whip
+	VoidShatterShard.DisplayName: 虚空碎片
+	SnakeWhipProjectile.DisplayName: 蛇鞭
 }
