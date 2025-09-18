@@ -12,7 +12,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return false;
+            return FargoSOTSConfig.Instance.UnfinishedContent;
         }
         public override void SetStaticDefaults()
         {
@@ -20,8 +20,9 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
 
             Enchants[Type] =
             [
-                ModContent.ItemType<FrostArtifactEnchant>(),
                 ModContent.ItemType<VibrantEnchant>(),
+                ModContent.ItemType<CursedEnchant>(),
+                ModContent.ItemType<FrostArtifactEnchant>(),
             ];
         }
         public override void SetDefaults()

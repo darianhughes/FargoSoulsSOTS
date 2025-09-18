@@ -17,6 +17,10 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
     public class ElementalEnchant : BaseEnchant
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return FargoSOTSConfig.Instance.UnfinishedContent;
+        }
         public override Color nameColor => new(116, 122, 159);
         public override void SetDefaults()
         {

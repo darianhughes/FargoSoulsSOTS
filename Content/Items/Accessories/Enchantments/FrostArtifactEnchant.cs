@@ -13,6 +13,10 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
     public class FrostArtifactEnchant : BaseEnchant
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return FargoSOTSConfig.Instance.UnfinishedContent;
+        }
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

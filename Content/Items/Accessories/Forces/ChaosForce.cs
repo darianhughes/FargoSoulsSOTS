@@ -13,7 +13,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return false;
+            return FargoSOTSConfig.Instance.UnfinishedContent;
         }
         public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
         public override void SetStaticDefaults()
