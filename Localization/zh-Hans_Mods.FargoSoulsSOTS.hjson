@@ -53,7 +53,7 @@ Items: {
 			光束在15秒后消失并进入25秒的冷却时间
 			你无法使用薄光刺客魔石进行传送
 			同时获得对一切液化元素效果的免疫
-			“混沌控制！”
+			“掌握混沌！”
 			'''
 	}
 
@@ -108,16 +108,16 @@ Items: {
 	}
 
 	EarthenEnchant: {
-		// DisplayName: Earthen Enchantment
-		/* Tooltip:
+		DisplayName: 陆地魔石
+		Tooltip:
 			'''
-			Hitting enemies with tools gives you a stack of the Miner's Curse
-			The Miner's Curse increases your damage taken by 1 per stack
-			The Miner's Curse increases your mining speed and movement speed by 1% per stack
-			Taking damage, switching to a weapon, or not dealing damage with a tool for 5 seconds will remove all stacks
-			'Gets dirt under the fingertips'
-			''' */
-		// SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] Effects of the Earthen Enchantment"
+			用工具命中敌人会获得一层矿工诅咒
+			每层矿工诅咒使你受到的伤害增加1点
+			每层矿工诅咒提升1%的挖掘速度与移动速度
+			受到伤害、切换到武器，或在5秒内未用工具造成伤害时，将移除所有层数
+			“指尖沾满泥土”
+			'''
+		SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] 陆地魔石效果"
 	}
 }
 
@@ -147,7 +147,7 @@ WizardEffect: {
 	Wormwood: 盛花钩的持续时间延长至15秒，且仅会使1个召唤物消失
 	Frigid: 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 	PatchLeather: 获得3条蛇鞭，但它们的长度减半
-	// Earthen: You now get two stacks of Miner's Curse per hit
+	Earthen: 现在每次命中都会获得2层矿工诅咒
 }
 
 Toggler: {
@@ -162,7 +162,7 @@ Toggler: {
 	SpaceForceHeader: 空间之力
 	VoidForceHeader: 虚空之力
 	PatchLeatherEffect: 蛇鞭
-	// EarthenEffect: Miner's Curse
+	EarthenEffect: 矿工诅咒
 }
 
 ActiveSkills: {
