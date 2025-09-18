@@ -106,6 +106,19 @@ Items: {
 			'Why did it have to be snakes?'
 			'''
 	}
+
+	EarthenEnchant: {
+		DisplayName: Earthen Enchantment
+		Tooltip:
+			'''
+			Hitting enemies with tools gives you a stack of the Miner's Curse
+			The Miner's Curse increases your damage taken by 1 per stack
+			The Miner's Curse increases your mining speed and movement speed by 1% per stack
+			Taking damage, switching to a weapon, or not dealing damage with a tool for 5 seconds will remove all stacks
+			'Gets dirt under the fingertips'
+			'''
+		SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] Effects of Earthen Enchantment"
+	}
 }
 
 Buffs: {
@@ -132,9 +145,10 @@ WizardEffect: {
 	FrigidEnchant: Grants 6 Shatter shards, and deals the Frostbite Debuff when broken
 	FrostArtifactEnchant: Grants two more polar cannons
 	TwilightAssassinEnchant: Gives 3x the amount, but it cost 3 void now
-	Wormwood: Bloom hooks now last for 15 seconds and will only despawn 1 minion.
-	Frigid: Grants 6 shatter shards when entering Void Shock, and inflicts Frostbite when broken.
-	PatchLeather: Grants 3 snake whips but are half the length.
+	Wormwood: Bloom hooks now last for 15 seconds and will only despawn 1 minion
+	Frigid: Grants 6 shatter shards when entering Void Shock, and inflicts Frostbite when broken
+	PatchLeather: Grants 3 snake whips but are half the length
+	Earthen: You now get two stacks of Miner's Curse per hit
 }
 
 Toggler: {
@@ -149,6 +163,7 @@ Toggler: {
 	SpaceForceHeader: Force of Space
 	VoidForceHeader: Force of Void
 	PatchLeatherEffect: Snake Whip
+	EarthenEffect: Miner's Curse
 }
 
 ActiveSkills: {
@@ -166,5 +181,5 @@ ActiveSkills: {
 
 Projectiles: {
 	VoidShatterShard.DisplayName: Void Shatter Shard
-	SnakeWhipProjectile.DisplayName: Snake Whip Projectile
+	SnakeWhipProjectile.DisplayName: Snake Whip
 }

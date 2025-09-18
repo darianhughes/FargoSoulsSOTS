@@ -43,7 +43,6 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSpace
         }
     }
 
-
     public class VibrantEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();

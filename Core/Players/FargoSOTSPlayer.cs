@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FargoSoulsSOTS.Content.Buffs;
+using FargoSoulsSOTS.Content.Items;
 using FargoSoulsSOTS.Content.Items.ForceofSpace;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using SOTS.Projectiles.Nature;
 using SOTS.Void;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static FargoSoulsSOTS.Content.Items.ForceofChaos.ElementalEnchant;
@@ -23,9 +26,27 @@ namespace FargoSoulsSOTS.Core.Players
         public int CullCountPending;
         public bool hasSpawnedShards = false;
         public int ChaosCharge;
+        public int MinersCurse;
+        public int MinersCurseDuration;
 
         public override void PostUpdate()
         {
+            if (Player.HeldItem.pick <= 0 && Player.HeldItem.hammer <= 0 && Player.HeldItem.axe <= 0)
+            {
+                MinersCurse = 0;
+                MinersCurseDuration = 0;
+            }
+
+            if (MinersCurse > 0)
+            {
+                MinersCurseDuration++;
+                if (MinersCurseDuration == 60 * 5)
+                {
+                    MinersCurse = 0;
+                    MinersCurseDuration = 0;
+                }
+            }
+
             if (BloomTimeLeft > 0)
             {
                 BloomTimeLeft--;
@@ -53,9 +74,119 @@ namespace FargoSoulsSOTS.Core.Players
                 int voidBonus = Player.ForceEffect<VesperaEffect>() ? 50 : 25;
                 mp.voidMeterMax2 += voidBonus;
             }
-                        if (!Player.HasEffect<ChaosTeleport>())
+
+            if (!Player.HasEffect<ChaosTeleport>())
             {
                 ChaosCharge = 0;
+            }
+
+            if (Player.HasEffect<EarthenEffect>())
+            {
+                float bonus = MinersCurse * 0.01f;
+
+                Player.moveSpeed += bonus;
+
+                Player.pickSpeed *= MathF.Max(0.05f, 1f - bonus);
+            }
+        }
+
+        public static void DrawDebuffCounterForPlayer(
+            SpriteBatch spriteBatch,
+            Texture2D texture,
+            Player player,
+            Vector2 screenPos,
+            ref int height,
+            int value,
+            Color drawColor)
+        {
+            if (value <= 0)
+                return;
+
+            const int colCount = 11;
+            int colWidth = texture.Width / colCount;
+            int colHeight = texture.Height;
+
+            int innerWidth = colWidth - 2;
+            int innerHeight = colHeight - 2;
+            Vector2 origin = new(colWidth * 0.5f, colHeight * 0.5f);
+
+            string s = value.ToString();
+            int digitCount = s.Length;
+
+            Vector2 pos = new(player.Center.X, player.Top.Y);
+            pos.X += (digitCount * innerWidth) * 0.5f;
+            pos.X += 4f;
+            pos.Y -= height;
+
+            Vector2 drawPos = pos;
+
+            for (int i = s.Length - 1; i >= 0; i--)
+            {
+                int digit = s[i] - '0';
+                var src = new Rectangle(
+                    x: 1 + (1 + digit) * colWidth,
+                    y: 1,
+                    width: innerWidth,
+                    height: innerHeight
+                );
+
+                spriteBatch.Draw(
+                    texture,
+                    drawPos - screenPos,
+                    src,
+                    drawColor,
+                    0f,
+                    origin,
+                    1f,
+                    SpriteEffects.None,
+                    0f
+                );
+
+                drawPos.X -= innerWidth;
+            }
+
+            drawPos.X -= 4f;
+            drawPos.Y -= 1f;
+
+            var capSrc = new Rectangle(0, 0, colWidth, colHeight);
+
+            spriteBatch.Draw(
+                texture,
+                drawPos - screenPos,
+                capSrc,
+                drawColor,
+                0f,
+                origin,
+                1f,
+                SpriteEffects.None,
+                0f
+            );
+
+            height += 24;
+        }
+
+        public static void DrawPermanentDebuffsForPlayer(
+            Player player,
+            SpriteBatch spriteBatch,
+            Vector2 screenPos,
+            Color color,
+            Texture2D texture,
+            ref int counter,
+            ref int height)
+        {
+            DrawDebuffCounterForPlayer(spriteBatch, texture, player, screenPos, ref height, counter, color);
+        }
+
+        public void SendClientChanges(Player player, NPC npc, int type = 0)
+        {
+            switch (type)
+            {
+                case 0:
+                    byte whoAmI = (byte)player.whoAmI;
+                    ModPacket packet1 = Mod.GetPacket(256);
+                    packet1.Write(MinersCurse);
+                    packet1.Send(-1, -1);
+                    break;
             }
         }
 
@@ -84,6 +215,58 @@ namespace FargoSoulsSOTS.Core.Players
             {
                 p.Kill();
             }
+        }
+    }
+
+    public class FargoSOTSPlayerAssetLoader : ModSystem
+    {
+        public static Asset<Texture2D> HarvestingDigits; // or PlatinumCurseDigits
+
+        public override void Load()
+        {
+            if (Main.dedServ) return;
+
+            if (ModLoader.TryGetMod("SOTS", out _))
+            {
+                HarvestingDigits = ModContent.Request<Texture2D>(
+                    "SOTS/Common/GlobalNPCs/Harvesting",
+                    AssetRequestMode.ImmediateLoad
+                );
+            }
+        }
+
+        public override void Unload()
+        {
+            HarvestingDigits = null;
+        }
+    }
+
+    public class PlayerCurseDebuffCounterLayer : PlayerDrawLayer
+    {
+        public override Position GetDefaultPosition()
+            => new BeforeParent(PlayerDrawLayers.FrontAccFront);
+
+        protected override void Draw(ref PlayerDrawSet drawInfo)
+        {
+            var player = drawInfo.drawPlayer;
+            if (!player.active || player.dead) return;
+
+            // Skip if texture not available (e.g., SOTS not installed or bad path)
+            var asset = FargoSOTSPlayerAssetLoader.HarvestingDigits;
+            if (asset is null || !asset.IsLoaded) return;
+
+            var modPlr = player.GetModPlayer<FargoSOTSPlayer>();
+
+            int height = 18;
+            FargoSOTSPlayer.DrawPermanentDebuffsForPlayer(
+                player,
+                Main.spriteBatch,
+                Main.screenPosition,
+                Color.White,
+                asset.Value,
+                ref modPlr.MinersCurse,
+                ref height
+            );
         }
     }
 }
