@@ -1,0 +1,169 @@
+Items: {
+	VesperaEnchant: {
+		Tooltip:
+			'''
+			治疗物品在25秒内为你提供25点虚空值
+			在药水疾病状态下，虚空回复速度提高15%
+			“灯……”
+			'''
+		DisplayName: 薄暮魔石
+	}
+
+	ChaosForce: {
+		Tooltip:
+			'''
+			[i:FargoSoulsSOTS/WormwoodEnchant] 仆从命中敌人时会施加史莱姆减益
+			[i:FargoSoulsSOTS/PatchLeatherEnchant] 获得3条造成召唤伤害的蛇鞭，使用召唤类武器时，仆从会优先攻击被击中的敌人并施加酸性毒液减益
+			'''
+		DisplayName: 混沌之力
+	}
+
+	VibrantEnchant: {
+		DisplayName: 振荡魔石
+		Tooltip:
+			'''
+			虚空值消耗降低10%
+			虚空武器会射出振荡弹，造成远程伤害
+			切换到非虚空武器时，振荡弹的伤害降低50%，并对你施加5秒的虚空灼烧减益
+			“你所占据的空间皆被你照亮”
+			'''
+	}
+
+	SpaceForce: {
+		DisplayName: 空间之力
+		Tooltip:
+			'''
+			[i:FargoSoulsSOTS/VibrantEnchant] 虚空武器会射出两枚造成远程伤害的振荡弹，切换至非虚空武器时，振荡弹的伤害会降低
+			[i:FargoSoulsSOTS/FrigidEnchant] 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
+			'''
+	}
+
+	WormwoodEnchant: {
+		DisplayName: 流胶木魔石
+		Tooltip: 仆从命中敌人时会施加史莱姆减益
+	}
+
+	ElementalEnchant: {
+		DisplayName: 元素魔石
+		Tooltip:
+			'''
+			激活技能时会瞬移至光标位置
+			你留下的定位器光束会造成高额伤害，使敌人冻结，并使Boss移动速度降低25%
+			光束还能弯曲击中附近敌人
+			光束在15秒后消失并进入25秒的冷却时间
+			你无法使用薄光刺客魔石进行传送
+			同时获得对一切液化元素效果的免疫
+			“混沌控制！”
+			'''
+	}
+
+	TwilightAssassinEnchant: {
+		DisplayName: 薄光刺客魔石
+		Tooltip:
+			'''
+			每消耗2点虚空会生成一圈不稳定光束，造成33点伤害并造成不稳定化减益
+			在发射后，下一次的不稳定光束将造成双倍伤害
+			“你如最耀眼的星辰般闪耀”
+			'''
+	}
+
+	FrigidEnchant: {
+		DisplayName: 极寒魔石
+		Tooltip:
+			'''
+			获得虚空冲击减益时，3枚虚空碎片环绕在你身边，命中敌人时造成近战伤害
+			当你受到攻击时，一枚碎片会破碎，并冻结击中你的敌人
+			激活虚空回升增益时，会消耗剩余碎片，每消耗一枚碎片恢复10%最大生命值、5%最大法力值与5%最大虚空值
+			“你触碰的一切皆会冻结”
+			'''
+	}
+
+	FrostArtifactEnchant: {
+		DisplayName: 霜冻遗物魔石
+		Tooltip: ""
+	}
+
+	VoidForce: {
+		DisplayName: 虚空之力
+		Tooltip:
+			'''
+			[i:FargoSoulsSOTS/VesperaEnchant] 治疗物品会给予你临时虚空值，在药水疾病状态下，虚空回复速度提高
+			[i:FargoSoulsSOTS/VibrantEnchant] 虚空武器会射出两枚造成远程伤害的振荡弹，切换至非虚空武器时，振荡弹的伤害会降低
+			[i:FargoSoulsSOTS/WormwoodEnchant] 仆从命中敌人时会施加史莱姆减益
+			[i:FargoSoulsSOTS/FrigidEnchant] 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
+			[i:FargoSoulsSOTS/PatchLeatherEnchant] 获得3条造成召唤伤害的蛇鞭，使用召唤类武器时，仆从会优先攻击被击中的敌人并施加酸性毒液减益
+			'''
+	}
+
+	PatchLeatherEnchant: {
+		DisplayName: 补丁皮魔石
+		Tooltip:
+			'''
+			获得一条在你使用其他武器时也会自动攻击的蛇鞭
+			蛇鞭造成召唤伤害，并附带1点召唤标记伤害
+			你的仆从会优先攻击被击中的敌人，并施加酸性毒液减益
+			若与非召唤类武器同时使用，蛇鞭伤害降低20%，且不再施加酸性毒液减益
+			“为什么偏偏是蛇？”
+			'''
+	}
+}
+
+Buffs: {
+	VoidAttunement: {
+		Description: 你与虚空产生共鸣，最大虚空值提升
+		DisplayName: 虚空调谐
+	}
+
+	BloomStrikeCooldown: {
+		DisplayName: 盛花一击冷却
+		Description: 你无法释放盛花一击！
+	}
+	SnakeSummonTag: {
+		DisplayName: 蛇鞭召唤标记
+		Description: Mods.FargoSoulsSOTS.Buffs.SnakeSummonTag.Description
+	}
+}
+
+WizardEffect: {
+	Vespera: 治疗物品会提供50点虚空值，但在药水疾病状态下虚空回复仅提升5%
+	Vibrant: 现在会发射2枚振荡弹，切换武器时伤害仅降低20%
+	Elemental: 持续时间延长至25秒，但冷却时间增加至40秒
+	FrigidEnchant: 获得6枚碎片，破碎时会施加冻伤减益
+	FrostArtifactEnchant: 额外获得2座极地炮
+	TwilightAssassinEnchant: 数量提升至3倍，但消耗变为3点虚空
+	Wormwood: 盛花钩的持续时间延长至15秒，且仅会使1个召唤物消失
+	Frigid: 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
+	PatchLeather: 获得3条蛇鞭，但它们的长度减半
+}
+
+Toggler: {
+	VesperaEffect: 薄暮效果
+	VibrantEffect: 振荡弹
+	ElementalEffect: 混沌传送
+	FrigidEffect: 虚空碎片
+	FrostArtifactEffect: 极地炮
+	TwilightAssassinEffect: 不稳定光束
+	WormwoodEffect: 流胶木效果
+	ChaosForceHeader: 混沌之力
+	SpaceForceHeader: 空间之力
+	VoidForceHeader: 虚空之力
+	PatchLeatherEffect: 蛇鞭
+}
+
+ActiveSkills: {
+	BloomStrike: {
+		DisplayName: 盛花一击
+		Tooltip:
+			'''
+			为你的召唤物附加盛花钩，它们会向附近敌人发射盛花弹，造成召唤伤害
+			5秒后盛花钩会消失，并同时使你的2个召唤物消失
+			在技能持续期间使用非召唤武器会使盛花弹的伤害降低50%
+			该技能有25秒冷却时间
+			'''
+	}
+}
+
+Projectiles: {
+	VoidShatterShard.DisplayName: 虚空碎片
+	SnakeWhipProjectile.DisplayName: 蛇鞭
+}
