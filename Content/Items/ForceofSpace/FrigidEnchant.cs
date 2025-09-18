@@ -13,6 +13,8 @@ using FargowiltasSouls;
 using SOTS.Buffs;
 using SOTS.Void;
 using FargoSoulsSOTS.Core.Players;
+using Mono.Cecil;
+using FargoSoulsSOTS.Content.Items.Misc.Boosters;
 
 namespace FargoSoulsSOTS.Content.Items.ForceofSpace
 {
@@ -189,14 +191,18 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSpace
                 Projectile p = Main.projectile[i];
                 if (p.active && p.owner == player.whoAmI && p.type == ShardProjType)
                 {
-                    VoidPlayer mp = VoidPlayer.ModPlayer(player);
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
+                    {
+                        int idx = Item.NewItem(player.GetSource_Misc("EnterVoidRecovery"), p.getRect(), ModContent.ItemType<VoidShatterShardPickup>(), 1, noBroadcast: false);
+                        ref Item it = ref Main.item[idx];
 
-                    player.Heal((int)(player.statLifeMax2 * 0.1f));
-                    player.statMana += (int)(player.statManaMax2 * 0.05f);
+                        // center the item on the projectile and copy rotation/velocity
+                        it.position = p.Center - new Vector2(it.width, it.height) * 0.5f;
+                        it.velocity = p.velocity;
 
-                    int voidHeal = (int)(mp.voidMeterMax2 * 0.05f);
-                    mp.voidMeter += voidHeal;
-                    VoidPlayer.VoidEffect(player, voidHeal);
+                        if (Main.netMode == NetmodeID.Server)
+                            NetMessage.SendData(MessageID.SyncItem, -1, -1, null, idx);
+                    }
 
                     p.Kill();
                 }

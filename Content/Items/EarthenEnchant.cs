@@ -57,7 +57,9 @@ namespace FargoSoulsSOTS.Content.Items
 
             if (item.axe > 0 || item.pick > 0 || item.hammer > 0)
             {
-                mp.MinersCurse += player.ForceEffect<EarthenEffect>() ? 2 : 1;
+                if (!(mp.MinersCurse >= 100))
+                    mp.MinersCurse += player.ForceEffect<EarthenEffect>() ? 10 : 5;
+
                 if (Main.myPlayer == player.whoAmI && Main.netMode == NetmodeID.MultiplayerClient)
                     mp.SendClientChanges(mp);
                 mp.MinersCurseDuration = 0;
@@ -66,17 +68,15 @@ namespace FargoSoulsSOTS.Content.Items
         public override void ModifyHitByNPC(Player player, NPC npc, ref Player.HurtModifiers modifiers)
         {
             FargoSOTSPlayer mp = player.GetModPlayer<FargoSOTSPlayer>();
-            Main.NewText($"Original Damge: {modifiers.FinalDamage}");
             modifiers.FinalDamage.Flat += mp.MinersCurse;
-            Main.NewText($"Original Damge: {modifiers.FinalDamage.Flat + mp.MinersCurse}");
-            mp.MinersCurse = 0;
+            mp.MinersCurse = 60 * 5;
         }
 
         public override void ModifyHitByProjectile(Player player, Projectile projectile, ref Player.HurtModifiers modifiers)
         {
             FargoSOTSPlayer mp = player.GetModPlayer<FargoSOTSPlayer>();
             modifiers.FinalDamage.Flat += mp.MinersCurse;
-            mp.MinersCurse = 0;
+            mp.MinersCurse = 60 * 5;
         }
     }
 }

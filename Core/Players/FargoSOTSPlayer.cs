@@ -5,6 +5,7 @@ using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Content.Items;
 using FargoSoulsSOTS.Content.Items.ForceofSpace;
 using FargowiltasSouls;
+using FargowiltasSouls.Content.Patreon.Volknet.Projectiles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -31,20 +32,34 @@ namespace FargoSoulsSOTS.Core.Players
 
         public override void PostUpdate()
         {
-            if (Player.HeldItem.pick <= 0 && Player.HeldItem.hammer <= 0 && Player.HeldItem.axe <= 0)
+            if (MinersCurse > 100)
+                MinersCurse = 100;
+
+            if (NPCUtils.AnyBosses())
             {
                 MinersCurse = 0;
                 MinersCurseDuration = 0;
             }
 
+            if (Player.HeldItem.pick <= 0 && Player.HeldItem.hammer <= 0 && Player.HeldItem.axe <= 0)
+            {
+                if (MinersCurseDuration % 2 == 0)
+                    MinersCurse--;
+            }
+
             if (MinersCurse > 0)
             {
                 MinersCurseDuration++;
-                if (MinersCurseDuration == 60 * 5)
+                if (MinersCurseDuration >= 60 * 5)
                 {
-                    MinersCurse = 0;
-                    MinersCurseDuration = 0;
+                    if (MinersCurseDuration % 2 == 0)
+                        MinersCurse--;
                 }
+            }
+            else
+            {
+                MinersCurse = 0;
+                MinersCurseDuration = 0;
             }
 
             if (BloomTimeLeft > 0)

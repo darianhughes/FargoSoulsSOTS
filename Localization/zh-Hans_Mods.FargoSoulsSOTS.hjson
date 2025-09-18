@@ -111,13 +111,19 @@ Items: {
 		// DisplayName: Earthen Enchantment
 		/* Tooltip:
 			'''
-			Hitting enemies with tools gives you a stack of the Miner's Curse
+			Hitting enemies with tools gives you 5 stacks of the Miner's Curse
 			The Miner's Curse increases your damage taken by 1 per stack
 			The Miner's Curse increases your mining speed and movement speed by 1% per stack
-			Taking damage, switching to a weapon, or not dealing damage with a tool for 5 seconds will remove all stacks
+			The stacks will start to decay after taking damage, switching to a weapon, or not dealing damage with a tool for 5 seconds.
+			You can't have more than 100 stacks and you lose all stacks when a boss is alive.
 			'Gets dirt under the fingertips'
 			''' */
-		// SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] Effects of the Earthen Enchantment"
+		// SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] Effects of Earthen Enchantment"
+	}
+
+	VoidShatterShardPickup: {
+		// DisplayName: Void Shatter Shard Pickup
+		// Tooltip: ""
 	}
 }
 
@@ -131,6 +137,7 @@ Buffs: {
 		DisplayName: 盛花一击冷却
 		Description: 你无法释放盛花一击！
 	}
+
 	SnakeSummonTag: {
 		DisplayName: 蛇鞭召唤标记
 		Description: Mods.FargoSoulsSOTS.Buffs.SnakeSummonTag.Description
@@ -147,7 +154,7 @@ WizardEffect: {
 	Wormwood: 盛花钩的持续时间延长至15秒，且仅会使1个召唤物消失
 	Frigid: 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 	PatchLeather: 获得3条蛇鞭，但它们的长度减半
-	// Earthen: You now get two stacks of Miner's Curse per hit
+	// Earthen: You now get 10 stacks of Miner's Curse per hit
 }
 
 Toggler: {

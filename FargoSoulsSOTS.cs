@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+global using LumUtils = Luminance.Common.Utilities.Utilities;
 
+using Terraria.ModLoader;
 namespace FargoSoulsSOTS
 {
 	public class FargoSoulsSOTS : Mod
