@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FargoSoulsSOTS.Content.Items;
+using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using Terraria;
 using Terraria.ModLoader;

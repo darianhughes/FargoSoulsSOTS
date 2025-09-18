@@ -9,7 +9,7 @@ using Terraria.GameContent;
 using FargoSoulsSOTS.Content.Buffs;
 using System;
 
-namespace FargoSoulsSOTS.Content.Projectiles
+namespace FargoSoulsSOTS.Content.Projectiles.Masomode
 {
     public class SnakeWhipProjectile : ModProjectile
     {
@@ -76,7 +76,7 @@ namespace FargoSoulsSOTS.Content.Projectiles
 
             if (runOnce)
             {
-                float playerRange = (player.whipRangeMultiplier + 1f);
+                float playerRange = player.whipRangeMultiplier + 1f;
                 Projectile.WhipSettings.RangeMultiplier *= playerRange * RangeScale;
 
                 Projectile.WhipSettings.Segments = Math.Max(6, Projectile.WhipSettings.Segments);

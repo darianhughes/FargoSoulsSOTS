@@ -8,15 +8,15 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargoSoulsSOTS.Core.SoulToggles;
 using SOTS.Items.Permafrost;
 using System.Collections.Generic;
-using FargoSoulsSOTS.Content.Projectiles;
 using FargowiltasSouls;
 using SOTS.Buffs;
 using SOTS.Void;
 using FargoSoulsSOTS.Core.Players;
 using Mono.Cecil;
 using FargoSoulsSOTS.Content.Items.Misc.Boosters;
+using FargoSoulsSOTS.Content.Projectiles.Masomode;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofSpace
+namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
     public class FrigidEnchant : BaseEnchant
     {

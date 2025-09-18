@@ -1,13 +1,12 @@
-﻿using FargoSoulsSOTS.Content.Items.ForceofSpace;
-using FargowiltasSouls.Content.Items.Accessories.Forces;
+﻿using FargowiltasSouls.Content.Items.Accessories.Forces;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Core.Toggler;
-using FargoSoulsSOTS.Content.Items.ForceofChaos;
 using System.Collections.Generic;
+using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 
-namespace FargoSoulsSOTS.Content.Items
+namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
 {
     //TEMPORARY FORCE UNTIL WE RELEASE THE HARDMODE UPDATE
     public class VoidForce : BaseForce

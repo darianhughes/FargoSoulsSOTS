@@ -10,7 +10,7 @@ using SOTS.Items.SpiritStaves;
 using SOTS.Items.Wings;
 using FargoSoulsSOTS.Core.SoulToggles;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofChaos
+namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
     public class TwilightAssassinEnchant : BaseEnchant
     {

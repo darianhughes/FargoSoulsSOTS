@@ -3,10 +3,11 @@ using FargowiltasSouls.Content.Items.Accessories.Forces;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using Terraria;
-using static FargoSoulsSOTS.Content.Items.ForceofChaos.ElementalEnchant;
+using static FargoSoulsSOTS.Content.Items.Accessories.Enchantments.ElementalEnchant;
 using Terraria.ModLoader;
+using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofChaos
+namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
 {
     public class ChaosForce : BaseForce
     {

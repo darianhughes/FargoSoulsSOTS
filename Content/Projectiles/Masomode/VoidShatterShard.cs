@@ -4,7 +4,7 @@ using Terraria.GameContent;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Projectiles
+namespace FargoSoulsSOTS.Content.Projectiles.Masomode
 {
     public class VoidShatterShard : ModProjectile
     {
@@ -49,8 +49,8 @@ namespace FargoSoulsSOTS.Content.Projectiles
             Projectile.timeLeft = 2;
 
             float baseAngle = (float)(Main.GameUpdateCount * SpeedDegPerFrame);
-            float segment = (Count <= 0f ? 1f : 360f / Count);
-            float angleDeg = baseAngle + (Index * segment);
+            float segment = Count <= 0f ? 1f : 360f / Count;
+            float angleDeg = baseAngle + Index * segment;
 
             Vector2 orbitCenter = owner.Center;
             float angleRad = MathHelper.ToRadians(angleDeg);

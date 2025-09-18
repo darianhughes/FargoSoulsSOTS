@@ -9,7 +9,7 @@ using FargoSoulsSOTS.Core.SoulToggles;
 using Terraria.ModLoader;
 using FargowiltasSouls.Core.Toggler;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofChaos
+namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
     public class PatchLeatherEnchant : BaseEnchant
     {

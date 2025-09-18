@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FargoSoulsSOTS.Content.Buffs;
-using FargoSoulsSOTS.Content.Items;
-using FargoSoulsSOTS.Content.Items.ForceofSpace;
+using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Patreon.Volknet.Projectiles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -16,7 +15,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static FargoSoulsSOTS.Content.Items.ForceofChaos.ElementalEnchant;
+using static FargoSoulsSOTS.Content.Items.Accessories.Enchantments.ElementalEnchant;
 
 namespace FargoSoulsSOTS.Core.Players
 {

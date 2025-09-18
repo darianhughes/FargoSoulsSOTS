@@ -1,4 +1,4 @@
-﻿using FargoSoulsSOTS.Content.Items.ForceofSpace;
+﻿using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 using FargoSoulsSOTS.Core.Players;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;

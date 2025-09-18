@@ -13,7 +13,7 @@ using Steamworks;
 using FargoSoulsSOTS.Core.Players;
 using FargowiltasSouls;
 
-namespace FargoSoulsSOTS.Content.Items
+namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
     public class EarthenEnchant : BaseEnchant
     {

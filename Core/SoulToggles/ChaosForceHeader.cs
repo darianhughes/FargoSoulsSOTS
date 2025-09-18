@@ -1,4 +1,4 @@
-﻿using FargoSoulsSOTS.Content.Items.ForceofChaos;
+﻿using FargoSoulsSOTS.Content.Items.Accessories.Forces;
 using FargowiltasSouls.Core.Toggler.Content;
 using Terraria.ModLoader;
 

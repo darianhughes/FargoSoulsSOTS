@@ -10,7 +10,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofSpace
+namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
     public class VesperaEnchant : BaseEnchant
     {

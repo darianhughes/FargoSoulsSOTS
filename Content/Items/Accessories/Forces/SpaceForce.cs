@@ -3,9 +3,10 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Core.Toggler;
-using static FargoSoulsSOTS.Content.Items.ForceofSpace.FrostArtifactEnchant;
+using static FargoSoulsSOTS.Content.Items.Accessories.Enchantments.FrostArtifactEnchant;
+using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofSpace
+namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
 {
     public class SpaceForce : BaseForce
     {

@@ -9,7 +9,7 @@ using SOTS.Items.Chaos;
 using FargoSoulsSOTS.Core.SoulToggles;
 using SOTS.Items.Permafrost;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofSpace
+namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
     public class FrostArtifactEnchant : BaseEnchant
     {

@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Graphics;
 using FargowiltasSouls;
 using FargoSoulsSOTS.Core.Players;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofChaos
+namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
     public class ElementalEnchant : BaseEnchant
     {

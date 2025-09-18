@@ -1,8 +1,7 @@
 ﻿using System;
 using FargoSoulsSOTS.Content.Buffs;
-using FargoSoulsSOTS.Content.Items.ForceofChaos;
-using FargoSoulsSOTS.Content.Items.ForceofSpace;
-using FargoSoulsSOTS.Content.Projectiles;
+using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
+using FargoSoulsSOTS.Content.Projectiles.Masomode;
 using FargoSoulsSOTS.Core.Players;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;

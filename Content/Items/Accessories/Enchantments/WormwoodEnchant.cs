@@ -16,7 +16,7 @@ using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Core.SoulToggles;
 using FargoSoulsSOTS.Common.ProjectileChanges;
 
-namespace FargoSoulsSOTS.Content.Items.ForceofChaos
+namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
     public class WormwoodEnchant : BaseEnchant
     {

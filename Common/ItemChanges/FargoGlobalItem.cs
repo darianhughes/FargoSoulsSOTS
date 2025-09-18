@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using FargoSoulsSOTS.Content.Items;
+using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Terraria;
