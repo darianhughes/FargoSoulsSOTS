@@ -2,8 +2,8 @@
 using FargowiltasSouls.Content.Items.Accessories.Forces;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
-using Steamworks;
 using Terraria;
+using static FargoSoulsSOTS.Content.Items.ForceofChaos.ElementalEnchant;
 using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Content.Items.ForceofChaos
@@ -28,12 +28,12 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddEffect<ElementalEffect>(Item);
             player.AddEffect<TwilightAssassinEffect>(Item);
             player.AddEffect<WormwoodEffect>(Item);
             player.AddEffect<BloomStrike>(Item);
             player.AddEffect<PatchLeatherEffect>(Item);
-
+            player.AddEffect<ChaosTeleport>(Item);
+            player.AddEffect<ElementalEffect>(Item);
         }
 
         public override void AddRecipes()
