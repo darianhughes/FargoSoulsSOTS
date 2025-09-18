@@ -48,6 +48,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofSpace
     {
         public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
         public override int ToggleItemType => ModContent.ItemType<VibrantEnchant>();
+        public override bool ExtraAttackEffect => true;
 
         public override void PostUpdateEquips(Player player)
         {

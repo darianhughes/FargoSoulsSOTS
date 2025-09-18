@@ -89,6 +89,19 @@ Items: {
 			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
 			[i:FargoSoulsSOTS/WormwoodEnchant] Minions will inflict Slimed on hit
 			[i:FargoSoulsSOTS/FrigidEnchant] Grants 6 shatter shards when entering Void Shock, which inflicts Frostbite when broken & are consumed for recovery effects during Void Recovery
+			[i:FargoSoulsSOTS/PatchLeatherEnchant] Grants 3 snake whips that deals summon damage, with summons focusing struck enemies and inflicting Venom when being used with a summoner weapon
+			''' */
+	}
+
+	PatchLeatherEnchant: {
+		// DisplayName: Patch Leather Enchantment
+		/* Tooltip:
+			'''
+			Grants a snake whip that attacks while using another weapon
+			The whip deals summon damage and has 1 summon tag damage
+			Your summons will focus struck enemies and will inflict Venom
+			If being used with a non-summoner weapon, the whip does 20% less damage and does not inflict Venom
+			'Why did it have to be snakes?'
 			''' */
 	}
 }
@@ -103,6 +116,11 @@ Buffs: {
 		// DisplayName: Bloom Strike Cooldown
 		// Description: You can't activate Bloom Strike!
 	}
+
+	SnakeSummonTag: {
+		// DisplayName: Snake Summon Tag
+		// Description: Mods.FargoSoulsSOTS.Buffs.SnakeSummonTag.Description
+	}
 }
 
 WizardEffect: {
@@ -114,6 +132,7 @@ WizardEffect: {
 	// TwilightAssassinEnchant: Gives 3x the amount, but it cost 3 void now
 	Wormwood: ""
 	// Frigid: Grants 6 shatter shards when entering Void Shock, and inflicts Frostbite when broken.
+	// PatchLeather: Grants 3 snake whips but are half the length.
 }
 
 Toggler: {
@@ -127,6 +146,7 @@ Toggler: {
 	// ChaosForceHeader: Force of Chaos
 	// SpaceForceHeader: Force of Space
 	VoidForceHeader: Force of Void
+	// PatchLeatherEffect: Snake Whip
 }
 
 ActiveSkills: {
@@ -142,4 +162,7 @@ ActiveSkills: {
 	}
 }
 
-// Projectiles.VoidShatterShard.DisplayName: Void Shatter Shard
+Projectiles: {
+	// VoidShatterShard.DisplayName: Void Shatter Shard
+	// SnakeWhipProjectile.DisplayName: Snake Whip Projectile
+}

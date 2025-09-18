@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FargoSoulsSOTS.Content.Buffs;
+using FargoSoulsSOTS.Content.Items.ForceofChaos;
 using FargoSoulsSOTS.Content.Items.ForceofSpace;
+using FargoSoulsSOTS.Content.Projectiles;
 using FargoSoulsSOTS.Core.Players;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -86,6 +84,66 @@ namespace FargoSoulsSOTS.Common
                         // Single bolt toward cursor, scaled by ranged bonuses
                         Projectile.NewProjectile(source, origin, baseVel, type, dmg, kb, player.whoAmI, ai0: 1);
                     }
+                }
+            }
+
+            if (player.HasEffect<PatchLeatherEffect>() && player.ownedProjectileCounts[ModContent.ProjectileType<SnakeWhipProjectile>()] < 1)
+            {
+                var source = player.GetSource_ItemUse(item);
+                Vector2 origin = player.Center;
+
+                Vector2 dir = player.DirectionTo(Main.MouseWorld);
+                if (dir == Vector2.Zero)
+                    dir = new Vector2(player.direction, 0f);
+                dir.Normalize();
+
+                bool playerHoldingSummonWeapon =
+                    (player.HeldItem.CountsAsClass(DamageClass.Summon) ||
+                     player.HeldItem.CountsAsClass(DamageClass.SummonMeleeSpeed));
+
+                int baseDamage = playerHoldingSummonWeapon ? 5 : 4;
+                int dmg = Math.Max(1, (int)Math.Round(player.GetTotalDamage(DamageClass.Summon).ApplyTo(baseDamage)));
+
+                float kb = 2f;
+                float speed = 12f;
+                Vector2 baseVel = dir * speed;
+
+                int type = ModContent.ProjectileType<SnakeWhipProjectile>();
+
+                if (player.ForceEffect<PatchLeatherEffect>())
+                {
+                    // THREE whips, HALF length (ai1 = 0.5f), with angular + lateral offsets so they don't stack.
+                    float angleSpread = MathHelper.ToRadians(8f);
+
+                    Vector2 perp = new Vector2(-baseVel.Y, baseVel.X);
+                    if (perp != Vector2.Zero)
+                    {
+                        perp.Normalize();
+                        perp *= 6f; // small side offset
+                    }
+
+                    Vector2[] vels =
+                    {
+                        baseVel,
+                        baseVel.RotatedBy(-angleSpread),
+                        baseVel.RotatedBy(angleSpread)
+                    };
+
+                    Vector2[] offsets =
+                    {
+                        Vector2.Zero,
+                        -perp,
+                        perp
+                    };
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Projectile.NewProjectile(source, origin + offsets[i], vels[i], type, dmg, kb, player.whoAmI, ai1: 0.2f);
+                    }
+                }
+                else
+                {
+                    Projectile.NewProjectile(source, origin, baseVel, type, dmg, kb, player.whoAmI, ai1: 0.4f);
                 }
             }
 

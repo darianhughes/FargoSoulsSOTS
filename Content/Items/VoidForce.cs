@@ -27,6 +27,7 @@ namespace FargoSoulsSOTS.Content.Items
                 ModContent.ItemType<VibrantEnchant>(),
                 ModContent.ItemType<WormwoodEnchant>(),
                 ModContent.ItemType<FrigidEnchant>(),
+                ModContent.ItemType<PatchLeatherEnchant>(),
                 ModContent.ItemType<TwilightAssassinEnchant>(),
             ];
         }
@@ -43,6 +44,7 @@ namespace FargoSoulsSOTS.Content.Items
             player.AddEffect<WormwoodEffect>(Item);
             player.AddEffect<BloomStrike>(Item);
             player.AddEffect<FrigidEffect>(Item);
+            player.AddEffect<PatchLeatherEffect>(Item);
             player.AddEffect<TwilightAssassinEffect>(Item);
         }
 

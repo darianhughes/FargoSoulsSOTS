@@ -21,7 +21,8 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
             [
                 ModContent.ItemType<ElementalEnchant>(),
                 ModContent.ItemType<TwilightAssassinEnchant>(),
-                ModContent.ItemType<WormwoodEnchant>()
+                ModContent.ItemType<WormwoodEnchant>(),
+                ModContent.ItemType<PatchLeatherEnchant>(),
             ];
         }
 
@@ -31,6 +32,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
             player.AddEffect<TwilightAssassinEffect>(Item);
             player.AddEffect<WormwoodEffect>(Item);
             player.AddEffect<BloomStrike>(Item);
+            player.AddEffect<PatchLeatherEffect>(Item);
 
         }
 
