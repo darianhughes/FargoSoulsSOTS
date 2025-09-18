@@ -53,7 +53,7 @@ Items: {
 			光束在15秒后消失并进入25秒的冷却时间
 			你无法使用薄光刺客魔石进行传送
 			同时获得对一切液化元素效果的免疫
-			“混沌控制！”
+			“掌握混沌！”
 			'''
 	}
 
@@ -108,17 +108,17 @@ Items: {
 	}
 
 	EarthenEnchant: {
-		// DisplayName: Earthen Enchantment
-		/* Tooltip:
+		DisplayName: 陆地魔石
+		Tooltip:
 			'''
 			Hitting enemies with tools gives you 5 stacks of the Miner's Curse
 			The Miner's Curse increases your damage taken by 1 per stack
 			The Miner's Curse increases your mining speed and movement speed by 1% per stack
 			The stacks will start to decay after taking damage, switching to a weapon, or not dealing damage with a tool for 5 seconds.
 			You can't have more than 100 stacks and you lose all stacks when a boss is alive.
-			'Gets dirt under the fingertips'
-			''' */
-		// SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] Effects of Earthen Enchantment"
+			“指尖沾满泥土”
+			'''
+		// SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] 陆地魔石效果"
 	}
 
 	VoidShatterShardPickup: {
@@ -169,7 +169,7 @@ Toggler: {
 	SpaceForceHeader: 空间之力
 	VoidForceHeader: 虚空之力
 	PatchLeatherEffect: 蛇鞭
-	// EarthenEffect: Miner's Curse
+	EarthenEffect: 矿工诅咒
 }
 
 ActiveSkills: {
