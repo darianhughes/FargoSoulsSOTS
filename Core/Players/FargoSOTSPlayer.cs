@@ -12,6 +12,7 @@ using SOTS.Void;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using static FargoSoulsSOTS.Content.Items.ForceofChaos.ElementalEnchant;
 
 namespace FargoSoulsSOTS.Core.Players
 {
@@ -20,8 +21,8 @@ namespace FargoSoulsSOTS.Core.Players
         public int BloomTimeLeft;
         public bool BloomReduced;
         public int CullCountPending;
-
         public bool hasSpawnedShards = false;
+        public int ChaosCharge;
 
         public override void PostUpdate()
         {
@@ -51,6 +52,10 @@ namespace FargoSoulsSOTS.Core.Players
             {
                 int voidBonus = Player.ForceEffect<VesperaEffect>() ? 50 : 25;
                 mp.voidMeterMax2 += voidBonus;
+            }
+                        if (!Player.HasEffect<ChaosTeleport>())
+            {
+                ChaosCharge = 0;
             }
         }
 

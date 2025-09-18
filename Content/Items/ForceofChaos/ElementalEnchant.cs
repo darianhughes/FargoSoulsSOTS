@@ -3,19 +3,20 @@ using Terraria.ID;
 using Terraria;
 using Microsoft.Xna.Framework;
 using FargowiltasSouls.Core.Toggler;
-using Terraria.ModLoader;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using SOTS.Items.Chaos;
+using SOTS.Items.Fragments;
 using FargoSoulsSOTS.Core.SoulToggles;
+using FargowiltasSouls.Content.UI.Elements;
+using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
+using FargowiltasSouls;
+using FargoSoulsSOTS.Core.Players;
 
 namespace FargoSoulsSOTS.Content.Items.ForceofChaos
 {
     public class ElementalEnchant : BaseEnchant
     {
-        public override void SetStaticDefaults()
-        {
-            base.SetStaticDefaults();
-        }
         public override Color nameColor => new(116, 122, 159);
         public override void SetDefaults()
         {
@@ -25,6 +26,7 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.AddEffect<ChaosTeleport>(Item);
             player.AddEffect<ElementalEffect>(Item);
         }
         public override void AddRecipes()
@@ -39,10 +41,48 @@ namespace FargoSoulsSOTS.Content.Items.ForceofChaos
                 .AddTile(TileID.CrystalBall)
                 .Register();
         }
-    }
-    public class ElementalEffect : AccessoryEffect
-    {
-        public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
-        public override int ToggleItemType => ModContent.ItemType<ElementalEnchant>();
+        public class ChaosTeleport : AccessoryEffect
+        {
+            public override bool ActiveSkill => true;
+            public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
+            private int Cooldown = 60 * 25;
+            public override void ActiveSkillJustPressed(Player player, bool stunned)
+            {
+                var FargoSOTSPlayer = player.GetModPlayer<FargoSOTSPlayer>();
+                Tile TeleportTile = Framing.GetTileSafely((int)Main.MouseWorld.X / 16, (int)Main.MouseWorld.Y / 16);
+                if (!stunned && !TeleportTile.HasTile && FargoSOTSPlayer.ChaosCharge >= Cooldown)
+                {
+                    player.Teleport(new(Main.MouseWorld.X, Main.MouseWorld.Y), 1);
+                    FargoSOTSPlayer.ChaosCharge = 0;
+                }
+            }
+            public override void PostUpdateEquips(Player player)
+            {
+                var FargoSOTSPlayer = player.GetModPlayer<FargoSOTSPlayer>();
+                if (player.ForceEffect<ChaosTeleport>())
+                    Cooldown = 60 * 40; 
+                if (FargoSOTSPlayer.ChaosCharge < Cooldown)
+                    FargoSOTSPlayer.ChaosCharge++;
+                CooldownBarManager.Activate("ChaosTeleport", ModContent.Request<Texture2D>("FargoSoulsSOTS/Content/Items/ForceofSecrets/ElementalEnchant").Value, new(116, 122, 159),
+                    () => (float)FargoSOTSPlayer.ChaosCharge / Cooldown, true, activeFunction: player.HasEffect<ChaosTeleport>);
+            }
+        }
+        public class ElementalEffect : AccessoryEffect
+        {
+            public override Header ToggleHeader => null;
+            public override void PostUpdateEquips(Player player)
+            {
+                var dissolvingPlayer = player.GetModPlayer<DissolvingElementsPlayer>();
+                dissolvingPlayer.DissolvingNature = 0;
+                dissolvingPlayer.DissolvingEarth = 0;
+                dissolvingPlayer.DissolvingAurora = 0;
+                dissolvingPlayer.DissolvingAether = 0;
+                dissolvingPlayer.DissolvingDeluge = 0;
+                dissolvingPlayer.DissolvingAurora = 0;
+                dissolvingPlayer.DissolvingUmbra = 0;
+                dissolvingPlayer.DissolvingNether = 0;
+                dissolvingPlayer.DissolvingBrilliance = 0;
+            }
+        }
     }
 }
