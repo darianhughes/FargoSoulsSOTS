@@ -116,14 +116,19 @@ Items: {
 			The Miner's Curse increases your mining speed and movement speed by 1% per stack
 			The stacks will start to decay after taking damage, switching to a weapon, or not dealing damage with a tool for 5 seconds.
 			You can't have more than 100 stacks and you lose all stacks when a boss is alive.
+			用工具命中敌人会获得5层矿工诅咒
+			每层矿工诅咒使你受到的伤害增加1点
+			每层矿工诅咒提升1%的挖掘速度与移动速度
+			在受到伤害、切换至武器，或5秒内未用工具造成伤害时，层数会开始衰减
+			最多可叠加100层，若有Boss存活则会失去所有层数
 			“指尖沾满泥土”
 			'''
-		// SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] 陆地魔石效果"
+		SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] 陆地魔石效果"
 	}
 
 	VoidShatterShardPickup: {
-		// DisplayName: Void Shatter Shard Pickup
-		// Tooltip: ""
+		DisplayName: 虚空碎片
+		Tooltip: ""
 	}
 }
 
@@ -154,7 +159,7 @@ WizardEffect: {
 	Wormwood: 盛花钩的持续时间延长至15秒，且仅会使1个召唤物消失
 	Frigid: 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 	PatchLeather: 获得3条蛇鞭，但它们的长度减半
-	// Earthen: You now get 10 stacks of Miner's Curse per hit
+	Earthen: 现在每次工具命中都会获得10层矿工诅咒
 }
 
 Toggler: {
