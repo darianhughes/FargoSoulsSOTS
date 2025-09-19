@@ -111,11 +111,6 @@ Items: {
 		DisplayName: 陆地魔石
 		Tooltip:
 			'''
-			Hitting enemies with tools gives you 5 stacks of the Miner's Curse
-			The Miner's Curse increases your damage taken by 1 per stack
-			The Miner's Curse increases your mining speed and movement speed by 1% per stack
-			The stacks will start to decay after taking damage, switching to a weapon, or not dealing damage with a tool for 5 seconds.
-			You can't have more than 100 stacks and you lose all stacks when a boss is alive.
 			用工具命中敌人会获得5层矿工诅咒
 			每层矿工诅咒使你受到的伤害增加1点
 			每层矿工诅咒提升1%的挖掘速度与移动速度
@@ -132,23 +127,23 @@ Items: {
 	}
 
 	CursedEnchant: {
-		// DisplayName: Cursed Enchantment
-		/* Tooltip:
+		DisplayName: 诅咒魔石
+		Tooltip:
 			'''
-			Taking damage will curse nearby enemies
-			Cursed enemies have a keystone above them and inflict Void Burn
-			The keystone will shoot at other enemies near the one is hovering over dealing magic + void damage
-			When a cursed enemy dies the keystone will shatter into shards that you can pickup to temporarily increase your void and void damage
-			Only 5 enemies can be cursed at a time, and you cannot curse bosses
-			[i:SOTS/TinyPlanetoid] Effects of the Tiny Planetoid
-			[i:SOTS/CursedApple] Effects of the Cursed Apple
+			受到伤害时会诅咒附近的敌人
+			被诅咒的敌人头顶会出现符石，并施加虚空灼烧
+			符石会向附近其他敌人射击，造成魔法+虚空伤害
+			当被诅咒的敌人死亡时，符石会破碎，你可以拾取这些碎片以暂时提升最大虚空值与虚空伤害
+			同一时间最多只能诅咒5个敌人
+			[i:SOTS/TinyPlanetoid] 微型星球效果
+			[i:SOTS/CursedApple] 诅咒苹果效果
 			'Now your soul is fully consumed by darkness...'
-			''' */
+			'''
 	}
 
 	KeystoneShard: {
-		// DisplayName: Keystone Shard
-		// Tooltip: ""
+		DisplayName: 符石碎片
+		Tooltip: ""
 	}
 }
 
@@ -169,13 +164,13 @@ Buffs: {
 	}
 
 	CursedVision: {
-		// DisplayName: Cursed Vision
-		// Description: Mods.FargoSoulsSOTS.Buffs.CursedVision.Description
+		DisplayName: 诅咒视域
+		Description: Mods.FargoSoulsSOTS.Buffs.CursedVision.Description
 	}
 
 	VoidEmpowerment: {
-		// DisplayName: Void Empowerment
-		// Description: Your void powers are empowered, increasing your max void and void damage
+		DisplayName: 虚空增幅
+		Description: Your void powers are empowered, increasing your max void and void damage
 	}
 }
 
@@ -189,8 +184,8 @@ WizardEffect: {
 	Wormwood: 盛花钩的持续时间延长至15秒，且仅会使1个召唤物消失
 	Frigid: 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 	PatchLeather: 获得3条蛇鞭，但它们的长度减半
-	// Earthen: You now get 10 stacks of Miner's Curse per hit
-	// Cursed: The keystone will last for 2 additional seconds after the cursed enemy dies and up to 10 enemies can be cursed.
+	Earthen: 现在每次工具命中都会获得10层矿工诅咒
+	Cursed: 符石在被诅咒的敌人死亡后会额外存在2秒，且最多可同时诅咒10个敌人
 }
 
 Toggler: {
@@ -206,10 +201,10 @@ Toggler: {
 	VoidForceHeader: 虚空之力
 	PatchLeatherEffect: 蛇鞭
 	EarthenEffect: 矿工诅咒
-	// CursedEffect: Cursed Vision
-	// TinyPlanetoidEffect: Tiny Planetoid Effect
-	// CursedAppleEffect: Souls of Looting
-	// GhostPepperMinionEffect: Ghost Pepper Minion
+	CursedEffect: 诅咒视域
+	TinyPlanetoidEffect: 微型星球效果
+	CursedAppleEffect: 收割之魂
+	GhostPepperMinionEffect: 鬼魂甜椒
 }
 
 ActiveSkills: {
@@ -228,17 +223,17 @@ ActiveSkills: {
 Projectiles: {
 	VoidShatterShard.DisplayName: 虚空碎片
 	SnakeWhipProjectile.DisplayName: 蛇鞭
-	// Keystone.DisplayName: Keystone
-	// KeystoneBolt.DisplayName: Keystone Bolt
+	Keystone.DisplayName: 符石
+	KeystoneBolt.DisplayName: 符石飞弹
 }
 
 Configs: {
 	FargoSOTSConfig: {
-		// DisplayName: Secrets of the Souls Config
+		DisplayName: Fargo魂奥秘模组配置
 
 		UnfinishedContent: {
-			// Label: Unfinished Content
-			// Tooltip: Toggles the loading of uunfinised content.
+			Label: 未完成内容
+			Tooltip: 启用/禁用未完成内容
 		}
 	}
 }
