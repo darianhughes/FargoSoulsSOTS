@@ -139,9 +139,10 @@ Items: {
 			Cursed enemies have a keystone above them and inflict Void Burn
 			The keystone will shoot at other enemies near the one is hovering over dealing magic + void damage
 			When a cursed enemy dies the keystone will shatter into shards that you can pickup to temporarily increase your void and void damage
-			Only 5 enemies can be cursed at a time
+			Only 5 enemies can be cursed at a time, and you cannot curse bosses
 			[i:SOTS/TinyPlanetoid] Effects of the Tiny Planetoid
 			[i:SOTS/CursedApple] Effects of the Cursed Apple
+			'Now your soul is fully consumed by darkness...'
 			''' */
 	}
 
@@ -174,7 +175,7 @@ Buffs: {
 
 	VoidEmpowerment: {
 		// DisplayName: Void Empowerment
-		// Description: Mods.FargoSoulsSOTS.Buffs.VoidEmpowerment.Description
+		// Description: Your void powers are empowered, increasing your max void and void damage
 	}
 }
 

@@ -15,6 +15,9 @@ using FargoSoulsSOTS.Core.Players;
 using FargoSoulsSOTS.Common;
 using FargoSoulsSOTS.Content.Projectiles.Masomode;
 using Steamworks;
+using FargowiltasSouls.Content.Bosses.TrojanSquirrel;
+using SOTS.NPCs.Boss;
+using System;
 
 namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
@@ -77,7 +80,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
             {
                 NPC curseNPC = Main.npc[i];
 
-                if (!curseNPC.active || !curseNPC.CanBeChasedBy() || curseNPC.friendly || curseNPC.boss)
+                if (isUncursable(curseNPC))
                     continue;
                 if (Vector2.Distance(player.Center, curseNPC.Center) > FargoSOTSPlayer.CurseRadius)
                     continue;
@@ -89,35 +92,61 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
                 // Permanent until NPC dies or owner dies
                 gn.ApplyCurse(player.whoAmI, curseNPC);
 
-                // Debuff icon on THIS npc
                 curseNPC.AddBuff(ModContent.BuffType<CursedVision>(), 2);
 
-                // Keystone anchored ABOVE THIS npc
                 if (Main.myPlayer == player.whoAmI)
                 {
-                    Vector2 spawnPos = curseNPC.Top - new Vector2(0f, Keystone.HoverOffsetY);
+                    float above = MathF.Max(20f, curseNPC.height * 0.60f) + curseNPC.gfxOffY;
+                    Vector2 spawnPos = curseNPC.Top + new Vector2(0f, -above);
+
                     int projId = Projectile.NewProjectile(
                         player.GetSource_FromThis(),
                         spawnPos,
                         Vector2.Zero,
                         ModContent.ProjectileType<Keystone>(),
                         0, 0f, player.whoAmI,
-                        curseNPC.whoAmI // ai[0] = host id
+                        curseNPC.whoAmI
                     );
 
                     gn.AttachedKeystoneId = projId;
 
-                    if (Main.projectile.IndexInRange(projId))
-                    {
-                        var p = Main.projectile[projId];
-                        p.ai[0] = curseNPC.whoAmI;     // be explicit
-                        p.Center = spawnPos;           // be explicit
-                        p.netUpdate = true;
-                    }
+                    var p = Main.projectile[projId];
+                    p.ai[0] = curseNPC.whoAmI;
+                    p.Center = spawnPos;
+                    p.netUpdate = true;
                 }
 
                 current++;
             }
+        }
+
+        public static bool isUncursable(NPC curseNPC)
+        {
+            if (!curseNPC.active || !curseNPC.CanBeChasedBy() || curseNPC.friendly || curseNPC.boss)
+                return true;
+
+            int[] extraUncurseableNPCs =
+            {
+                NPCID.EaterofWorldsHead,
+                NPCID.EaterofWorldsBody,
+                NPCID.EaterofWorldsTail,
+                ModContent.NPCType<TrojanSquirrelHead>(),
+                ModContent.NPCType<TrojanSquirrel>(),
+                ModContent.NPCType<TrojanSquirrelArms>(),
+                ModContent.NPCType<TrojanSquirrelLimb>(),
+                ModContent.NPCType<TrojanSquirrelPart>(),
+                ModContent.NPCType<SubspaceSerpentHead>(),
+                ModContent.NPCType<SubspaceSerpentBody>(),
+                ModContent.NPCType<SubspaceSerpentTail>(),
+            };
+
+            foreach (int id in extraUncurseableNPCs)
+            {
+                if (id == curseNPC.type)
+                    return true;
+            }
+
+            return false;
         }
 
         public static int CountCursedForOwner(int ownerId)

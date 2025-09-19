@@ -12,7 +12,6 @@ namespace FargoSoulsSOTS.Content.Projectiles.Masomode
 
         public override void SetDefaults()
         {
-            // ~1/3 of original (10x10). Integers only, so 3x3.
             Projectile.width = 3;
             Projectile.height = 3;
 
@@ -23,7 +22,6 @@ namespace FargoSoulsSOTS.Content.Projectiles.Masomode
             Projectile.ignoreWater = true;
             Projectile.extraUpdates = 1;
 
-            // Visual scale also to 1/3 so sprite matches hitbox.
             Projectile.scale = 1f / 3f;
         }
 

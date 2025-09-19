@@ -251,11 +251,9 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
         {
             if (projectile.type != BloomHookType) return base.PreDraw(projectile, ref drawColor);
 
-            // Only intercept drawing for hooks spawned by Wormwood.
             if (!projectile.GetGlobalProjectile<BloomHookMinionAnchor>().FromWormwood)
                 return base.PreDraw(projectile, ref drawColor);
 
-            // 1) Draw the vine between ANCHOR MINION and the hook (matches SOTS style math).
             Projectile anchor = GetAnchorMinion(projectile);
             if (anchor != null)
             {
@@ -268,12 +266,11 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
                 Vector2 mid = anchor.Center + delta / 2f;
                 float rot = delta.ToRotation();
 
-                // Same 9 segments as SOTS with subtle wave offset driven by ai[0]
                 float t = projectile.ai[0];
                 for (int i = 9; i > 0; --i)
                 {
                     Vector2 arm = new Vector2(halfLen, 0f).RotatedBy(MathHelper.ToRadians(18 * i));
-                    arm.Y /= 4f; // flatten a bit like original
+                    arm.Y /= 4f;
                     Vector2 p = mid + arm.RotatedBy(rot);
                     Vector2 wobble = new Vector2(2.5f, 0f).RotatedBy(MathHelper.ToRadians(i * 36) + t * 2f);
                     Vector2 screenPos = p + wobble - Main.screenPosition;
@@ -292,7 +289,6 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
                 }
             }
 
-            // 2) Draw the hook sprite itself (since we're blocking SOTS' PreDraw by returning false).
             Texture2D projTex = TextureAssets.Projectile[projectile.type].Value;
             int frames = Main.projFrames[projectile.type] > 0 ? Main.projFrames[projectile.type] : 1;
             int frameHeight = projTex.Height / frames;

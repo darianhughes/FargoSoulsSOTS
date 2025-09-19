@@ -33,10 +33,8 @@ namespace FargoSoulsSOTS.Common
             if (!IsCursed)
                 return;
 
-            // Show an icon (optional; remove if you don’t want the UI):
             npc.AddBuff(ModContent.BuffType<CursedVision>(), 2);
 
-            // Owner validity: if player is gone/dead, clear the curse.
             if (!PlayerStillValid(CursedOwner))
             {
                 ClearCurse(npc);
@@ -48,7 +46,7 @@ namespace FargoSoulsSOTS.Common
             {
                 var p = Main.projectile[AttachedKeystoneId];
                 if (p.active && p.type == ModContent.ProjectileType<Keystone>())
-                    p.timeLeft = 2; // refresh every tick -> effectively permanent
+                    p.timeLeft = 2;
             }
             else
             {

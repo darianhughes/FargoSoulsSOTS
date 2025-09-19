@@ -57,8 +57,6 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 
         public override void PostUpdate(Player player)
         {
-            
-            // Only run if the effect is actually active on the player (toggle/accessory)
             if (!player.HasEffect<FrigidEffect>()) { DespawnAll(player); return; }
 
             int desired = player.ForceEffect<FrigidEffect>() ? 6 : 3;
@@ -113,7 +111,6 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 
         public static void EnsureShards(Player player, int desiredCount, int baseDamage = 10, float radius = 96f, float speedDegPerFrame = 3.2f)
         {
-            // Authoritative spawner: server OR the owner client in SP
             if (Main.netMode == NetmodeID.MultiplayerClient && player.whoAmI != Main.myPlayer)
                 return;
 
@@ -142,8 +139,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
                         Projectile p = Main.projectile[idx];
                         p.localAI[0] = radius;
                         p.localAI[1] = speedDegPerFrame;
-                        if (p.damage <= 0) p.damage = baseDamage;     // safety
-                        p.originalDamage = p.damage;                   // safety
+                        if (p.damage <= 0) p.damage = baseDamage;
+                        p.originalDamage = p.damage;
                         p.netUpdate = true;
                     }
                 }
@@ -264,8 +261,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
             for (int i = 0; i < n; i++)
             {
                 Projectile p = shards[i];
-                p.ai[0] = i;   // index
-                p.ai[1] = n;   // count
+                p.ai[0] = i;
+                p.ai[1] = n;
                 p.netUpdate = true;
             }
         }

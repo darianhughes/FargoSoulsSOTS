@@ -264,7 +264,7 @@ namespace FargoSoulsSOTS.Core.Players
 
     public class FargoSOTSPlayerAssetLoader : ModSystem
     {
-        public static Asset<Texture2D> HarvestingDigits; // or PlatinumCurseDigits
+        public static Asset<Texture2D> HarvestingDigits;
 
         public override void Load()
         {
@@ -295,7 +295,6 @@ namespace FargoSoulsSOTS.Core.Players
             var player = drawInfo.drawPlayer;
             if (!player.active || player.dead) return;
 
-            // Skip if texture not available (e.g., SOTS not installed or bad path)
             var asset = FargoSOTSPlayerAssetLoader.HarvestingDigits;
             if (asset is null || !asset.IsLoaded) return;
 

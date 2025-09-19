@@ -111,7 +111,6 @@ namespace FargoSoulsSOTS.Common
 
                 if (player.ForceEffect<PatchLeatherEffect>())
                 {
-                    // THREE whips, HALF length (ai1 = 0.5f), with angular + lateral offsets so they don't stack.
                     float angleSpread = MathHelper.ToRadians(8f);
 
                     Vector2 perp = new Vector2(-baseVel.Y, baseVel.X);

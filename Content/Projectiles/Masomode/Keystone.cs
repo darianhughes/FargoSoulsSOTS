@@ -6,12 +6,14 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using SOTS.Void;
 using FargoSoulsSOTS.Content.Items.Misc.Boosters;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace FargoSoulsSOTS.Content.Projectiles.Masomode
 {
     public class Keystone : ModProjectile
     {
-        public const float HoverOffsetY = 25f;        // was 50f
+        public const float HoverOffsetY = 25f;
         public const float FireRange = 520f;
         public const int FireCooldown = 30;
         public const int BoltDamage = 45;
@@ -28,7 +30,6 @@ namespace FargoSoulsSOTS.Content.Projectiles.Masomode
 
         public override void SetDefaults()
         {
-            // Hitbox halved (was 26x68)
             Projectile.width = 13;
             Projectile.height = 34;
 
@@ -40,8 +41,9 @@ namespace FargoSoulsSOTS.Content.Projectiles.Masomode
             Projectile.ignoreWater = true;
             Projectile.DamageType = ModContent.GetInstance<VoidMagic>();
 
-            // Visual scale halved
-            Projectile.scale = 0.5f; // (explicit, instead of /= 2 to avoid surprises)
+            Projectile.scale = 0.5f;
+            DrawOffsetX = 0;   
+            DrawOriginOffsetY = 0;
         }
 
         public override void AI()
@@ -58,18 +60,11 @@ namespace FargoSoulsSOTS.Content.Projectiles.Masomode
                 }
 
                 NPC host = Main.npc[hostIndex];
-                if (!host.active)
-                {
-                    Projectile.Kill();
-                    return;
-                }
+                if (!host.active) { Projectile.Kill(); return; }
 
-                Vector2 targetPos = host.Center + new Vector2(0f, -HoverOffsetY);
-                Vector2 to = targetPos - Projectile.Center;
-                float speed = 14f;
-                Projectile.velocity = Vector2.Lerp(Projectile.velocity, to.SafeNormalize(Vector2.Zero) * speed, 0.2f);
-                if (to.Length() < 8f)
-                    Projectile.Center = Vector2.Lerp(Projectile.Center, targetPos, 0.4f);
+                float above = MathF.Max(20f, host.height * 0.60f); // physics-only; no gfxOffY here
+                Projectile.Center = host.Top + new Vector2(0f, -above);
+                Projectile.velocity = Vector2.Zero;
 
                 FireTimer++;
                 if (FireTimer >= FireCooldown && Main.myPlayer == Projectile.owner)
@@ -182,5 +177,33 @@ namespace FargoSoulsSOTS.Content.Projectiles.Masomode
         }
 
         public override bool? CanDamage() => false;
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D tex = TextureAssets.Projectile[Type].Value;
+
+            Rectangle frame = tex.Frame(1, Main.projFrames[Type], 0, Projectile.frame);
+
+            Vector2 origin = new Vector2(frame.Width * 0.5f, frame.Height * 0.5f);
+
+            const float spriteNudgeX = 0f;
+            const float spriteNudgeY = 0f;
+
+            Vector2 drawPos = Projectile.Center - Main.screenPosition + new Vector2(spriteNudgeX, spriteNudgeY);
+
+            Main.EntitySpriteDraw(
+                tex,
+                drawPos,
+                frame,
+                lightColor,
+                0f,
+                origin,
+                Projectile.scale,
+                SpriteEffects.None,
+                0
+            );
+
+            return false;
+        }
     }
 }
