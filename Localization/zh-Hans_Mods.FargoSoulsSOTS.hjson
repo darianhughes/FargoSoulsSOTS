@@ -118,11 +118,30 @@ Items: {
 			You can't have more than 100 stacks and you lose all stacks when a boss is alive.
 			“指尖沾满泥土”
 			'''
-		// SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] 陆地魔石效果"
+		// SimpleTooltip: "[i:FargoSoulsSOTS/EarthenEnchant] Effects of Earthen Enchantment"
 	}
 
 	VoidShatterShardPickup: {
-		// DisplayName: Void Shatter Shard Pickup
+		// DisplayName: Void Shard
+		// Tooltip: ""
+	}
+
+	CursedEnchant: {
+		// DisplayName: Cursed Enchantment
+		/* Tooltip:
+			'''
+			Taking damage will curse nearby enemies
+			Cursed enemies have a keystone above them and inflict Void Burn
+			The keystone will shoot at other enemies near the one is hovering over dealing magic + void damage
+			When a cursed enemy dies the keystone will shatter into shards that you can pickup to temporarily increase your void and void damage
+			Only 5 enemies can be cursed at a time
+			[i:SOTS/TinyPlanetoid] Effects of the Tiny Planetoid
+			[i:SOTS/CursedApple] Effects of the Cursed Apple
+			''' */
+	}
+
+	KeystoneShard: {
+		// DisplayName: Keystone Shard
 		// Tooltip: ""
 	}
 }
@@ -142,6 +161,16 @@ Buffs: {
 		DisplayName: 蛇鞭召唤标记
 		Description: Mods.FargoSoulsSOTS.Buffs.SnakeSummonTag.Description
 	}
+
+	CursedVision: {
+		// DisplayName: Cursed Vision
+		// Description: Mods.FargoSoulsSOTS.Buffs.CursedVision.Description
+	}
+
+	VoidEmpowerment: {
+		// DisplayName: Void Empowerment
+		// Description: Mods.FargoSoulsSOTS.Buffs.VoidEmpowerment.Description
+	}
 }
 
 WizardEffect: {
@@ -155,6 +184,7 @@ WizardEffect: {
 	Frigid: 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 	PatchLeather: 获得3条蛇鞭，但它们的长度减半
 	// Earthen: You now get 10 stacks of Miner's Curse per hit
+	// Cursed: The keystone will last for 2 additional seconds after the cursed enemy dies and up to 10 enemies can be cursed.
 }
 
 Toggler: {
@@ -170,6 +200,10 @@ Toggler: {
 	VoidForceHeader: 虚空之力
 	PatchLeatherEffect: 蛇鞭
 	EarthenEffect: 矿工诅咒
+	// CursedEffect: Cursed Vision
+	// TinyPlanetoidEffect: Tiny Planetoid Effect
+	// CursedAppleEffect: Souls of Looting
+	// GhostPepperMinionEffect: Ghost Pepper Minion
 }
 
 ActiveSkills: {
@@ -188,4 +222,17 @@ ActiveSkills: {
 Projectiles: {
 	VoidShatterShard.DisplayName: 虚空碎片
 	SnakeWhipProjectile.DisplayName: 蛇鞭
+	// Keystone.DisplayName: Keystone
+	// KeystoneBolt.DisplayName: Keystone Bolt
+}
+
+Configs: {
+	FargoSOTSConfig: {
+		// DisplayName: Secrets of the Souls Config
+
+		UnfinishedContent: {
+			// Label: Unfinished Content
+			// Tooltip: Toggles the loading of uunfinised content.
+		}
+	}
 }

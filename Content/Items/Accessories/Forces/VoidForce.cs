@@ -27,6 +27,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
                 ModContent.ItemType<WormwoodEnchant>(),
                 ModContent.ItemType<FrigidEnchant>(),
                 ModContent.ItemType<PatchLeatherEnchant>(),
+                ModContent.ItemType<CursedEnchant>(),
                 ModContent.ItemType<TwilightAssassinEnchant>(),
             ];
         }
@@ -44,6 +45,10 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
             player.AddEffect<BloomStrike>(Item);
             player.AddEffect<FrigidEffect>(Item);
             player.AddEffect<PatchLeatherEffect>(Item);
+            player.AddEffect<CursedEffect>(Item);
+            player.AddEffect<TinyPlanetoidEffect>(Item);
+            player.AddEffect<CursedAppleEffect>(Item);
+            player.AddEffect<GhostPepperMinionEffect>(Item);
             player.AddEffect<TwilightAssassinEffect>(Item);
         }
 

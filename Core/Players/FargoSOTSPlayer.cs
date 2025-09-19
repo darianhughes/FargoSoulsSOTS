@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using FargoSoulsSOTS.Content.Buffs;
@@ -9,8 +10,10 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using SOTS;
 using SOTS.Projectiles.Nature;
 using SOTS.Void;
+using Steamworks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -21,13 +24,38 @@ namespace FargoSoulsSOTS.Core.Players
 {
     public class FargoSOTSPlayer : ModPlayer
     {
+        
+        public const float CurseRadius = 420f;
+        public const int CurseDuration = 60 * 8;
+        public const int KeyStoneLifeTime = CurseDuration + 30;
+        public const int LingerTicks = 120;
+
         public int BloomTimeLeft;
         public bool BloomReduced;
         public int CullCountPending;
-        public bool hasSpawnedShards = false;
         public int ChaosCharge;
         public int MinersCurse;
         public int MinersCurseDuration;
+
+        public int MaxCursedPerPlayer
+        {
+            get
+            {
+                return Player.ForceEffect<CursedEffect>() ? 10 : 5;
+            }
+        }
+        public bool hasSpawnedShards = false;
+
+        public override void UpdateEquips()
+        {
+            SOTSPlayer sotsPlayer = Player.GetModPlayer<SOTSPlayer>();
+
+            if (Player.HasEffect<CursedEffect>())
+                Player.gravControl = true;
+
+            if (Player.HasEffect<GhostPepperMinionEffect>())
+                sotsPlayer.petPepper = true;
+        }
 
         public override void PostUpdate()
         {
@@ -190,6 +218,8 @@ namespace FargoSoulsSOTS.Core.Players
         {
             DrawDebuffCounterForPlayer(spriteBatch, texture, player, screenPos, ref height, counter, color);
         }
+
+        public static bool KeystoneLinger(Player player) => player.ForceEffect<CursedEffect>();
 
         public void SendClientChanges(Player player, NPC npc, int type = 0)
         {

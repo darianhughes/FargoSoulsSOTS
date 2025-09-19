@@ -35,6 +35,8 @@ Items: {
 			'''
 			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
 			[i:FargoSoulsSOTS/FrigidEnchant] Grants 6 shatter shards when entering Void Shock, which inflicts Frostbite when broken & and become pickups that give recovery effects during Void Recovery
+			[i:FargoSoulsSOTS/CursedEnchant] Taking damage will cursed nearby enemies causing a keystone to fire at other nearby enemies, which will shatter into void empowering pickups shortly after a cursed enemy dies
+			Effects of the [i:SOTS/TinyPlanetoid] Tiny Planetoid and [i:SOTS/CursedApple] Cursed Apple
 			'''
 	}
 
@@ -92,6 +94,8 @@ Items: {
 			[i:FargoSoulsSOTS/WormwoodEnchant] Minions will inflict Slimed on hit
 			[i:FargoSoulsSOTS/FrigidEnchant] Grants 6 shatter shards when entering Void Shock, which inflicts Frostbite when broken & and become pickups that give recovery effects during Void Recovery
 			[i:FargoSoulsSOTS/PatchLeatherEnchant] Grants 3 snake whips that deal summon damage, with summons focusing struck enemies and inflicting Venom when being used with a summoner weapon
+			[i:FargoSoulsSOTS/CursedEnchant] Taking damage will cursed nearby enemies causing a keystone to fire at other nearby enemies, which will shatter into void empowering pickups shortly after a cursed enemy dies
+			Effects of the [i:SOTS/TinyPlanetoid] Tiny Planetoid and [i:SOTS/CursedApple] Cursed Apple
 			'''
 	}
 
@@ -122,7 +126,26 @@ Items: {
 	}
 
 	VoidShatterShardPickup: {
-		DisplayName: Void Shatter Shard Pickup
+		DisplayName: Void Shard
+		Tooltip: ""
+	}
+
+	CursedEnchant: {
+		DisplayName: Cursed Enchantment
+		Tooltip:
+			'''
+			Taking damage will curse nearby enemies
+			Cursed enemies have a keystone above them and inflict Void Burn
+			The keystone will shoot at other enemies near the one is hovering over dealing magic + void damage
+			When a cursed enemy dies the keystone will shatter into shards that you can pickup to temporarily increase your void and void damage
+			Only 5 enemies can be cursed at a time, and you cannot curse bosses
+			[i:SOTS/TinyPlanetoid] Effects of the Tiny Planetoid
+			[i:SOTS/CursedApple] Effects of the Cursed Apple
+			'''
+	}
+
+	KeystoneShard: {
+		DisplayName: Keystone Shard
 		Tooltip: ""
 	}
 }
@@ -142,6 +165,16 @@ Buffs: {
 		DisplayName: Snake Summon Tag
 		Description: Mods.FargoSoulsSOTS.Buffs.SnakeSummonTag.Description
 	}
+
+	CursedVision: {
+		DisplayName: Cursed Vision
+		Description: Mods.FargoSoulsSOTS.Buffs.CursedVision.Description
+	}
+
+	VoidEmpowerment: {
+		DisplayName: Void Empowerment
+		Description: Your void powers are empowered, increasing your max void and void damage
+	}
 }
 
 WizardEffect: {
@@ -155,6 +188,7 @@ WizardEffect: {
 	Frigid: Grants 6 shatter shards when entering Void Shock, and inflicts Frostbite when broken
 	PatchLeather: Grants 3 snake whips but are half the length
 	Earthen: You now get 10 stacks of Miner's Curse per hit
+	Cursed: The keystone will last for 2 additional seconds after the cursed enemy dies and up to 10 enemies can be cursed.
 }
 
 Toggler: {
@@ -170,6 +204,10 @@ Toggler: {
 	VoidForceHeader: Force of Void
 	PatchLeatherEffect: Snake Whip
 	EarthenEffect: Miner's Curse
+	CursedEffect: Cursed Vision
+	TinyPlanetoidEffect: Tiny Planetoid Effect
+	CursedAppleEffect: Souls of Looting
+	GhostPepperMinionEffect: Ghost Pepper Minion
 }
 
 ActiveSkills: {
@@ -188,4 +226,17 @@ ActiveSkills: {
 Projectiles: {
 	VoidShatterShard.DisplayName: Void Shatter Shard
 	SnakeWhipProjectile.DisplayName: Snake Whip
+	Keystone.DisplayName: Keystone
+	KeystoneBolt.DisplayName: Keystone Bolt
+}
+
+Configs: {
+	FargoSOTSConfig: {
+		DisplayName: Secrets of the Souls Config
+
+		UnfinishedContent: {
+			Label: Unfinished Content
+			Tooltip: Toggles the loading of uunfinised content.
+		}
+	}
 }

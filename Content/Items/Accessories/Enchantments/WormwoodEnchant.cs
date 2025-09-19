@@ -15,6 +15,7 @@ using FargowiltasSouls;
 using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Core.SoulToggles;
 using FargoSoulsSOTS.Common.ProjectileChanges;
+using SOTS;
 
 namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {

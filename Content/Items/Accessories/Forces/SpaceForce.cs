@@ -33,8 +33,12 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             SetActive(player);
-            player.AddEffect<FrostArtifactEffect>(Item);
             player.AddEffect<VibrantEffect>(Item);
+            player.AddEffect<CursedEffect>(Item);
+            player.AddEffect<TinyPlanetoidEffect>(Item);
+            player.AddEffect<CursedAppleEffect>(Item);
+            player.AddEffect<GhostPepperMinionEffect>(Item);
+            player.AddEffect<FrostArtifactEffect>(Item);
         }
 
         public override void AddRecipes()
