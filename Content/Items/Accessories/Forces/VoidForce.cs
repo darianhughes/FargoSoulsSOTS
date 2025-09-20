@@ -50,6 +50,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
             player.AddEffect<CursedAppleEffect>(Item);
             player.AddEffect<GhostPepperMinionEffect>(Item);
             player.AddEffect<TwilightAssassinEffect>(Item);
+            player.AddEffect<HoloEyeMinionEffect>(Item);
         }
 
         public override void AddRecipes()

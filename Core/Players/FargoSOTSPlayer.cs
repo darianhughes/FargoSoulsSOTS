@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
+using FargoSoulsSOTS.Content.Projectiles.Masomode;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Patreon.Volknet.Projectiles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -11,6 +12,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using SOTS;
+using SOTS.Items.Planetarium.FromChests;
 using SOTS.Projectiles.Nature;
 using SOTS.Void;
 using Steamworks;
@@ -36,6 +38,9 @@ namespace FargoSoulsSOTS.Core.Players
         public int ChaosCharge;
         public int MinersCurse;
         public int MinersCurseDuration;
+        public int storedCodeBurst;
+
+        private bool strongCodeBurst = false;
 
         public int MaxCursedPerPlayer
         {
@@ -55,12 +60,39 @@ namespace FargoSoulsSOTS.Core.Players
 
             if (Player.HasEffect<GhostPepperMinionEffect>())
                 sotsPlayer.petPepper = true;
+
+            if (Player.HasEffect<HoloEyeMinionEffect>())
+            {
+                if (!sotsPlayer.HoloEye)
+                    sotsPlayer.HoloEyeDamage += SOTSPlayer.ApplyAttackSpeedClassModWithGeneric(Player, DamageClass.Summon, 33);
+                sotsPlayer.HoloEye = true;
+                sotsPlayer.HoloEyeAutoAttack = true;
+                
+                //prevent the armor ability if you don't have the armor set on.
+                if (!(Player.head == ModContent.ItemType<TwilightAssassinsCirclet>() && Player.body == ModContent.ItemType<TwilightAssassinsChestplate>() && Player.legs == ModContent.ItemType<TwilightAssassinsLeggings>()))
+                {
+                    sotsPlayer.HoloEyeAttack = false;
+                }
+            }
+
         }
 
         public override void PostUpdate()
         {
             if (MinersCurse > 100)
                 MinersCurse = 100;
+
+            if (storedCodeBurst > 0)
+            {
+                int damageMult = strongCodeBurst ? Player.ForceEffect <TwilightAssassinEffect>() ? 3 : 2 : 1;
+                int damage = Math.Max(33, (int)Math.Round(Player.GetTotalDamage(DamageClass.Magic).ApplyTo(33))) * damageMult;
+                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<CodeBurst>(), damage, 3f, Player.whoAmI);
+                storedCodeBurst--;
+                if (!strongCodeBurst)
+                    strongCodeBurst = true;
+                else
+                    strongCodeBurst = false;
+            }
 
             if (NPCUtils.AnyBosses())
             {

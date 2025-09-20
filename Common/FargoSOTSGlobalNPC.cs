@@ -9,6 +9,7 @@ using System.IO;
 using Terraria.ModLoader.IO;
 using SOTS.Buffs;
 using FargoSoulsSOTS.Core.Players;
+using SOTS.Common.GlobalNPCs;
 
 namespace FargoSoulsSOTS.Common
 {
@@ -62,6 +63,20 @@ namespace FargoSoulsSOTS.Common
                     );
                     AttachedKeystoneId = proj;
                 }
+            }
+        }
+
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
+        {
+            Player player = Main.player[projectile.owner];
+
+            if (projectile.type == ModContent.ProjectileType<CodeBurst>())
+            {
+                DebuffNPC debuffNPC = npc.GetGlobalNPC<DebuffNPC>();
+                if (debuffNPC.DestableCurse < 20)
+                    ++debuffNPC.DestableCurse;
+                if (Main.myPlayer == player.whoAmI && Main.netMode == NetmodeID.MultiplayerClient)
+                    debuffNPC.SendClientChanges(player, npc);
             }
         }
 

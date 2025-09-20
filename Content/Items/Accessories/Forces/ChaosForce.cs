@@ -30,6 +30,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.AddEffect<TwilightAssassinEffect>(Item);
+            player.AddEffect<HoloEyeMinionEffect>(Item);
             player.AddEffect<WormwoodEffect>(Item);
             player.AddEffect<BloomStrike>(Item);
             player.AddEffect<PatchLeatherEffect>(Item);

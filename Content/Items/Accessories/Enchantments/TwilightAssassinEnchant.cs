@@ -9,6 +9,7 @@ using SOTS.Items.Planetarium.FromChests;
 using SOTS.Items.SpiritStaves;
 using SOTS.Items.Wings;
 using FargoSoulsSOTS.Core.SoulToggles;
+using SOTS.Items;
 
 namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
@@ -28,6 +29,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.AddEffect<TwilightAssassinEffect>(Item);
+            player.AddEffect<HoloEyeMinionEffect>(Item);
         }
         public override void AddRecipes()
         {
@@ -36,8 +38,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
                 .AddIngredient<TwilightAssassinsChestplate>()
                 .AddIngredient<TwilightAssassinsLeggings>()
                 .AddIngredient<ChainedPlasma>()
+                .AddIngredient<DigitalDaito>()
                 .AddIngredient<OtherworldlySpiritStaff>()
-                .AddIngredient<TwilightGyroscope>()
                 .AddTile(TileID.DemonAltar)
                 .Register();
         }
@@ -46,5 +48,13 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
     {
         public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
         public override int ToggleItemType => ModContent.ItemType<TwilightAssassinEnchant>();
+        public override bool ExtraAttackEffect => true;
+    }
+
+    public class HoloEyeMinionEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
+        public override int ToggleItemType => ModContent.ItemType<TwilightAssassinEnchant>();
+        public override bool MinionEffect => true;
     }
 }
