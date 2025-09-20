@@ -205,7 +205,7 @@ Toggler: {
 	TinyPlanetoidEffect: 微型星球效果
 	CursedAppleEffect: 收割之魂
 	GhostPepperMinionEffect: 鬼魂甜椒
-	// HoloEyeMinionEffect: Holo Eye Minion
+	HoloEyeMinionEffect: 全息之眼
 }
 
 ActiveSkills: {
@@ -226,7 +226,7 @@ Projectiles: {
 	SnakeWhipProjectile.DisplayName: 蛇鞭
 	Keystone.DisplayName: 符石
 	KeystoneBolt.DisplayName: 符石飞弹
-	// CodeBurst.DisplayName: Code Burst
+	CodeBurst.DisplayName: 不稳定光束
 }
 
 Configs: {
