@@ -4,6 +4,7 @@ using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 using FargoSoulsSOTS.Content.Projectiles.Masomode;
 using FargoSoulsSOTS.Core.Players;
 using FargowiltasSouls;
+using FargowiltasSouls.Content.UI;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
 using SOTS.Projectiles.Earth;
@@ -17,8 +18,6 @@ namespace FargoSoulsSOTS.Common
     public class FargoSOTSGlobalItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
-
-        private float voidBefore;
 
         public override void OnConsumeItem(Item item, Player player)
         {
@@ -35,16 +34,6 @@ namespace FargoSoulsSOTS.Common
                     VoidPlayer.VoidEffect(player, heal);
                 }
             }
-        }
-
-        public override bool CanUseItem(Item item, Player player)
-        {
-            VoidPlayer vp = VoidPlayer.ModPlayer(player);
-
-            if (player.HasEffect<TwilightAssassinEffect>())
-                voidBefore = vp.voidMeter;
-
-            return base.CanUseItem(item, player);
         }
 
         public override bool? UseItem(Item item, Player player)
@@ -162,19 +151,7 @@ namespace FargoSoulsSOTS.Common
             if (fargoSOTSPlayer.BloomTimeLeft > 0 && IsWeapon(item) && !IsSummonWeapon(item))
                 fargoSOTSPlayer.BloomReduced = true;
 
-            bool? useItem = base.UseItem(item, player);
-
-            if (useItem == true)
-            {
-                if (player.HasEffect<TwilightAssassinEffect>())
-                {
-                    float voidUsed = voidBefore - mp.voidMeter;
-                    double burstsToStore = voidUsed / (player.ForceEffect<TwilightAssassinEffect>() ? 3 : 2);
-                    fargoSOTSPlayer.storedCodeBurst = (int)Math.Floor(burstsToStore);
-                }
-            }
-
-            return useItem;
+            return base.UseItem(item, player);
         }
 
         private static bool IsWeapon(Item item)

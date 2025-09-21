@@ -16,6 +16,7 @@ Items: {
 			[i:FargoSoulsSOTS/PatchLeatherEnchant] 获得3条造成召唤伤害的蛇鞭，使用召唤类武器时，仆从会优先攻击被击中的敌人并施加酸性毒液减益
 			'''
 		DisplayName: 混沌之力
+		// SoulTooltip: "[i:FargoSoulsSOTS/ChaosForce] ChaosForce Effects :D"
 	}
 
 	VibrantEnchant: {
@@ -36,6 +37,7 @@ Items: {
 			[i:FargoSoulsSOTS/VibrantEnchant] 虚空武器会射出两枚造成远程伤害的振荡弹，切换至非虚空武器时，振荡弹的伤害会降低
 			[i:FargoSoulsSOTS/FrigidEnchant] 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 			'''
+		// SoulTooltip: "[i:FargoSoulsSOTS/SpaceForce] SpaceForce Effects :D"
 	}
 
 	WormwoodEnchant: {
@@ -93,6 +95,7 @@ Items: {
 			[i:FargoSoulsSOTS/FrigidEnchant] 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 			[i:FargoSoulsSOTS/PatchLeatherEnchant] 获得3条造成召唤伤害的蛇鞭，使用召唤类武器时，仆从会优先攻击被击中的敌人并施加酸性毒液减益
 			'''
+		// SoulTooltip: "[i:FargoSoulsSOTS/VoidForce] VoidForce Effects :D"
 	}
 
 	PatchLeatherEnchant: {
@@ -179,8 +182,8 @@ WizardEffect: {
 	Vibrant: 现在会发射2枚振荡弹，切换武器时伤害仅降低20%
 	Elemental: 持续时间延长至25秒，但冷却时间增加至40秒
 	FrigidEnchant: 获得6枚碎片，破碎时会施加冻伤减益
-	FrostArtifactEnchant: 额外获得2座极地炮
-	TwilightAssassinEnchant: 数量提升至3倍，但消耗变为3点虚空
+	// FrostArtifact: Grants two more polar cannons
+	// TwilightAssassin: Every other burst now deals triple damage, but bursts are now released every 7 void expended.
 	Wormwood: 盛花钩的持续时间延长至15秒，且仅会使1个召唤物消失
 	Frigid: 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 	PatchLeather: 获得3条蛇鞭，但它们的长度减半

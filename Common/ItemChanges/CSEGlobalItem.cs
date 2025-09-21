@@ -1,48 +1,25 @@
 ﻿using System.Collections.Generic;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 using FargoSoulsSOTS.Content.Items.Accessories.Forces;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
-using FargowiltasSouls.Core.AccessoryEffectSystem;
+using ssm.Content.Items.Accessories;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Common.ItemChanges
 {
-    public class FargoGlobalItem : GlobalItem
+    [ExtendsFromMod(FargoSOTSCrossmod.CommunitySoulsExpansion.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.CommunitySoulsExpansion.Name)]
+    public class CSEGlobalItem : GlobalItem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return FargoSOTSConfig.Instance.UnfinishedContent;
+        }
+
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            if (item.type == ModContent.ItemType<WorldShaperSoul>())
+            if (item.type == ModContent.ItemType<MicroverseSoul>())
             {
-                player.AddEffect<EarthenEffect>(item);
-            }
-
-            if (item.type == ModContent.ItemType<DimensionSoul>())
-            {
-                player.AddEffect<EarthenEffect>(item);
-            }
-
-            if (item.type == ModContent.ItemType<TerrariaSoul>())
-            {
-                if (FargoSOTSConfig.Instance.UnfinishedContent)
-                {
-                    if (!FargoSOTSCrossmod.CommunitySoulsExpansion.Loaded)
-                    {
-                        ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
-                        ModContent.GetInstance<SpaceForce>().UpdateAccessory(player, hideVisual);
-                    }
-                }
-                else
-                {
-                    ModContent.GetInstance<VoidForce>().UpdateAccessory(player, hideVisual);
-                }
-            }
-
-            if (item.type == ModContent.ItemType<EternitySoul>())
-            {
-                player.AddEffect<EarthenEffect>(item);
-
                 if (FargoSOTSConfig.Instance.UnfinishedContent)
                 {
                     ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
@@ -53,6 +30,21 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                     ModContent.GetInstance<VoidForce>().UpdateAccessory(player, hideVisual);
                 }
             }
+
+            /*
+            if (item.type == ModContent.ItemType<StargateSoul>())
+            {
+                if (FargoSOTSConfig.Instance.UnfinishedContent)
+                {
+                    ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
+                    ModContent.GetInstance<SpaceForce>().UpdateAccessory(player, hideVisual);
+                }
+                else
+                {
+                    ModContent.GetInstance<VoidForce>().UpdateAccessory(player, hideVisual);
+                }
+            }
+            */
         }
 
         public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip)
@@ -76,7 +68,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
             // If found, insert a new TooltipLine right after it with the desired color
             if (maxTooltipIndex != -1)
             {
-                int insertIndex = maxTooltipIndex;
+                int insertIndex = maxTooltipIndex + 1;
                 TooltipLine customLine = new TooltipLine(Mod, "StealthTooltip", stealthTooltip);
                 tooltips.Insert(insertIndex, customLine);
             }
@@ -84,34 +76,18 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type == ModContent.ItemType<WorldShaperSoul>())
+            if (item.type == ModContent.ItemType<MicroverseSoul>())
             {
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.EarthenEnchant.SimpleTooltip"));
-            }
+                tooltips[3].Text += ", ";
+                tooltips[3].Text += Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName");
 
-            if (item.type == ModContent.ItemType<DimensionSoul>())
-            {
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.EarthenEnchant.SimpleTooltip"));
-            }
-
-            if (item.type == ModContent.ItemType<TerrariaSoul>())
-            {
                 if (FargoSOTSConfig.Instance.UnfinishedContent)
                 {
-                    if (!FargoSOTSCrossmod.CommunitySoulsExpansion.Loaded)
-                    {
-                        tooltips[3].Text += ", ";
-                        tooltips[3].Text += Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName");
-
-                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.ChaosForce.SoulTooltip"));
-                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.SpcaeForce.SoulTooltip"));
-                    }
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.ChaosForce.SoulTooltip"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.SpcaeForce.SoulTooltip"));
                 }
                 else
                 {
-                    tooltips[3].Text += ", ";
-                    tooltips[3].Text += Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName");
-
                     AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.VoidForce.SoulTooltip"));
                 }
             }

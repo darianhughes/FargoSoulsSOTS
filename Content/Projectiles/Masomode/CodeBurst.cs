@@ -46,7 +46,7 @@ namespace FargoSoulsSOTS.Content.Projectiles.Masomode
 
         public override void OnSpawn(IEntitySource source)
         {
-            SOTSUtils.PlaySound(SoundID.Item94, Projectile.Center.X, Projectile.Center.Y, 0.75f);
+            SOTSUtils.PlaySound(SoundID.Item94, Projectile.Center.X, Projectile.Center.Y, 0.25f);
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -116,6 +116,7 @@ namespace FargoSoulsSOTS.Content.Projectiles.Masomode
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             modifiers.Knockback *= 4;
+            modifiers.DisableCrit();
         }
     }
 }

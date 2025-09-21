@@ -24,6 +24,10 @@
 	    <HintPath>..\ModAssemblies\SOTS_v0.25.0.4.dll</HintPath>
 	  </Reference>
 
+	  <Reference Include="ssm">
+	    <HintPath>..\ModAssemblies\ssm_v1.1.4.5.dll</HintPath>
+	  </Reference>
+
 	</ItemGroup>
 
 	<ItemGroup>

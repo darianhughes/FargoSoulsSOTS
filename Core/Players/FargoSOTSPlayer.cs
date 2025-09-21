@@ -8,6 +8,7 @@ using FargoSoulsSOTS.Content.Projectiles.Masomode;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Patreon.Volknet.Projectiles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -26,7 +27,6 @@ namespace FargoSoulsSOTS.Core.Players
 {
     public class FargoSOTSPlayer : ModPlayer
     {
-        
         public const float CurseRadius = 420f;
         public const int CurseDuration = 60 * 8;
         public const int KeyStoneLifeTime = CurseDuration + 30;
@@ -39,8 +39,11 @@ namespace FargoSoulsSOTS.Core.Players
         public int MinersCurse;
         public int MinersCurseDuration;
         public int storedCodeBurst;
+        public float voidExpended;
 
         private bool strongCodeBurst = false;
+
+        float prevVoid, prevMax, prevMax2;
 
         public int MaxCursedPerPlayer
         {
@@ -74,25 +77,16 @@ namespace FargoSoulsSOTS.Core.Players
                     sotsPlayer.HoloEyeAttack = false;
                 }
             }
-
         }
 
         public override void PostUpdate()
         {
+            VoidPlayer mp = VoidPlayer.ModPlayer(Player);
+
             if (MinersCurse > 100)
                 MinersCurse = 100;
 
-            if (storedCodeBurst > 0)
-            {
-                int damageMult = strongCodeBurst ? Player.ForceEffect <TwilightAssassinEffect>() ? 3 : 2 : 1;
-                int damage = Math.Max(33, (int)Math.Round(Player.GetTotalDamage(DamageClass.Magic).ApplyTo(33))) * damageMult;
-                Projectile.NewProjectile(Player.GetSource_FromThis(), Player.Center, Vector2.Zero, ModContent.ProjectileType<CodeBurst>(), damage, 3f, Player.whoAmI);
-                storedCodeBurst--;
-                if (!strongCodeBurst)
-                    strongCodeBurst = true;
-                else
-                    strongCodeBurst = false;
-            }
+            TickVoidTracking(Player, mp);
 
             if (NPCUtils.AnyBosses())
             {
@@ -133,8 +127,6 @@ namespace FargoSoulsSOTS.Core.Players
                 }
             }
 
-            VoidPlayer mp = VoidPlayer.ModPlayer(Player);
-
             if (Player.HasBuff(BuffID.PotionSickness))
             {
                 if (Player.HasEffect<VesperaEffect>())
@@ -161,6 +153,68 @@ namespace FargoSoulsSOTS.Core.Players
                 Player.moveSpeed += bonus;
 
                 Player.pickSpeed *= MathF.Max(0.05f, 1f - bonus);
+            }
+        }
+
+        void TickVoidTracking(Player Player, VoidPlayer mp)
+        {
+            bool meterChanged = mp.voidMeter != prevVoid;
+            bool maxChanged = mp.voidMeterMax != prevMax || mp.voidMeterMax2 != prevMax2;
+
+            if (meterChanged && !maxChanged && Player.HasEffect<TwilightAssassinEffect>())
+            {
+                float spent = prevVoid - mp.voidMeter;
+                if (spent > 0f && !(spent >= 100f))
+                    voidExpended += spent;
+            }
+
+            // Update snapshots AFTER checks
+            prevVoid = mp.voidMeter;
+            prevMax = mp.voidMeterMax;
+            prevMax2 = mp.voidMeterMax2;
+
+            // Convert expended void into stored bursts
+            if (voidExpended > 0 && Player.HasEffect<TwilightAssassinEffect>())
+            {
+                int perBurst = Player.ForceEffect<TwilightAssassinEffect>() ? 7 : 5;
+
+                if (voidExpended - perBurst >= 0)
+                {
+                    storedCodeBurst += 15;
+                    voidExpended -= perBurst;
+                }
+            }
+            else
+            {
+                voidExpended = 0;
+            }
+
+            // Fire stored bursts
+            if (storedCodeBurst > 0 && Player.HasEffect<TwilightAssassinEffect>())
+            {
+                if (storedCodeBurst % 15 == 0)
+                {
+                    int damageMult = strongCodeBurst ? (Player.ForceEffect<TwilightAssassinEffect>() ? 3 : 2) : 1;
+                    int base33 = (int)Math.Round(Player.GetTotalDamage(DamageClass.Magic).ApplyTo(33));
+                    int damage = Math.Max(33, base33) * damageMult;
+
+                    Projectile.NewProjectile(
+                        Player.GetSource_FromThis(),
+                        Player.Center,
+                        Vector2.Zero,
+                        ModContent.ProjectileType<CodeBurst>(),
+                        damage,
+                        3f,
+                        Player.whoAmI
+                    );
+
+                    strongCodeBurst = !strongCodeBurst;
+                }
+                storedCodeBurst--;
+            }
+            else
+            {
+                storedCodeBurst = 0;
             }
         }
 

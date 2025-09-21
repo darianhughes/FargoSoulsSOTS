@@ -14,10 +14,11 @@ Items: {
 			'''
 			[i:FargoSoulsSOTS/WormwoodEnchant] Minions will inflict Slimed on hit
 			[i:FargoSoulsSOTS/PatchLeatherEnchant] Grants 3 snake whips that deal summon damage, with summons focusing struck enemies and inflicting Venom when being used with a summoner weapon
-			[i:FargoSoulsSOTS/TwilightAssassinEnchant] You release a code burst for every 3 void expended that deals magic damage and gives one level of destabilized, with very other burst deals triple damage
+			[i:FargoSoulsSOTS/TwilightAssassinEnchant] You release a code burst for every 7 void expended that deals magic damage and gives one level of destabilized, with every other burst dealing triple damage
 			Provides a Holo Eye minion to assist in combat
 			'''
 		DisplayName: Force of Chaos
+		SoulTooltip: "[i:FargoSoulsSOTS/ChaosForce] ChaosForce Effects :D"
 	}
 
 	VibrantEnchant: {
@@ -40,6 +41,7 @@ Items: {
 			[i:FargoSoulsSOTS/CursedEnchant] Taking damage will cursed nearby enemies causing a keystone to fire at other nearby enemies, which will shatter into void empowering pickups shortly after a cursed enemy dies
 			Effects of the [i:SOTS/TinyPlanetoid] Tiny Planetoid and [i:SOTS/CursedApple] Cursed Apple
 			'''
+		SoulTooltip: "[i:FargoSoulsSOTS/SpaceForce] SpaceForce Effects :D"
 	}
 
 	WormwoodEnchant: {
@@ -65,10 +67,10 @@ Items: {
 		DisplayName: Twilight Assassin Enchant
 		Tooltip:
 			'''
-			You release a code burst for every 2 void expended that deals magic damage
+			You release a code burst that deals magic damage for every 5 void expended up to 100
 			The code burst applies one level of destabilized, and every other burst deals double damage
 			Provides a Holo Eye minion to assist in combat
-			'You shine like the brightest Stars'
+			'You shine like the brightest stars'
 			'''
 	}
 
@@ -98,7 +100,14 @@ Items: {
 			[i:FargoSoulsSOTS/FrigidEnchant] Grants 6 shatter shards when entering Void Shock, which inflicts Frostbite when broken & and become pickups that give recovery effects during Void Recovery
 			[i:FargoSoulsSOTS/PatchLeatherEnchant] Grants 3 snake whips that deal summon damage, with summons focusing struck enemies and inflicting Venom when being used with a summoner weapon
 			[i:FargoSoulsSOTS/CursedEnchant] Taking damage will cursed nearby enemies causing a keystone to fire at other nearby enemies, which will shatter into void empowering pickups shortly after a cursed enemy dies
-			[i:FargoSoulsSOTS/TwilightAssassinEnchant] You release a code burst for every 3 void expended that deals magic damage and gives one level of destabilized, with very other burst deals triple damage
+			[i:FargoSoulsSOTS/TwilightAssassinEnchant] You release a code burst for every 7 void expended that deals magic damage and gives one level of destabilized, with every other burst dealing triple damage
+			Effects of the [i:SOTS/TinyPlanetoid] Tiny Planetoid and [i:SOTS/CursedApple] Cursed Apple
+			Provides a Holo Eye minion to assist in combat
+			'''
+		SoulTooltip: 
+			'''
+			[i:FargoSoulsSOTS/VoidForce] Healing items and cooldowns grant void effects, void weapons shoot vibrant bolts, minions inflict slimed, grants void shards and void effects during void debuffs
+			[i:FargoSoulsSOTS/VoidForce] Snake whips attack with your current weapon, taking damage will inflict a Keystone curse on nearby enemies, you release code bursts when expending void
 			Effects of the [i:SOTS/TinyPlanetoid] Tiny Planetoid and [i:SOTS/CursedApple] Cursed Apple
 			Provides a Holo Eye minion to assist in combat
 			'''
@@ -188,8 +197,8 @@ WizardEffect: {
 	Vibrant: Now shoots 2 vibrant bolts and switching only reduces the damage by 20%
 	Elemental: Now lasts for 25 seconds but now has a longer cooldown, 40 seconds
 	FrigidEnchant: Grants 6 Shatter shards, and deals the Frostbite Debuff when broken
-	FrostArtifactEnchant: Grants two more polar cannons
-	TwilightAssassinEnchant: Every other burst now deals triple damage, but bursts are now released every 3 void expended.
+	FrostArtifact: Grants two more polar cannons
+	TwilightAssassin: Every other burst now deals triple damage, but bursts are now released every 7 void expended.
 	Wormwood: Bloom hooks now last for 15 seconds and will only despawn 1 minion
 	Frigid: Grants 6 shatter shards when entering Void Shock, and inflicts Frostbite when broken
 	PatchLeather: Grants 3 snake whips but are half the length
