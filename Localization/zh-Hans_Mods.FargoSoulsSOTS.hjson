@@ -16,7 +16,7 @@ Items: {
 			[i:FargoSoulsSOTS/PatchLeatherEnchant] 获得3条造成召唤伤害的蛇鞭，使用召唤类武器时，仆从会优先攻击被击中的敌人并施加酸性毒液减益
 			'''
 		DisplayName: 混沌之力
-		// SoulTooltip: "[i:FargoSoulsSOTS/ChaosForce] ChaosForce Effects :D"
+		SoulTooltip: "[i:FargoSoulsSOTS/ChaosForce] 混沌之力效果 嘻嘻"
 	}
 
 	VibrantEnchant: {
@@ -37,7 +37,7 @@ Items: {
 			[i:FargoSoulsSOTS/VibrantEnchant] 虚空武器会射出两枚造成远程伤害的振荡弹，切换至非虚空武器时，振荡弹的伤害会降低
 			[i:FargoSoulsSOTS/FrigidEnchant] 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 			'''
-		// SoulTooltip: "[i:FargoSoulsSOTS/SpaceForce] SpaceForce Effects :D"
+		SoulTooltip: "[i:FargoSoulsSOTS/SpaceForce] 空间之力效果 嘻嘻"
 	}
 
 	WormwoodEnchant: {
@@ -95,13 +95,13 @@ Items: {
 			[i:FargoSoulsSOTS/FrigidEnchant] 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 			[i:FargoSoulsSOTS/PatchLeatherEnchant] 获得3条造成召唤伤害的蛇鞭，使用召唤类武器时，仆从会优先攻击被击中的敌人并施加酸性毒液减益
 			'''
-		/* SoulTooltip:
+		SoulTooltip:
 			'''
-			[i:FargoSoulsSOTS/VoidForce] Healing items and cooldowns grant void effects, void weapons shoot vibrant bolts, minions inflict slimed, grants void shards and void effects during void debuffs
-			[i:FargoSoulsSOTS/VoidForce] Snake whips attack with your current weapon, taking damage will inflict a Keystone curse on nearby enemies, you release code bursts when expending void
-			Effects of the [i:SOTS/TinyPlanetoid] Tiny Planetoid and [i:SOTS/CursedApple] Cursed Apple
-			Provides a Holo Eye minion to assist in combat
-			''' */
+			[i:FargoSoulsSOTS/VoidForce] 治疗物品会给予你虚空值，虚空武器会射出振荡弹，仆从会施加史莱姆减益，获得虚空冲击减益时获得6枚碎片
+			[i:FargoSoulsSOTS/VoidForce] 蛇鞭会随着你当前武器一起攻击，受到伤害会对附近敌怪施加符石诅咒，消耗虚空值时释放不稳定光束
+			拥有[i:SOTS/TinyPlanetoid]微型小行星和[i:SOTS/CursedApple]诅咒苹果的效果
+			召唤一只全息之眼仆从协助战斗
+			'''
 	}
 
 	PatchLeatherEnchant: {
@@ -144,7 +144,7 @@ Items: {
 			符石会向附近其他敌人射击，造成魔法+虚空伤害
 			当被诅咒的敌人死亡时，符石会破碎，你可以拾取这些碎片以暂时提升最大虚空值与虚空伤害
 			同一时间最多只能诅咒5个敌人
-			[i:SOTS/TinyPlanetoid] 微型星球效果
+			[i:SOTS/TinyPlanetoid] 微型小行星效果
 			[i:SOTS/CursedApple] 诅咒苹果效果
 			"现在，你的灵魂已彻底堕入黑暗……"
 			'''
@@ -156,68 +156,73 @@ Items: {
 	}
 
 	ScrapMetalQuiver: {
-		// DisplayName: Endless Scrap Metal Quiver
-		// Tooltip: ""
+		DisplayName: 无尽废金属箭袋
+		Tooltip: ""
 	}
 
 	VibrantQuiver: {
-		// DisplayName: Endless Vibrant Quiver
-		// Tooltip: ""
+		DisplayName: 无尽振荡箭袋
+		Tooltip: ""
 	}
 
 	WormholeQuiver: {
-		// DisplayName: Endless Wormhole Quiver
-		// Tooltip: ""
+		DisplayName: 无尽虫洞箭袋
+		Tooltip: ""
 	}
 
 	BorePouch: {
-		// DisplayName: Endless Bore Pouch
-		// Tooltip: ""
+		DisplayName: 无尽钻头弹袋
+		Tooltip: ""
 	}
 
 	ScrapMetalPouch: {
-		// DisplayName: Endless Scrap Metal Pouch
-		// Tooltip: ""
+		DisplayName: 无尽废金属弹袋
+		Tooltip: ""
 	}
 
 	SolarPouch: {
-		// DisplayName: Endless Solar Pouch
-		// Tooltip: ""
+		DisplayName: 无尽日耀弹袋
+		Tooltip: ""
 	}
 
 	VibrantPouch: {
-		// DisplayName: Endless Vibrant Pouch
-		// Tooltip: ""
+		DisplayName: 无尽振荡弹袋
+		Tooltip: ""
 	}
 
 	WormholePouch: {
-		// DisplayName: Endless Wormhole Pouch
-		// Tooltip: ""
+		DisplayName: 无尽虫洞弹袋
+		Tooltip: ""
 	}
 
 	GrayCrescent: {
-		// DisplayName: Gray Crescent
-		// Tooltip: Removes the effects of the Violet/Scarlet Crescent, Soul Heart if you have consumed it, or decreases the number of Voiden Ankh by 1 if you have any
+		DisplayName: 灰烬新月
+		Tooltip: 
+			'''
+			移除紫罗兰新月或绯红新月的效果
+			若你已使用过魂魄之心，则移除其效果
+			若你使用过虚空十字章，则会减少1层使用次数
+			'''
 	}
 
 	CatalyzedCrystal: {
-		// DisplayName: Catalyzed Crystal
-		// Tooltip: Summons Subspace Serpent without having to be in the Sanctuary
+		DisplayName: 灾劫水晶
+		Tooltip: 允许你在圣域以外的区域召唤亚空骇蟒
 	}
 
 	OverloadSubspaceSerpent: {
-		// DisplayName: Overloaded Catalyst Bomb
-		// Tooltip: Summons an energized Subspace Serpent
+		DisplayName: 过载灾劫炸弹
+		Tooltip: 召唤充能的亚空骇蟒
 	}
 
 	ChaosLure: {
-		// DisplayName: Chaos Lure
-		// Tooltip: Summons Lux
+		DisplayName: 混沌诱饵
+		Tooltip: 召唤辉光圣魂
 	}
 
 	OverloadLux: {
-		// DisplayName: Overloaded Lure
-		// Tooltip: Summons an energized Lux
+		DisplayName: 过载诱饵
+		Tooltip: 召唤充能的辉光圣魂
 	}
 }
 
@@ -253,8 +258,8 @@ WizardEffect: {
 	Vibrant: 现在会发射2枚振荡弹，切换武器时伤害仅降低20%
 	Elemental: 持续时间延长至25秒，但冷却时间增加至40秒
 	FrigidEnchant: 获得6枚碎片，破碎时会施加冻伤减益
-	// FrostArtifact: Grants two more polar cannons
-	// TwilightAssassin: Every other burst now deals triple damage, but bursts are now released every 7 void expended.
+	FrostArtifact: 额外多给予你两门极地炮
+	TwilightAssassin: 下一次的不稳定光束现在造成三倍伤害，但是消耗7点虚空值
 	Wormwood: 盛花钩的持续时间延长至15秒，且仅会使1个召唤物消失
 	Frigid: 获得虚空冲击减益时获得6枚碎片,当其破碎时会施加冻伤，并且在虚空回升增益存在期间可被消耗以触发回复效果
 	PatchLeather: 获得3条蛇鞭，但它们的长度减半
@@ -276,7 +281,7 @@ Toggler: {
 	PatchLeatherEffect: 蛇鞭
 	EarthenEffect: 矿工诅咒
 	CursedEffect: 诅咒视域
-	TinyPlanetoidEffect: 微型星球效果
+	TinyPlanetoidEffect: 微型小行星效果
 	CursedAppleEffect: 收割之魂
 	GhostPepperMinionEffect: 鬼魂甜椒
 	HoloEyeMinionEffect: 全息之眼
@@ -314,5 +319,5 @@ Configs: {
 	}
 }
 
-// NPCs.ShopModSwapper.SOTS: Secrets of the Shadows
-// Conditions.ConstructDowned: After defeating an elemental construct
+NPCs.ShopModSwapper.SOTS: 暗影奥秘
+Conditions.ConstructDowned: 击败一个元素构造体后
