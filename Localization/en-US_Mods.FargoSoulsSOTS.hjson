@@ -104,7 +104,7 @@ Items: {
 			Effects of the [i:SOTS/TinyPlanetoid] Tiny Planetoid and [i:SOTS/CursedApple] Cursed Apple
 			Provides a Holo Eye minion to assist in combat
 			'''
-		SoulTooltip: 
+		SoulTooltip:
 			'''
 			[i:FargoSoulsSOTS/VoidForce] Healing items and cooldowns grant void effects, void weapons shoot vibrant bolts, minions inflict slimed, grants void shards and void effects during void debuffs
 			[i:FargoSoulsSOTS/VoidForce] Snake whips attack with your current weapon, taking damage will inflict a Keystone curse on nearby enemies, you release code bursts when expending void
@@ -162,6 +162,71 @@ Items: {
 	KeystoneShard: {
 		DisplayName: Keystone Shard
 		Tooltip: ""
+	}
+
+	ScrapMetalQuiver: {
+		DisplayName: Endless Scrap Metal Quiver
+		Tooltip: ""
+	}
+
+	VibrantQuiver: {
+		DisplayName: Endless Vibrant Quiver
+		Tooltip: ""
+	}
+
+	WormholeQuiver: {
+		DisplayName: Endless Wormhole Quiver
+		Tooltip: ""
+	}
+
+	BorePouch: {
+		DisplayName: Endless Bore Pouch
+		Tooltip: ""
+	}
+
+	ScrapMetalPouch: {
+		DisplayName: Endless Scrap Metal Pouch
+		Tooltip: ""
+	}
+
+	SolarPouch: {
+		DisplayName: Endless Solar Pouch
+		Tooltip: ""
+	}
+
+	VibrantPouch: {
+		DisplayName: Endless Vibrant Pouch
+		Tooltip: ""
+	}
+
+	WormholePouch: {
+		DisplayName: Endless Wormhole Pouch
+		Tooltip: ""
+	}
+
+	GrayCrescent: {
+		DisplayName: Gray Crescent
+		Tooltip: Removes the effects of the Violet/Scarlet Crescent, Soul Heart if you have consumed it, or decreases the number of Voiden Ankh by 1 if you have any
+	}
+
+	CatalyzedCrystal: {
+		DisplayName: Catalyzed Crystal
+		Tooltip: Summons Subspace Serpent without having to be in the Sanctuary
+	}
+
+	OverloadSubspaceSerpent: {
+		DisplayName: Overloaded Catalyst Bomb
+		Tooltip: Summons an energized Subspace Serpent
+	}
+
+	ChaosLure: {
+		DisplayName: Chaos Lure
+		Tooltip: Summons Lux
+	}
+
+	OverloadLux: {
+		DisplayName: Overloaded Lure
+		Tooltip: Summons an energized Lux
 	}
 }
 
@@ -257,3 +322,6 @@ Configs: {
 		}
 	}
 }
+
+NPCs.ShopModSwapper.SOTS: Secrets of the Shadows
+Conditions.ConstructDowned: After defeating an elemental construct

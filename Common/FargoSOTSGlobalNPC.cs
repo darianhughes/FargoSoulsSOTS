@@ -10,6 +10,9 @@ using Terraria.ModLoader.IO;
 using SOTS.Buffs;
 using FargoSoulsSOTS.Core.Players;
 using SOTS.Common.GlobalNPCs;
+using SOTS.NPCs.Constructs;
+using FargoSoulsSOTS.Core.Systems;
+using Terraria.Localization;
 
 namespace FargoSoulsSOTS.Common
 {
@@ -78,6 +81,39 @@ namespace FargoSoulsSOTS.Common
                 if (Main.myPlayer == player.whoAmI && Main.netMode == NetmodeID.MultiplayerClient)
                     debuffNPC.SendClientChanges(player, npc);
             }
+        }
+
+        public override bool PreKill(NPC npc)
+        {
+            bool doDeviText = false;
+
+            int[] constructTypes =
+            {
+                ModContent.NPCType<EarthenSpirit>(),
+                ModContent.NPCType<NatureSpirit>(),
+                ModContent.NPCType<TidalSpirit>(),
+                ModContent.NPCType<EvilSpirit>(),
+                ModContent.NPCType<InfernoSpirit>(),
+                ModContent.NPCType<PermafrostSpirit>(),
+                ModContent.NPCType<ChaosSpirit>(),
+            };
+
+            foreach (int construct in constructTypes)
+            {
+                if (npc.type == construct && !FargoSoulsSOTSWorldSavingSystem.downedConstruct)
+                {
+                    doDeviText = true;
+                    FargoSoulsSOTSWorldSavingSystem.downedConstruct = true;
+                }
+            }
+
+            if (doDeviText && Main.netMode != NetmodeID.Server)
+            {
+                string seller = Language.GetTextValue($"Mods.Fargowiltas.NPCs.Deviantt.DisplayName");
+                Main.NewText(Language.GetTextValue("Mods.Fargowiltas.MessageInfo.NewItemUnlocked", seller), Color.HotPink);
+            }
+
+            return base.PreKill(npc);
         }
 
         public override void OnKill(NPC npc)

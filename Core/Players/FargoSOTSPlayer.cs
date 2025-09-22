@@ -40,6 +40,7 @@ namespace FargoSoulsSOTS.Core.Players
         public int MinersCurseDuration;
         public int storedCodeBurst;
         public float voidExpended;
+        public bool GrayCrescentVoid;
 
         private bool strongCodeBurst = false;
 

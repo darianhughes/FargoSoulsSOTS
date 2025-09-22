@@ -5,6 +5,5 @@ namespace FargoSoulsSOTS
 {
 	public class FargoSoulsSOTS : Mod
 	{
-
-	}
+    }
 }

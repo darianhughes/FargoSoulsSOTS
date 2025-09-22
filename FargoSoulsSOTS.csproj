@@ -7,6 +7,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <AdditionalFiles Remove="Content\Items\Arrows\**" />
+	  <Compile Remove="Content\Items\Arrows\**" />
+	  <EmbeddedResource Remove="Content\Items\Arrows\**" />
+	  <None Remove="Content\Items\Arrows\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+
+	  <Reference Include="FargowiltasCrossmod">
+	    <HintPath>..\ModAssemblies\FargowiltasCrossmod_v1.2.0.16.dll</HintPath>
+	  </Reference>
 
 	  <Reference Include="FargowiltasSouls">
 	    <HintPath>..\ModAssemblies\FargowiltasSouls_v1.7.3.2.dll</HintPath>
@@ -32,7 +43,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Content\Items\Accessories\Masomode\" />
-	  <Folder Include="Content\Items\Summons\SOTSCopy\" />
 	  <Folder Include="Content\Items\Summons\SwarmSummons\Energizers\" />
 	</ItemGroup>
 
