@@ -29,7 +29,7 @@ namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
                 if (!player.dead)
                 {
                     if (!SOTSWorld.downedSubspace && FargoSoulsUtil.HostCheck)
-                        Item.NewItem(npc.GetSource_Loot(), player.Hitbox, ModContent.ItemType<CatalyzedCrystal>());
+                        Item.NewItem(npc.GetSource_Loot(), player.Hitbox, ModContent.ItemType<CatalystDynamite>());
 
                     DroppedSummon = true;
                 }

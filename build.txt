@@ -4,5 +4,5 @@ version = 0.1
 modReferences = Fargowiltas, FargowiltasSouls, SOTS, Luminance
 weakReferences = RevengeancePlus, ssm, FargowiltasCrossmod
 sortBefore = ssm
-sortAfter = RevengeancePlus, FargowiltasCrossmod
+sortAfter = RevengeancePlus, FargowiltasCrossmod, SOTS
 homepage = https://discord.gg/RXdTXbKY

@@ -200,13 +200,13 @@ Items: {
 		// Tooltip: Removes the effects of the Violet/Scarlet Crescent, Soul Heart if you have consumed it, or decreases the number of Voiden Ankh by 1 if you have any
 	}
 
-	CatalyzedCrystal: {
-		// DisplayName: Catalyzed Crystal
+	CatalystDynamite: {
+		// DisplayName: Catalyst Dynamite
 		// Tooltip: Summons Subspace Serpent without having to be in the Sanctuary
 	}
 
 	OverloadSubspaceSerpent: {
-		// DisplayName: Overloaded Catalyst Bomb
+		// DisplayName: Catalyst TNT
 		// Tooltip: Summons an energized Subspace Serpent
 	}
 
@@ -218,6 +218,110 @@ Items: {
 	OverloadLux: {
 		// DisplayName: Overloaded Lure
 		// Tooltip: Summons an energized Lux
+	}
+
+	GlowNylonBulb: {
+		// DisplayName: Glow Nylon Bulb
+		// Tooltip: Summons Glowmoth
+	}
+
+	EnergizerAdvisor: {
+		// DisplayName: Counselor Energizer
+		/* Tooltip:
+			'''
+			Formed after using 10 WIP
+			'You don't think it will give you advice'
+			''' */
+	}
+
+	EnergizerGlowmoth: {
+		// DisplayName: Mothy Energizer
+		/* Tooltip:
+			'''
+			Formed after using 10 Infected Candles
+			'You may have holes in your shirt'
+			''' */
+	}
+
+	OverloadGlowmoth: {
+		// DisplayName: Infected Candle
+		// Tooltip: Summons an energized Glowmoth
+	}
+
+	OffbrandPeanuts: {
+		// DisplayName: Off-brand Peanuts
+		// Tooltip: Summons Putrid Pinky in phase 2
+	}
+
+	EnergizerExcavator: {
+		// DisplayName: Gaia Energizer
+		/* Tooltip:
+			'''
+			Formed afted using 10 Overloaded Excavators
+			'You can feel the earth's innate power in your fingertips'
+			''' */
+	}
+
+	EnergizerLux: {
+		// DisplayName: Chaotic Energizer
+		// Tooltip: ""
+	}
+
+	EnergizerPharoah: {
+		// DisplayName: Cursed Energizer
+		/* Tooltip:
+			'''
+			Formed after using 10 Cursed Sarcophaguses
+			'You have probably been cursed already'
+			''' */
+	}
+
+	EnergizerPolaris: {
+		// DisplayName: Polar Energizer
+		// Tooltip: ""
+	}
+
+	EnergizerPutrid: {
+		// DisplayName: Putrid Energizer
+		/* Tooltip:
+			'''
+			Formed after using 10 Overloaded Peanut Jars
+			'It smells disgusting'
+			''' */
+	}
+
+	EnergizerSubspace: {
+		// DisplayName: Subspace Energizer
+		/* Tooltip:
+			'''
+			Formed after using 10 Catalyst TNT
+			'You can feel the space-time continuuum'
+			''' */
+	}
+
+	OverloadPutridPinky: {
+		// DisplayName: Overloaded Peanut Jar
+		// Tooltip: Summons an energized Putrid Pinky
+	}
+
+	CursedSarcophagus: {
+		// DisplayName: Cursed Sarcophagus
+		// Tooltip: Summons the Pharaoh's Curse when used in front of the pyramid sarcophagus
+	}
+
+	OverloadPharoahsCurse: {
+		// DisplayName: Overloaded Sarcophagus
+		// Tooltip: Summons an energized Pharaoh's Curse
+	}
+
+	ExcavationRemote: {
+		// DisplayName: Excavation Remote
+		// Tooltip: Summons the Excavator in any biome
+	}
+
+	OverloadExcavator: {
+		// DisplayName: Overloaded Excavator
+		// Tooltip: Summons an energized Excavator
 	}
 }
 
@@ -245,6 +349,11 @@ Buffs: {
 	VoidEmpowerment: {
 		DisplayName: 虚空增幅
 		Description: Your void powers are empowered, increasing your max void and void damage
+	}
+
+	Grounded: {
+		// DisplayName: Grounded
+		// Description: Gaia forces are pinning you to the ground!
 	}
 }
 
@@ -280,6 +389,7 @@ Toggler: {
 	CursedAppleEffect: 收割之魂
 	GhostPepperMinionEffect: 鬼魂甜椒
 	HoloEyeMinionEffect: 全息之眼
+	// FlashsparkEffect: Flashspark Boost
 }
 
 ActiveSkills: {
@@ -301,6 +411,7 @@ Projectiles: {
 	Keystone.DisplayName: 符石
 	KeystoneBolt.DisplayName: 符石飞弹
 	CodeBurst.DisplayName: 不稳定光束
+	// SpawnEnemyProjNoLimit.DisplayName: Spawn Enemy Proj No Limit
 }
 
 Configs: {
@@ -312,7 +423,26 @@ Configs: {
 			Tooltip: 启用/禁用未完成内容
 		}
 	}
+
+	ItemConfig: {
+		// DisplayName: Item Config
+		// Headers.ItemReworks: Item Reworks
+
+		FlashsparkBootsRework: {
+			// Label: "[i:SOTS/FlashsparkBoots] Flashspark Boots Rework"
+			// Tooltip: Toggles the Flashspark Boots rework and recipe change
+		}
+	}
 }
 
 // NPCs.ShopModSwapper.SOTS: Secrets of the Shadows
 // Conditions.ConstructDowned: After defeating an elemental construct
+/* TooltipOverride.FlashsparkBoots:
+	'''
+	Allows flight, super fast running
+	Grants immunity to fire blocks and 10 seconds of immunity to lava
+	Running causes you to blast forward, granting higher speed and acceleration
+	This blast cannot be controlled
+	Leaves a trail of flames in your wake
+	'Recipro Burst!'
+	''' */

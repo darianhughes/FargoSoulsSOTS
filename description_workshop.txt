@@ -28,6 +28,6 @@ If you want to support the development team, see our Patreon page: https://www.p
 
 Special thanks to the Fargo's Souls & Secrets of the Shadows teams for their mods, as well as [url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen[/url] for some of the eternity debuff code.
 
-Coding: Akira
-Sprites: ma3allim
+Coding: Akira, Ropro0923, Fargo's Souls Team (reused code)
+Sprites: ma3allim, Tyr
 Localization: Pudd1ng (Simplified Chinese)

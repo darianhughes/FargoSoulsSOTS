@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 using FargoSoulsSOTS.Content.Items.Accessories.Forces;
+using FargowiltasSouls.Content.Items.Accessories.Masomode;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Terraria;
@@ -13,6 +14,28 @@ namespace FargoSoulsSOTS.Common.ItemChanges
     {
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
+            Mod sots = ModLoader.GetMod("SOTS");
+
+            if (item.type == ModContent.ItemType<AeolusBoots>())
+            {
+                /*
+                player.accRunSpeed = 7f;
+
+                player.lavaMax += 180; //total of 600
+
+                player.AddEffect<FlashsparkEffect>(item);
+                ModItem flashsparkBoots = sots.Find<ModItem>("FlashsparkBoots");
+                if (player.HasEffect<FlashsparkEffect>())
+                {
+                    flashsparkBoots.UpdateAccessory(player, hideVisual);
+                    player.lavaMax -= 600;
+                    player.moveSpeed -= 0.2f;
+                }
+                if (ItemConfig.Instance.FlashsparkBootsRework)
+                    player.hellfireTreads = true;
+                */
+            }
+
             if (item.type == ModContent.ItemType<WorldShaperSoul>())
             {
                 player.AddEffect<EarthenEffect>(item);
@@ -84,6 +107,14 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+            if (item.type == ModContent.ItemType<AeolusBoots>())
+            {
+                if (ItemConfig.Instance.FlashsparkBootsRework)
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.HellfireTreads"));
+
+                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.FlashsparkBoots"));
+            }
+
             if (item.type == ModContent.ItemType<WorldShaperSoul>())
             {
                 AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.EarthenEnchant.SimpleTooltip"));

@@ -2,6 +2,8 @@
 using Fargowiltas.Utilities;
 using SOTS.Items;
 using SOTS.Items.Celestial;
+using SOTS.Items.Earth.Glowmoth;
+using SOTS.Items.Slime;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -17,8 +19,10 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes
 
         private static void AddSummonConversions()
         {
+            RecipeHelper.CreateSimpleRecipe(ModContent.ItemType<GlowNylonBulb>(), ModContent.ItemType<SuspiciousLookingCandle>(), TileID.WorkBenches);
+            RecipeHelper.CreateSimpleRecipe(ModContent.ItemType<OffbrandPeanuts>(), ModContent.ItemType<JarOfPeanuts>(), TileID.WorkBenches);
             RecipeHelper.CreateSimpleRecipe(ModContent.ItemType<ChaosLure>(), ModContent.ItemType<ElectromagneticLure>(), TileID.WorkBenches, conditions: Condition.Hardmode);
-            RecipeHelper.CreateSimpleRecipe(ModContent.ItemType<CatalyzedCrystal>(), ModContent.ItemType<CatalystBomb>(), TileID.WorkBenches);
+            RecipeHelper.CreateSimpleRecipe(ModContent.ItemType<CatalystDynamite>(), ModContent.ItemType<CatalystBomb>(), TileID.WorkBenches);
         }
     }
 }

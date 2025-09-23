@@ -10,6 +10,7 @@ using SOTS.Items.Inferno;
 using SOTS.Items.Nature;
 using SOTS.Items.Conduit;
 using SOTS.Items.Earth;
+using SOTS.Items.Pyramid;
 
 namespace FargoSoulsSOTS.Core.Systems.Recipes.QoL
 {
@@ -129,6 +130,11 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes.QoL
 
             Recipe.Create(ModContent.ItemType<GravityAnchor>())
                 .AddIngredient<UltracapBanner>()
+                .AddTile(TileID.Solidifier)
+                .Register();
+
+            Recipe.Create(ModContent.ItemType<TheDarkEye>())
+                .AddIngredient<WallMimicBanner>(5)
                 .AddTile(TileID.Solidifier)
                 .Register();
         }

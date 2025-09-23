@@ -2,9 +2,12 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using FargoSoulsSOTS.Common;
+using FargoSoulsSOTS.Common.ItemChanges;
 using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 using FargoSoulsSOTS.Content.Projectiles.Masomode;
+using Fargowiltas.NPCs;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Patreon.Volknet.Projectiles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -13,12 +16,16 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using SOTS;
+using SOTS.Biomes;
+using SOTS.Items;
 using SOTS.Items.Planetarium.FromChests;
+using SOTS.NPCs.Boss.Excavator;
 using SOTS.Projectiles.Nature;
 using SOTS.Void;
 using Steamworks;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static FargoSoulsSOTS.Content.Items.Accessories.Enchantments.ElementalEnchant;
@@ -41,6 +48,10 @@ namespace FargoSoulsSOTS.Core.Players
         public int storedCodeBurst;
         public float voidExpended;
         public bool GrayCrescentVoid;
+
+        private bool activateParticle;
+        private int hasActivate = -1;
+        private bool doAccel;
 
         private bool strongCodeBurst = false;
 
@@ -71,7 +82,7 @@ namespace FargoSoulsSOTS.Core.Players
                     sotsPlayer.HoloEyeDamage += SOTSPlayer.ApplyAttackSpeedClassModWithGeneric(Player, DamageClass.Summon, 33);
                 sotsPlayer.HoloEye = true;
                 sotsPlayer.HoloEyeAutoAttack = true;
-                
+
                 //prevent the armor ability if you don't have the armor set on.
                 if (!(Player.head == ModContent.ItemType<TwilightAssassinsCirclet>() && Player.body == ModContent.ItemType<TwilightAssassinsChestplate>() && Player.legs == ModContent.ItemType<TwilightAssassinsLeggings>()))
                 {
@@ -155,6 +166,11 @@ namespace FargoSoulsSOTS.Core.Players
 
                 Player.pickSpeed *= MathF.Max(0.05f, 1f - bonus);
             }
+        }
+
+        public override void PostUpdateMiscEffects()
+        {
+            ForceBiomes();
         }
 
         void TickVoidTracking(Player Player, VoidPlayer mp)
@@ -345,6 +361,22 @@ namespace FargoSoulsSOTS.Core.Players
                 .Take(Math.Min(countToCull, ownedMinions.Count - 2)))
             {
                 p.Kill();
+            }
+        }
+
+        private void ForceBiomes()
+        {
+            if (FargoGlobalNPC.SpecificBossIsAlive(ref FargoSOTSGlobalNPC.excavatorBoss, ModContent.NPCType<Excavator>())
+                && Player.Distance(Main.npc[FargoSOTSGlobalNPC.excavatorBoss].Center) < 3000)
+            {
+                if (WorldGen.crimson)
+                    Player.ZoneCrimson = true;
+                else
+                    Player.ZoneCorrupt = true;
+
+                //This doesn't work but its here for safety
+                if (SOTSWorld.AVBiome <= 100)
+                    SOTSWorld.AVBiome = 101;
             }
         }
     }

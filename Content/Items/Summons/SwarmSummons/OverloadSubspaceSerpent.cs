@@ -9,7 +9,7 @@ namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons
 {
     public class OverloadSubspaceSerpent : SwarmSummonBase
     {
-        public override string Texture => "SOTS/Items/Celestial/CatalystBomb";
+        //public override string Texture => "SOTS/Items/Celestial/CatalystBomb";
 
         public OverloadSubspaceSerpent() : base(ModContent.NPCType<SubspaceSerpentHead>(), nameof(OverloadSubspaceSerpent), 50, "CatalyzedCrystal")
         {

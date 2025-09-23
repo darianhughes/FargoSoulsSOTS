@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using FargoSoulsSOTS.Content.Items.Accessories.Forces;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Items.Accessories;
 using Terraria;
@@ -40,6 +39,16 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes
                     }
 
                     recipe.AddIngredient<AbomEnergy>(energyCount);
+                }
+
+                if (recipe.HasResult<EternitySoul>() && !recipe.HasIngredient<MicroverseSoul>())
+                {
+                    int energyCount = recipe.requiredItem.Where(i => i.type == ModContent.ItemType<EternalEnergy>()).Sum(i => i.stack);
+                    recipe.RemoveIngredient(ModContent.ItemType<EternalEnergy>());
+
+                    recipe.AddIngredient<MicroverseSoul>();
+
+                    recipe.AddIngredient<EternalEnergy>(energyCount);
                 }
             }
         }

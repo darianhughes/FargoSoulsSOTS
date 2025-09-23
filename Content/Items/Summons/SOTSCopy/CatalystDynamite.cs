@@ -10,7 +10,8 @@ using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
 {
-    public class CatalyzedCrystal : BaseSummon
+    [LegacyName("CatalyzedCrystal")]
+    public class CatalystDynamite : BaseSummon
     {
         public override int NPCType => ModContent.NPCType<SubspaceSerpentHead>();
 
