@@ -234,99 +234,99 @@ Items: {
 		DisplayName: 启示强化剂
 		Tooltip:
 			'''
-			使用10个未完成物品后生成
+			一次性使用10个 后获得
 			“你可别真指望它给你什么建议”
 			'''
 	}
 
 	EnergizerGlowmoth: {
-		DisplayName: Mothy Energizer
-		/* Tooltip:
+		DisplayName: 飞蛾强化剂
+		Tooltip:
 			'''
-			Formed after using 10 Infected Candles
-			'You may have holes in your shirt'
-			''' */
+			一次性使用10个感染蜡烛后获得
+			“你的衣服上可能会多几个洞”
+			'''
 	}
 
 	OverloadGlowmoth: {
-		// DisplayName: Infected Candle
-		// Tooltip: Summons an energized Glowmoth
+		DisplayName: 感染蜡烛
+		Tooltip: 召唤一只充满活力的荧灯蛾
 	}
 
 	OffbrandPeanuts: {
-		// DisplayName: Off-brand Peanuts
-		// Tooltip: Summons Putrid Pinky in phase 2
+		DisplayName: 杂牌花生
+		Tooltip: 召唤阶段二的腐腐蚀之粉
 	}
 
 	EnergizerExcavator: {
-		// DisplayName: Gaia Energizer
-		/* Tooltip:
+		DisplayName: 大地强化剂
+		Tooltip:
 			'''
-			Formed afted using 10 Overloaded Excavators
-			'You can feel the earth's innate power in your fingertips'
-			''' */
+			一次性使用10个过载挖掘器后获得
+			“大地的原始力量在你指尖涌动”
+			'''
 	}
 
 	EnergizerLux: {
-		// DisplayName: Chaotic Energizer
-		// Tooltip: ""
+		DisplayName: 混沌强化剂
+		Tooltip: ""
 	}
 
 	EnergizerPharoah: {
-		// DisplayName: Cursed Energizer
-		/* Tooltip:
+		DisplayName: 诅咒强化剂
+		Tooltip:
 			'''
-			Formed after using 10 Cursed Sarcophaguses
-			'You have probably been cursed already'
-			''' */
+			一次性使用10个诅咒石棺后获得
+			“你大概已经被诅咒过了”
+			'''
 	}
 
 	EnergizerPolaris: {
-		// DisplayName: Polar Energizer
-		// Tooltip: ""
+		DisplayName: 极地强化剂
+		Tooltip: ""
 	}
 
 	EnergizerPutrid: {
-		// DisplayName: Putrid Energizer
-		/* Tooltip:
+		DisplayName: 腐臭强化剂
+		Tooltip:
 			'''
-			Formed after using 10 Overloaded Peanut Jars
-			'It smells disgusting'
-			''' */
+			一次性使用10个过载花生罐后获得
+			“它闻起来很恶心”
+			'''
 	}
 
 	EnergizerSubspace: {
-		// DisplayName: Subspace Energizer
-		/* Tooltip:
+		DisplayName: 亚空间强化剂
+		Tooltip:
 			'''
-			Formed after using 10 Catalyst TNT
-			'You can feel the space-time continuuum'
-			''' */
+			一次性使用10个灾劫TNT后获得
+			“你能感受到它的时空连续性”
+			'''
 	}
 
 	OverloadPutridPinky: {
-		// DisplayName: Overloaded Peanut Jar
-		// Tooltip: Summons an energized Putrid Pinky
+		DisplayName: 过载花生罐
+		Tooltip: 召唤一只充满活力的腐蚀之粉
 	}
 
 	CursedSarcophagus: {
-		// DisplayName: Cursed Sarcophagus
-		// Tooltip: Summons the Pharaoh's Curse when used in front of the pyramid sarcophagus
+		DisplayName: 诅咒石棺
+		Tooltip: 在金字塔石棺前使用以召唤法老咒魔
 	}
 
 	OverloadPharoahsCurse: {
-		// DisplayName: Overloaded Sarcophagus
-		// Tooltip: Summons an energized Pharaoh's Curse
+		DisplayName: 过载石棺
+		Tooltip: 召唤一只充满活力的法老咒魔
 	}
 
 	ExcavationRemote: {
-		// DisplayName: Excavation Remote
-		// Tooltip: Summons the Excavator in any biome
+		DisplayName: 挖掘遥控器
+		Tooltip: 在任何群系中使用以召唤掘地重蝎
 	}
 
 	OverloadExcavator: {
-		// DisplayName: Overloaded Excavator
-		// Tooltip: Summons an energized Excavator
+		DisplayName: 过载挖掘器
+		Tooltip: 召唤一只充满活力的掘地重蝎
 	}
 }
 
@@ -353,12 +353,12 @@ Buffs: {
 
 	VoidEmpowerment: {
 		DisplayName: 虚空增幅
-		Description: Your void powers are empowered, increasing your max void and void damage
+		Description: 你的虚空之力被强化，最大虚空值与虚空伤害提升
 	}
 
 	Grounded: {
-		// DisplayName: Grounded
-		// Description: Gaia forces are pinning you to the ground!
+		DisplayName: 大地束缚
+		Description: 盖亚之力将你压制在地面！
 	}
 }
 
@@ -416,7 +416,7 @@ Projectiles: {
 	Keystone.DisplayName: 符石
 	KeystoneBolt.DisplayName: 符石飞弹
 	CodeBurst.DisplayName: 不稳定光束
-	// SpawnEnemyProjNoLimit.DisplayName: Spawn Enemy Proj No Limit
+	SpawnEnemyProjNoLimit.DisplayName: 无限制生成敌对弹幕
 }
 
 Configs: {
@@ -430,8 +430,8 @@ Configs: {
 	}
 
 	ItemConfig: {
-		// DisplayName: Item Config
-		// Headers.ItemReworks: Item Reworks
+		DisplayName: 物品设置
+		Headers.ItemReworks: 物品重置
 
 		FlashsparkBootsRework: {
 			// Label: "[i:SOTS/FlashsparkBoots] Flashspark Boots Rework"
@@ -442,12 +442,12 @@ Configs: {
 
 NPCs.ShopModSwapper.SOTS: 暗影奥秘
 Conditions.ConstructDowned: 击败一个元素构造体后
-/* TooltipOverride.FlashsparkBoots:
+TooltipOverride.FlashsparkBoots:
 	'''
-	Allows flight, super fast running
-	Grants immunity to fire blocks and 10 seconds of immunity to lava
-	Running causes you to blast forward, granting higher speed and acceleration
-	This blast cannot be controlled
-	Leaves a trail of flames in your wake
-	'Recipro Burst!'
-	''' */
+	可飞行、飞速奔跑
+	对火块免疫并在10秒内对熔岩免疫
+	奔跑时会产生爆冲，赋予更高的速度与加速度
+	爆冲不可控
+	冲刺时身后会留下火焰轨迹
+	“爆裂冲刺！”
+	'''
