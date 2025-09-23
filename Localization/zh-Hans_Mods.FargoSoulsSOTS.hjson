@@ -206,13 +206,13 @@ Items: {
 	}
 
 	CatalystDynamite: {
-		// DisplayName: Catalyst Dynamite
-		// Tooltip: Summons Subspace Serpent without having to be in the Sanctuary
+		DisplayName: 灾劫炸药
+		Tooltip: 在圣域以外使用也可以召唤亚空骇蟒
 	}
 
 	OverloadSubspaceSerpent: {
-		// DisplayName: Catalyst TNT
-		// Tooltip: Summons an energized Subspace Serpent
+		DisplayName: 灾劫TNT
+		Tooltip: 召唤一条充满活力的的亚空骇蟒
 	}
 
 	ChaosLure: {
@@ -222,25 +222,25 @@ Items: {
 
 	OverloadLux: {
 		DisplayName: 过载诱饵
-		Tooltip: 召唤充能的辉光圣魂
+		Tooltip: 召唤一只充满活力的辉光圣魂
 	}
 
 	GlowNylonBulb: {
-		// DisplayName: Glow Nylon Bulb
-		// Tooltip: Summons Glowmoth
+		DisplayName: 荧光尼龙球茎
+		Tooltip: 召唤荧灯蛾
 	}
 
 	EnergizerAdvisor: {
-		// DisplayName: Counselor Energizer
-		/* Tooltip:
+		DisplayName: 启示强化剂
+		Tooltip:
 			'''
-			Formed after using 10 WIP
-			'You don't think it will give you advice'
-			''' */
+			使用10个未完成物品后生成
+			“你可别真指望它给你什么建议”
+			'''
 	}
 
 	EnergizerGlowmoth: {
-		// DisplayName: Mothy Energizer
+		DisplayName: Mothy Energizer
 		/* Tooltip:
 			'''
 			Formed after using 10 Infected Candles
