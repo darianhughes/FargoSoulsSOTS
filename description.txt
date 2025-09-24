@@ -15,6 +15,8 @@ If you run into any issues, have any suggestions, or want to report a bug please
 
 Special thanks to the Fargo's Souls & Secrets of the Shadows teams for thier mods, as well as N0t_UNowen for some of the eternity debuff code.
 
-Coding: Akira, Ropro0923, Fargo's Souls Team (reused code)
-Sprites: ma3allim, Tyr
+Some of the code in this mod is reused or refactored from the orignial Secrets of the Shadows codebase as well some code from many of the Fargo Team projects. Make sure to show each of thier indivutual teams some support! 
+
+Coding: Akira, Ropro0923
+Sprites: ma3allim, cheesenuggets
 Localization: Pudd1ng (Simplified Chinese)

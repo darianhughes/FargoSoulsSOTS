@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using FargowiltasSouls.Content.Items.Accessories.Masomode;
 using SOTS.Items;
+using SOTS.Items.Celestial;
 using SOTS.Items.Permafrost;
 using Terraria;
 using Terraria.ID;
@@ -24,6 +25,17 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes
 
                     recipe.AddIngredient(ItemID.HellfireTreads);
                     recipe.AddIngredient<AbsoluteBar>(barCount);
+                }
+
+                if (recipe.HasResult<SubspaceBoosters>())
+                {
+                    recipe.RemoveIngredient(ItemID.Tabi);
+
+                    int scaleCount = recipe.requiredItem.Where(i => i.type == ModContent.ItemType<SanguiteBar>()).Sum(i => i.stack);
+                    recipe.RemoveIngredient(ModContent.ItemType<SanguiteBar>());
+
+                    recipe.AddIngredient<AeolusBoots>();
+                    recipe.AddIngredient<SanguiteBar>(scaleCount);
                 }
             }
         }

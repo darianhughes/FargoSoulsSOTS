@@ -19,6 +19,8 @@ using SOTS;
 using SOTS.Biomes;
 using SOTS.Items;
 using SOTS.Items.Planetarium.FromChests;
+using SOTS.Items.Pyramid;
+using SOTS.Items.Wings;
 using SOTS.NPCs.Boss.Excavator;
 using SOTS.Projectiles.Nature;
 using SOTS.Void;
@@ -97,6 +99,13 @@ namespace FargoSoulsSOTS.Core.Players
 
             if (MinersCurse > 100)
                 MinersCurse = 100;
+
+            if (Player.FargoSouls().MutantPresence)
+            {
+                MachinaBoosterPlayer modPlayer = Player.GetModPlayer<MachinaBoosterPlayer>();
+                modPlayer.CreativeFlightTier2 = false;
+                modPlayer.canCreativeFlight = false;
+            }
 
             TickVoidTracking(Player, mp);
 

@@ -197,7 +197,7 @@ Items: {
 
 	GrayCrescent: {
 		DisplayName: 灰烬新月
-		Tooltip: 
+		Tooltip:
 			'''
 			移除紫罗兰新月或绯红新月的效果
 			若你已使用过魂魄之心，则移除其效果
@@ -328,6 +328,20 @@ Items: {
 		DisplayName: 过载挖掘器
 		Tooltip: 召唤一只充满活力的掘地重蝎
 	}
+
+	OldCRTTV: {
+		// DisplayName: Old CRT TV
+		/* Tooltip:
+			'''
+			Summons the Advisor
+			'IT'S!! TV!! TiME!!!'
+			''' */
+	}
+
+	OverloadAdvisor: {
+		// DisplayName: Overloaded TV
+		// Tooltip: Summons an energized Advisor
+	}
 }
 
 Buffs: {
@@ -394,7 +408,9 @@ Toggler: {
 	CursedAppleEffect: 收割之魂
 	GhostPepperMinionEffect: 鬼魂甜椒
 	HoloEyeMinionEffect: 全息之眼
-	// FlashsparkEffect: Flashspark Boost
+	// FlashsparkEffect: Subspace Boost
+	// GravityAnchorEffect: Minimum Gravity
+	// TennaEffect: Special Advisor Boss Music
 }
 
 ActiveSkills: {
@@ -451,3 +467,32 @@ TooltipOverride.FlashsparkBoots:
 	冲刺时身后会留下火焰轨迹
 	“爆裂冲刺！”
 	'''
+
+NewTooltips: {
+	// HellfireTreads: Leaves a trail of flames in your wake
+	/* FlashsparkBoots:
+		'''
+		Running causes you to blast forward, granting higher speed and acceleration
+		This blast cannot be controlled
+		''' */
+	/* AeolusBoots:
+		'''
+		The wearer can run even faster on sand and flowers grow on the grass you walk on
+		Increases jump speed and height, allows double jump and auto-jump, and negates fall damage
+		Provides the ability to walk on honey and reduces damage from touching lava
+		''' */
+	// SubspaceDash: Double tap dash while on the ground to blast forward, granting higher speed and acceleration
+	// SOTSSupersonicEffects: Effects of Band of Door, and Shoe Ice
+	/* GravityAnchor:
+		'''
+		Prevents you from going under the default gravity
+		Grants immunity to knockback
+		''' */
+	/* GildedBladeWings:
+		'''
+		Press '{0}' to gain fast, multidirectional flight
+		Hold '{1}' to fly slower while in the special flight mode
+		Increases void gain by 3 and void regeneration speed by 25%
+		Doubles damage done to non-Lux spirit enemies
+		''' */
+}

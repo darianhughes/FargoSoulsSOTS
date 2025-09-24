@@ -9,7 +9,7 @@ namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
     [LegacyName("GlowingNylonCandle")]
     public class GlowNylonBulb : BaseSummon
     {
-        public override string Texture => "SOTS/Items/Earth/Glowmoth/SuspiciousLookingCandle";
+        //public override string Texture => "SOTS/Items/Earth/Glowmoth/SuspiciousLookingCandle";
         public override int NPCType => ModContent.NPCType<Glowmoth>();
 
         public override void SetStaticDefaults()

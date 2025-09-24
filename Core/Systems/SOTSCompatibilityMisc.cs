@@ -10,6 +10,7 @@ namespace FargoSoulsSOTS.Core.Systems
         public static bool DownedPutrid => SOTSWorld.downedPinky;
         public static bool DownedPharoah => SOTSWorld.downedCurse;
         public static bool DownedExcavator => SOTSWorld.downedExcavator;
+        public static bool DownedAdvisor => SOTSWorld.downedAdvisor;
         public static bool DownedLux => SOTSWorld.downedLux;
         public static bool DownedSubspace => SOTSWorld.downedSubspace;
 
@@ -24,6 +25,8 @@ namespace FargoSoulsSOTS.Core.Systems
                 () => DownedPharoah, Item.buyPrice(gold: 13));
             mutant.Call("AddSummon", 6.8f, "FargoSoulsSOTS", "ExcavationRemote",
                 () => DownedExcavator, Item.buyPrice(gold: 17));
+            mutant.Call("AddSummon", 6.9f, "FargoSoulsSOTS", "OldCRTTV",
+                () => DownedAdvisor, Item.buyPrice(gold: 17));
             mutant.Call("AddSummon", 16.5f, "FargoSoulsSOTS", "ChaosLure",
                 () => DownedLux, Item.buyPrice(gold: 60));
             mutant.Call("AddSummon", 17.9f, "FargoSoulsSOTS", "CatalyzedCrystal",

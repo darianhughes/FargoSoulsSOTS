@@ -30,12 +30,14 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes.QoL
                 Recipe.Create(item)
                     .AddIngredient<GlowmothBag>()
                     .AddTile(TileID.Solidifier)
+                    .DisableDecraft()
                     .Register();
             }
 
             Recipe.Create(ModContent.ItemType<GlowSpores>())
                 .AddIngredient<GlowmothTrophy>()
                 .AddTile(TileID.Solidifier)
+                .DisableDecraft()
                 .Register();
 
             int[] putridItems =
@@ -54,12 +56,14 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes.QoL
                 Recipe.Create(item)
                     .AddIngredient<PinkyBag>()
                     .AddTile(TileID.Solidifier)
+                    .DisableDecraft()
                     .Register();
             }
 
             Recipe.Create(ModContent.ItemType<PeanutButter>())
                 .AddIngredient<PutridPinkyTrophy>()
                 .AddTile(TileID.Solidifier)
+                .DisableDecraft()
                 .Register();
 
             int[] excavatorItems =
@@ -76,6 +80,7 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes.QoL
                 Recipe.Create(item)
                     .AddIngredient<ExcavatorBossBag>()
                     .AddTile(TileID.Solidifier)
+                    .DisableDecraft()
                     .Register();
             }
 
@@ -92,6 +97,7 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes.QoL
                 Recipe.Create(item)
                     .AddIngredient<TheAdvisorBossBag>()
                     .AddTile(TileID.Solidifier)
+                    .DisableDecraft()
                     .Register();
             }
         }

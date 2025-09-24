@@ -9,6 +9,10 @@ using SOTS.NPCs.Boss.Polaris;
 using SOTS.NPCs.Boss.Polaris.NewPolaris;
 using SOTS.NPCs.Boss.Lux;
 using Microsoft.Xna.Framework;
+using System;
+using System.Reflection;
+using MonoMod.RuntimeDetour;
+using Terraria.ID;
 
 namespace FargoSoulsSOTS.Common
 {
@@ -133,12 +137,68 @@ namespace FargoSoulsSOTS.Common
             return true;
         }
 
+        private bool _logged;
         public override void PostAI(NPC npc)
         {
             if (go == 2)
             {
                 go = 1;
             }
+
+            if (!Fargowiltas.Fargowiltas.SwarmActive) return;
+
+            if (SotsIds.AdvisorType == -1) return;
+            if (npc.type != SotsIds.AdvisorType) return;
+
+            if (!_logged)
+            {
+                _logged = true;
+                if (Main.netMode != NetmodeID.Server)
+                    Main.NewText($"[Swarm] Scaling Advisor (id {npc.whoAmI})", 175, 75, 255);
+            }
+
+            const int k = 1000;
+            int desiredLifeMax = 28 * k * Math.Max(1, Fargowiltas.Fargowiltas.SwarmItemsUsed);
+
+            if (npc.lifeMax != desiredLifeMax)
+            {
+                float ratio = npc.lifeMax > 0 ? npc.life / (float)npc.lifeMax : 1f;
+                npc.lifeMax = desiredLifeMax;
+                npc.life = Math.Clamp((int)(desiredLifeMax * ratio), 1, desiredLifeMax);
+                npc.netUpdate = true;
+            }
+
+            int minDamage = Fargowiltas.Fargowiltas.SwarmMinDamage * 2;
+            if (!npc.townNPC && npc.damage > 0 && npc.damage < minDamage)
+                npc.damage = minDamage;
+
+            /*
+            if (!Fargowiltas.Fargowiltas.SwarmNoHyperActive)
+                npc.velocity *= 1.08f;
+            */
+
+            npc.boss = true;
+            npc.dontTakeDamage = false;
+            npc.dontCountMe = false;
         }
+    }
+
+    public static class SotsIds
+    {
+        public static int AdvisorType = -1;
+
+        public static void ResolveIds()
+        {
+            if (AdvisorType != -1) return;
+            if (!ModLoader.TryGetMod("SOTS", out var sots)) return;
+            if (sots.TryFind<ModNPC>("TheAdvisorHead", out var m))
+                AdvisorType = m.Type;
+        }
+    }
+
+    public class ResolverSystem : ModSystem
+    {
+        public override void Load() => SotsIds.ResolveIds();
+        public override void PostAddRecipes() => SotsIds.ResolveIds();
     }
 }

@@ -46,5 +46,19 @@ namespace FargoSoulsSOTS
             public static Mod Mod => ModLoader.GetMod(Name);
             public static bool Loaded => ModLoader.HasMod(Name);
         }
+
+        public static class MagicStorage
+        {
+            public const string Name = "MagicStorage";
+            public static Mod Mod => ModLoader.GetMod(Name);
+            public static bool Loaded => ModLoader.HasMod(Name);
+        }
+
+        public static class MusicDisplay
+        {
+            public const string Name = "MusicDisplay";
+            public static Mod Mod => ModLoader.GetMod(Name);
+            public static bool Loaded => ModLoader.HasMod(Name);
+        }
     }
 }

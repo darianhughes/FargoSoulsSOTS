@@ -35,6 +35,26 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                 //togglable flashspark effect
                 //player.AddEffect<FlashsparkEffect>(item);
             }
+
+            if (item.type == ModContent.ItemType<SubspaceBoosters>())
+            {
+                //amph boot
+                player.AddEffect<MasoAeolusFrog>(item);
+
+                player.AddEffect<MasoAeolusFlower>(item);
+                player.AddEffect<ZephyrJump>(item);
+
+                //dunerider boot
+                player.desertBoots = true;
+
+                player.jumpBoost = true;
+                player.noFallDmg = true;
+
+                //hellfire treads
+                if (ItemConfig.Instance.FlashsparkBootsRework)
+                    player.hellfireTreads = true;
+
+            }
         }
 
         public void FullTooltipOveride(List<TooltipLine> tooltips, string stealthTooltip)
@@ -56,11 +76,46 @@ namespace FargoSoulsSOTS.Common.ItemChanges
             }
         }
 
+        public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip)
+        {
+            int maxTooltipIndex = -1;
+            int maxNumber = -1;
+
+            // Find the TooltipLine with the highest TooltipX name
+            for (int i = 0; i < tooltips.Count; i++)
+            {
+                if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.StartsWith("Tooltip"))
+                {
+                    if (int.TryParse(tooltips[i].Name.Substring(7), out int num) && num > maxNumber)
+                    {
+                        maxNumber = num;
+                        maxTooltipIndex = i;
+                    }
+                }
+            }
+
+            // If found, insert a new TooltipLine right after it with the desired color
+            if (maxTooltipIndex != -1)
+            {
+                int insertIndex = maxTooltipIndex + 1;
+                TooltipLine customLine = new TooltipLine(Mod, "StealthTooltip", stealthTooltip);
+                tooltips.Insert(insertIndex, customLine);
+            }
+        }
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.type == ModContent.ItemType<FlashsparkBoots>() && ItemConfig.Instance.FlashsparkBootsRework)
             {
                 FullTooltipOveride(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.TooltipOverride.FlashsparkBoots"));
+            }
+
+            if (item.type == ModContent.ItemType<SubspaceBoosters>())
+            {
+                if (ItemConfig.Instance.FlashsparkBootsRework)
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.HellfireTreads"));
+
+                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.AeolusBoots"));
             }
         }
     }
@@ -68,6 +123,6 @@ namespace FargoSoulsSOTS.Common.ItemChanges
     public class FlashsparkEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<DeviEnergyHeader>();
-        public override int ToggleItemType => ModContent.ItemType<FlashsparkBoots>();
+        public override int ToggleItemType => ModContent.ItemType<SubspaceBoosters>();
     }
 }

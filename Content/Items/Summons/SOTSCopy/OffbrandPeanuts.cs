@@ -8,7 +8,7 @@ namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
 {
     public class OffbrandPeanuts : BaseSummon
     {
-        public override string Texture => "SOTS/Items/Slime/JarOfPeanuts";
+        //public override string Texture => "SOTS/Items/Slime/JarOfPeanuts";
         public override int NPCType => ModContent.NPCType<PutridPinkyPhase2>();
 
         public override void SetStaticDefaults()

@@ -34,6 +34,26 @@ namespace FargoSoulsSOTS.Common.ItemChanges
             /*
             if (item.type == ModContent.ItemType<StargateSoul>())
             {
+                ++dp.doorPants;
+ 
+                if (player.AddEffect<FlashsparkEffect>(item))
+                {
+                    ModItem sb = sots.Find<ModItem>("SubspaceBoosters");
+
+                    sb.UpdateAccessory(player, hideVisual);
+
+                    //remove extra things added
+                    player.lavaMax -= 600;
+                    if (player.HasEffect<SupersonicRocketBoots>())
+                        player.rocketBoots = player.vanityRocketBoots = ArmorIDs.RocketBoots.TerrasparkBoots;
+                    else
+                    {
+                        player.rocketBoots = 0;
+                    }
+                    player.moveSpeed -= 0.2f;
+                    player.accRunSpeed = player.HasEffect<RunSpeed>() ? 15.6f : 6.75f;
+                }
+
                 if (FargoSOTSConfig.Instance.UnfinishedContent)
                 {
                     ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);

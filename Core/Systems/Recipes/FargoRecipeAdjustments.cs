@@ -8,7 +8,12 @@ using FargowiltasSouls.Content.Items.Armor;
 using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Weapons.Misc;
 using SOTS.Items;
+using SOTS.Items.DoorItems;
 using SOTS.Items.Permafrost;
+using SOTS.Items.Planetarium;
+using SOTS.Items.Pyramid;
+using SOTS.Items.Slime;
+using SOTS.Items.Wings;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -60,16 +65,42 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes
                     recipe.RemoveIngredient(ModContent.ItemType<DeviatingEnergy>());
 
                     //recipe.AddIngredient<FlashsparkBoots>();
-                    recipe.AddIngredient(ItemID.SoulofFright, frightSoulCount);
+                    if (frightSoulCount > 0)
+                        recipe.AddIngredient(ItemID.SoulofFright, frightSoulCount);
+                    if (mightSoulCount > 0)
                     recipe.AddIngredient(ItemID.SoulofMight, mightSoulCount);
+                    if (sightSoulCount > 0)
                     recipe.AddIngredient(ItemID.SoulofSight, sightSoulCount);
-                    recipe.AddIngredient<SoulOfPlight>(plightSoulCount);
+                    if (plightSoulCount > 0 & !recipe.HasIngredient<SoulOfPlight>())
+                        recipe.AddIngredient<SoulOfPlight>(plightSoulCount);
                     recipe.AddIngredient<DeviatingEnergy>(energyCount);
+                }
+
+                if (recipe.HasResult<SupersonicSoul>())
+                {
+                    recipe.RemoveIngredient(ModContent.ItemType<AeolusBoots>());
+                    recipe.RemoveIngredient(ItemID.FlyingCarpet);
+
+                    recipe.AddIngredient<SubspaceBoosters>();
+                    recipe.AddIngredient<ShoeIce>();
+                    recipe.AddIngredient<BandOfDoor>();
+                    recipe.AddIngredient<TheDarkEye>();
+                    recipe.AddIngredient<SpiritSurfer>();
                 }
 
                 if (recipe.HasResult<WorldShaperSoul>())
                 {
                     recipe.AddIngredient<EarthenEnchant>();
+                }
+
+                if (recipe.HasResult<FlightMasterySoul>())
+                {
+                    recipe.RemoveIngredient(ItemID.EmpressFlightBooster);
+                    recipe.RemoveIngredient(ItemID.GravityGlobe);
+
+                    recipe.AddIngredient<GelWings>();
+                    recipe.AddIngredient<GildedBladeWings>();
+                    recipe.AddIngredient<GravityAnchor>();
                 }
 
                 if (recipe.HasResult<TerrariaSoul>())
