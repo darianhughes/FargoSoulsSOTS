@@ -394,7 +394,7 @@ Toggler: {
 	CursedAppleEffect: 收割之魂
 	GhostPepperMinionEffect: 鬼魂甜椒
 	HoloEyeMinionEffect: 全息之眼
-	// FlashsparkEffect: Flashspark Boost
+	FlashsparkEffect: 烁花冲刺
 }
 
 ActiveSkills: {
@@ -434,8 +434,8 @@ Configs: {
 		Headers.ItemReworks: 物品重置
 
 		FlashsparkBootsRework: {
-			// Label: "[i:SOTS/FlashsparkBoots] Flashspark Boots Rework"
-			// Tooltip: Toggles the Flashspark Boots rework and recipe change
+			Label: "[i:SOTS/FlashsparkBoots] 烁花靴重置"
+			Tooltip: Toggles the Flashspark Boots rework and recipe change启用/禁用烁花靴的重置和配方修改
 		}
 	}
 }
@@ -444,10 +444,10 @@ NPCs.ShopModSwapper.SOTS: 暗影奥秘
 Conditions.ConstructDowned: 击败一个元素构造体后
 TooltipOverride.FlashsparkBoots:
 	'''
-	可飞行、飞速奔跑
-	对火块免疫并在10秒内对熔岩免疫
-	奔跑时会产生爆冲，赋予更高的速度与加速度
-	爆冲不可控
+	可飞行，大幅增加移动速度
+	对火块免疫，并对岩浆免疫10秒
+	奔跑时会让你向前方冲刺，提供更快的的速度和加速度
+	无法控制此冲刺
 	冲刺时身后会留下火焰轨迹
 	“爆裂冲刺！”
 	'''
