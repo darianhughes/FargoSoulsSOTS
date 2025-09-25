@@ -238,7 +238,7 @@ Items: {
 		DisplayName: Counselor Energizer
 		Tooltip:
 			'''
-			Formed after using 10 WIP
+			Formed after using 10 Overloaded TVs
 			'You don't think it will give you advice'
 			'''
 	}
@@ -273,7 +273,11 @@ Items: {
 
 	EnergizerLux: {
 		DisplayName: Chaotic Energizer
-		Tooltip: ""
+		Tooltip:
+			'''
+			Formed after using 10 Overloaded Lures
+			'You set it free just to contain it again?'
+			'''
 	}
 
 	EnergizerPharoah: {
@@ -287,7 +291,11 @@ Items: {
 
 	EnergizerPolaris: {
 		DisplayName: Polar Energizer
-		Tooltip: ""
+		Tooltip:
+			'''
+			Formed after using 10 Geomagnetic Keys
+			'You still can't walk north or south'
+			'''
 	}
 
 	EnergizerPutrid: {
@@ -304,7 +312,7 @@ Items: {
 		Tooltip:
 			'''
 			Formed after using 10 Catalyst TNT
-			'You can feel the space-time continuuum'
+			'You can feel the space-time continuum'
 			'''
 	}
 
@@ -346,6 +354,34 @@ Items: {
 		DisplayName: Overloaded TV
 		Tooltip: Summons an energized Advisor
 	}
+
+	PolarKey: {
+		DisplayName: Polar Key
+		Tooltip: Summons Polaris without a Frost Artifact
+	}
+
+	OverloadPolaris: {
+		DisplayName: Geomagnetic Key
+		Tooltip: Summons an energized Polaris
+	}
+
+	TreasureSlimeCrown: {
+		DisplayName: Treasure Slime Crown
+		Tooltip: Summons a Treasure Slime depending on the biome you are in
+		PossibleSlimes: "Possible Treasure Slimes: "
+		None: None
+	}
+
+	GlowBulb: {
+		DisplayName: Glow Bulb
+		Tooltip:
+			'''
+			Grants immunity to Lepidopterism
+			Increases void regneration speed by 15% when you are in the dark
+			Grants a glow-in-the-dark effect.
+			The glow you generate is ignored for the void regeneration bonus
+			'''
+	}
 }
 
 Buffs: {
@@ -377,6 +413,11 @@ Buffs: {
 	Grounded: {
 		DisplayName: Grounded
 		Description: Gaia forces are pinning you to the ground!
+	}
+
+	Lepidopterism: {
+		DisplayName: Lepidopterism
+		Description: You are irritated by moth scales, weakening your body!
 	}
 }
 
@@ -415,6 +456,8 @@ Toggler: {
 	FlashsparkEffect: Subspace Boost
 	GravityAnchorEffect: Minimum Gravity
 	TennaEffect: Special Advisor Boss Music
+	GlowBulbEffect: Glow-in-the-dark Effect
+	AncientMcGuffinHeader: Ancient McGuffin
 }
 
 ActiveSkills: {
@@ -461,7 +504,12 @@ Configs: {
 }
 
 NPCs.ShopModSwapper.SOTS: Secrets of the Shadows
-Conditions.ConstructDowned: After defeating an elemental construct
+
+Conditions: {
+	ConstructDowned: After defeating an elemental construct
+	TreasureSlimeDowned: After defeating any Treasure Slime
+}
+
 TooltipOverride.FlashsparkBoots:
 	'''
 	Allows flight, super fast running

@@ -342,6 +342,34 @@ Items: {
 		// DisplayName: Overloaded TV
 		// Tooltip: Summons an energized Advisor
 	}
+
+	PolarKey: {
+		// DisplayName: Polar Key
+		// Tooltip: Summons Polaris without a Frost Artifact
+	}
+
+	OverloadPolaris: {
+		// DisplayName: Geomagnetic Key
+		// Tooltip: Summons an energized Polaris
+	}
+
+	TreasureSlimeCrown: {
+		// DisplayName: Treasure Slime Crown
+		// Tooltip: Summons a Treasure Slime depending on the biome you are in
+		// PossibleSlimes: "Possible Treasure Slimes: "
+		// None: None
+	}
+
+	GlowBulb: {
+		// DisplayName: Glow Bulb
+		/* Tooltip:
+			'''
+			Grants immunity to Lepidopterism
+			Increases void regneration speed by 15% when you are in the dark
+			Grants a glow-in-the-dark effect.
+			The glow you generate is ignored for the void regeneration bonus
+			''' */
+	}
 }
 
 Buffs: {
@@ -373,6 +401,11 @@ Buffs: {
 	Grounded: {
 		DisplayName: 大地束缚
 		Description: 盖亚之力将你压制在地面！
+	}
+
+	Lepidopterism: {
+		// DisplayName: Lepidopterism
+		// Description: You are irritated by moth scales, weakening your body!
 	}
 }
 
@@ -411,6 +444,8 @@ Toggler: {
 	FlashsparkEffect: 烁花冲刺
 	// GravityAnchorEffect: Minimum Gravity
 	// TennaEffect: Special Advisor Boss Music
+	// GlowBulbEffect: Glow-in-the-dark Effect
+	// AncientMcGuffinHeader: Ancient McGuffin
 }
 
 ActiveSkills: {
@@ -457,7 +492,12 @@ Configs: {
 }
 
 NPCs.ShopModSwapper.SOTS: 暗影奥秘
-Conditions.ConstructDowned: 击败一个元素构造体后
+
+Conditions: {
+	ConstructDowned: 击败一个元素构造体后
+	// TreasureSlimeDowned: After defeating any Treasure Slime
+}
+
 TooltipOverride.FlashsparkBoots:
 	'''
 	可飞行，大幅增加移动速度

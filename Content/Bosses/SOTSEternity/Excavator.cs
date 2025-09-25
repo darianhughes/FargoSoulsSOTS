@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria;
 using SOTS.NPCs.Boss.Excavator;
 using FargowiltasSouls.Content.Buffs.Masomode;
-using FargoSoulsSOTS.Content.Buffs;
+using FargoSoulsSOTS.Content.Buffs.Emode;
 
 namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
 {

@@ -1,4 +1,5 @@
-﻿using SOTS;
+﻿using System.Collections.Generic;
+using SOTS;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -11,6 +12,7 @@ namespace FargoSoulsSOTS.Core.Systems
         public static bool DownedPharoah => SOTSWorld.downedCurse;
         public static bool DownedExcavator => SOTSWorld.downedExcavator;
         public static bool DownedAdvisor => SOTSWorld.downedAdvisor;
+        public static bool DownedPolaris => SOTSWorld.downedAmalgamation;
         public static bool DownedLux => SOTSWorld.downedLux;
         public static bool DownedSubspace => SOTSWorld.downedSubspace;
 
@@ -27,6 +29,8 @@ namespace FargoSoulsSOTS.Core.Systems
                 () => DownedExcavator, Item.buyPrice(gold: 17));
             mutant.Call("AddSummon", 6.9f, "FargoSoulsSOTS", "OldCRTTV",
                 () => DownedAdvisor, Item.buyPrice(gold: 17));
+            mutant.Call("AddSummon", 11.01f, "FargoSoulsSOTS", "PolarKey",
+                () => DownedPolaris, Item.buyPrice(gold: 43));
             mutant.Call("AddSummon", 16.5f, "FargoSoulsSOTS", "ChaosLure",
                 () => DownedLux, Item.buyPrice(gold: 60));
             mutant.Call("AddSummon", 17.9f, "FargoSoulsSOTS", "CatalyzedCrystal",

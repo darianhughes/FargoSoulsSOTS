@@ -43,7 +43,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Assets\Sounds\Music\" />
-	  <Folder Include="Content\Items\Accessories\Masomode\" />
 	</ItemGroup>
 
 </Project>

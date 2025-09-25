@@ -35,6 +35,7 @@ using SOTS.NPCs.Boss.Lux;
 using Terraria.GameContent.NetModules;
 using SOTS.Items.Chaos;
 using SOTS.Items.Celestial;
+using SOTS.NPCs.TreasureSlimes;
 
 namespace FargoSoulsSOTS.Common
 {
@@ -137,6 +138,12 @@ namespace FargoSoulsSOTS.Common
                     doDeviText = true;
                     FargoSoulsSOTSWorldSavingSystem.downedConstruct = true;
                 }
+            }
+
+            if (npc.ModNPC is TreasureSlime && !FargoSoulsSOTSWorldSavingSystem.downedTreasureSlime)
+            {
+                doDeviText = true;
+                FargoSoulsSOTSWorldSavingSystem.downedTreasureSlime = true;
             }
 
             if (doDeviText && Main.netMode != NetmodeID.Server)

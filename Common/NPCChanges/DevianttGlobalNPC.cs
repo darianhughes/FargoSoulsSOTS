@@ -10,6 +10,7 @@ using SOTS.Items;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using FargoSoulsSOTS.Content.Items.Summons.Deviantt;
 
 namespace FargoSoulsSOTS.Common.NPCChanges
 {
@@ -36,8 +37,10 @@ namespace FargoSoulsSOTS.Common.NPCChanges
             NPCShop shop = new(ModContent.NPCType<Deviantt>(), Language.GetTextValue("Mods.FargoSoulsSOTS.NPCs.ShopModSwapper.SOTS"));
 
             Condition killedConstruct = new Condition("Mods.FargoSoulsSOTS.Conditions.ConstructDowned", () => FargoSoulsSOTSWorldSavingSystem.downedConstruct);
+            Condition killedTreasureSlime = new Condition("Mods.FargoSoulsSOTS.Conditions.TreasureSlimeDowned", () => FargoSoulsSOTSWorldSavingSystem.downedTreasureSlime);
 
             shop.Add(new Item(ModContent.ItemType<ElectromagneticLure>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, killedConstruct);
+            shop.Add(new Item(ModContent.ItemType<TreasureSlimeCrown>()) { shopCustomPrice = Item.buyPrice(copper: 600000) }, killedTreasureSlime);
 
             shop.Register();
             ModShops.Add(shop);
@@ -104,6 +107,7 @@ namespace FargoSoulsSOTS.Common.NPCChanges
             }
 
             Condition killedConstruct = new Condition("Mods.FargoSoulsSOTS.Conditions.ConstructDowned", () => FargoSoulsSOTSWorldSavingSystem.downedConstruct);
+            Condition killedTreasureSlime = new Condition("Mods.FargoSoulsSOTS.Conditions.TreasureSlimeDowned", () => FargoSoulsSOTSWorldSavingSystem.downedTreasureSlime);
 
             npcShop
                 .Add(new Item(ModContent.ItemType<WormSnack>()) { shopCustomPrice = Item.buyPrice(copper: 20000) }, new Condition("Mods.Fargowiltas.Conditions.WormDown", () => FargoWorldDownedBools["worm"]))
@@ -147,7 +151,9 @@ namespace FargoSoulsSOTS.Common.NPCChanges
 
             if (!FargoSOTSCrossmod.FargowiltasCrossmod.Loaded)
             {
-                npcShop.Add(new Item(ModContent.ItemType<ElectromagneticLure>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, killedConstruct);
+                npcShop
+                    .Add(new Item(ModContent.ItemType<ElectromagneticLure>()) { shopCustomPrice = Item.buyPrice(gold: 5) }, killedConstruct)
+                    .Add(new Item(ModContent.ItemType<TreasureSlimeCrown>()) { shopCustomPrice = Item.buyPrice(copper: 600000) }, killedTreasureSlime);
             }
 
             npcShop.Register();

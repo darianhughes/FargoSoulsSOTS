@@ -1,7 +1,7 @@
 ﻿using FargowiltasSouls.Content.Buffs.Masomode;
 using Terraria;
 
-namespace FargoSoulsSOTS.Content.Buffs
+namespace FargoSoulsSOTS.Content.Buffs.Emode
 {
     public class Grounded : ClippedWingsBuff
     {

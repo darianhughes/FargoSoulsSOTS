@@ -5,6 +5,9 @@ using FargowiltasSouls.Core.NPCMatching;
 using SOTS;
 using Terraria.ModLoader;
 using Terraria;
+using FargoSoulsSOTS.Content.Buffs.Emode;
+using FargowiltasSouls.Core.Systems;
+using Terraria.ID;
 
 namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
 {
@@ -30,6 +33,19 @@ namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
             }
 
             return true;
+        }
+
+        public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
+        {
+            base.OnHitPlayer(npc, target, hurtInfo);
+
+            if (WorldSavingSystem.MasochistModeReal)
+            {
+                target.AddBuff(BuffID.Poisoned, 60 * 5);
+                target.AddBuff(BuffID.Darkness, 60 * 3);
+            }
+
+            target.AddBuff(ModContent.BuffType<Lepidopterism>(), (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
         }
     }
 }

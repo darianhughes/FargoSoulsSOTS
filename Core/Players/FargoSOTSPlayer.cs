@@ -51,10 +51,6 @@ namespace FargoSoulsSOTS.Core.Players
         public float voidExpended;
         public bool GrayCrescentVoid;
 
-        private bool activateParticle;
-        private int hasActivate = -1;
-        private bool doAccel;
-
         private bool strongCodeBurst = false;
 
         float prevVoid, prevMax, prevMax2;
