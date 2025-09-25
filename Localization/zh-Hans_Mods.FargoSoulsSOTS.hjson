@@ -234,7 +234,7 @@ Items: {
 		DisplayName: 启示强化剂
 		Tooltip:
 			'''
-			一次性使用10个 后获得
+			一次性使用10个过载电视机后获得
 			“你可别真指望它给你什么建议”
 			'''
 	}
@@ -344,31 +344,31 @@ Items: {
 	}
 
 	PolarKey: {
-		// DisplayName: Polar Key
-		// Tooltip: Summons Polaris without a Frost Artifact
+		DisplayName: 极北之钥
+		Tooltip: 无需在冰霜工艺品使用即可召唤极北灾星
 	}
 
 	OverloadPolaris: {
-		// DisplayName: Geomagnetic Key
-		// Tooltip: Summons an energized Polaris
+		DisplayName: 地磁之钥
+		Tooltip: 召唤一只过载的极北灾星
 	}
 
 	TreasureSlimeCrown: {
-		// DisplayName: Treasure Slime Crown
-		// Tooltip: Summons a Treasure Slime depending on the biome you are in
-		// PossibleSlimes: "Possible Treasure Slimes: "
-		// None: None
+		DisplayName: 宝藏史莱姆王冠
+		Tooltip: 根据你目前所处的群系，召唤一只宝藏史莱姆
+		PossibleSlimes: “可能的宝藏史莱姆：”
+		None: 无
 	}
 
 	GlowBulb: {
-		// DisplayName: Glow Bulb
-		/* Tooltip:
+		DisplayName: 荧光球茎
+		Tooltip:
 			'''
-			Grants immunity to Lepidopterism
-			Increases void regneration speed by 15% when you are in the dark
-			Grants a glow-in-the-dark effect.
-			The glow you generate is ignored for the void regeneration bonus
-			''' */
+			使你免疫恐蛾症
+			在黑暗中时，虚空回复速度提升15%
+			给予你夜光效果
+			自身产生的光芒不会影响虚空回复加成
+			'''
 	}
 }
 
@@ -404,8 +404,8 @@ Buffs: {
 	}
 
 	Lepidopterism: {
-		// DisplayName: Lepidopterism
-		// Description: You are irritated by moth scales, weakening your body!
+		DisplayName: 恐蛾症
+		Description: 你感到蛾鳞钻入了你的肌肤，虚弱正疯狂吞噬你的躯体！
 	}
 }
 
@@ -444,8 +444,8 @@ Toggler: {
 	FlashsparkEffect: 烁花冲刺
 	GravityAnchorEffect: 最小重力
 	TennaEffect: 启示异械战斗音乐
-	// GlowBulbEffect: Glow-in-the-dark Effect
-	// AncientMcGuffinHeader: Ancient McGuffin
+	GlowBulbEffect: 夜光效果
+	AncientMcGuffinHeader: 远古剧情驱动器
 }
 
 ActiveSkills: {
@@ -495,7 +495,7 @@ NPCs.ShopModSwapper.SOTS: 暗影奥秘
 
 Conditions: {
 	ConstructDowned: 击败一个元素构造体后
-	// TreasureSlimeDowned: After defeating any Treasure Slime
+	TreasureSlimeDowned: 击败一个宝藏史莱姆后
 }
 
 TooltipOverride.FlashsparkBoots:
