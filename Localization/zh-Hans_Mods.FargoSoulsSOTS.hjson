@@ -330,17 +330,17 @@ Items: {
 	}
 
 	OldCRTTV: {
-		// DisplayName: Old CRT TV
-		/* Tooltip:
+		DisplayName: 老旧显像管电视机
+		Tooltip:
 			'''
-			Summons the Advisor
-			'IT'S!! TV!! TiME!!!'
-			''' */
+			召唤启示异械
+			“现在是！电！视！时！间！”
+			'''
 	}
 
 	OverloadAdvisor: {
-		// DisplayName: Overloaded TV
-		// Tooltip: Summons an energized Advisor
+		DisplayName: 过载电视机
+		Tooltip: 召唤一只充满活力的启示异械
 	}
 
 	PolarKey: {
@@ -442,8 +442,8 @@ Toggler: {
 	GhostPepperMinionEffect: 鬼魂甜椒
 	HoloEyeMinionEffect: 全息之眼
 	FlashsparkEffect: 烁花冲刺
-	// GravityAnchorEffect: Minimum Gravity
-	// TennaEffect: Special Advisor Boss Music
+	GravityAnchorEffect: 最小重力
+	TennaEffect: 启示异械战斗音乐
 	// GlowBulbEffect: Glow-in-the-dark Effect
 	// AncientMcGuffinHeader: Ancient McGuffin
 }
@@ -509,30 +509,30 @@ TooltipOverride.FlashsparkBoots:
 	'''
 
 NewTooltips: {
-	// HellfireTreads: Leaves a trail of flames in your wake
-	/* FlashsparkBoots:
+	HellfireTreads: 留下一道火焰轨迹
+	FlashsparkBoots:
 		'''
-		Running causes you to blast forward, granting higher speed and acceleration
-		This blast cannot be controlled
-		''' */
-	/* AeolusBoots:
+		奔跑时会让你向前方冲刺，提供更快的的速度和加速度
+		无法控制此冲刺
 		'''
-		The wearer can run even faster on sand and flowers grow on the grass you walk on
-		Increases jump speed and height, allows double jump and auto-jump, and negates fall damage
-		Provides the ability to walk on honey and reduces damage from touching lava
-		''' */
-	// SubspaceDash: Double tap dash while on the ground to blast forward, granting higher speed and acceleration
-	// SOTSSupersonicEffects: Effects of Band of Door, and Shoe Ice
-	/* GravityAnchor:
+	AeolusBoots:
 		'''
-		Prevents you from going under the default gravity
-		Grants immunity to knockback
-		''' */
-	/* GildedBladeWings:
+		穿戴者在沙地上还能跑得更快，且走过的草地上会长出花朵
+		提高跳跃速度和高度，允许二段跳和自动跳跃，并消除掉落伤害
+		允许你在蜂蜜上行走，并减少熔岩的接触伤害
 		'''
-		Press '{0}' to gain fast, multidirectional flight
-		Hold '{1}' to fly slower while in the special flight mode
-		Increases void gain by 3 and void regeneration speed by 25%
-		Doubles damage done to non-Lux spirit enemies
-		''' */
+	SubspaceDash: 在地面上时双击一个方向以冲刺，获得更高的速度与加速度
+	SOTSSupersonicEffects: 门之手环和冰鞋的效果
+	GravityAnchor:
+		'''
+		将你的重力限制在默认值以上
+		使你对击退免疫
+		'''
+	GildedBladeWings:
+		'''
+		按下'{0}'键进行高速的多方向飞行
+		按住'{1}'键可在特殊飞行模式下缓慢飞行
+		增加3点虚空恢复量，并增加25%虚空恢复速度
+		对除了辉光圣魂以外的灵魂敌怪造成双倍伤害
+		'''
 }
