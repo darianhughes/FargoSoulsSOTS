@@ -1,4 +1,4 @@
-本模组是[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo魂 [/url]模组的非官方附属模组，旨在使其与[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] 暗影奥秘 [url]模组兼容并添加联动内容
+本模组是[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo魂 [/url]模组的非官方附属模组，旨在使其与[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] 暗影奥秘 [/url]模组兼容并添加联动内容
 
 v0.1 为困难模式前的流程添加支持内容，本模组会持续维护，并定期推出更新内容。
 
@@ -11,7 +11,7 @@ v0.1 为困难模式前的流程添加支持内容，本模组会持续维护，
 	[*] 合并暗影奥秘饰品的合成树（如靴子、盾牌系列的合成树）到Fargo魂模组的饰品体系中
 	[*] 添加一个合并暗影奥秘与Fargo魂金字塔的开关选项
 	[*] 支持其他Fargo系列的附属模组，例如[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3044249615]灾厄– Fargo魂DLC[/url]
-[list]
+[/list]
 
 如果您对更多类似模组感兴趣，请查看我们团队的一些其他模组：
 [list]
