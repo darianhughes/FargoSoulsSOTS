@@ -1,4 +1,4 @@
-An unofficial addon to the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo's Souls Mod[/url] that makes it compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] Secrets of the Shadows[url].
+An unofficial addon to the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo's Souls Mod[/url] that makes it compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] Secrets of the Shadows[/url].
 
 v0.1 includes support for Pre-Hardmode, and the mod will continue to be worked on and gain regular updates.
 
@@ -11,7 +11,7 @@ Features:
 	[*] Merges Secrets of the Shadows accessories trees such as the boot crafting tree or shield crafting tree with Fargo's Souls Mod accessories
 	[*] A toggle for a Secrets of the Shadows and Fargo's Souls pyramid merge.
 	[*] Includes support for other Fargo's addons such as the Calamity - Fargo's Souls DLC.
-[list]
+[/list]
 
 If your interested in more mods like this, check out some of my team's other mods:
 [list]
