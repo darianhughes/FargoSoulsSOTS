@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using FargowiltasSouls.Content.Bosses.AbomBoss;
 using FargowiltasSouls.Content.Bosses.Champions.Shadow;
+using FargowiltasSouls.Content.Bosses.CursedCoffin;
 using FargowiltasSouls.Content.Bosses.DeviBoss;
 using FargowiltasSouls.Content.Bosses.MutantBoss;
 using FargowiltasSouls.Content.Projectiles.Deathrays;
@@ -20,6 +17,7 @@ namespace FargoSoulsSOTS.Common.NPCChanges
 
         public List<int> voidNPCs =
         [
+            ModContent.NPCType<CursedSpirit>(),
             ModContent.NPCType<DeviBoss>(),
             ModContent.NPCType<ShadowChampion>(),
             ModContent.NPCType<AbomBoss>(),
@@ -43,6 +41,10 @@ namespace FargoSoulsSOTS.Common.NPCChanges
 
         public List<int> voidProjectiles =
         [
+            //Cursed Coffin
+            ModContent.ProjectileType<CoffinDarkSouls>(),
+            ModContent.ProjectileType<CoffinWaveShot>(),
+
             //Deviantt
             ModContent.ProjectileType<DeviEnergyHeart>(),
             ModContent.ProjectileType<DeviDeathray>(),
@@ -53,6 +55,8 @@ namespace FargoSoulsSOTS.Common.NPCChanges
             ModContent.ProjectileType<DeviLightBall2>(),
 
             //Champion of Death
+
+            //Champion of Spirit
 
             //Abominationn
             ModContent.ProjectileType<AbomDeathScythe>(),

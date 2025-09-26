@@ -37,6 +37,9 @@ namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
                 }
             }
 
+            if (Main.LocalPlayer.active && !Main.LocalPlayer.ghost && !Main.LocalPlayer.dead && npc.Distance(Main.LocalPlayer.Center) < 2000)
+                Main.LocalPlayer.AddBuff(ModContent.BuffType<LowGroundBuff>(), 2);
+
             return true;
         }
 

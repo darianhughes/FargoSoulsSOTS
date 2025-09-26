@@ -6,6 +6,9 @@ using SOTS;
 using Terraria.ModLoader;
 using Terraria;
 using SOTS.NPCs.Boss;
+using FargoSoulsSOTS.Content.Buffs.Emode;
+using FargowiltasSouls.Core.Systems;
+using Terraria.ID;
 
 namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
 {
@@ -31,6 +34,14 @@ namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
             }
 
             return true;
+        }
+
+        public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
+        {
+            base.OnHitPlayer(npc, target, hurtInfo);
+
+            target.AddBuff(BuffID.Slimed, 60 * 3);
+            target.AddBuff(ModContent.BuffType<Corrosion>(), (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
         }
     }
 }

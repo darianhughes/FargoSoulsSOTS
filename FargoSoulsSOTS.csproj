@@ -31,6 +31,10 @@
 	    <HintPath>..\ModAssemblies\Luminance_v1.0.12.dll</HintPath>
 	  </Reference>
 
+	  <Reference Include="RevengeancePlus">
+	    <HintPath>..\ModAssemblies\RevengeancePlus_v0.3.dll</HintPath>
+	  </Reference>
+
 	  <Reference Include="SOTS">
 	    <HintPath>..\ModAssemblies\SOTS_v0.25.0.4.dll</HintPath>
 	  </Reference>

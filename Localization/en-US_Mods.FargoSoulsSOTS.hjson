@@ -333,7 +333,7 @@ Items: {
 
 	ExcavationRemote: {
 		DisplayName: Excavation Remote
-		Tooltip: Summons the Excavator in any biome
+		Tooltip: Summons the Excavator when underground in any biome
 	}
 
 	OverloadExcavator: {
@@ -382,6 +382,17 @@ Items: {
 			The glow you generate is ignored for the void regeneration bonus
 			'''
 	}
+
+	JellyJumpers: {
+		DisplayName: Jelly Jumpers
+		Tooltip:
+			'''
+			Grants immunity to Corrosion
+			Increases fall resistance and allows you to auto-jump
+			Hold DOWN to charge a spring jump while on the ground
+			The longer you hold DOWN the higher you will jump, capped at 6 seconds
+			'''
+	}
 }
 
 Buffs: {
@@ -418,6 +429,11 @@ Buffs: {
 	Lepidopterism: {
 		DisplayName: Lepidopterism
 		Description: You are irritated by moth scales, weakening your body!
+	}
+
+	Corrosion: {
+		DisplayName: Corrosion
+		Description: Taking 5% more damage from all sources and damage over time
 	}
 }
 
@@ -458,6 +474,8 @@ Toggler: {
 	TennaEffect: Special Advisor Boss Music
 	GlowBulbEffect: Glow-in-the-dark Effect
 	AncientMcGuffinHeader: Ancient McGuffin
+	JellyJumpersEffect: Spring Jumps
+	GadgetCoatHeader: Gadget Coat
 }
 
 ActiveSkills: {

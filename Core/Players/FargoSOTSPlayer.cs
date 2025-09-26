@@ -1,33 +1,27 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using FargoSoulsSOTS.Common;
-using FargoSoulsSOTS.Common.ItemChanges;
 using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
+using FargoSoulsSOTS.Content.Items.Accessories.Masomode;
 using FargoSoulsSOTS.Content.Projectiles.Masomode;
 using Fargowiltas.NPCs;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Patreon.Volknet.Projectiles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using SOTS;
-using SOTS.Biomes;
-using SOTS.Items;
 using SOTS.Items.Planetarium.FromChests;
-using SOTS.Items.Pyramid;
 using SOTS.Items.Wings;
 using SOTS.NPCs.Boss.Excavator;
 using SOTS.Projectiles.Nature;
 using SOTS.Void;
-using Steamworks;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using static FargoSoulsSOTS.Content.Items.Accessories.Enchantments.ElementalEnchant;
@@ -36,10 +30,17 @@ namespace FargoSoulsSOTS.Core.Players
 {
     public class FargoSOTSPlayer : ModPlayer
     {
+        //Cursed Enchant
         public const float CurseRadius = 420f;
         public const int CurseDuration = 60 * 8;
         public const int KeyStoneLifeTime = CurseDuration + 30;
         public const int LingerTicks = 120;
+
+        //Jelly Jumper Effects
+        private const int TicksPerStage = 90;
+        private const int MaxStages = 4;
+        private const int RocketLoopEveryTicks = 18;
+        private static readonly float[] StageJumpVel = { 0f, 15f, 18f, 21f, 24f };
 
         public int BloomTimeLeft;
         public bool BloomReduced;
@@ -50,8 +51,12 @@ namespace FargoSoulsSOTS.Core.Players
         public int storedCodeBurst;
         public float voidExpended;
         public bool GrayCrescentVoid;
+        public bool debuffCorrosion;
 
         private bool strongCodeBurst = false;
+        private int announcedStage;
+        private int rocketLoopTimer;
+        private int heldDown;
 
         float prevVoid, prevMax, prevMax2;
 
@@ -63,6 +68,11 @@ namespace FargoSoulsSOTS.Core.Players
             }
         }
         public bool hasSpawnedShards = false;
+
+        public override void ResetEffects()
+        {
+            debuffCorrosion = false;
+        }
 
         public override void UpdateEquips()
         {
@@ -86,6 +96,16 @@ namespace FargoSoulsSOTS.Core.Players
                 {
                     sotsPlayer.HoloEyeAttack = false;
                 }
+            }
+        }
+
+        public override void UpdateBadLifeRegen()
+        {
+            if (debuffCorrosion)
+            {
+                if (Player.lifeRegen > 0)
+                    Player.lifeRegen = 0;
+                Player.lifeRegen -= 10;
             }
         }
 
@@ -171,11 +191,91 @@ namespace FargoSoulsSOTS.Core.Players
 
                 Player.pickSpeed *= MathF.Max(0.05f, 1f - bonus);
             }
+
+            if (Player.HasEffect<JellyJumpersEffect>())
+            {
+                if (Player.velocity.Y > 0)
+                {
+                    ResetCharge();
+                }
+
+                if (Player.controlDown && Player.velocity.Y == 0)
+                {
+                    heldDown++;
+                    int stage = Math.Clamp(heldDown / TicksPerStage, 0, MaxStages);
+
+                    if (--rocketLoopTimer < 0 && stage < MaxStages)
+                    {
+                        var rocket = SoundID.Item13 with { PitchVariance = 0.12f, Volume = 0.6f };
+                        SoundEngine.PlaySound(rocket, Player.Center);
+                        rocketLoopTimer = RocketLoopEveryTicks;
+                    }
+
+                    if (stage > 0 && stage != announcedStage)
+                    {
+                        announcedStage = stage;
+
+                        SoundEngine.PlaySound(SoundID.MaxMana with { Volume = 0.8f, PitchVariance = 0.15f }, Player.Center);
+                        SpawnCloudDust(Player, 24 + stage + 6);
+                    }
+                }
+                if (Player.releaseDown)
+                {
+                    if (announcedStage > 0)
+                        PerformChargedJump(announcedStage);
+
+                    ResetCharge();
+                }
+            }
+            else
+            {
+                ResetCharge();
+            }
         }
 
         public override void PostUpdateMiscEffects()
         {
             ForceBiomes();
+        }
+
+        public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
+        {
+            ModifyHitByBoth(ref modifiers);
+        }
+
+        public override void ModifyHitByProjectile(Projectile proj, ref Player.HurtModifiers modifiers)
+        {
+            ModifyHitByBoth(ref modifiers);
+        }
+
+        private void ModifyHitByBoth(ref Player.HurtModifiers modifiers, NPC npc = null, Projectile proj = null)
+        {
+            if (debuffCorrosion)
+            {
+                ref StatModifier local = ref modifiers.SourceDamage;
+                local += 0.05f;
+            }
+        }
+
+        public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+        {
+            if (debuffCorrosion)
+            {
+                if (!Utils.NextBool(Main.rand, 4))
+                {
+                    Dust dust = Dust.NewDustDirect(Player.position - new Vector2(2f, 2f), Player.width, Player.height, DustID.UnholyWater, Player.velocity.X * 0.4f, Player.velocity.Y * 0.4f, 100, new Color(), 1f);
+                    dust.noGravity = true;
+                    Dust dust34 = dust;
+                    dust34.velocity += Vector2.One;
+                    dust.velocity.Y -= 0.5f;
+                    if (Utils.NextBool(Main.rand, 4))
+                    {
+                        dust.noGravity = false;
+                        dust.scale *= 0.5f;
+                    }
+                }
+                Lighting.AddLight(Player.Center, 0.1f, 0.1f, 0.6f);
+            }
         }
 
         void TickVoidTracking(Player Player, VoidPlayer mp)
@@ -383,6 +483,42 @@ namespace FargoSoulsSOTS.Core.Players
                 if (SOTSWorld.AVBiome <= 100)
                     SOTSWorld.AVBiome = 101;
             }
+        }
+
+        private void PerformChargedJump(int stage)
+        {
+            stage = Math.Clamp(stage, 1, MaxStages);
+
+            float v = StageJumpVel[stage];
+
+            float desiredVy = -v;
+            if (Player.velocity.Y > desiredVy)
+                Player.velocity.Y = desiredVy;
+
+            Player.fallStart = (int)(Player.position.Y / 16f);
+
+            SpawnCloudDust(Player, 40 + stage * 12, burst: true);
+        }
+
+        private void SpawnCloudDust(Player p, int count, bool burst = false)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Vector2 pos = p.Center + new Vector2(Main.rand.NextFloat(-16f, 16f), Main.rand.NextFloat(-24f, 8f));
+                Vector2 vel = burst
+                    ? Vector2.UnitY.RotatedByRandom(MathHelper.TwoPi) * Main.rand.NextFloat(0.5f, 3.5f)
+                    : new Vector2(Main.rand.NextFloat(-0.4f, 0.4f), Main.rand.NextFloat(-0.6f, -0.1f));
+
+                int d = Dust.NewDust(pos, 0, 0, DustID.Cloud, vel.X, vel.Y, 150, default, Main.rand.NextFloat(1.0f, 1.6f));
+                Main.dust[d].noGravity = true;
+            }
+        }
+
+        private void ResetCharge()
+        {
+            heldDown = 0;
+            announcedStage = 0;
+            rocketLoopTimer = 0;
         }
     }
 
