@@ -372,14 +372,14 @@ Items: {
 	}
 
 	JellyJumpers: {
-		// DisplayName: Jelly Jumpers
-		/* Tooltip:
+		DisplayName: 果冻弹簧鞋
+		Tooltip:
 			'''
-			Grants immunity to Corrosion
-			Increases fall resistance and allows you to auto-jump
-			Hold DOWN to charge a spring jump while on the ground
-			The longer you hold DOWN the higher you will jump, capped at 6 seconds
-			''' */
+			免疫腐蚀
+			增加坠落抗性并允许自动跳跃
+			在地面时按住下键以进行蓄力弹跳
+			按得越久跳得越高，最多蓄力6秒
+			'''
 	}
 }
 
@@ -420,8 +420,8 @@ Buffs: {
 	}
 
 	Corrosion: {
-		// DisplayName: Corrosion
-		// Description: Taking 5% more damage from all sources and damage over time
+		DisplayName: 腐蚀
+		Description: 受到的所有伤害与持续性伤害提高5%
 	}
 }
 
@@ -462,8 +462,8 @@ Toggler: {
 	TennaEffect: 启示异械战斗音乐
 	GlowBulbEffect: 夜光效果
 	AncientMcGuffinHeader: 远古剧情驱动器
-	// JellyJumpersEffect: Spring Jumps
-	// GadgetCoatHeader: Gadget Coat
+	JellyJumpersEffect: 弹簧跳
+	GadgetCoatHeader: 机巧风衣
 }
 
 ActiveSkills: {
