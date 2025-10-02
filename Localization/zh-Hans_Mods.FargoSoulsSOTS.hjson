@@ -310,8 +310,8 @@ Items: {
 	}
 
 	CursedScroll: {
-		// DisplayName: Cursed Scroll
-		// Tooltip: Summons the Pharaoh's Curse when used in front of the pyramid sarcophagus
+		DisplayName: 诅咒卷轴
+		Tooltip: 在金字塔石棺前使用以召唤法老咒魔
 	}
 
 	OverloadPharoahsCurse: {
@@ -383,13 +383,13 @@ Items: {
 	}
 
 	AnkhoftheCursedRuler: {
-		// DisplayName: Ankh of the Cursed Ruler
-		/* Tooltip:
+		DisplayName: 受诅君王的圣符安卡
+		Tooltip:
 			'''
-			Grants immunity to Pharaoh's Curse & Cursed
-			Increases max void by 50 and void regeneration speed by 5%
-			Taking damage will release a blast of cursed energy that drains health and void from enemies
-			''' */
+			使你免疫法老诅咒减益和诅咒减益
+			最大虚空值提升50，虚空恢复速度提升5%
+			受到伤害时释放一阵可以从敌人身上汲取生命与虚空值的诅咒能量
+			'''
 	}
 }
 
@@ -474,7 +474,7 @@ Toggler: {
 	AncientMcGuffinHeader: 远古剧情驱动器
 	JellyJumpersEffect: 弹簧跳
 	GadgetCoatHeader: 机巧风衣
-	// CursedExplosionEffect: Cursed Explosions
+	CursedExplosionEffect: 诅咒爆炸
 }
 
 ActiveSkills: {
@@ -497,7 +497,7 @@ Projectiles: {
 	KeystoneBolt.DisplayName: 符石飞弹
 	CodeBurst.DisplayName: 不稳定光束
 	SpawnEnemyProjNoLimit.DisplayName: 无限制生成敌对弹幕
-	// CursedExplosion.DisplayName: Cursed Explosion
+	CursedExplosion.DisplayName: 诅咒爆炸
 }
 
 Configs: {
