@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Import Project="..\tModLoader.targets" />
 
@@ -40,7 +40,7 @@
 	  </Reference>
 
 	  <Reference Include="ssm">
-	    <HintPath>..\ModAssemblies\ssm_v1.1.4.5.dll</HintPath>
+	    <HintPath>..\ModAssemblies\ssm_v1.1.4.8.dll</HintPath>
 	  </Reference>
 
 	</ItemGroup>

@@ -309,9 +309,9 @@ Items: {
 		Tooltip: 召唤一只充满活力的腐蚀之粉
 	}
 
-	CursedSarcophagus: {
-		DisplayName: 诅咒石棺
-		Tooltip: 在金字塔石棺前使用以召唤法老咒魔
+	CursedScroll: {
+		// DisplayName: Cursed Scroll
+		// Tooltip: Summons the Pharaoh's Curse when used in front of the pyramid sarcophagus
 	}
 
 	OverloadPharoahsCurse: {
@@ -380,6 +380,16 @@ Items: {
 			在地面时按住下键以进行蓄力弹跳
 			按得越久跳得越高，最多蓄力6秒
 			'''
+	}
+
+	AnkhoftheCursedRuler: {
+		// DisplayName: Ankh of the Cursed Ruler
+		/* Tooltip:
+			'''
+			Grants immunity to Pharaoh's Curse & Cursed
+			Increases max void by 50 and void regeneration speed by 5%
+			Taking damage will release a blast of cursed energy that drains health and void from enemies
+			''' */
 	}
 }
 
@@ -464,6 +474,7 @@ Toggler: {
 	AncientMcGuffinHeader: 远古剧情驱动器
 	JellyJumpersEffect: 弹簧跳
 	GadgetCoatHeader: 机巧风衣
+	// CursedExplosionEffect: Cursed Explosions
 }
 
 ActiveSkills: {
@@ -486,6 +497,7 @@ Projectiles: {
 	KeystoneBolt.DisplayName: 符石飞弹
 	CodeBurst.DisplayName: 不稳定光束
 	SpawnEnemyProjNoLimit.DisplayName: 无限制生成敌对弹幕
+	// CursedExplosion.DisplayName: Cursed Explosion
 }
 
 Configs: {

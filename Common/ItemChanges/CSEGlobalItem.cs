@@ -1,9 +1,18 @@
 ﻿using System.Collections.Generic;
 using FargoSoulsSOTS.Content.Items.Accessories.Forces;
+using SOTS.Items.DoorItems;
+using SOTS;
 using ssm.Content.Items.Accessories;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using Terraria.ID;
+using FargowiltasSouls.Content.Items.Accessories.Souls;
+using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
+using SOTS.Items.Wings;
+using SOTS.Void;
+using Microsoft.Xna.Framework;
 
 namespace FargoSoulsSOTS.Common.ItemChanges
 {
@@ -18,6 +27,11 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
+            Mod sots = ModLoader.GetMod("SOTS");
+            DoorPlayer dp = player.GetModPlayer<DoorPlayer>();
+            SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+            VoidPlayer voidPlayer = VoidPlayer.ModPlayer(player);
+
             if (item.type == ModContent.ItemType<MicroverseSoul>())
             {
                 if (FargoSOTSConfig.Instance.UnfinishedContent)
@@ -31,11 +45,10 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                 }
             }
 
-            /*
             if (item.type == ModContent.ItemType<StargateSoul>())
             {
                 ++dp.doorPants;
- 
+
                 if (player.AddEffect<FlashsparkEffect>(item))
                 {
                     ModItem sb = sots.Find<ModItem>("SubspaceBoosters");
@@ -54,6 +67,19 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                     player.accRunSpeed = player.HasEffect<RunSpeed>() ? 15.6f : 6.75f;
                 }
 
+                voidPlayer.bonusVoidGain += 3f;
+                voidPlayer.voidRegenSpeed += 0.25f;
+                sotsPlayer.SpiritSymphony = true;
+                MachinaBoosterPlayer modPlayer = player.GetModPlayer<MachinaBoosterPlayer>();
+                int num;
+                bool flag = (num = 1) != 0;
+                modPlayer.CreativeFlightTier2 = num != 0;
+                modPlayer.canCreativeFlight = flag;
+
+                player.AddEffect<GravityAnchorEffect>(item);
+
+                player.AddEffect<EarthenEffect>(item);
+
                 if (FargoSOTSConfig.Instance.UnfinishedContent)
                 {
                     ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
@@ -64,7 +90,6 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                     ModContent.GetInstance<VoidForce>().UpdateAccessory(player, hideVisual);
                 }
             }
-            */
         }
 
         public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip)
@@ -98,13 +123,19 @@ namespace FargoSoulsSOTS.Common.ItemChanges
         {
             if (item.type == ModContent.ItemType<MicroverseSoul>())
             {
-                tooltips[3].Text += ", ";
-                tooltips[3].Text += Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName");
+                for (int i = 0; i < tooltips.Count; i++)
+                {
+                    if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.Contains("Tooltip0"))
+                    {
+                        tooltips[i].Text = $"{Language.GetTextValue("Mods.FargowiltasSouls.ActiveSkills.GrantsSkillsPlural")} {Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName")}";
+                        tooltips[i].OverrideColor = Color.Lerp(Color.Blue, Color.LightBlue, 0.7f);
+                    }
+                }
 
                 if (FargoSOTSConfig.Instance.UnfinishedContent)
                 {
                     AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.ChaosForce.SoulTooltip"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.SpcaeForce.SoulTooltip"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.SpaceForce.SoulTooltip"));
                 }
                 else
                 {

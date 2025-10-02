@@ -6,6 +6,8 @@ using SOTS;
 using Terraria.ModLoader;
 using Terraria;
 using SOTS.NPCs.Boss.Curse;
+using FargowiltasSouls.Core.Systems;
+using Terraria.ID;
 
 namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
 {
@@ -24,13 +26,23 @@ namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
                 if (!player.dead)
                 {
                     if (!SOTSWorld.downedCurse && FargoSoulsUtil.HostCheck)
-                        Item.NewItem(npc.GetSource_Loot(), player.Hitbox, ModContent.ItemType<CursedSarcophagus>());
+                        Item.NewItem(npc.GetSource_Loot(), player.Hitbox, ModContent.ItemType<CursedScroll>());
 
                     DroppedSummon = true;
                 }
             }
 
             return true;
+        }
+
+        public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
+        {
+            base.OnHitPlayer(npc, target, hurtInfo);
+
+            if (WorldSavingSystem.MasochistModeReal)
+            {
+                target.AddBuff(BuffID.Blackout, 60 * 3);
+            }
         }
     }
 }

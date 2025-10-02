@@ -253,7 +253,7 @@ Items: {
 	}
 
 	OverloadGlowmoth: {
-		DisplayName: Infected Candle
+		DisplayName: Glow Lantern
 		Tooltip: Summons an energized Glowmoth
 	}
 
@@ -321,8 +321,8 @@ Items: {
 		Tooltip: Summons an energized Putrid Pinky
 	}
 
-	CursedSarcophagus: {
-		DisplayName: Cursed Sarcophagus
+	CursedScroll: {
+		DisplayName: Cursed Scroll
 		Tooltip: Summons the Pharaoh's Curse when used in front of the pyramid sarcophagus
 	}
 
@@ -378,7 +378,7 @@ Items: {
 			'''
 			Grants immunity to Lepidopterism
 			Increases void regneration speed by 15% when you are in the dark
-			Grants a glow-in-the-dark effect.
+			Grants a glow-in-the-dark effect
 			The glow you generate is ignored for the void regeneration bonus
 			'''
 	}
@@ -390,7 +390,17 @@ Items: {
 			Grants immunity to Corrosion
 			Increases fall resistance and allows you to auto-jump
 			Hold DOWN to charge a spring jump while on the ground
-			The longer you hold DOWN the higher you will jump, capped at 6 seconds
+			The longer you hold DOWN, the higher you will jump, capped at 6 seconds
+			'''
+	}
+
+	AnkhoftheCursedRuler: {
+		DisplayName: Ankh of the Cursed Ruler
+		Tooltip:
+			'''
+			Grants immunity to Pharaoh's Curse & Cursed
+			Increases max void by 50 and void regeneration speed by 5%
+			Taking damage will release a blast of cursed energy that drains health and void from enemies
 			'''
 	}
 }
@@ -476,6 +486,7 @@ Toggler: {
 	AncientMcGuffinHeader: Ancient McGuffin
 	JellyJumpersEffect: Spring Jumps
 	GadgetCoatHeader: Gadget Coat
+	CursedExplosionEffect: Cursed Explosions
 }
 
 ActiveSkills: {
@@ -498,6 +509,7 @@ Projectiles: {
 	KeystoneBolt.DisplayName: Keystone Bolt
 	CodeBurst.DisplayName: Code Burst
 	SpawnEnemyProjNoLimit.DisplayName: Spawn Enemy Proj No Limit
+	CursedExplosion.DisplayName: Cursed Explosion
 }
 
 Configs: {
@@ -506,7 +518,7 @@ Configs: {
 
 		UnfinishedContent: {
 			Label: Unfinished Content
-			Tooltip: Toggles the loading of uunfinised content.
+			Tooltip: Toggles the loading of unfinised content.
 		}
 	}
 

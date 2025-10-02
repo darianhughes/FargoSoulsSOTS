@@ -67,7 +67,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
                     Cooldown = 60 * 40; 
                 if (FargoSOTSPlayer.ChaosCharge < Cooldown)
                     FargoSOTSPlayer.ChaosCharge++;
-                CooldownBarManager.Activate("ChaosTeleport", ModContent.Request<Texture2D>("FargoSoulsSOTS/Content/Items/ForceofSecrets/ElementalEnchant").Value, new(116, 122, 159),
+                CooldownBarManager.Activate("ChaosTeleport", ModContent.Request<Texture2D>("FargoSoulsSOTS/Content/Items/Accessories/Enchantments/ElementalEnchant").Value, new(116, 122, 159),
                     () => (float)FargoSOTSPlayer.ChaosCharge / Cooldown, true, activeFunction: player.HasEffect<ChaosTeleport>);
             }
         }

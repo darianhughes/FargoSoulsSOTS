@@ -5,6 +5,7 @@ using FargowiltasSouls.Core.Systems;
 using Terraria.ID;
 using Terraria;
 using FargoSoulsSOTS.Content.Buffs.Emode;
+using SOTS.Projectiles.Pyramid;
 
 namespace FargoSoulsSOTS.Common.ProjectileChanges
 {
@@ -32,6 +33,12 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
             ModContent.ProjectileType<PinkSplat>()
         ];
 
+        public List<int> pharoahMasoDebuffProjectile =
+        [
+            ModContent.ProjectileType<CurseShockwave>(),
+            ModContent.ProjectileType<CurseSpear>()
+        ];
+
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
         {
             if (slimedDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
@@ -42,6 +49,11 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
             if (putridEmodeDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
             {
                 target.AddBuff(ModContent.BuffType<Corrosion>(), (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
+            }
+
+            if (pharoahMasoDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.MasochistModeReal)
+            {
+                target.AddBuff(BuffID.Blackout, 60 * 3);
             }
         }
     }

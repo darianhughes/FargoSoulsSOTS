@@ -8,12 +8,13 @@ using FargoSoulsSOTS.Content.Projectiles;
 
 namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
 {
-    public class CursedSarcophagus : ModItem
+    [LegacyName("CursedSarcophagus")]
+    public class CursedScroll : ModItem
     {
         //Unlike other bosses, the Pharoah's Curse MUST be summoned at the Sarcophagus for the fight to work properly. This makes it weird for mutant alt summons, but this is a good alteranitve that will allow us to do overloaded summons too.
         //Ironically, Revengence+ Boss Rush has a very similar issue, but that isn't something we have to worry about here.
 
-        public override string Texture => "SOTS/Items/Pyramid/Sarcophagus";
+        //public override string Texture => "SOTS/Items/Pyramid/Sarcophagus";
 
         private const int SearchRangeTiles = 3;
 

@@ -11,11 +11,17 @@ using SOTS.Items.Nature;
 using SOTS.Items.Conduit;
 using SOTS.Items.Earth;
 using SOTS.Items.Pyramid;
+using Fargowiltas.Common.Configs;
 
 namespace FargoSoulsSOTS.Core.Systems.Recipes.QoL
 {
     public class BannerRecipes : ModSystem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return FargoServerConfig.Instance.BannerRecipes;
+        }
+
         public override void AddRecipes()
         {
             Recipe.Create(ModContent.ItemType<PintOPunch>())

@@ -9,7 +9,6 @@ Features:
 	[*] Adds Fargo's Mutant quality of life support such as banner recipes & alternate summons for Secrets of the Shadows bosses.
 	[*] Eternity Debuffs & AI changes for Secrets of the Shadow's bosses
 	[*] Merges Secrets of the Shadows accessories trees such as the boot crafting tree or shield crafting tree with Fargo's Souls Mod accessories
-	[*] A toggle for a Secrets of the Shadows and Fargo's Souls pyramid merge.
 	[*] Includes support for other Fargo's addons such as the Calamity - Fargo's Souls DLC.
 [/list]
 
@@ -31,5 +30,5 @@ Special thanks to the Fargo's Souls & Secrets of the Shadows teams for their mod
 Some of the code in this mod is reused or refactored from the orignial Secrets of the Shadows codebase as well some code from many of the Fargo Team projects. Make sure to show each of thier indivutual teams some support! 
 
 Coding: Akira, Ropro0923
-Sprites: ma3allim, cheesenuggets
+Sprites: ma3allim, cheesenuggets, Dandel
 Localization: Pudd1ng (Simplified Chinese)

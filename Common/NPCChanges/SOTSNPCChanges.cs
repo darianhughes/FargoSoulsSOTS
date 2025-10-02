@@ -265,10 +265,12 @@ namespace FargoSoulsSOTS.Common.NPCChanges
             }
             if (npc.type == ModContent.NPCType<PutridPinkyPhase2>())
             {
+                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<JellyJumpers>()));
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.IronCrate, 5));
             }
             if (npc.type == ModContent.NPCType<PharaohsCurse>())
             {
+                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<AnkhoftheCursedRuler>()));
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<PyramidCrate>(), 5));
             }
             if (npc.type == ModContent.NPCType<Excavator>())

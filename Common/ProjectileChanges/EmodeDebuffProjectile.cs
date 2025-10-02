@@ -4,11 +4,13 @@ using FargowiltasSouls.Content.Bosses.DeviBoss;
 using FargowiltasSouls.Core.Systems;
 using SOTS.NPCs;
 using SOTS.NPCs.Boss;
+using SOTS.NPCs.Boss.Curse;
 using SOTS.NPCs.TreasureSlimes;
 using SOTS.Projectiles;
 using SOTS.Projectiles.Earth.Glowmoth;
 using SOTS.Projectiles.Laser;
 using SOTS.Projectiles.Minions;
+using SOTS.Projectiles.Pyramid;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -54,6 +56,12 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
             ModContent.ProjectileType<SOTS.Projectiles.Minions.FluxSlimeBall>(),
         ];
 
+        public List<int> pharoahMasoDebuffProjectile = 
+        [
+            ModContent.ProjectileType<CurseWave>(),
+            ModContent.ProjectileType<ShadeSpear>(),
+        ];
+
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
         {
             if (slimedDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
@@ -75,6 +83,11 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
             if (putridEmodeDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
             {
                 target.AddBuff(ModContent.BuffType<Corrosion>(), (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
+            }
+
+            if (pharoahMasoDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.MasochistModeReal)
+            {
+                target.AddBuff(BuffID.Blackout, 60 * 3);
             }
         }
     }
@@ -104,6 +117,11 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
             ModContent.NPCType<MutagenTreasureSlime>(),
         ];
 
+        public List<int> pharohMasoDebuffNPC =
+        [
+            ModContent.NPCType<SmallGas>(),
+        ];
+
         public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
         {
             if (slimedDebuffNPC.Contains(npc.type) && WorldSavingSystem.EternityMode)
@@ -111,6 +129,9 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
 
             if (putridEmodDebuffNPC.Contains(npc.type) && WorldSavingSystem.EternityMode)
                 target.AddBuff(ModContent.BuffType<Corrosion>(), (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
+
+            if (pharohMasoDebuffNPC.Contains(npc.type) && WorldSavingSystem.MasochistModeReal)
+                target.AddBuff(BuffID.Blackout, 60 * 3);
         }
     }
 }

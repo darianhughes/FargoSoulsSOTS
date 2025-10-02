@@ -8,7 +8,7 @@ namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons
 {
     public class OverloadGlowmoth : SwarmSummonBase
     {
-        public override string Texture => "SOTS/Items/Earth/Glowmoth/SuspiciousLookingCandle";
+        //public override string Texture => "SOTS/Items/Earth/Glowmoth/SuspiciousLookingCandle";
 
         public OverloadGlowmoth() : base(ModContent.NPCType<Glowmoth>(), nameof(OverloadGlowmoth), 50, "GlowingNylonCandle")
         {

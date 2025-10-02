@@ -1,4 +1,5 @@
-﻿using SOTS.Items;
+﻿using Fargowiltas.Common.Configs;
+using SOTS.Items;
 using SOTS.Items.AbandonedVillage;
 using SOTS.Items.Banners;
 using SOTS.Items.Crushers;
@@ -14,6 +15,11 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes.QoL
 {
     public class TreasureBagRecipes : ModSystem
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return FargoServerConfig.Instance.BannerRecipes;
+        }
+
         public override void AddRecipes()
         {
             int[] glowmothItems =
