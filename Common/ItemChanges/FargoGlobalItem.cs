@@ -9,6 +9,7 @@ using SOTS;
 using SOTS.Items;
 using SOTS.Items.DoorItems;
 using SOTS.Items.Planetarium;
+using SOTS.Items.Planetarium.FromChests;
 using SOTS.Items.Wings;
 using SOTS.Void;
 using Terraria;
@@ -71,8 +72,14 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                 player.noKnockback = true;
             }
 
+            if (item.type == ModContent.ItemType<TrawlerSoul>())
+            {
+                player.AddEffect<TwilightFishingEffect>(item);
+            }
+
             if (item.type == ModContent.ItemType<DimensionSoul>())
             {
+                //Supersonic
                 ++dp.doorPants;
 
                 if (player.AddEffect<FlashsparkEffect>(item))
@@ -93,6 +100,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                     player.accRunSpeed = player.HasEffect<RunSpeed>() ? 15.6f : 6.75f;
                 }
 
+                //Flight Mastery
                 voidPlayer.bonusVoidGain += 3f;
                 voidPlayer.voidRegenSpeed += 0.25f;
                 sotsPlayer.SpiritSymphony = true;
@@ -104,6 +112,10 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
                 player.AddEffect<GravityAnchorEffect>(item);
 
+                //Trawler
+                player.AddEffect<TwilightFishingEffect>(item);
+
+                //World Shaper
                 player.AddEffect<EarthenEffect>(item);
             }
 
@@ -125,6 +137,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
             if (item.type == ModContent.ItemType<EternitySoul>())
             {
+                //Supersonic 
                 ++dp.doorPants;
 
                 if (player.AddEffect<FlashsparkEffect>(item))
@@ -145,6 +158,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                     player.accRunSpeed = player.HasEffect<RunSpeed>() ? 15.6f : 6.75f;
                 }
 
+                //Flight Mastery
                 voidPlayer.bonusVoidGain += 3f;
                 voidPlayer.voidRegenSpeed += 0.25f;
                 sotsPlayer.SpiritSymphony = true;
@@ -156,8 +170,13 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
                 player.AddEffect<GravityAnchorEffect>(item);
 
+                //Trawler
+                player.AddEffect<TwilightFishingEffect>(item);
+
+                //World Shaper
                 player.AddEffect<EarthenEffect>(item);
 
+                //Terraria Soul
                 if (FargoSOTSConfig.Instance.UnfinishedContent)
                 {
                     ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
@@ -229,9 +248,14 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                             if (enumerator.MoveNext())
                                 str2 = enumerator.Current;
                         }
-                        tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GildedBladeWings", (object)str1, (object)str2)}";
+                        tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GildedBladeWings", str1, str2)}";
                     }
                 }
+            }
+
+            if (item.type == ModContent.ItemType<TrawlerSoul>())
+            {
+                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.TwilightFishing"));
             }
 
             if (item.type == ModContent.ItemType<DimensionSoul>())
@@ -257,6 +281,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                 }
                 AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SOTSSupersonicEffects"));
                 AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SubspaceDash"));
+                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.TwilightFishing"));
                 AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.EarthenEnchant.SimpleTooltip"));
             }
 
@@ -294,5 +319,11 @@ namespace FargoSoulsSOTS.Common.ItemChanges
             if (player.gravity < Player.defaultGravity)
                 player.gravity = Player.defaultGravity;
         }
+    }
+
+    public class TwilightFishingEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<TrawlerHeader>();
+        public override int ToggleItemType => ModContent.ItemType<TwilightFishingPole>();
     }
 }

@@ -9,8 +9,10 @@ using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Weapons.Misc;
 using SOTS.Items;
 using SOTS.Items.DoorItems;
+using SOTS.Items.Fishing;
 using SOTS.Items.Permafrost;
 using SOTS.Items.Planetarium;
+using SOTS.Items.Planetarium.FromChests;
 using SOTS.Items.Pyramid;
 using SOTS.Items.Slime;
 using SOTS.Items.Wings;
@@ -91,6 +93,13 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes
                 if (recipe.HasResult<WorldShaperSoul>())
                 {
                     recipe.AddIngredient<EarthenEnchant>();
+                }
+
+                if (recipe.HasResult<TrawlerSoul>())
+                {
+                    recipe.AddIngredient<TwilightFishingPole>();
+                    recipe.AddIngredient<ZephyrousZeppelin>();
+                    recipe.AddIngredient<LuckyPurpleBalloon>();
                 }
 
                 if (recipe.HasResult<FlightMasterySoul>())

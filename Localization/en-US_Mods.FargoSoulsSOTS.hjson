@@ -403,6 +403,16 @@ Items: {
 			Taking damage will release a blast of cursed energy that drains health and void from enemies
 			'''
 	}
+
+	DrillCap: {
+		DisplayName: Drill Cap
+		Tooltip:
+			'''
+			Grants immunity to Low Ground & Grounded
+			Grants a drill mounted on your head that can break blocks above you
+			The drill scales with the item with the highest pickaxe power in your inventory
+			'''
+	}
 }
 
 Buffs: {
@@ -487,6 +497,8 @@ Toggler: {
 	JellyJumpersEffect: Spring Jumps
 	GadgetCoatHeader: Gadget Coat
 	CursedExplosionEffect: Cursed Explosions
+	DrillCapEffect: Drill Cap
+	TwilightFishingEffect: Unrestricted Planetarium Crates
 }
 
 ActiveSkills: {
@@ -577,4 +589,5 @@ NewTooltips: {
 		Increases void gain by 3 and void regeneration speed by 25%
 		Doubles damage done to non-Lux spirit enemies
 		'''
+	TwilightFishing: "[i:SOTS/TwilightFishingPole] Allows the catching of Planetarium Crates anywhere"
 }

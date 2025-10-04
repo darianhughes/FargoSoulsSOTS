@@ -47,6 +47,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
             if (item.type == ModContent.ItemType<StargateSoul>())
             {
+                //Supersonic
                 ++dp.doorPants;
 
                 if (player.AddEffect<FlashsparkEffect>(item))
@@ -67,6 +68,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                     player.accRunSpeed = player.HasEffect<RunSpeed>() ? 15.6f : 6.75f;
                 }
 
+                //Flight Mastery
                 voidPlayer.bonusVoidGain += 3f;
                 voidPlayer.voidRegenSpeed += 0.25f;
                 sotsPlayer.SpiritSymphony = true;
@@ -78,8 +80,13 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
                 player.AddEffect<GravityAnchorEffect>(item);
 
+                //Trawler
+                player.AddEffect<TwilightFishingEffect>(item);
+
+                //World Shapter
                 player.AddEffect<EarthenEffect>(item);
 
+                //Microverse Soul
                 if (FargoSOTSConfig.Instance.UnfinishedContent)
                 {
                     ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);

@@ -13,7 +13,7 @@ using SOTS;
 using SOTS.NPCs.Boss.Excavator;
 using Microsoft.Xna.Framework;
 
-namespace FargoSoulsSOTS.Core.Systems.Hooks
+namespace FargoSoulsSOTS.Core.Systems.Hooks.SOTS
 {
     public class NoExcavatorDespawnHook : ModSystem
     {
@@ -90,7 +90,7 @@ namespace FargoSoulsSOTS.Core.Systems.Hooks
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
             if (mi == null) return;
 
-            _hook = new Hook(mi, (Func<object, bool>)PatchedDespawnCheck);
+            _hook = new Hook(mi, PatchedDespawnCheck);
         }
 
         public override void Unload()

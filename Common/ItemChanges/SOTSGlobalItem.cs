@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FargoSoulsSOTS.Core.SoulToggles;
+using Fargowiltas;
 using FargowiltasSouls.Content.Items.Accessories.Masomode;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
@@ -21,6 +22,14 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 {
     public class SOTSGlobalItem : GlobalItem
     {
+        public override void SetDefaults(Item item)
+        {
+            if (item.type == ModContent.ItemType<SubspaceBoosters>())
+            {
+                //FargoSets.Items.SquirrelSellsDirectly[item.type] = true;
+            }
+        }
+
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
             if (item.type == ModContent.ItemType<FlashsparkBoots>() && ItemConfig.Instance.FlashsparkBootsRework)

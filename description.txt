@@ -12,7 +12,7 @@ Features:
 
 If you run into any issues, have any suggestions, or want to report a bug please join the Discord server linked on the Steam Workshop page.
 
-Special thanks to the Fargo's Souls & Secrets of the Shadows teams for thier mods, as well as N0t_UNowen for some of the eternity debuff code.
+Special thanks to Terrynmuse, Fargowilta, Javyz, tomat, Lucille Karma, VortexOfRainbows, apotofkoolaid, Heart Plus Up!, & N0t_UNowen for their mods!
 
 Some of the code in this mod is reused or refactored from the orignial Secrets of the Shadows codebase as well some code from many of the Fargo Team projects. Make sure to show each of thier indivutual teams some support! 
 

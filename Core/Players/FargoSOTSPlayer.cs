@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FargoSoulsSOTS.Common;
+using FargoSoulsSOTS.Common.ItemChanges;
 using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 using FargoSoulsSOTS.Content.Items.Accessories.Masomode;
@@ -14,6 +15,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using SOTS;
+using SOTS.Items.Fishing;
 using SOTS.Items.Planetarium.FromChests;
 using SOTS.Items.Wings;
 using SOTS.NPCs.Boss.Excavator;
@@ -52,6 +54,8 @@ namespace FargoSoulsSOTS.Core.Players
         public float voidExpended;
         public bool GrayCrescentVoid;
         public bool debuffCorrosion;
+        public bool DrillCapEquipped;
+        public bool DrillCapVisible;
 
         private bool strongCodeBurst = false;
         private int announcedStage;
@@ -72,6 +76,8 @@ namespace FargoSoulsSOTS.Core.Players
         public override void ResetEffects()
         {
             debuffCorrosion = false;
+            DrillCapEquipped = false;
+            DrillCapVisible = false;
         }
 
         public override void UpdateEquips()
@@ -255,6 +261,19 @@ namespace FargoSoulsSOTS.Core.Players
                 ref StatModifier local = ref modifiers.SourceDamage;
                 local += 0.05f;
             }
+        }
+
+        public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
+        {
+            int power = (attempt.playerFishingConditions).BaitPower + (attempt.playerFishingConditions).PolePower;
+            bool flag = Player.HasBuff(123);
+            if (Player.HasEffect<TwilightFishingEffect>() && SOTSPlayer.ScaleCatch2(power, 0, 100, flag ? 8 : 16, flag ? 80 : 160))
+            {
+                itemDrop = Main.hardMode
+                    ? ModContent.ItemType<OtherworldCrate>()
+                    : ModContent.ItemType<PlanetariumCrate>();
+            }
+
         }
 
         public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)

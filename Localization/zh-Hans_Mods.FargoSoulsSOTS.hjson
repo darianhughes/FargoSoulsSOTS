@@ -391,6 +391,16 @@ Items: {
 			Taking damage will release a blast of cursed energy that drains health and void from enemies
 			''' */
 	}
+
+	DrillCap: {
+		// DisplayName: Drill Cap
+		/* Tooltip:
+			'''
+			Grants immunity to Low Ground & Grounded
+			Grants a drill mounted on your head that can break blocks above you
+			The drill scales with the item with the highest pickaxe power in your inventory
+			''' */
+	}
 }
 
 Buffs: {
@@ -475,6 +485,8 @@ Toggler: {
 	JellyJumpersEffect: 弹簧跳
 	GadgetCoatHeader: 机巧风衣
 	// CursedExplosionEffect: Cursed Explosions
+	// DrillCapEffect: Drill Cap
+	// TwilightFishingEffect: Unrestricted Planetarium Crates
 }
 
 ActiveSkills: {
@@ -565,4 +577,5 @@ NewTooltips: {
 		增加3点虚空恢复量，并增加25%虚空恢复速度
 		对除了辉光圣魂以外的灵魂敌怪造成双倍伤害
 		'''
+	// TwilightFishing: "[i:SOTS/TwilightFishingPole] Allows the catching of Planetarium Crates anywhere"
 }

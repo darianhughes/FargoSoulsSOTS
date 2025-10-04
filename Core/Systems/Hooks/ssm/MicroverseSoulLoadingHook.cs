@@ -3,7 +3,7 @@ using System.Reflection;
 using MonoMod.RuntimeDetour;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Core.Systems.Hooks
+namespace FargoSoulsSOTS.Core.Systems.Hooks.ssm
 {
     public class MicroverseSoulLoadingHook : ModSystem
     {
@@ -31,7 +31,7 @@ namespace FargoSoulsSOTS.Core.Systems.Hooks
             if (target is null)
                 return;
 
-            _hook = new Hook(target, (Func<Func<object, Mod, bool>, object, Mod, bool>)Detour);
+            _hook = new Hook(target, Detour);
         }
 
         public override void Unload()

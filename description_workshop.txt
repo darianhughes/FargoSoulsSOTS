@@ -23,12 +23,16 @@ If your interested in more mods like this, check out some of my team's other mod
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3503267205] Permafrost Keep Quest Skipper[/url]
 [/list]
 
-If you want to support the development team, see our Patreon page: https://www.patreon.com/c/InfernalEclipseofRagnarokTeam
+If you have issues please report them in the [url=https://discord.gg/tc5nZdRvaU] Discord server[/url]. 
 
-Special thanks to the Fargo's Souls & Secrets of the Shadows teams for their mods, as well as [url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen[/url] for some of the eternity debuff code.
+You can also check out the official wiki for our mods: https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok
 
-Some of the code in this mod is reused or refactored from the orignial Secrets of the Shadows codebase as well some code from many of the Fargo Team projects. Make sure to show each of thier indivutual teams some support! 
+If you want to support the development team, see our pateron page: https://www.patreon.com/c/InfernalEclipseofRagnarokTeam
+
+Special thanks to Terrynmuse, Fargowilta, Javyz, tomat, Lucille Karma, VortexOfRainbows, apotofkoolaid, Heart Plus Up!, & N0t_UNowen for their mods!
 
 Coding: Akira, Ropro0923
 Sprites: ma3allim, cheesenuggets, Dandel
 Localization: Pudd1ng (Simplified Chinese)
+
+Some of the code in this mod is reused or refactored from the orignial Secrets of the Shadows codebase as well some code from many of the Fargo Team projects. Make sure to show each of thier individual teams some support! 

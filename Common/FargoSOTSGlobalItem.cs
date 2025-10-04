@@ -1,16 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
 using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
 using FargoSoulsSOTS.Content.Projectiles.Masomode;
 using FargoSoulsSOTS.Core.Players;
+using Fargowiltas.Common.Configs;
+using Fargowiltas.NPCs;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.UI;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
+using Microsoft.VisualBasic;
 using Microsoft.Xna.Framework;
+using SOTS.Items;
 using SOTS.Projectiles.Earth;
 using SOTS.Void;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Common
@@ -152,6 +158,29 @@ namespace FargoSoulsSOTS.Common
                 fargoSOTSPlayer.BloomReduced = true;
 
             return base.UseItem(item, player);
+        }
+
+        public class ShopTooltip
+        {
+            public List<int> NpcItemIDs = new();
+            public List<string> NpcNames = new();
+            public string Condition;
+        }
+        static string ExpandedTooltipLoc(string line) => Language.GetTextValue($"Mods.Fargowiltas.ExpandedTooltips.{line}");
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            var fargoServerConfig = FargoServerConfig.Instance;
+
+            if (FargoClientConfig.Instance.ExpandedTooltips)
+            {
+                TooltipLine line;
+
+                if (item.type == ModContent.ItemType<SubspaceBoosters>())
+                {
+                    line = new TooltipLine(Mod, "TooltipSquirrel", $"[i:Fargowiltas/Squirrel] [c/AAAAAA:{ExpandedTooltipLoc("CraftableMaterialsSold")}]");
+                    tooltips.Add(line);
+                }
+            }
         }
 
         private static bool IsWeapon(Item item)
