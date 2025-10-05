@@ -40,9 +40,8 @@ namespace FargoSoulsSOTS.Core.Players
 
         //Jelly Jumper Effects
         private const int TicksPerStage = 90;
-        private const int MaxStages = 4;
         private const int RocketLoopEveryTicks = 18;
-        private static readonly float[] StageJumpVel = { 0f, 15f, 18f, 21f, 24f };
+        private static readonly float[] StageJumpVel = { 0f, 15f, 18f, 21f, 24f, 27f, 30f };
 
         public int BloomTimeLeft;
         public bool BloomReduced;
@@ -54,13 +53,13 @@ namespace FargoSoulsSOTS.Core.Players
         public float voidExpended;
         public bool GrayCrescentVoid;
         public bool debuffCorrosion;
-        public bool DrillCapEquipped;
-        public bool DrillCapVisible;
+        public bool GadgetCoat;
 
         private bool strongCodeBurst = false;
         private int announcedStage;
         private int rocketLoopTimer;
         private int heldDown;
+        private int MaxStages;
 
         float prevVoid, prevMax, prevMax2;
 
@@ -76,8 +75,7 @@ namespace FargoSoulsSOTS.Core.Players
         public override void ResetEffects()
         {
             debuffCorrosion = false;
-            DrillCapEquipped = false;
-            DrillCapVisible = false;
+            GadgetCoat = false;
         }
 
         public override void UpdateEquips()
@@ -208,6 +206,7 @@ namespace FargoSoulsSOTS.Core.Players
                 if (Player.controlDown && Player.velocity.Y == 0)
                 {
                     heldDown++;
+                    MaxStages = GadgetCoat ? 6 : 4;
                     int stage = Math.Clamp(heldDown / TicksPerStage, 0, MaxStages);
 
                     if (--rocketLoopTimer < 0 && stage < MaxStages)

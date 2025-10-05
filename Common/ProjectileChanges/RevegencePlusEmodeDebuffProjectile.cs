@@ -39,6 +39,11 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
             ModContent.ProjectileType<CurseSpear>()
         ];
 
+        public List<int> advisorEmodeDebuffProjectile =
+        [
+            ModContent.ProjectileType<LesserPhaseBolt>(),
+        ];
+
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
         {
             if (slimedDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
@@ -54,6 +59,11 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
             if (pharoahMasoDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.MasochistModeReal)
             {
                 target.AddBuff(BuffID.Blackout, 60 * 3);
+            }
+
+            if (advisorEmodeDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
+            {
+                target.AddBuff(BuffID.Electrified, (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
             }
         }
     }

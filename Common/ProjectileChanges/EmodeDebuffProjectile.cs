@@ -10,6 +10,7 @@ using SOTS.Projectiles;
 using SOTS.Projectiles.Earth.Glowmoth;
 using SOTS.Projectiles.Laser;
 using SOTS.Projectiles.Minions;
+using SOTS.Projectiles.Planetarium;
 using SOTS.Projectiles.Pyramid;
 using Terraria;
 using Terraria.ID;
@@ -62,6 +63,14 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
             ModContent.ProjectileType<ShadeSpear>(),
         ];
 
+        public List<int> advisorEmodeDebuffProjectile =
+        [
+            ModContent.ProjectileType<PhaseSpear>(),
+            ModContent.ProjectileType<OtherworldlyTracer>(),
+            ModContent.ProjectileType<OtherworldlyBall>(),
+            ModContent.ProjectileType<ThunderColumnFast>(),
+        ];
+
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
         {
             if (slimedDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
@@ -88,6 +97,11 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
             if (pharoahMasoDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.MasochistModeReal)
             {
                 target.AddBuff(BuffID.Blackout, 60 * 3);
+            }
+
+            if (advisorEmodeDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
+            {
+                target.AddBuff(BuffID.Electrified, (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
             }
         }
     }
@@ -122,6 +136,11 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
             ModContent.NPCType<SmallGas>(),
         ];
 
+        public List<int> advisorEmodeDebuffNPC =
+        [
+            ModContent.NPCType<PhaseEye>(),
+        ];
+
         public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
         {
             if (slimedDebuffNPC.Contains(npc.type) && WorldSavingSystem.EternityMode)
@@ -132,6 +151,11 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
 
             if (pharohMasoDebuffNPC.Contains(npc.type) && WorldSavingSystem.MasochistModeReal)
                 target.AddBuff(BuffID.Blackout, 60 * 3);
+
+            if (advisorEmodeDebuffNPC.Contains(npc.type) && WorldSavingSystem.EternityMode)
+            {
+                target.AddBuff(BuffID.Electrified, (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
+            }
         }
     }
 }

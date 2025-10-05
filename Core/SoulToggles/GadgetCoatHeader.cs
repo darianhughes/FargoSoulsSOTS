@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FargoSoulsSOTS.Content.Items.Accessories.Masomode;
 using FargowiltasSouls.Core.Toggler.Content;
+using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Core.SoulToggles
 {
     public class GadgetCoatHeader : SoulHeader
     {
-        public override int Item => -1;
+        public override int Item => ModContent.ItemType<GadgetCoat>();
     }
 }

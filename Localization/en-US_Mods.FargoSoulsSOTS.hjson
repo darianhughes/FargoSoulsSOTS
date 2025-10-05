@@ -38,7 +38,7 @@ Items: {
 			'''
 			[i:FargoSoulsSOTS/VibrantEnchant] Void weapons shoot two vibrant bolts that deal ranged damage, with damage being reduced when swaping to a non-Void weapon
 			[i:FargoSoulsSOTS/FrigidEnchant] Grants 6 shatter shards when entering Void Shock, which inflicts Frostbite when broken & and become pickups that give recovery effects during Void Recovery
-			[i:FargoSoulsSOTS/CursedEnchant] Taking damage will cursed nearby enemies causing a keystone to fire at other nearby enemies, which will shatter into void empowering pickups shortly after a cursed enemy dies
+			[i:FargoSoulsSOTS/CursedEnchant] Taking damage will curse nearby enemies causing a keystone to fire at other nearby enemies, which will shatter into void empowering pickups shortly after a cursed enemy dies
 			Effects of the [i:SOTS/TinyPlanetoid] Tiny Planetoid and [i:SOTS/CursedApple] Cursed Apple
 			'''
 		SoulTooltip: "[i:FargoSoulsSOTS/SpaceForce] SpaceForce Effects :D"
@@ -99,7 +99,7 @@ Items: {
 			[i:FargoSoulsSOTS/WormwoodEnchant] Minions will inflict Slimed on hit
 			[i:FargoSoulsSOTS/FrigidEnchant] Grants 6 shatter shards when entering Void Shock, which inflicts Frostbite when broken & and become pickups that give recovery effects during Void Recovery
 			[i:FargoSoulsSOTS/PatchLeatherEnchant] Grants 3 snake whips that deal summon damage, with summons focusing struck enemies and inflicting Venom when being used with a summoner weapon
-			[i:FargoSoulsSOTS/CursedEnchant] Taking damage will cursed nearby enemies causing a keystone to fire at other nearby enemies, which will shatter into void empowering pickups shortly after a cursed enemy dies
+			[i:FargoSoulsSOTS/CursedEnchant] Taking damage will curse nearby enemies causing a keystone to fire at other nearby enemies, which will shatter into void empowering pickups shortly after a cursed enemy dies
 			[i:FargoSoulsSOTS/TwilightAssassinEnchant] You release a code burst for every 7 void expended that deals magic damage and gives one level of destabilized, with every other burst dealing triple damage
 			Effects of the [i:SOTS/TinyPlanetoid] Tiny Planetoid and [i:SOTS/CursedApple] Cursed Apple
 			Provides a Holo Eye minion to assist in combat
@@ -401,6 +401,7 @@ Items: {
 			Grants immunity to Pharaoh's Curse & Cursed
 			Increases max void by 50 and void regeneration speed by 5%
 			Taking damage will release a blast of cursed energy that drains health and void from enemies
+			'Probably not the cursed energy you're thinking of'
 			'''
 	}
 
@@ -411,6 +412,24 @@ Items: {
 			Grants immunity to Low Ground & Grounded
 			Grants a drill mounted on your head that can break blocks above you
 			The drill scales with the item with the highest pickaxe power in your inventory
+			'''
+	}
+
+	PlasmaGrasp: {
+		DisplayName: Plasma Grasp
+		Tooltip: ""
+	}
+
+	GadgetCoat: {
+		DisplayName: Gadget Coat
+		Tooltip:
+			'''
+			Grants immunity to [i:FargoSoulsSOTS/JellyJumpers] Corrosion, [i:FargoSoulsSOTS/DrillCap] Grounded, Low Ground, [i:FargoSoulsSOTS/PlasmaGrasp] Electrified, and (POLARIS ACCESSORY)
+			[i:FargowiltasSouls/BoxofGizmos] Stand still to expose nearby treasure and enemies, enemies emit light at night, grants autofire to non-weapon items (works from inventory and vanity slots)
+			[i:FargoSoulsSOTS/JellyJumpers] Increases fall resistance and allows you to auto-jump
+			[i:FargoSoulsSOTS/JellyJumpers] Hold DOWN to charge a spring jump while on the ground, the longer you hold DOWN, the higher you will jump, capped at 9 seconds
+			[i:FargoSoulsSOTS/DrillCap] Grants a drill mounted on your head that can break blocks above you and scales with the item with the highest pickaxe power in your inventory
+			(POLARIS ACCESSORY)
 			'''
 	}
 }
@@ -512,6 +531,16 @@ ActiveSkills: {
 			This skill has a 25 second cooldown
 			'''
 	}
+
+	PlasmaHook: {
+		DisplayName: Plasma Hook
+		Tooltip:
+			'''
+			Shoots a plasma grappling hook
+			This grappling hook can hit enemies, dealing void + melee damage and pulling them towards you
+			Consumes 3 void
+			'''
+	}
 }
 
 Projectiles: {
@@ -522,6 +551,7 @@ Projectiles: {
 	CodeBurst.DisplayName: Code Burst
 	SpawnEnemyProjNoLimit.DisplayName: Spawn Enemy Proj No Limit
 	CursedExplosion.DisplayName: Cursed Explosion
+	PlasmaHookProj.DisplayName: Plasma Hook Proj
 }
 
 Configs: {

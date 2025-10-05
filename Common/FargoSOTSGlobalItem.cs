@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
+using FargoSoulsSOTS.Content.Items.Accessories.Masomode;
 using FargoSoulsSOTS.Content.Projectiles.Masomode;
 using FargoSoulsSOTS.Core.Players;
 using Fargowiltas.Common.Configs;

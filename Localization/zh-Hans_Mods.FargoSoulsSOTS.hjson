@@ -401,6 +401,24 @@ Items: {
 			The drill scales with the item with the highest pickaxe power in your inventory
 			''' */
 	}
+
+	PlasmaGrasp: {
+		// DisplayName: Plasma Grasp
+		// Tooltip: ""
+	}
+
+	GadgetCoat: {
+		// DisplayName: Gadget Coat
+		/* Tooltip:
+			'''
+			Grants immunity to [i:FargoSoulsSOTS/JellyJumpers] Corrosion, [i:FargoSoulsSOTS/DrillCap] Grounded, Low Ground, [i:FargoSoulsSOTS/PlasmaGrasp] Electrified, and (POLARIS ACCESSORY)
+			[i:FargowiltasSouls/BoxofGizmos] Stand still to expose nearby treasure and enemies, enemies emit light at night, grants autofire to non-weapon items (works from inventory and vanity slots)
+			[i:FargoSoulsSOTS/JellyJumpers] Increases fall resistance and allows you to auto-jump
+			[i:FargoSoulsSOTS/JellyJumpers] Hold DOWN to charge a spring jump while on the ground, the longer you hold DOWN, the higher you will jump, capped at 9 seconds
+			[i:FargoSoulsSOTS/DrillCap] Grants a drill mounted on your head that can break blocks above you and scales with the item with the highest pickaxe power in your inventory
+			(POLARIS ACCESSORY)
+			''' */
+	}
 }
 
 Buffs: {
@@ -500,6 +518,16 @@ ActiveSkills: {
 			该技能有25秒冷却时间
 			'''
 	}
+
+	PlasmaHook: {
+		// DisplayName: Plasma Hook
+		/* Tooltip:
+			'''
+			Shoots a plasma grappling hook
+			This grappling hook can hit enemies, dealing void + melee damage and pulling them towards you
+			Consumes 3 void
+			''' */
+	}
 }
 
 Projectiles: {
@@ -510,6 +538,7 @@ Projectiles: {
 	CodeBurst.DisplayName: 不稳定光束
 	SpawnEnemyProjNoLimit.DisplayName: 无限制生成敌对弹幕
 	CursedExplosion.DisplayName: 诅咒爆炸
+	// PlasmaHookProj.DisplayName: Plasma Hook Proj
 }
 
 Configs: {

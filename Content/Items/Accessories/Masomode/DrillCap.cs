@@ -10,9 +10,12 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.ObjectData;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
 namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode
 {
+    [AutoloadEquip(EquipType.Face)]
     public class DrillCap : SoulsItem
     {
         public override bool Eternity => true;
@@ -20,6 +23,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode
         public override void SetStaticDefaults()
         {
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
+            ArmorIDs.Face.Sets.PreventHairDraw[Item.faceSlot] = true;
         }
 
         public override void SetDefaults()
@@ -36,6 +40,30 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode
             player.buffImmune[ModContent.BuffType<LowGroundBuff>()] = true;
 
             player.AddEffect<DrillCapEffect>(Item);
+        }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            Texture2D tex = TextureAssets.Item[Type].Value;
+            Rectangle frame = Main.itemAnimations[Type]?.GetFrame(tex) ?? tex.Frame();
+            Vector2 origin = frame.Size() * 0.5f;
+            Vector2 pos = Item.Center - Main.screenPosition;
+            Color drawColor = Item.GetAlpha(Lighting.GetColor((int)(Item.Center.X / 16f), (int)(Item.Center.Y / 16f)));
+
+            const float quarter = 0.75f;
+            Main.EntitySpriteDraw(
+                tex,
+                pos,
+                frame,
+                drawColor,
+                rotation,
+                origin,
+                Item.scale * quarter,
+                SpriteEffects.None,
+                0
+            );
+
+            return false; // suppress default draw
         }
     }
 

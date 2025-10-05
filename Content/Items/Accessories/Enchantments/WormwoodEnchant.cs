@@ -15,7 +15,6 @@ using FargowiltasSouls;
 using FargoSoulsSOTS.Content.Buffs;
 using FargoSoulsSOTS.Core.SoulToggles;
 using FargoSoulsSOTS.Common.ProjectileChanges;
-using SOTS;
 
 namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
 {
@@ -47,9 +46,9 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments
                 .AddIngredient<NatureWreath>()
                 .AddIngredient<NatureShirt>()
                 .AddIngredient<NatureLeggings>()
+                .AddIngredient<BotanicalSymbiote>()
                 .AddIngredient<WormWoodScepter>()
                 .AddIngredient<WormWoodHook>()
-                .AddIngredient<GelAxe>(300)
                 .AddTile(TileID.DemonAltar)
                 .Register();
         }

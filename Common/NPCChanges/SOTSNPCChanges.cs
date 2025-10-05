@@ -275,6 +275,7 @@ namespace FargoSoulsSOTS.Common.NPCChanges
             }
             if (npc.type == ModContent.NPCType<Excavator>())
             {
+                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<DrillCap>()));
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(WorldGen.crimson ? ItemID.CrimsonFishingCrate : ItemID.CorruptFishingCrate, 5));
             }
             if (npc.type == ModContent.NPCType<TheAdvisorHead>())
