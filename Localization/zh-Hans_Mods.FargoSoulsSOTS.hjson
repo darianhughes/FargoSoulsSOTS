@@ -386,20 +386,20 @@ Items: {
 		DisplayName: 受诅君王的圣符安卡
 		Tooltip:
 			'''
-			使你免疫法老诅咒减益和诅咒减益
+			使你免疫法老诅咒和诅咒减益
 			最大虚空值提升50，虚空恢复速度提升5%
 			受到伤害时释放一阵可以从敌人身上汲取生命与虚空值的诅咒能量
 			'''
 	}
 
 	DrillCap: {
-		// DisplayName: Drill Cap
-		/* Tooltip:
+		DisplayName: 钻头帽
+		Tooltip:
 			'''
-			Grants immunity to Low Ground & Grounded
-			Grants a drill mounted on your head that can break blocks above you
-			The drill scales with the item with the highest pickaxe power in your inventory
-			''' */
+			使你免疫大地束缚和下陷减益
+			在你头上装备一把可以破坏上方物块的钻头
+			钻头效果取决于你物品栏中最高镐力的镐子
+			'''
 	}
 }
 
@@ -485,8 +485,8 @@ Toggler: {
 	JellyJumpersEffect: 弹簧跳
 	GadgetCoatHeader: 机巧风衣
 	CursedExplosionEffect: 诅咒爆炸
-	// DrillCapEffect: Drill Cap
-	// TwilightFishingEffect: Unrestricted Planetarium Crates
+	DrillCapEffect: 钻头帽
+	TwilightFishingEffect: 星象岛匣获取限制取消
 }
 
 ActiveSkills: {
@@ -577,5 +577,5 @@ NewTooltips: {
 		增加3点虚空恢复量，并增加25%虚空恢复速度
 		对除了辉光圣魂以外的灵魂敌怪造成双倍伤害
 		'''
-	// TwilightFishing: "[i:SOTS/TwilightFishingPole] Allows the catching of Planetarium Crates anywhere"
+	TwilightFishing: "[i:SOTS/TwilightFishingPole] 允许你在任何地方获得星象岛匣"
 }
