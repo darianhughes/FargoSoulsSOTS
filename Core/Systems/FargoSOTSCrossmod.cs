@@ -25,11 +25,46 @@ namespace FargoSoulsSOTS
             public static Mod Mod => ModLoader.GetMod(Name);
         }
 
+        public static class SOTS
+        {
+            public const string Name = "SOTS";
+            public static bool Loaded => ModLoader.HasMod(Name);
+            public static Mod Mod => ModLoader.GetMod(Name);
+        }
+
         public static class SOTSBardHealer
         {
             public const string Name = "SOTSBardHealer";
             public static bool Loaded => ModLoader.HasMod(Name);
             public static Mod Mod => ModLoader.GetMod(Name);
+        }
+
+        public static class Consolaria
+        {
+            public const string Name = "Consolaria";
+            public static Mod Mod => ModLoader.GetMod(Name);
+            public static bool Loaded => ModLoader.HasMod(Name);
+        }
+
+        public static class Heartbeataria
+        {
+            public const string Name = "XDContentMod";
+            public static Mod Mod => ModLoader.GetMod(Name);
+            public static bool Loaded => ModLoader.HasMod(Name);
+        }
+
+        public static class Spooky
+        {
+            public const string Name = "Spooky";
+            public static Mod Mod => ModLoader.GetMod(Name);
+            public static bool Loaded => ModLoader.HasMod(Name);
+        }
+
+        public static class SpookyBardHealer
+        {
+            public const string Name = "SpookyBardHealer";
+            public static Mod Mod => ModLoader.GetMod(Name);
+            public static bool Loaded => ModLoader.HasMod(Name);
         }
 
         public static class RevengeancePlus
