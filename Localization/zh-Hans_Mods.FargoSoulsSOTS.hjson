@@ -403,21 +403,21 @@ Items: {
 	}
 
 	PlasmaGrasp: {
-		// DisplayName: Plasma Grasp
-		// Tooltip: ""
+		DisplayName: 电浆之握
+		Tooltip: ""
 	}
 
 	GadgetCoat: {
-		// DisplayName: Gadget Coat
-		/* Tooltip:
+		DisplayName: 机巧风衣
+		Tooltip:
 			'''
-			Grants immunity to [i:FargoSoulsSOTS/JellyJumpers] Corrosion, [i:FargoSoulsSOTS/DrillCap] Grounded, Low Ground, [i:FargoSoulsSOTS/PlasmaGrasp] Electrified, and (POLARIS ACCESSORY)
-			[i:FargowiltasSouls/BoxofGizmos] Stand still to expose nearby treasure and enemies, enemies emit light at night, grants autofire to non-weapon items (works from inventory and vanity slots)
-			[i:FargoSoulsSOTS/JellyJumpers] Increases fall resistance and allows you to auto-jump
-			[i:FargoSoulsSOTS/JellyJumpers] Hold DOWN to charge a spring jump while on the ground, the longer you hold DOWN, the higher you will jump, capped at 9 seconds
-			[i:FargoSoulsSOTS/DrillCap] Grants a drill mounted on your head that can break blocks above you and scales with the item with the highest pickaxe power in your inventory
+			使你免疫[i:FargoSoulsSOTS/JellyJumpers]腐蚀、[i:FargoSoulsSOTS/DrillCap]大地束缚、下陷、[i:FargoSoulsSOTS/PlasmaGrasp]带电，和(POLARIS ACCESSORY)
+			[i:FargowiltasSouls/BoxofGizmos]站立不动时可显露附近的宝藏与敌怪，敌怪在夜间会发出光芒，为非武器类物品提供自动连续使用功能（在物品栏与时装栏中均可生效）
+			[i:FargoSoulsSOTS/JellyJumpers]增加坠落抗性并允许自动跳跃
+			[i:FargoSoulsSOTS/JellyJumpers]在地面时按住下键以进行蓄力弹跳，按得越久跳得越高，最多蓄力9秒
+			[i:FargoSoulsSOTS/DrillCap]在你头上装备一把可以破坏上方物块的钻头，钻头效果取决于你物品栏中最高镐力的镐子
 			(POLARIS ACCESSORY)
-			''' */
+			'''
 	}
 }
 
@@ -520,13 +520,13 @@ ActiveSkills: {
 	}
 
 	PlasmaHook: {
-		// DisplayName: Plasma Hook
-		/* Tooltip:
+		DisplayName: 电浆钩爪
+		Tooltip:
 			'''
-			Shoots a plasma grappling hook
-			This grappling hook can hit enemies, dealing void + melee damage and pulling them towards you
-			Consumes 3 void
-			''' */
+			发射一枚电浆抓钩  
+			抓钩可击中敌人，造成虚空+近战伤害并将其拉向你  
+			消耗3点虚空值
+			'''
 	}
 }
 
@@ -538,7 +538,7 @@ Projectiles: {
 	CodeBurst.DisplayName: 不稳定光束
 	SpawnEnemyProjNoLimit.DisplayName: 无限制生成敌对弹幕
 	CursedExplosion.DisplayName: 诅咒爆炸
-	// PlasmaHookProj.DisplayName: Plasma Hook Proj
+	PlasmaHookProj.DisplayName: 电浆钩爪
 }
 
 Configs: {
