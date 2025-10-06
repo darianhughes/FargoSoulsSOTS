@@ -30,7 +30,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode
         {
             if (Main.netMode != NetmodeID.Server)
             {
-                EquipLoader.AddEquipTexture(Mod, "FargoSoulsSOTS/Content/Items/Accessories/Masomode/DrillCap_Face", EquipType.Face, this);
+                EquipLoader.AddEquipTexture(Mod, "FargoSoulsSOTS/Content/Items/Accessories/Masomode/DrillCap_Face", EquipType.Head, this);
             }
         }
 
@@ -45,6 +45,12 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode
             Item.accessory = true;
             Item.rare = ItemRarityID.Yellow;
             Item.value = Item.sellPrice(0, 6);
+
+            if (Main.netMode != NetmodeID.Server)
+            {
+                int equipSlotHead = EquipLoader.GetEquipSlot(Mod, Name, EquipType.Head);
+                ArmorIDs.Face.Sets.PreventHairDraw[Item.faceSlot] = true;
+            }
         }
 
         int counter;
