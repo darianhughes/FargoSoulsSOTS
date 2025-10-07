@@ -37,6 +37,8 @@ namespace FargoSoulsSOTS.Common.NPCChanges
         }
     }
 
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class VoidDamageProjectiles : GlobalProjectile
     {
         public override bool InstancePerEntity => true;

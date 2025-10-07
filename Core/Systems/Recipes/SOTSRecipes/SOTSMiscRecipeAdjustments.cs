@@ -6,6 +6,8 @@ using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Core.Systems.Recipes.SOTSRecipes
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class SOTSMiscRecipeAdjustments : ModSystem
     {
         public override void PostAddRecipes()

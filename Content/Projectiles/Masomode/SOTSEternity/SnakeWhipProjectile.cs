@@ -55,8 +55,8 @@ namespace FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity
             Projectile.WhipSettings.Segments = 20;
             Projectile.WhipSettings.RangeMultiplier = 0.4f;
 
-            whipSegment = ModContent.Request<Texture2D>("FargoSoulsSOTS/Content/Projectiles/Masomode/SnakeWhipSegment").Value;
-            whipTip = ModContent.Request<Texture2D>("FargoSoulsSOTS/Content/Projectiles/Masomode/SnakeWhipTip").Value;
+            whipSegment = ModContent.Request<Texture2D>("FargoSoulsSOTS/Content/Projectiles/Masomode/SOTSEternity/SnakeWhipSegment").Value;
+            whipTip = ModContent.Request<Texture2D>("FargoSoulsSOTS/Content/Projectiles/Masomode/SOTSEternity/SnakeWhipTip").Value;
         }
         public override bool PreAI()
         {

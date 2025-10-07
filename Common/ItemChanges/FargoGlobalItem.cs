@@ -144,22 +144,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                     AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GravityAnchor"));
                     foreach (TooltipLine tooltip in tooltips)
                     {
-                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
-                        {
-                            string str1 = Language.GetTextValue("Mods.SOTS.Common.Unbound");
-                            string str2 = str1;
-                            using (List<string>.Enumerator enumerator = SOTS.SOTS.MachinaBoosterHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
-                            {
-                                if (enumerator.MoveNext())
-                                    str1 = enumerator.Current;
-                            }
-                            using (List<string>.Enumerator enumerator = SOTS.SOTS.SlowFlightHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
-                            {
-                                if (enumerator.MoveNext())
-                                    str2 = enumerator.Current;
-                            }
-                            tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GildedBladeWings", str1, str2)}";
-                        }
+                        ApplySpecialTooltips.ModifyTooltips(tooltips, "Tooltip0");
                     }
                 }
             }
@@ -174,25 +159,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
             {
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    foreach (TooltipLine tooltip in tooltips)
-                    {
-                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip3")
-                        {
-                            string str1 = Language.GetTextValue("Mods.SOTS.Common.Unbound");
-                            string str2 = str1;
-                            using (List<string>.Enumerator enumerator = SOTS.SOTS.MachinaBoosterHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
-                            {
-                                if (enumerator.MoveNext())
-                                    str1 = enumerator.Current;
-                            }
-                            using (List<string>.Enumerator enumerator = SOTS.SOTS.SlowFlightHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
-                            {
-                                if (enumerator.MoveNext())
-                                    str2 = enumerator.Current;
-                            }
-                            tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GildedBladeWings", (object)str1, (object)str2)}";
-                        }
-                    }
+                    ApplySpecialTooltips.ModifyTooltips(tooltips, "Tooltip3");
                     AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SOTSSupersonicEffects"));
                     AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SubspaceDash"));
                     AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.TwilightFishing"));
@@ -250,5 +217,33 @@ namespace FargoSoulsSOTS.Common.ItemChanges
     {
         public override Header ToggleHeader => Header.GetHeader<TrawlerHeader>();
         public override int ToggleItemType => ModContent.ItemType<TwilightFishingPole>();
+    }
+
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    public class ApplySpecialTooltips
+    {
+        public static void ModifyTooltips(List<TooltipLine> tooltips, string tooltipName)
+        {
+            foreach (TooltipLine tooltip in tooltips)
+            {
+                if (tooltip.Mod == "Terraria" && tooltip.Name == tooltipName)
+                {
+                    string str1 = Language.GetTextValue("Mods.SOTS.Common.Unbound");
+                    string str2 = str1;
+                    using (List<string>.Enumerator enumerator = SOTS.SOTS.MachinaBoosterHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
+                    {
+                        if (enumerator.MoveNext())
+                            str1 = enumerator.Current;
+                    }
+                    using (List<string>.Enumerator enumerator = SOTS.SOTS.SlowFlightHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
+                    {
+                        if (enumerator.MoveNext())
+                            str2 = enumerator.Current;
+                    }
+                    tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GildedBladeWings", (object)str1, (object)str2)}";
+                }
+            }
+        }
     }
 }

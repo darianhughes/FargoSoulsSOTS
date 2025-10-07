@@ -474,6 +474,11 @@ Buffs: {
 		DisplayName: Corrosion
 		Description: Taking 5% more damage from all sources and damage over time
 	}
+
+	CryomagneticDisruption: {
+		DisplayName: Cryomagnetic Disruption
+		Description: Mods.FargoSoulsSOTS.Buffs.CryomagneticDisruption.Description
+	}
 }
 
 WizardEffect: {
@@ -571,6 +576,16 @@ Configs: {
 		FlashsparkBootsRework: {
 			Label: "[i:SOTS/FlashsparkBoots] Flashspark Boots Rework"
 			Tooltip: Toggles the Flashspark Boots rework and recipe change
+		}
+	}
+
+	SOTSItemConfig: {
+		DisplayName: S O T S Item Config
+		Headers.ItemReworks: Item Reworks Header
+
+		FlashsparkBootsRework: {
+			Label: Flashspark Boots Rework
+			Tooltip: ""
 		}
 	}
 }

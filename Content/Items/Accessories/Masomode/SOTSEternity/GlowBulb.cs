@@ -37,6 +37,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
         }
     }
 
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class GlowBulbEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<AncientMcGuffinHeader>();

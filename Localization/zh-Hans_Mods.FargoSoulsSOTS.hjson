@@ -461,6 +461,11 @@ Buffs: {
 		DisplayName: 腐蚀
 		Description: 受到的所有伤害与持续性伤害提高5%
 	}
+
+	CryomagneticDisruption: {
+		// DisplayName: Cryomagnetic Disruption
+		// Description: Mods.FargoSoulsSOTS.Buffs.CryomagneticDisruption.Description
+	}
 }
 
 WizardEffect: {
@@ -558,6 +563,16 @@ Configs: {
 		FlashsparkBootsRework: {
 			Label: "[i:SOTS/FlashsparkBoots] 烁花靴重置"
 			Tooltip: Toggles the Flashspark Boots rework and recipe change启用/禁用烁花靴的重置和配方修改
+		}
+	}
+
+	SOTSItemConfig: {
+		// DisplayName: S O T S Item Config
+		// Headers.ItemReworks: Item Reworks Header
+
+		FlashsparkBootsRework: {
+			// Label: Flashspark Boots Rework
+			// Tooltip: ""
 		}
 	}
 }

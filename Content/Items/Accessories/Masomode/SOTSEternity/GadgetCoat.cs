@@ -33,7 +33,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
         {
             if (Main.netMode != NetmodeID.Server)
             {
-                EquipLoader.AddEquipTexture(Mod, "FargoSoulsSOTS/Content/Items/Accessories/Masomode/DrillCap_Face", EquipType.Head, this);
+                EquipLoader.AddEquipTexture(Mod, "FargoSoulsSOTS/Content/Items/Accessories/Masomode/SOTSEternity/DrillCap_Face", EquipType.Head, this);
             }
         }
 
@@ -52,7 +52,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
             if (Main.netMode != NetmodeID.Server)
             {
                 int equipSlotHead = EquipLoader.GetEquipSlot(Mod, Name, EquipType.Head);
-                ArmorIDs.Face.Sets.PreventHairDraw[Item.faceSlot] = true;
+                //ArmorIDs.Face.Sets.PreventHairDraw[Item.headSlot] = true;
             }
         }
 
