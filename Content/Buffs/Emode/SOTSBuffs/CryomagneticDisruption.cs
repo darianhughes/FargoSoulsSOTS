@@ -3,10 +3,10 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs
+namespace SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class CryomagneticDisruption : ModBuff
     {
         public override void SetStaticDefaults()

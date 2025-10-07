@@ -1,18 +1,19 @@
-﻿using Fargowiltas.Items.Summons.SwarmSummons;
+﻿using Fargowiltas.Content.Items.Summons.SwarmSummons;
+using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 using SOTS.NPCs.Boss.Excavator;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OverloadExcavator : SwarmSummonBase
     {
         public override string Texture => "SOTS/Items/AbandonedVillage/SeismicStation";
 
-        public OverloadExcavator() : base(ModContent.NPCType<Excavator>(), nameof(OverloadExcavator), 50, "ExcavationRemote")
+        public OverloadExcavator() : base(ModContent.NPCType<Excavator>(), nameof(OverloadExcavator), 50, ModContent.ItemType<ExcavationRemote>())
         {
         }
 

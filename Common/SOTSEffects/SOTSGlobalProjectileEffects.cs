@@ -1,5 +1,5 @@
-﻿using FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant;
-using FargoSoulsSOTS.Core.Players;
+﻿using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
+using SecretsOfTheSouls.Core.Players;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using SOTS.Buffs;
@@ -9,10 +9,10 @@ using SOTS.Void;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Common.SOTSEffects
+namespace SecretsOfTheSouls.Common.SOTSEffects
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSGlobalProjectileEffects : GlobalProjectile
     {
         public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)

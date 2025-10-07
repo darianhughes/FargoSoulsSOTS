@@ -6,12 +6,12 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using SOTS.NPCs.Boss.Curse;
 using SOTS.Items.Pyramid;
-using FargoSoulsSOTS.Common.SOTSEffects;
+using SecretsOfTheSouls.Common.SOTSEffects;
 
-namespace FargoSoulsSOTS.Content.Projectiles
+namespace SecretsOfTheSouls.Content.Projectiles
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SpawnEnemyProjNoLimit : ModProjectile
     {
         public override string Texture => "SOTS/Items/Pyramid/SpawnEnemyProj";

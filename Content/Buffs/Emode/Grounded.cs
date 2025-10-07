@@ -1,11 +1,11 @@
-﻿using FargowiltasSouls.Content.Buffs.Masomode;
+﻿using FargowiltasSouls.Content.Buffs.Eternity;
 using Terraria;
 
-namespace FargoSoulsSOTS.Content.Buffs.Emode
+namespace SecretsOfTheSouls.Content.Buffs.Emode
 {
     public class Grounded : ClippedWingsBuff
     {
-        public override string Texture => "FargowiltasSouls/Content/Buffs/Masomode/ClippedWingsBuff";
+        public override string Texture => "FargowiltasSouls/Assets/Textures/Content/Buffs/Eternity/ClippedWingsBuff";
         public override void Update(Player player, ref int buffIndex)
         {
             base.Update(player, ref buffIndex);

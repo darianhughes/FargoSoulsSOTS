@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant;
-using FargoSoulsSOTS.Content.Items.Accessories.Masomode;
-using FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity;
-using FargoSoulsSOTS.Core.Players;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
+using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
+using SecretsOfTheSouls.Core.Players;
 using Fargowiltas.Common.Configs;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -16,11 +14,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 
-namespace FargoSoulsSOTS.Common.GlobalItemAdditions
+namespace SecretsOfTheSouls.Common.GlobalItemAdditions
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSGlobalItemEffects : GlobalItem
     {
         public override bool InstancePerEntity => true;

@@ -1,13 +1,13 @@
-﻿using FargoSoulsSOTS.Content.Items.Summons.SOTSCopy;
+﻿using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using SOTS.NPCs.Boss.Advisor;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Core.ModScenes
+namespace SecretsOfTheSouls.Core.ModScenes
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class AdvisorAltMusicScene : ModSceneEffect
     {
         public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;

@@ -4,7 +4,7 @@ using MonoMod.RuntimeDetour;
 using Terraria.ModLoader;
 using Terraria;
 
-namespace FargoSoulsSOTS.Core.Systems.Hooks.Fargowiltas
+namespace SecretsOfTheSouls.Core.Systems.Hooks.Fargowiltas
 {
     public class SquirrelSupportPatch : ModSystem
     {

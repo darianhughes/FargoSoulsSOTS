@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FargoSoulsSOTS.Common.ItemChanges;
-using FargoSoulsSOTS.Common.SOTSEffects;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant;
-using FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity;
-using FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity;
-using Fargowiltas.NPCs;
+using SecretsOfTheSouls.Common.ItemChanges;
+using SecretsOfTheSouls.Common.SOTSEffects;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
+using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 using FargowiltasSouls;
 using FargowiltasSouls.Content.Patreon.Volknet.Projectiles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
@@ -26,11 +23,14 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Fargowiltas.Content.NPCs;
+using SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity;
+using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 
-namespace FargoSoulsSOTS.Core.Players
+namespace SecretsOfTheSouls.Core.Players
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSEffectsPlayer : ModPlayer
     {
         //Cursed Enchant
@@ -564,8 +564,8 @@ namespace FargoSoulsSOTS.Core.Players
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class PlayerCurseDebuffCounterLayer : PlayerDrawLayer
     {
         public override Position GetDefaultPosition()

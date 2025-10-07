@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework;
 using SOTS.NPCs.Boss.Curse;
 using SOTS;
 
-namespace FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity
+namespace SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class CursedExplosion : ModProjectile
     {
         private const int Radius = 160;

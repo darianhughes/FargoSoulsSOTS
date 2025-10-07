@@ -4,15 +4,16 @@ using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Core.Toggler;
 using System.Collections.Generic;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant;
+using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Forces.SOTSForce
+namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
 {
     //TEMPORARY FORCE UNTIL WE RELEASE THE HARDMODE UPDATE
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class VoidForce : BaseForce
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Forces/SOTSForce/VoidForce";
         public override bool IsLoadingEnabled(Mod mod)
         {
             return true;
@@ -67,8 +68,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces.SOTSForce
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class VoidEffect : AccessoryEffect
     {
         public override Header ToggleHeader => null;

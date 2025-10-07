@@ -7,12 +7,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
 using System;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 
-namespace FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity
+namespace SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SnakeWhipProjectile : ModProjectile
     {
         public Color fishingLineColor = Color.SaddleBrown;
@@ -55,8 +55,8 @@ namespace FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity
             Projectile.WhipSettings.Segments = 20;
             Projectile.WhipSettings.RangeMultiplier = 0.4f;
 
-            whipSegment = ModContent.Request<Texture2D>("FargoSoulsSOTS/Content/Projectiles/Masomode/SOTSEternity/SnakeWhipSegment").Value;
-            whipTip = ModContent.Request<Texture2D>("FargoSoulsSOTS/Content/Projectiles/Masomode/SOTSEternity/SnakeWhipTip").Value;
+            whipSegment = ModContent.Request<Texture2D>("SecretsOfTheSouls/Content/Projectiles/Eternity/SOTSEternity/SnakeWhipSegment").Value;
+            whipTip = ModContent.Request<Texture2D>("SecretsOfTheSouls/Content/Projectiles/Eternity/SOTSEternity/SnakeWhipTip").Value;
         }
         public override bool PreAI()
         {

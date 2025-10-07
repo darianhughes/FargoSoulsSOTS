@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 using FargowiltasSouls.Content.Bosses.DeviBoss;
 using FargowiltasSouls.Core.Systems;
 using SOTS.NPCs;
@@ -16,10 +16,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Common.ProjectileChanges
+namespace SecretsOfTheSouls.Common.ProjectileChanges
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSEmodeDebuffProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
@@ -109,8 +109,8 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSEmodeDebuffNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;

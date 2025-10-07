@@ -3,12 +3,12 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 
-namespace FargoSoulsSOTS.Content.Items.Misc.Boosters
+namespace SecretsOfTheSouls.Content.Items.Misc.Boosters
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class KeystoneShard : ModItem
     {
         public override void SetStaticDefaults()

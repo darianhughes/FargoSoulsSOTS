@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using FargowiltasSouls.Content.Items.Accessories.Masomode;
+using FargowiltasSouls.Content.Items.Accessories.Eternity;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.Toggler.Content;
@@ -8,10 +8,10 @@ using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Common.ItemChanges
+namespace SecretsOfTheSouls.Common.ItemChanges
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSGlobalItem : GlobalItem
     {
         public override void SetDefaults(Item item)
@@ -108,21 +108,21 @@ namespace FargoSoulsSOTS.Common.ItemChanges
         {
             if (item.type == ModContent.ItemType<FlashsparkBoots>() && SOTSItemConfig.Instance.FlashsparkBootsRework)
             {
-                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.TooltipOverride.FlashsparkBoots"));
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.TooltipOverride.FlashsparkBoots"));
             }
 
             if (item.type == ModContent.ItemType<SubspaceBoosters>())
             {
                 if (SOTSItemConfig.Instance.FlashsparkBootsRework)
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.HellfireTreads"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.HellfireTreads"));
 
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.AeolusBoots"));
+                AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.AeolusBoots"));
             }
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class FlashsparkEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<DeviEnergyHeader>();

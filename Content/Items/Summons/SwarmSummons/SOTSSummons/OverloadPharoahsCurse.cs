@@ -1,5 +1,4 @@
-﻿using Fargowiltas.Items.Summons.SwarmSummons;
-using Terraria.DataStructures;
+﻿using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -10,18 +9,20 @@ using System;
 using Terraria.Audio;
 using Terraria.Chat;
 using Terraria.Localization;
-using FargoSoulsSOTS.Content.Projectiles;
+using SecretsOfTheSouls.Content.Projectiles;
+using Fargowiltas.Content.Items.Summons.SwarmSummons;
+using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OverloadPharoahsCurse : SwarmSummonBase
     {
         private const int SearchRangeTiles = 3;
         public override string Texture => "SOTS/Items/Pyramid/Sarcophagus";
 
-        public OverloadPharoahsCurse() : base(ModContent.NPCType<PharaohsCurse>(), nameof(OverloadPharoahsCurse), 50, "CursedSarcophagus")
+        public OverloadPharoahsCurse() : base(ModContent.NPCType<PharaohsCurse>(), nameof(OverloadPharoahsCurse), 50, ModContent.ItemType<CursedScroll>())
         {
         }
 

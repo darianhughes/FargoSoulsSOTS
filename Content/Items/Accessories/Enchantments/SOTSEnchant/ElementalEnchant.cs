@@ -6,19 +6,20 @@ using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using SOTS.Items.Chaos;
 using SOTS.Items.Fragments;
-using FargoSoulsSOTS.Core.SoulToggles;
+using SecretsOfTheSouls.Core.SoulToggles;
 using FargowiltasSouls.Content.UI.Elements;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using FargowiltasSouls;
-using FargoSoulsSOTS.Core.Players;
+using SecretsOfTheSouls.Core.Players;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
+namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ElementalEnchant : BaseEnchant
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/ElementalEnchant";
         public override bool IsLoadingEnabled(Mod mod)
         {
             return FargoSOTSConfig.Instance.UnfinishedContent;
@@ -49,8 +50,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ChaosTeleport : AccessoryEffect
     {
         public override bool ActiveSkill => true;
@@ -73,13 +74,13 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
                 Cooldown = 60 * 40;
             if (FargoSOTSPlayer.ChaosCharge < Cooldown)
                 FargoSOTSPlayer.ChaosCharge++;
-            CooldownBarManager.Activate("ChaosTeleport", ModContent.Request<Texture2D>("FargoSoulsSOTS/Content/Items/Accessories/Enchantments/ElementalEnchant").Value, new(116, 122, 159),
+            CooldownBarManager.Activate("ChaosTeleport", ModContent.Request<Texture2D>("SecretsOfTheSouls/Content/Items/Accessories/Enchantments/ElementalEnchant").Value, new(116, 122, 159),
                 () => (float)FargoSOTSPlayer.ChaosCharge / Cooldown, true, activeFunction: player.HasEffect<ChaosTeleport>);
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ElementalEffect : AccessoryEffect
     {
         public override Header ToggleHeader => null;

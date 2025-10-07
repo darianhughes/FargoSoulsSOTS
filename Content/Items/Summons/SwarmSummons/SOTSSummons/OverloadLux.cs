@@ -1,20 +1,21 @@
-﻿using Fargowiltas.Items.Summons.SwarmSummons;
-using SOTS;
+﻿using SOTS;
 using SOTS.NPCs.Boss.Lux;
 using Terraria.DataStructures;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Fargowiltas.Content.Items.Summons.SwarmSummons;
+using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OverloadLux : SwarmSummonBase
     {
         public override string Texture => "SOTS/Items/ElectromagneticLure";
 
-        public OverloadLux() : base(ModContent.NPCType<Lux>(), nameof(OverloadLux), 50, "ChaosLure")
+        public OverloadLux() : base(ModContent.NPCType<Lux>(), nameof(OverloadLux), 50, ModContent.ItemType<ChaosLure>())
         {
         }
 

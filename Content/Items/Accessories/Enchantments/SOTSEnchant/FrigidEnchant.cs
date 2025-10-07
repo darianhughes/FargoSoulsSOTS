@@ -5,21 +5,22 @@ using Microsoft.Xna.Framework;
 using FargowiltasSouls.Core.Toggler;
 using Terraria.ModLoader;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using FargoSoulsSOTS.Core.SoulToggles;
+using SecretsOfTheSouls.Core.SoulToggles;
 using SOTS.Items.Permafrost;
 using System.Collections.Generic;
 using FargowiltasSouls;
 using SOTS.Buffs;
-using FargoSoulsSOTS.Core.Players;
-using FargoSoulsSOTS.Content.Items.Misc.Boosters;
-using FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity;
+using SecretsOfTheSouls.Core.Players;
+using SecretsOfTheSouls.Content.Items.Misc.Boosters;
+using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
+namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class FrigidEnchant : BaseEnchant
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/FrigidEnchant";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -41,7 +42,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
             CreateRecipe()
 
                 .AddIngredient<FrigidCrown>()
-                .AddRecipeGroup("FargoSoulsSOTS:FrigidChests")
+                .AddRecipeGroup("SecretsOfTheSouls:FrigidChests")
                 .AddIngredient<FrigidGreaves>()
                 .AddIngredient<ShardStaff>()
                 .AddIngredient<ShatterBlade>()
@@ -51,8 +52,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class FrigidEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();

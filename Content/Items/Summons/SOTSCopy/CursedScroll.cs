@@ -4,12 +4,12 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using FargoSoulsSOTS.Content.Projectiles;
+using SecretsOfTheSouls.Content.Projectiles;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
+namespace SecretsOfTheSouls.Content.Items.Summons.SOTSCopy
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [LegacyName("CursedSarcophagus")]
     public class CursedScroll : ModItem
     {

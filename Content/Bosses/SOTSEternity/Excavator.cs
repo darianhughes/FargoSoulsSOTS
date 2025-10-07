@@ -1,4 +1,4 @@
-﻿using FargoSoulsSOTS.Content.Items.Summons.SOTSCopy;
+﻿using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Core.NPCMatching;
@@ -6,20 +6,20 @@ using SOTS;
 using Terraria.ModLoader;
 using Terraria;
 using SOTS.NPCs.Boss.Excavator;
-using FargowiltasSouls.Content.Buffs.Masomode;
-using FargoSoulsSOTS.Content.Buffs.Emode;
+using SecretsOfTheSouls.Content.Buffs.Emode;
+using FargowiltasSouls.Content.Buffs.Eternity;
 
-namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
+namespace SecretsOfTheSouls.Content.Bosses.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class Excavator : EModeNPCBehaviour
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchTypeRange(ModContent.NPCType<SOTS.NPCs.Boss.Excavator.Excavator>(), ModContent.NPCType<ExcavatorBody>(), ModContent.NPCType<ExcavatorBody2>(), ModContent.NPCType<ExcavatorDrillTail>(), ModContent.NPCType<ExcavatorTail>());
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ExcavatorHead : EModeNPCBehaviour
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<SOTS.NPCs.Boss.Excavator.Excavator>());

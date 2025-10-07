@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Fargowiltas.Items.Summons;
 using SOTS;
 using SOTS.NPCs.TreasureSlimes;
 using Terraria;
@@ -7,11 +6,12 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using Fargowiltas.Content.Items.Summons;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.Deviantt.SOTSRareEnemy
+namespace SecretsOfTheSouls.Content.Items.Summons.Deviantt.SOTSRareEnemy
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class TreasureSlimeCrown : BaseSummon
     {
         public override int NPCType
@@ -58,13 +58,15 @@ namespace FargoSoulsSOTS.Content.Items.Summons.Deviantt.SOTSRareEnemy
 
         public override void SetDefaults()
         {
+            base.SetDefaults();
+
             Item.useStyle = ItemUseStyleID.HoldUp;
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             List<int> intList = CapableNPCS(Main.LocalPlayer);
-            tooltips.Add(new TooltipLine(Mod, "Slime1", Language.GetTextValue("Mods.FargoSoulsSOTS.Items.TreasureSlimeCrown.PossibleSlimes")));
+            tooltips.Add(new TooltipLine(Mod, "Slime1", Language.GetTextValue("Mods.SecretsOfTheSouls.Items.TreasureSlimeCrown.PossibleSlimes")));
 
             if (intList.Contains(ModContent.NPCType<BasicTreasureSlime>()))
                 tooltips.Add(new TooltipLine(Mod, "Slime1", Lang.GetNPCName(ModContent.NPCType<BasicTreasureSlime>()).Value)
@@ -128,7 +130,7 @@ namespace FargoSoulsSOTS.Content.Items.Summons.Deviantt.SOTSRareEnemy
                 });
             if (intList.Count > 0)
                 return;
-            tooltips.Add(new TooltipLine(Mod, "Slime12", Language.GetTextValue("Mods.FargoSoulsSOTS.Items.TreasureSlimeCrown.None")) // This should be impossible?
+            tooltips.Add(new TooltipLine(Mod, "Slime12", Language.GetTextValue("Mods.SecretsOfTheSouls.Items.TreasureSlimeCrown.None")) // This should be impossible?
             {
                 OverrideColor = new(150, 150, 150)
             });

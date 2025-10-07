@@ -9,12 +9,12 @@ using SOTS.Dusts;
 using SOTS;
 using SOTS.Void;
 using Terraria.Audio;
-using FargoSoulsSOTS.Core.Players;
+using SecretsOfTheSouls.Core.Players;
 
-namespace FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity
+namespace SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class PlasmaHookProj : ModProjectile
     {
         private int initialDirection;

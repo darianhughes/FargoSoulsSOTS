@@ -1,10 +1,10 @@
-﻿using Fargowiltas.NPCs;
-using FargowiltasSouls.Content.Items.Accessories.Masomode;
+﻿using Fargowiltas.Content.NPCs;
+using FargowiltasSouls.Content.Items.Accessories.Eternity;
 using SOTS.Items;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Common.NPCChanges
+namespace SecretsOfTheSouls.Common.NPCChanges
 {
     public class SquirrelGlobalNPC : GlobalNPC
     {
@@ -25,8 +25,8 @@ namespace FargoSoulsSOTS.Common.NPCChanges
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSSquirrel
     {
         public static void ModifyActiveShop(string shopName, Item[] items)

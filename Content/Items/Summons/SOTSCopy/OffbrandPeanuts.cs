@@ -1,13 +1,13 @@
-﻿using Fargowiltas.Items.Summons;
+﻿using Fargowiltas.Content.Items.Summons;
 using SOTS.Items.Slime;
 using SOTS.NPCs.Boss;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
+namespace SecretsOfTheSouls.Content.Items.Summons.SOTSCopy
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OffbrandPeanuts : BaseSummon
     {
         //public override string Texture => "SOTS/Items/Slime/JarOfPeanuts";

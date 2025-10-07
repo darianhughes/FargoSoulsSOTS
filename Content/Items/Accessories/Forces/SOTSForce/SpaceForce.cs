@@ -3,14 +3,15 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Core.Toggler;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant;
+using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Forces.SOTSForce
+namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SpaceForce : BaseForce
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Forces/SOTSForce/SpaceForce";
         public override bool IsLoadingEnabled(Mod mod)
         {
             return FargoSOTSConfig.Instance.UnfinishedContent;
@@ -54,8 +55,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces.SOTSForce
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SpaceEffect : AccessoryEffect
     {
         public override Header ToggleHeader => null;

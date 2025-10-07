@@ -1,4 +1,4 @@
-﻿using FargoSoulsSOTS.Core.Players;
+﻿using SecretsOfTheSouls.Core.Players;
 using SOTS.Items.Void;
 using SOTS.Void;
 using Terraria;
@@ -6,10 +6,10 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.Misc
+namespace SecretsOfTheSouls.Content.Items.Misc
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class GrayCrescent : ModItem
     {
         private SoundStyle GrayCrescentSound = SoundID.Item94;

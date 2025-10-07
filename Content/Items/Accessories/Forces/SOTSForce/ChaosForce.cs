@@ -4,14 +4,15 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using Terraria;
 using Terraria.ModLoader;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant;
+using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Forces.SOTSForce
+namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ChaosForce : BaseForce
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Forces/SOTSForce/ChaosForce";
         public override bool IsLoadingEnabled(Mod mod)
         {
             return FargoSOTSConfig.Instance.UnfinishedContent;
@@ -51,8 +52,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Forces.SOTSForce
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
 
     public class ChoasEffect : AccessoryEffect
     {

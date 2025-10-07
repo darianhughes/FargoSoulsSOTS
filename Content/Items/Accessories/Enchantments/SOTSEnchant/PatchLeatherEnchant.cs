@@ -5,16 +5,17 @@ using Microsoft.Xna.Framework;
 using SOTS.Items.Pyramid;
 using SOTS.Items.Nature;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using FargoSoulsSOTS.Core.SoulToggles;
+using SecretsOfTheSouls.Core.SoulToggles;
 using Terraria.ModLoader;
 using FargowiltasSouls.Core.Toggler;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
+namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class PatchLeatherEnchant : BaseEnchant
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/PatchLeatherEnchant";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -45,8 +46,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class PatchLeatherEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();

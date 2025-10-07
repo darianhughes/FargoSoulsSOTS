@@ -1,4 +1,4 @@
-﻿using FargoSoulsSOTS.Content.Items.Summons.SOTSCopy;
+﻿using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Core.NPCMatching;
@@ -7,10 +7,10 @@ using Terraria.ModLoader;
 using Terraria;
 using SOTS.NPCs.Boss.Advisor;
 
-namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
+namespace SecretsOfTheSouls.Content.Bosses.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class Advisor : EModeNPCBehaviour
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<TheAdvisorHead>());

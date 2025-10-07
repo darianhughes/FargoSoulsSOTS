@@ -3,10 +3,10 @@ using System.Reflection;
 using MonoMod.RuntimeDetour;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Core.Systems.Hooks.ssm
+namespace SecretsOfTheSouls.Core.Systems.Hooks.ssm
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.CommunitySoulsExpansion.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.CommunitySoulsExpansion.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Name)]
     public class MicroverseSoulLoadingHook : ModSystem
     {
         private static Hook _hook;

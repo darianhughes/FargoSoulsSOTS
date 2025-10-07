@@ -1,4 +1,4 @@
-﻿using FargoSoulsSOTS.Content.Items.Summons.SOTSCopy;
+﻿using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 using FargowiltasSouls;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Core.NPCMatching;
@@ -9,10 +9,10 @@ using SOTS.NPCs.Boss.Curse;
 using FargowiltasSouls.Core.Systems;
 using Terraria.ID;
 
-namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
+namespace SecretsOfTheSouls.Content.Bosses.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class PharoahsCurse : EModeNPCBehaviour
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<PharaohsCurse>());

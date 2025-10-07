@@ -1,5 +1,4 @@
 ﻿using System;
-using Fargowiltas.Items.Summons.SwarmSummons;
 using SOTS.NPCs.Boss.Advisor;
 using Terraria.Audio;
 using Terraria.Chat;
@@ -9,18 +8,20 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using SOTS.NPCs.Constructs;
-using FargoSoulsSOTS.Common.SOTSEffects;
+using SecretsOfTheSouls.Common.SOTSEffects;
+using Fargowiltas.Content.Items.Summons.SwarmSummons;
+using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OverloadAdvisor : SwarmSummonBase
     {
-        public override string Texture => "FargoSoulsSOTS/Content/Items/Summons/SOTSCopy/OldCRTTV";
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Summons/SOTSCopy/OldCRTTV";
 
-        public OverloadAdvisor() : base(ModContent.NPCType<TheAdvisorHead>(), nameof(OverloadAdvisor), 50, "OldCRTTV")
+        public OverloadAdvisor() : base(ModContent.NPCType<TheAdvisorHead>(), nameof(OverloadAdvisor), 50, ModContent.ItemType<OldCRTTV>())
         {
         }
 

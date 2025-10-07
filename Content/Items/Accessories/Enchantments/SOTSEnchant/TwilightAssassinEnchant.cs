@@ -7,15 +7,16 @@ using Terraria.ModLoader;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using SOTS.Items.Planetarium.FromChests;
 using SOTS.Items.SpiritStaves;
-using FargoSoulsSOTS.Core.SoulToggles;
+using SecretsOfTheSouls.Core.SoulToggles;
 using SOTS.Items;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
+namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class TwilightAssassinEnchant : BaseEnchant
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/TwilightAssassinEnchant";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -45,8 +46,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .Register();
         }
     }
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class TwilightAssassinEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
@@ -54,8 +55,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         public override bool ExtraAttackEffect => true;
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class HoloEyeMinionEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();

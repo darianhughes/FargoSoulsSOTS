@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using FargowiltasSouls.Content.Items.Accessories.Masomode;
+using FargowiltasSouls.Content.Items.Accessories.Eternity;
 using SOTS.Items;
 using SOTS.Items.Celestial;
 using SOTS.Items.Permafrost;
@@ -7,10 +7,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Core.Systems.Recipes.SOTSRecipes
+namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSRecipeAdjustments : ModSystem
     {
         public override void PostAddRecipes()

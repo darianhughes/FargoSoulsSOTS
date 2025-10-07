@@ -1,5 +1,4 @@
-﻿using FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity;
-using FargoSoulsSOTS.Core.SoulToggles;
+﻿using SecretsOfTheSouls.Core.SoulToggles;
 using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
@@ -9,11 +8,12 @@ using SOTS.Void;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
+namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class AnkhoftheCursedRuler : SoulsItem
     {
         public override bool Eternity => true;
@@ -44,8 +44,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class CursedExplosionEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<AncientMcGuffinHeader>();

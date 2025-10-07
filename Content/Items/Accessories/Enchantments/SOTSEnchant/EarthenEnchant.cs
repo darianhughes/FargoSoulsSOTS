@@ -10,15 +10,16 @@ using Terraria.ModLoader;
 using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.Toggler.Content;
 using Steamworks;
-using FargoSoulsSOTS.Core.Players;
+using SecretsOfTheSouls.Core.Players;
 using FargowiltasSouls;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
+namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class EarthenEnchant : BaseEnchant
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/EarthenEnchant";
         public override Color nameColor => new(185, 173, 149);
 
         public override void SetDefaults()
@@ -48,8 +49,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class EarthenEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<WorldShaperHeader>();

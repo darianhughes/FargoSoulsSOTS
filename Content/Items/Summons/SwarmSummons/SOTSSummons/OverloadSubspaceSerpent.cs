@@ -1,19 +1,20 @@
-﻿using Fargowiltas.Items.Summons.SwarmSummons;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Terraria;
 using SOTS.NPCs.Boss;
 using Terraria.ID;
 using SOTS.Items.Celestial;
+using Fargowiltas.Content.Items.Summons.SwarmSummons;
+using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OverloadSubspaceSerpent : SwarmSummonBase
     {
         //public override string Texture => "SOTS/Items/Celestial/CatalystBomb";
 
-        public OverloadSubspaceSerpent() : base(ModContent.NPCType<SubspaceSerpentHead>(), nameof(OverloadSubspaceSerpent), 50, "CatalyzedCrystal")
+        public OverloadSubspaceSerpent() : base(ModContent.NPCType<SubspaceSerpentHead>(), nameof(OverloadSubspaceSerpent), 50, ModContent.ItemType<CatalystDynamite>())
         {
         }
 

@@ -1,6 +1,6 @@
 ﻿using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Core.Systems
+namespace SecretsOfTheSouls.Core.Systems
 {
     public class ModIntegrationsSystem : ModSystem
     {
@@ -11,10 +11,10 @@ namespace FargoSoulsSOTS.Core.Systems
 
         private void MusicDisplaySetup()
         {
-            if (!FargoSOTSCrossmod.MusicDisplay.Loaded)
+            if (!SecretsOfTheSoulsCrossmod.MusicDisplay.Loaded)
                 return;
 
-            Mod musicDisplay = FargoSOTSCrossmod.MusicDisplay.Mod;
+            Mod musicDisplay = SecretsOfTheSoulsCrossmod.MusicDisplay.Mod;
 
             musicDisplay.Call("AddMusic", (short)MusicLoader.GetMusicSlot("FargoSoulsSOTS/Assets/Sounds/Music/ItsTVTime"), "It's TV Time!", "Toby Fox", "Secrets of the Souls");
         }

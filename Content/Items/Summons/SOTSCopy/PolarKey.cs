@@ -1,14 +1,13 @@
-﻿using Fargowiltas.Items.Summons;
+﻿using Fargowiltas.Content.Items.Summons;
 using SOTS.Items.Permafrost;
-using SOTS.NPCs.Boss;
 using SOTS.NPCs.Boss.Polaris.NewPolaris;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
+namespace SecretsOfTheSouls.Content.Items.Summons.SOTSCopy
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class PolarKey : BaseSummon
     {
         public override int NPCType => ModContent.NPCType<NewPolaris>();

@@ -2,7 +2,7 @@
 using Terraria;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using Microsoft.Xna.Framework;
-using FargoSoulsSOTS.Core.SoulToggles;
+using SecretsOfTheSouls.Core.SoulToggles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Terraria.ModLoader;
 using FargowiltasSouls.Core.Toggler;
@@ -10,21 +10,22 @@ using SOTS.Items.Pyramid;
 using SOTS.Items.Conduit;
 using SOTS;
 using SOTS.Void;
-using FargoSoulsSOTS.Core.Players;
+using SecretsOfTheSouls.Core.Players;
 using Steamworks;
 using FargowiltasSouls.Content.Bosses.TrojanSquirrel;
 using SOTS.NPCs.Boss;
 using System;
-using FargoSoulsSOTS.Common.SOTSEffects;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
-using FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity;
+using SecretsOfTheSouls.Common.SOTSEffects;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
+using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
+namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class CursedEnchant : BaseEnchant
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/CursedEnchant";
         public override Color nameColor => new(185, 173, 149);
 
         public override void SetDefaults()
@@ -65,8 +66,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class CursedEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
@@ -167,8 +168,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class TinyPlanetoidEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
@@ -180,8 +181,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class CursedAppleEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();
@@ -193,8 +194,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class GhostPepperMinionEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();

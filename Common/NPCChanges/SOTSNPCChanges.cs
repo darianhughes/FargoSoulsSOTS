@@ -16,7 +16,6 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using SOTS.Items.Fishing;
 using FargowiltasSouls;
-using Fargowiltas.NPCs;
 using SOTS.Items.AbandonedVillage;
 using SOTS.Items.Slime;
 using SOTS.NPCs.Phase;
@@ -29,13 +28,14 @@ using SOTS.NPCs.Gizmos;
 using SOTS.NPCs.Chaos;
 using SOTS.NPCs.TreasureSlimes;
 using SOTS.Items.Potions;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
-using FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
+using Fargowiltas.Content.NPCs;
+using SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity;
 
-namespace FargoSoulsSOTS.Common.NPCChanges
+namespace SecretsOfTheSouls.Common.NPCChanges
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSNPCChanges : GlobalNPC
     {
         public override bool InstancePerEntity => true;

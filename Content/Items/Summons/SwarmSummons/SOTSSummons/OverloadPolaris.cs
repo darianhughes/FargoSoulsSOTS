@@ -1,18 +1,19 @@
-﻿using Fargowiltas.Items.Summons.SwarmSummons;
+﻿using Fargowiltas.Content.Items.Summons.SwarmSummons;
+using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 using SOTS.Items.Permafrost;
 using SOTS.NPCs.Boss.Polaris.NewPolaris;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OverloadPolaris : SwarmSummonBase
     {
-        public override string Texture => "FargoSoulsSOTS/Content/Items/Summons/SOTSCopy/PolarKey";
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Summons/SOTSCopy/PolarKey";
 
-        public OverloadPolaris() : base(ModContent.NPCType<NewPolaris>(), nameof(OverloadPolaris), 50, "PolarKey")
+        public OverloadPolaris() : base(ModContent.NPCType<NewPolaris>(), nameof(OverloadPolaris), 50, ModContent.ItemType<PolarKey>())
         {
         }
 

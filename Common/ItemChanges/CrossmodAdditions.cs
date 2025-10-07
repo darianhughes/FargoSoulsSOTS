@@ -9,13 +9,13 @@ using Terraria;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using System.Runtime.Intrinsics.Arm;
 using ssm.SoA;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant;
-using FargoSoulsSOTS.Content.Items.Accessories.Forces.SOTSForce;
+using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
+using SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce;
 
-namespace FargoSoulsSOTS.Common.ItemChanges
+namespace SecretsOfTheSouls.Common.ItemChanges
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSAddtions
     {
         private static Mod sots = ModLoader.GetMod("SOTS");
@@ -85,7 +85,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
         {
             if (FargoSOTSConfig.Instance.UnfinishedContent)
             {
-                if (!FargoSOTSCrossmod.CommunitySoulsExpansion.Loaded)
+                if (!SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Loaded)
                 {
                     ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
                     ModContent.GetInstance<SpaceForce>().UpdateAccessory(player, hideVisual);

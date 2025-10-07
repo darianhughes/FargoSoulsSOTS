@@ -1,18 +1,19 @@
-﻿using Fargowiltas.Items.Summons.SwarmSummons;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using SOTS.NPCs.Boss.Glowmoth;
 using SOTS.Items.Earth.Glowmoth;
+using Fargowiltas.Content.Items.Summons.SwarmSummons;
+using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OverloadGlowmoth : SwarmSummonBase
     {
         //public override string Texture => "SOTS/Items/Earth/Glowmoth/SuspiciousLookingCandle";
 
-        public OverloadGlowmoth() : base(ModContent.NPCType<Glowmoth>(), nameof(OverloadGlowmoth), 50, "GlowingNylonCandle")
+        public OverloadGlowmoth() : base(ModContent.NPCType<Glowmoth>(), nameof(OverloadGlowmoth), 50, ModContent.ItemType<GlowNylonBulb>())
         {
         }
 

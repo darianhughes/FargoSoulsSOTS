@@ -1,8 +1,8 @@
 ﻿using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS
+namespace SecretsOfTheSouls
 {
-    public static class FargoSOTSCrossmod
+    public static class SecretsOfTheSoulsCrossmod
     {
         public static class FargowiltasCrossmod
         {

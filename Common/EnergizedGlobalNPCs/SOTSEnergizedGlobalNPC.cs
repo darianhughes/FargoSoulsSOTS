@@ -12,10 +12,10 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria.ID;
 
-namespace FargoSoulsSOTS.Common.EnergizedGlobalNPCs
+namespace SecretsOfTheSouls.Common.EnergizedGlobalNPCs
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSEnergizedGlobalNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
@@ -183,8 +183,8 @@ namespace FargoSoulsSOTS.Common.EnergizedGlobalNPCs
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public static class SotsIds
     {
         public static int AdvisorType = -1;
@@ -198,8 +198,8 @@ namespace FargoSoulsSOTS.Common.EnergizedGlobalNPCs
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ResolverSystem : ModSystem
     {
         public override void Load() => SotsIds.ResolveIds();

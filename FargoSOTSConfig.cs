@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
-namespace FargoSoulsSOTS
+namespace SecretsOfTheSouls
 {
     public class FargoSOTSConfig : ModConfig
     {

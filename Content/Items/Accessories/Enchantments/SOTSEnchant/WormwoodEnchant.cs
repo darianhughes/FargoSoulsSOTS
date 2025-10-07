@@ -10,18 +10,19 @@ using SOTS.Items.Slime;
 using System.Collections.Generic;
 using Terraria.Audio;
 using SOTS.Projectiles.Nature;
-using FargoSoulsSOTS.Core.Players;
+using SecretsOfTheSouls.Core.Players;
 using FargowiltasSouls;
-using FargoSoulsSOTS.Core.SoulToggles;
-using FargoSoulsSOTS.Common.ProjectileChanges;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
+using SecretsOfTheSouls.Core.SoulToggles;
+using SecretsOfTheSouls.Common.ProjectileChanges;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
+namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class WormwoodEnchant : BaseEnchant
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/WormwoodEnchant";
         public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
         public override Color nameColor => new(100, 173, 255);
         public override void SetStaticDefaults()
@@ -56,8 +57,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class WormwoodEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
@@ -71,8 +72,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class BloomStrike : AccessoryEffect
     {
         public override Header ToggleHeader => null;

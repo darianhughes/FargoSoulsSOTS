@@ -4,10 +4,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Core.Systems.Recipes.SOTSRecipes
+namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSMiscRecipeAdjustments : ModSystem
     {
         public override void PostAddRecipes()
@@ -16,9 +16,9 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes.SOTSRecipes
             {
                 Recipe recipe = Main.recipe[index];
 
-                if (FargoSOTSCrossmod.MagicStorage.Loaded)
+                if (SecretsOfTheSoulsCrossmod.MagicStorage.Loaded)
                 {
-                    Mod magicStorage = FargoSOTSCrossmod.MagicStorage.Mod;
+                    Mod magicStorage = SecretsOfTheSoulsCrossmod.MagicStorage.Mod;
 
                     if (recipe.HasResult(magicStorage.Find<ModItem>("UpgradeHallowed")))
                     {

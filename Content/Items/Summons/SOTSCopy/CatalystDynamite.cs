@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using Fargowiltas.Items.Summons;
+﻿using Fargowiltas.Content.Items.Summons;
 using SOTS.Items.Celestial;
 using SOTS.NPCs.Boss;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
+namespace SecretsOfTheSouls.Content.Items.Summons.SOTSCopy
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [LegacyName("CatalyzedCrystal")]
     public class CatalystDynamite : BaseSummon
     {

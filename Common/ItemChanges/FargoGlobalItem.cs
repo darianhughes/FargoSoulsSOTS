@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant;
+using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
@@ -11,7 +11,7 @@ using Terraria.GameInput;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Common.ItemChanges
+namespace SecretsOfTheSouls.Common.ItemChanges
 {
     public class FargoGlobalItem : GlobalItem
     {
@@ -126,44 +126,41 @@ namespace FargoSoulsSOTS.Common.ItemChanges
             {
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SubspaceDash"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SOTSSupersonicEffects"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SubspaceDash"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSSupersonicEffects"));
                 }
             }
 
             if (item.type == ModContent.ItemType<WorldShaperSoul>())
             {
                 if (ModLoader.HasMod("SOTS"))
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.EarthenEnchant.SimpleTooltip"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.EarthenEnchant.SimpleTooltip"));
             }
 
             if (item.type == ModContent.ItemType<FlightMasterySoul>())
             {
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GravityAnchor"));
-                    foreach (TooltipLine tooltip in tooltips)
-                    {
-                        ApplySpecialTooltips.ModifyTooltips(tooltips, "Tooltip0");
-                    }
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.GravityAnchor"));
+                    ApplySpecialTooltips.ModifyTooltips(tooltips, "Tooltip0");
                 }
             }
 
             if (item.type == ModContent.ItemType<TrawlerSoul>())
             {
                 if (ModLoader.HasMod("SOTS"))
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.TwilightFishing"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.TwilightFishing"));
             }
 
             if (item.type == ModContent.ItemType<DimensionSoul>())
             {
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    ApplySpecialTooltips.ModifyTooltips(tooltips, "Tooltip3");
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SOTSSupersonicEffects"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SubspaceDash"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.TwilightFishing"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.EarthenEnchant.SimpleTooltip"));
+                    //ApplySpecialTooltips.ModifyTooltips(tooltips, "Tooltip3");
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSSupersonicEffects"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SubspaceDash"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.TwilightFishing"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.EarthenEnchant.SimpleTooltip"));
                 }
             }
 
@@ -173,13 +170,18 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                 {
                     if (ModLoader.HasMod("SOTS"))
                     {
-                        if (!FargoSOTSCrossmod.CommunitySoulsExpansion.Loaded)
+                        if (!SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Loaded)
                         {
-                            tooltips[3].Text += ", ";
-                            tooltips[3].Text += Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName");
-
-                            AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.ChaosForce.SoulTooltip"));
-                            AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.SpaceForce.SoulTooltip"));
+                            foreach (TooltipLine tooltip in tooltips)
+                            {
+                                if (tooltip.Mod == "FargowiltasSouls" && tooltip.Name == "FargowiltasSouls:ActiveSkills")
+                                {
+                                    tooltip.Text += ", ";
+                                    tooltip.Text += Language.GetTextValue("Mods.SecretsOfTheSouls.ActiveSkills.BloomStrike.DisplayName");
+                                }
+                            }
+                            AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.ChaosForce.SoulTooltip"));
+                            AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.SpaceForce.SoulTooltip"));
                         }
                     }
                 }
@@ -188,17 +190,17 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                     if (ModLoader.HasMod("SOTS"))
                     {
                         tooltips[3].Text += ", ";
-                        tooltips[3].Text += Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName");
+                        tooltips[3].Text += Language.GetTextValue("Mods.SecretsOfTheSouls.ActiveSkills.BloomStrike.DisplayName");
 
-                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.VoidForce.SoulTooltip"));
+                        AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.VoidForce.SoulTooltip"));
                     }
                 }
             }
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class GravityAnchorEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<FlightMasteryHeader>();
@@ -211,16 +213,16 @@ namespace FargoSoulsSOTS.Common.ItemChanges
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class TwilightFishingEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<TrawlerHeader>();
         public override int ToggleItemType => ModContent.ItemType<TwilightFishingPole>();
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ApplySpecialTooltips
     {
         public static void ModifyTooltips(List<TooltipLine> tooltips, string tooltipName)
@@ -241,7 +243,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                         if (enumerator.MoveNext())
                             str2 = enumerator.Current;
                     }
-                    tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GildedBladeWings", (object)str1, (object)str2)}";
+                    tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.GildedBladeWings", (object)str1, (object)str2)}";
                 }
             }
         }

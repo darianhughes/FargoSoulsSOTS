@@ -5,14 +5,14 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using SOTS.Void;
-using FargoSoulsSOTS.Content.Items.Misc.Boosters;
+using SecretsOfTheSouls.Content.Items.Misc.Boosters;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 
-namespace FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity
+namespace SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class Keystone : ModProjectile
     {
         public const float HoverOffsetY = 25f;

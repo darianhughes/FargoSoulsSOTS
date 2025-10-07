@@ -2,10 +2,10 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Core.Systems
+namespace SecretsOfTheSouls.Core.Systems
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSCompatibilityMisc : ModSystem
     {
         public static bool DownedGlowmoth => SOTSWorld.downedGlowmoth;

@@ -1,9 +1,9 @@
 global using LumUtils = Luminance.Common.Utilities.Utilities;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS
+namespace SecretsOfTheSouls
 {
-	public class FargoSoulsSOTS : Mod
+	public class SecretsOfTheSouls : Mod
 	{
     }
 }

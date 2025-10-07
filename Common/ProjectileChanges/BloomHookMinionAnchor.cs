@@ -10,10 +10,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using ReLogic.Content;
 
-namespace FargoSoulsSOTS.Common.ProjectileChanges
+namespace SecretsOfTheSouls.Common.ProjectileChanges
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class BloomHookMinionAnchor : GlobalProjectile
     {
         public override bool InstancePerEntity => true;

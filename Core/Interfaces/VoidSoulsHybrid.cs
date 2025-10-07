@@ -1,4 +1,4 @@
-﻿namespace FargoSoulsSOTS.Core.Interfaces
+﻿namespace SecretsOfTheSouls.Core.Interfaces
 {
     public interface VoidSoulsHybrid
     {

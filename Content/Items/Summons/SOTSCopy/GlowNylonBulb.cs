@@ -1,13 +1,13 @@
-﻿using Fargowiltas.Items.Summons;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using SOTS.NPCs.Boss.Glowmoth;
 using SOTS.Items.Earth.Glowmoth;
+using Fargowiltas.Content.Items.Summons;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
+namespace SecretsOfTheSouls.Content.Items.Summons.SOTSCopy
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [LegacyName("GlowingNylonCandle")]
     public class GlowNylonBulb : BaseSummon
     {

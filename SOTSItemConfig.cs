@@ -2,10 +2,10 @@
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
-namespace FargoSoulsSOTS
+namespace SecretsOfTheSouls
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSItemConfig : ModConfig
     {
         public static SOTSItemConfig Instance;

@@ -13,10 +13,10 @@ using SOTS.Items.Earth;
 using SOTS.Items.Pyramid;
 using Fargowiltas.Common.Configs;
 
-namespace FargoSoulsSOTS.Core.Systems.Recipes.QoL.SOTSMutantMod
+namespace SecretsOfTheSouls.Core.Systems.Recipes.QoL.SOTSMutantMod
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class BannerRecipes : ModSystem
     {
         public override bool IsLoadingEnabled(Mod mod)

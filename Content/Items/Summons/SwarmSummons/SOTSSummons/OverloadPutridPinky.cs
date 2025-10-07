@@ -1,20 +1,18 @@
-﻿using Fargowiltas.Items.Summons.SwarmSummons;
-using SOTS;
-using Terraria.DataStructures;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 using SOTS.NPCs.Boss;
+using Fargowiltas.Content.Items.Summons.SwarmSummons;
+using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OverloadPutridPinky : SwarmSummonBase
     {
         public override string Texture => "SOTS/Items/Slime/JarOfPeanuts";
 
-        public OverloadPutridPinky() : base(ModContent.NPCType<PutridPinkyPhase2>(), nameof(OverloadPutridPinky), 50, "OffbrandPeanuts")
+        public OverloadPutridPinky() : base(ModContent.NPCType<PutridPinkyPhase2>(), nameof(OverloadPutridPinky), 50, ModContent.ItemType<OffbrandPeanuts>())
         {
         }
 

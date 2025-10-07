@@ -2,13 +2,13 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs
+namespace SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SnakeSummonTag : ModBuff
     {
-        public override string Texture => "FargoSoulsSOTS/Assets/Textures/Empty";
+        public override string Texture => "SecretsOfTheSouls/Assets/Textures/Empty";
 
         public static readonly int TagDamage = 1;
 
@@ -18,8 +18,8 @@ namespace FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class TagedNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;

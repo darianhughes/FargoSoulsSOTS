@@ -11,10 +11,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Core.Systems.Recipes.QoL.SOTSMutantMod
+namespace SecretsOfTheSouls.Core.Systems.Recipes.QoL.SOTSMutantMod
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class TreasureBagRecipes : ModSystem
     {
         public override bool IsLoadingEnabled(Mod mod)

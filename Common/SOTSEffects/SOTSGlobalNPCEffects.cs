@@ -6,10 +6,10 @@ using Microsoft.Xna.Framework;
 using System.IO;
 using Terraria.ModLoader.IO;
 using SOTS.Buffs;
-using FargoSoulsSOTS.Core.Players;
+using SecretsOfTheSouls.Core.Players;
 using SOTS.Common.GlobalNPCs;
 using SOTS.NPCs.Constructs;
-using FargoSoulsSOTS.Core.Systems;
+using SecretsOfTheSouls.Core.Systems;
 using Terraria.Localization;
 using SOTS.NPCs.Boss;
 using SOTS.NPCs.Boss.Glowmoth;
@@ -32,14 +32,14 @@ using SOTS.NPCs.Boss.Lux;
 using SOTS.Items.Chaos;
 using SOTS.Items.Celestial;
 using SOTS.NPCs.TreasureSlimes;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
-using FargoSoulsSOTS.Content.Items.Summons.SwarmSummons.Energizers.SOTSEnergizers;
-using FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
+using SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.Energizers.SOTSEnergizers;
+using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 
-namespace FargoSoulsSOTS.Common.SOTSEffects
+namespace SecretsOfTheSouls.Common.SOTSEffects
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSGlobalNPCEffects : GlobalNPC
     {
         public override bool InstancePerEntity => true;
@@ -134,17 +134,17 @@ namespace FargoSoulsSOTS.Common.SOTSEffects
 
             foreach (int construct in constructTypes)
             {
-                if (npc.type == construct && !FargoSoulsSOTSWorldSavingSystem.downedConstruct)
+                if (npc.type == construct && !SecretsOfTheSoulsWorldSavingSystem.downedConstruct)
                 {
                     doDeviText = true;
-                    FargoSoulsSOTSWorldSavingSystem.downedConstruct = true;
+                    SecretsOfTheSoulsWorldSavingSystem.downedConstruct = true;
                 }
             }
 
-            if (npc.ModNPC is TreasureSlime && !FargoSoulsSOTSWorldSavingSystem.downedTreasureSlime)
+            if (npc.ModNPC is TreasureSlime && !SecretsOfTheSoulsWorldSavingSystem.downedTreasureSlime)
             {
                 doDeviText = true;
-                FargoSoulsSOTSWorldSavingSystem.downedTreasureSlime = true;
+                SecretsOfTheSoulsWorldSavingSystem.downedTreasureSlime = true;
             }
 
             if (doDeviText && Main.netMode != NetmodeID.Server)

@@ -1,4 +1,4 @@
-﻿using FargoSoulsSOTS.Core.Interfaces;
+﻿using SecretsOfTheSouls.Core.Interfaces;
 using FargowiltasSouls.Content.Items;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -14,13 +14,13 @@ using Microsoft.Xna.Framework.Audio;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using FargoSoulsSOTS.Core.Players;
-using FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity;
+using SecretsOfTheSouls.Core.Players;
+using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
+namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class PlasmaGrasp : SoulsItem
     {
         public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<PlasmaHook>()];
@@ -71,8 +71,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class PlasmaHook : AccessoryEffect
     {
         public override Header ToggleHeader => null;

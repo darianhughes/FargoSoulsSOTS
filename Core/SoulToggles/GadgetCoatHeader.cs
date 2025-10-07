@@ -1,11 +1,11 @@
-﻿using FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity;
-using FargowiltasSouls.Core.Toggler.Content;
+﻿using FargowiltasSouls.Core.Toggler.Content;
 using Terraria.ModLoader;
+using SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity;
 
-namespace FargoSoulsSOTS.Core.SoulToggles
+namespace SecretsOfTheSouls.Core.SoulToggles
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class GadgetCoatHeader : SoulHeader
     {
         public override int Item => ModContent.ItemType<GadgetCoat>();

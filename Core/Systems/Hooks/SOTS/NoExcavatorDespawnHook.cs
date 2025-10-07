@@ -5,10 +5,10 @@ using Terraria.ModLoader;
 using MonoMod.RuntimeDetour;
 using Microsoft.Xna.Framework;
 
-namespace FargoSoulsSOTS.Core.Systems.Hooks.SOTS
+namespace SecretsOfTheSouls.Core.Systems.Hooks.SOTS
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class NoExcavatorDespawnHook : ModSystem
     {
         /* This works but doesn't prevent the despawn.

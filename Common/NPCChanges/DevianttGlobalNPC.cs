@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using FargoSoulsSOTS.Core.Systems;
-using Fargowiltas.Items.Summons.Deviantt;
-using Fargowiltas.Items.Tiles;
+using SecretsOfTheSouls.Core.Systems;
 using Fargowiltas;
-using Fargowiltas.NPCs;
 using MonoMod.RuntimeDetour;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using FargoSoulsSOTS.Content.Items.Summons.Deviantt.SOTSRareEnemy;
+using SecretsOfTheSouls.Content.Items.Summons.Deviantt.SOTSRareEnemy;
+using Fargowiltas.Content.NPCs;
+using Fargowiltas.Content.Items.Summons.Deviantt;
+using Fargowiltas.Content.Items.Tiles;
 
-namespace FargoSoulsSOTS.Common.NPCChanges
+namespace SecretsOfTheSouls.Common.NPCChanges
 {
     public class DevianttGlobalNPC : GlobalNPC
     {
@@ -33,10 +33,10 @@ namespace FargoSoulsSOTS.Common.NPCChanges
 
         public static void AddSOTSShop()
         {
-            NPCShop shop = new(ModContent.NPCType<Deviantt>(), Language.GetTextValue("Mods.FargoSoulsSOTS.NPCs.ShopModSwapper.SOTS"));
+            NPCShop shop = new(ModContent.NPCType<Deviantt>(), Language.GetTextValue("Mods.SecretsOfTheSouls.NPCs.ShopModSwapper.SOTS"));
 
-            Condition killedConstruct = new Condition("Mods.FargoSoulsSOTS.Conditions.ConstructDowned", () => FargoSoulsSOTSWorldSavingSystem.downedConstruct);
-            Condition killedTreasureSlime = new Condition("Mods.FargoSoulsSOTS.Conditions.TreasureSlimeDowned", () => FargoSoulsSOTSWorldSavingSystem.downedTreasureSlime);
+            Condition killedConstruct = new Condition("Mods.SecretsOfTheSouls.Conditions.ConstructDowned", () => SecretsOfTheSoulsWorldSavingSystem.downedConstruct);
+            Condition killedTreasureSlime = new Condition("Mods.SecretsOfTheSouls.Conditions.TreasureSlimeDowned", () => SecretsOfTheSoulsWorldSavingSystem.downedTreasureSlime);
 
             Mod sots = ModLoader.GetMod("SOTS");
 
@@ -89,7 +89,7 @@ namespace FargoSoulsSOTS.Common.NPCChanges
         internal static void DevianttAddShopsDetour(Orig_DevianttAddShops orig, Deviantt self)
         {
             AddVanillaShop();
-            if (FargoSOTSCrossmod.FargowiltasCrossmod.Loaded && FargoSOTSCrossmod.CalamityMod.Loaded) //i don't wanna recode the ui but we will keep this stuff because yeah
+            if (SecretsOfTheSoulsCrossmod.FargowiltasCrossmod.Loaded && SecretsOfTheSoulsCrossmod.CalamityMod.Loaded) //i don't wanna recode the ui but we will keep this stuff because yeah
             {
                 DeviantCrossmodHelper.GetCalamityShop();
                 AddSOTSShop();
@@ -107,8 +107,8 @@ namespace FargoSoulsSOTS.Common.NPCChanges
                 npcShop.Add(new Item(pandorasBox.Type));
             }
 
-            Condition killedConstruct = new Condition("Mods.FargoSoulsSOTS.Conditions.ConstructDowned", () => FargoSoulsSOTSWorldSavingSystem.downedConstruct);
-            Condition killedTreasureSlime = new Condition("Mods.FargoSoulsSOTS.Conditions.TreasureSlimeDowned", () => FargoSoulsSOTSWorldSavingSystem.downedTreasureSlime);
+            Condition killedConstruct = new Condition("Mods.SecretsOfTheSouls.Conditions.ConstructDowned", () => SecretsOfTheSoulsWorldSavingSystem.downedConstruct);
+            Condition killedTreasureSlime = new Condition("Mods.SecretsOfTheSouls.Conditions.TreasureSlimeDowned", () => SecretsOfTheSoulsWorldSavingSystem.downedTreasureSlime);
 
             npcShop
                 .Add(new Item(ModContent.ItemType<WormSnack>()) { shopCustomPrice = Item.buyPrice(copper: 20000) }, new Condition("Mods.Fargowiltas.Conditions.WormDown", () => FargoWorldDownedBools["worm"]))
@@ -150,7 +150,7 @@ namespace FargoSoulsSOTS.Common.NPCChanges
                 .Add(new Item(ModContent.ItemType<SiblingPylon>()), Condition.HappyEnoughToSellPylons, Condition.NpcIsPresent(ModContent.NPCType<Mutant>()), Condition.NpcIsPresent(ModContent.NPCType<Abominationn>()))
             ;
 
-            if (!FargoSOTSCrossmod.FargowiltasCrossmod.Loaded && FargoSOTSCrossmod.SOTS.Loaded)
+            if (!SecretsOfTheSoulsCrossmod.FargowiltasCrossmod.Loaded && SecretsOfTheSoulsCrossmod.SOTS.Loaded)
             {
                 Mod sots = ModLoader.GetMod("SOTS");
 
@@ -163,13 +163,13 @@ namespace FargoSoulsSOTS.Common.NPCChanges
         }
     }
 
-    [JITWhenModsEnabled(FargoSOTSCrossmod.FargowiltasCrossmod.Name, FargoSOTSCrossmod.CalamityMod.Name)]
-    [ExtendsFromMod(FargoSOTSCrossmod.FargowiltasCrossmod.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.FargowiltasCrossmod.Name, SecretsOfTheSoulsCrossmod.CalamityMod.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.FargowiltasCrossmod.Name)]
     public class DeviantCrossmodHelper
     {
         public static void GetCalamityShop()
         {
-            FargowiltasCrossmod.Core.Common.Globals.DevianttGlobalNPC.AddCalamityShop();
+            //FargowiltasCrossmod.Core.Common.Globals.DevianttGlobalNPC.AddCalamityShop();
         }
     }
 }

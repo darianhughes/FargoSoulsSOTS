@@ -1,4 +1,4 @@
-﻿using FargoSoulsSOTS.Core.SoulToggles;
+﻿using SecretsOfTheSouls.Core.SoulToggles;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
@@ -10,12 +10,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
+namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class VibrantEnchant : BaseEnchant
     {
+        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/VibrantEnchant";
         public override Color nameColor => new(181, 220, 97);
 
         public override void SetDefaults()
@@ -45,8 +46,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class VibrantEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<SpaceForceHeader>();

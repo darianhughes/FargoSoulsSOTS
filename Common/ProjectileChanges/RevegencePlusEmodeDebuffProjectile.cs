@@ -4,12 +4,12 @@ using RevengeancePlus.Projectiles;
 using FargowiltasSouls.Core.Systems;
 using Terraria.ID;
 using Terraria;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 
-namespace FargoSoulsSOTS.Common.ProjectileChanges
+namespace SecretsOfTheSouls.Common.ProjectileChanges
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.RevengeancePlus.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.RevengeancePlus.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.RevengeancePlus.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.RevengeancePlus.Name)]
     public class RevegencePlusEmodeDebuffProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => true;

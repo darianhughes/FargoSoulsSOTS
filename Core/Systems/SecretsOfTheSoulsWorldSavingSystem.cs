@@ -4,9 +4,9 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace FargoSoulsSOTS.Core.Systems
+namespace SecretsOfTheSouls.Core.Systems
 {
-    public class FargoSoulsSOTSWorldSavingSystem : ModSystem
+    public class SecretsOfTheSoulsWorldSavingSystem : ModSystem
     {
         public static bool downedConstruct = false;
         public static bool downedTreasureSlime = false;

@@ -1,10 +1,9 @@
-﻿using FargoSoulsSOTS.Content.Buffs.Emode;
+﻿using SecretsOfTheSouls.Content.Buffs.Emode;
 using FargowiltasSouls.Content.Items;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using FargowiltasSouls.Content.Buffs.Masomode;
-using FargoSoulsSOTS.Core.SoulToggles;
+using SecretsOfTheSouls.Core.SoulToggles;
 using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
@@ -12,11 +11,12 @@ using Terraria.Audio;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using FargowiltasSouls.Content.Buffs.Eternity;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
+namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [AutoloadEquip(EquipType.Face)]
     public class DrillCap : SoulsItem
     {
@@ -69,8 +69,8 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class DrillCapEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<GadgetCoatHeader>();

@@ -1,15 +1,15 @@
 ﻿using System.Linq;
-using FargoSoulsSOTS.Content.Items.Accessories.Forces.SOTSForce;
+using SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Items.Accessories;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Core.Systems.Recipes
+namespace SecretsOfTheSouls.Core.Systems.Recipes
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.CommunitySoulsExpansion.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.CommunitySoulsExpansion.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Name)]
     public class CSERecipeAdjustments : ModSystem
     {
         public override bool IsLoadingEnabled(Mod mod)

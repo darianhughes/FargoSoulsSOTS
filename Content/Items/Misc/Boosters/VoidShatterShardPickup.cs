@@ -8,10 +8,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 
-namespace FargoSoulsSOTS.Content.Items.Misc.Boosters
+namespace SecretsOfTheSouls.Content.Items.Misc.Boosters
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class VoidShatterShardPickup : ModItem
     {
         public override string Texture => "SOTS/Projectiles/Permafrost/ShatterShard";

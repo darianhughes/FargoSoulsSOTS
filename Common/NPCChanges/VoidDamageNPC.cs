@@ -9,10 +9,10 @@ using SOTS.Void;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Common.NPCChanges
+namespace SecretsOfTheSouls.Common.NPCChanges
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class VoidDamageNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
@@ -37,8 +37,8 @@ namespace FargoSoulsSOTS.Common.NPCChanges
         }
     }
 
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class VoidDamageProjectiles : GlobalProjectile
     {
         public override bool InstancePerEntity => true;

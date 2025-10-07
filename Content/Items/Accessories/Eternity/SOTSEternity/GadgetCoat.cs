@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using FargoSoulsSOTS.Content.Buffs.Emode;
-using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
-using FargoSoulsSOTS.Core.Players;
+using SecretsOfTheSouls.Content.Buffs.Emode;
+using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
+using SecretsOfTheSouls.Core.Players;
 using FargowiltasSouls;
-using FargowiltasSouls.Content.Buffs.Masomode;
 using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Content.Items.Accessories.Expert;
 using FargowiltasSouls.Content.Items.Materials;
@@ -12,11 +11,12 @@ using SOTS.Items.Permafrost;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using FargowiltasSouls.Content.Buffs.Eternity;
 
-namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
+namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class GadgetCoat : SoulsItem
     {
         public override bool IsLoadingEnabled(Mod mod)
@@ -33,7 +33,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
         {
             if (Main.netMode != NetmodeID.Server)
             {
-                EquipLoader.AddEquipTexture(Mod, "FargoSoulsSOTS/Content/Items/Accessories/Masomode/SOTSEternity/DrillCap_Face", EquipType.Head, this);
+                EquipLoader.AddEquipTexture(Mod, "SecretsOfTheSouls/Content/Items/Accessories/Eternity/SOTSEternity/DrillCap_Face", EquipType.Head, this);
             }
         }
 
@@ -60,7 +60,7 @@ namespace FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity
 
         void PassiveEffect(Player player)
         {
-            player.FargoSouls().BoxofGizmos = true;
+            //player.FargoSouls().BoxofGizmos = true;
             if (player.whoAmI == Main.myPlayer && player.FargoSouls().IsStandingStill && player.itemAnimation == 0 && player.HeldItem != null)
             {
                 if (++counter > 60)

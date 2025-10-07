@@ -4,10 +4,10 @@ using Terraria.GameContent;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity
+namespace SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class VoidShatterShard : ModProjectile
     {
         // ai[0] = index in ring (0..count-1)

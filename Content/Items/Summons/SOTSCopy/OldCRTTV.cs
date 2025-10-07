@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Fargowiltas.Items.Summons;
-using Fargowiltas.Projectiles;
-using SOTS.Items.Slime;
-using SOTS.Items.Tools;
-using SOTS.NPCs.Boss;
+﻿using SOTS.Items.Tools;
 using SOTS.NPCs.Boss.Advisor;
 using Terraria.Audio;
 using Terraria.Chat;
@@ -20,13 +11,14 @@ using Microsoft.Xna.Framework;
 using SOTS.NPCs.Constructs;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler.Content;
-using SOTS.Items;
 using FargowiltasSouls.Core.Toggler;
+using Fargowiltas.Content.Items.Summons;
+using Fargowiltas.Content.Projectiles;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
+namespace SecretsOfTheSouls.Content.Items.Summons.SOTSCopy
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OldCRTTV : BaseSummon
     {
         public override int NPCType => ModContent.NPCType<TheAdvisorHead>();

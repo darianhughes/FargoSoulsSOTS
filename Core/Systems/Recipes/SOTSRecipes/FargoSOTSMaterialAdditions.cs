@@ -1,9 +1,7 @@
 ﻿using System.Linq;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant;
-using FargoSoulsSOTS.Content.Items.Accessories.Forces.SOTSForce;
-using FargowiltasSouls.Content.Items.Accessories.Masomode;
+using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
+using SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
-using FargowiltasSouls.Content.Items.Armor;
 using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Weapons.Misc;
 using SOTS.Items;
@@ -18,11 +16,13 @@ using SOTS.Items.Wings;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using FargowiltasSouls.Content.Items.Armor.Styx;
+using FargowiltasSouls.Content.Items.Accessories.Eternity;
 
-namespace FargoSoulsSOTS.Core.Systems.Recipes.SOTSRecipes
+namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class FargoSOTSMaterialAdditions : ModSystem
     {
         public override void PostAddRecipes()
@@ -120,7 +120,7 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes.SOTSRecipes
 
                     if (FargoSOTSConfig.Instance.UnfinishedContent)
                     {
-                        if (!FargoSOTSCrossmod.CommunitySoulsExpansion.Loaded)
+                        if (!SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Loaded)
                         {
                             recipe.AddIngredient<ChaosForce>();
                             recipe.AddIngredient<SpaceForce>();

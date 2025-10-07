@@ -5,10 +5,10 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace FargoSoulsSOTS.Common.ItemChanges
+namespace SecretsOfTheSouls.Common.ItemChanges
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.CommunitySoulsExpansion.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.CommunitySoulsExpansion.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Name)]
     public class CSEGlobalItem : GlobalItem
     {
         public override bool IsLoadingEnabled(Mod mod)
@@ -72,19 +72,19 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                     {
                         if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.Contains("Tooltip0"))
                         {
-                            tooltips[i].Text = $"{Language.GetTextValue("Mods.FargowiltasSouls.ActiveSkills.GrantsSkillsPlural")} {Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName")}";
+                            tooltips[i].Text = $"{Language.GetTextValue("Mods.SecretsOfTheSouls.ActiveSkills.GrantsSkillsPlural")} {Language.GetTextValue("Mods.SecretsOfTheSouls.ActiveSkills.BloomStrike.DisplayName")}";
                             tooltips[i].OverrideColor = Color.Lerp(Color.Blue, Color.LightBlue, 0.7f);
                         }
                     }
 
                     if (FargoSOTSConfig.Instance.UnfinishedContent)
                     {
-                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.ChaosForce.SoulTooltip"));
-                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.SpaceForce.SoulTooltip"));
+                        AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.ChaosForce.SoulTooltip"));
+                        AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.SpaceForce.SoulTooltip"));
                     }
                     else
                     {
-                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.VoidForce.SoulTooltip"));
+                        AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.VoidForce.SoulTooltip"));
                     }
                 }
             }

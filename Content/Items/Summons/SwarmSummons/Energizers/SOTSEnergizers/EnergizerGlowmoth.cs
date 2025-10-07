@@ -1,10 +1,10 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Items.Summons.SwarmSummons.Energizers.SOTSEnergizers
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.Energizers.SOTSEnergizers
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class EnergizerGlowmoth : ModItem
     {
         public override void SetDefaults()

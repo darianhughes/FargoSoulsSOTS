@@ -9,13 +9,13 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Content.Projectiles.Masomode.SOTSEternity
+namespace SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class CodeBurst : ModProjectile
     {
-        public override string Texture => "FargowiltasSouls/Content/Projectiles/GlowRingHollow";
+        public override string Texture => "FargowiltasSouls/Assets/Textures/Content/Projectiles/GlowRingHollow";
         public const int Duration = 20;
         public const int BaseRadius = 52;
 

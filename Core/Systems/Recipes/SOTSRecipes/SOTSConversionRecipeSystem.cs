@@ -1,4 +1,4 @@
-﻿using FargoSoulsSOTS.Content.Items.Summons.SOTSCopy;
+﻿using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 using Fargowiltas.Utilities;
 using SOTS.Items;
 using SOTS.Items.Celestial;
@@ -10,10 +10,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace FargoSoulsSOTS.Core.Systems.Recipes.SOTSRecipes
+namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSConversionRecipeSystem : ModSystem
     {
         public override void AddRecipes()

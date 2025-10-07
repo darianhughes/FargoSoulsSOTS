@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using FargoSoulsSOTS.Core.Interfaces;
+using SecretsOfTheSouls.Core.Interfaces;
 using SOTS;
 using SOTS.Buffs;
 using SOTS.Items.Planetarium;
@@ -8,12 +8,12 @@ using SOTS.Void;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using static FargoSoulsSOTS.FargoSOTSCrossmod;
+using static SecretsOfTheSouls.SecretsOfTheSoulsCrossmod;
 
-namespace FargoSoulsSOTS.Common
+namespace SecretsOfTheSouls.Common
 {
-    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class VoidSoulsItemHybrid : GlobalItem
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
