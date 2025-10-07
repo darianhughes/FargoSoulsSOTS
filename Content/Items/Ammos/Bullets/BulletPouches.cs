@@ -8,26 +8,37 @@ using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Content.Items.Ammos.Bullets
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class BorePouch : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<BoreBullet>();
     }
+
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
 
     public class ScrapMetalPouch : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<AncientSteelBullet>();
     }
 
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class SolarPouch : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<SolarBullet>();
     }
 
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class VibrantPouch : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<VibrantBullet>();
     }
 
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class WormholePouch : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<SkipBullet>();

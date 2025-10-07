@@ -4,8 +4,7 @@ using RevengeancePlus.Projectiles;
 using FargowiltasSouls.Core.Systems;
 using Terraria.ID;
 using Terraria;
-using FargoSoulsSOTS.Content.Buffs.Emode;
-using SOTS.Projectiles.Pyramid;
+using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
 
 namespace FargoSoulsSOTS.Common.ProjectileChanges
 {
@@ -36,7 +35,6 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
         public List<int> pharoahMasoDebuffProjectile =
         [
             ModContent.ProjectileType<CurseShockwave>(),
-            ModContent.ProjectileType<CurseSpear>()
         ];
 
         public List<int> advisorEmodeDebuffProjectile =
@@ -46,24 +44,27 @@ namespace FargoSoulsSOTS.Common.ProjectileChanges
 
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
         {
-            if (slimedDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
+            if (ModLoader.HasMod("SOTS"))
             {
-                target.AddBuff(BuffID.Slimed, 60 * 3);
-            }
+                if (slimedDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
+                {
+                    target.AddBuff(BuffID.Slimed, 60 * 3);
+                }
 
-            if (putridEmodeDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
-            {
-                target.AddBuff(ModContent.BuffType<Corrosion>(), (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
-            }
+                if (putridEmodeDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
+                {
+                    target.AddBuff(ModContent.BuffType<Corrosion>(), (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
+                }
 
-            if (pharoahMasoDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.MasochistModeReal)
-            {
-                target.AddBuff(BuffID.Blackout, 60 * 3);
-            }
+                if (pharoahMasoDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.MasochistModeReal)
+                {
+                    target.AddBuff(BuffID.Blackout, 60 * 3);
+                }
 
-            if (advisorEmodeDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
-            {
-                target.AddBuff(BuffID.Electrified, (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
+                if (advisorEmodeDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
+                {
+                    target.AddBuff(BuffID.Electrified, (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
+                }
             }
         }
     }

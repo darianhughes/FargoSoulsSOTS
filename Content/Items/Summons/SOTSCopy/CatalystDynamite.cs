@@ -10,6 +10,8 @@ using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     [LegacyName("CatalyzedCrystal")]
     public class CatalystDynamite : BaseSummon
     {

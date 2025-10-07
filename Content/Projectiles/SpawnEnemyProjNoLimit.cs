@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SOTS.NPCs;
+﻿using System.Collections.Generic;
 using Terraria.Audio;
-using Terraria.Chat;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using SOTS.NPCs.Boss.Curse;
 using SOTS.Items.Pyramid;
-using FargoSoulsSOTS.Common;
-using FargoSoulsSOTS.Content.Items.Summons.SwarmSummons;
-using ssm;
+using FargoSoulsSOTS.Common.SOTSEffects;
 
 namespace FargoSoulsSOTS.Content.Projectiles
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class SpawnEnemyProjNoLimit : ModProjectile
     {
         public override string Texture => "SOTS/Items/Pyramid/SpawnEnemyProj";

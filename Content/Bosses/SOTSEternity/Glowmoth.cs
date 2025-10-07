@@ -5,12 +5,14 @@ using FargowiltasSouls.Core.NPCMatching;
 using SOTS;
 using Terraria.ModLoader;
 using Terraria;
-using FargoSoulsSOTS.Content.Buffs.Emode;
 using FargowiltasSouls.Core.Systems;
 using Terraria.ID;
+using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
 
 namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class Glowmoth : EModeNPCBehaviour
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<SOTS.NPCs.Boss.Glowmoth.Glowmoth>());

@@ -1,17 +1,8 @@
 ﻿using System.Collections.Generic;
-using FargoSoulsSOTS.Content.Items.Accessories.Forces;
-using SOTS.Items.DoorItems;
-using SOTS;
 using ssm.Content.Items.Accessories;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using FargowiltasSouls.Core.AccessoryEffectSystem;
-using Terraria.ID;
-using FargowiltasSouls.Content.Items.Accessories.Souls;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
-using SOTS.Items.Wings;
-using SOTS.Void;
 using Microsoft.Xna.Framework;
 
 namespace FargoSoulsSOTS.Common.ItemChanges
@@ -27,74 +18,19 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            Mod sots = ModLoader.GetMod("SOTS");
-            DoorPlayer dp = player.GetModPlayer<DoorPlayer>();
-            SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
-            VoidPlayer voidPlayer = VoidPlayer.ModPlayer(player);
-
             if (item.type == ModContent.ItemType<MicroverseSoul>())
             {
-                if (FargoSOTSConfig.Instance.UnfinishedContent)
+                if (ModLoader.HasMod("SOTS"))
                 {
-                    ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
-                    ModContent.GetInstance<SpaceForce>().UpdateAccessory(player, hideVisual);
-                }
-                else
-                {
-                    ModContent.GetInstance<VoidForce>().UpdateAccessory(player, hideVisual);
+                    SOTSAddtions.UpdateMicroverseSoul(item, player, hideVisual);
                 }
             }
 
             if (item.type == ModContent.ItemType<StargateSoul>())
             {
-                //Supersonic
-                ++dp.doorPants;
-
-                if (player.AddEffect<FlashsparkEffect>(item))
+                if (ModLoader.HasMod("SOTS"))
                 {
-                    ModItem sb = sots.Find<ModItem>("SubspaceBoosters");
-
-                    sb.UpdateAccessory(player, hideVisual);
-
-                    //remove extra things added
-                    player.lavaMax -= 600;
-                    if (player.HasEffect<SupersonicRocketBoots>())
-                        player.rocketBoots = player.vanityRocketBoots = ArmorIDs.RocketBoots.TerrasparkBoots;
-                    else
-                    {
-                        player.rocketBoots = 0;
-                    }
-                    player.moveSpeed -= 0.2f;
-                    player.accRunSpeed = player.HasEffect<RunSpeed>() ? 15.6f : 6.75f;
-                }
-
-                //Flight Mastery
-                voidPlayer.bonusVoidGain += 3f;
-                voidPlayer.voidRegenSpeed += 0.25f;
-                sotsPlayer.SpiritSymphony = true;
-                MachinaBoosterPlayer modPlayer = player.GetModPlayer<MachinaBoosterPlayer>();
-                int num;
-                bool flag = (num = 1) != 0;
-                modPlayer.CreativeFlightTier2 = num != 0;
-                modPlayer.canCreativeFlight = flag;
-
-                player.AddEffect<GravityAnchorEffect>(item);
-
-                //Trawler
-                player.AddEffect<TwilightFishingEffect>(item);
-
-                //World Shapter
-                player.AddEffect<EarthenEffect>(item);
-
-                //Microverse Soul
-                if (FargoSOTSConfig.Instance.UnfinishedContent)
-                {
-                    ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
-                    ModContent.GetInstance<SpaceForce>().UpdateAccessory(player, hideVisual);
-                }
-                else
-                {
-                    ModContent.GetInstance<VoidForce>().UpdateAccessory(player, hideVisual);
+                    SOTSAddtions.UpdateEternitySoul(item, player, hideVisual);
                 }
             }
         }
@@ -130,23 +66,26 @@ namespace FargoSoulsSOTS.Common.ItemChanges
         {
             if (item.type == ModContent.ItemType<MicroverseSoul>())
             {
-                for (int i = 0; i < tooltips.Count; i++)
+                if (ModLoader.HasMod("SOTS"))
                 {
-                    if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.Contains("Tooltip0"))
+                    for (int i = 0; i < tooltips.Count; i++)
                     {
-                        tooltips[i].Text = $"{Language.GetTextValue("Mods.FargowiltasSouls.ActiveSkills.GrantsSkillsPlural")} {Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName")}";
-                        tooltips[i].OverrideColor = Color.Lerp(Color.Blue, Color.LightBlue, 0.7f);
+                        if (tooltips[i].Mod == "Terraria" && tooltips[i].Name.Contains("Tooltip0"))
+                        {
+                            tooltips[i].Text = $"{Language.GetTextValue("Mods.FargowiltasSouls.ActiveSkills.GrantsSkillsPlural")} {Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName")}";
+                            tooltips[i].OverrideColor = Color.Lerp(Color.Blue, Color.LightBlue, 0.7f);
+                        }
                     }
-                }
 
-                if (FargoSOTSConfig.Instance.UnfinishedContent)
-                {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.ChaosForce.SoulTooltip"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.SpaceForce.SoulTooltip"));
-                }
-                else
-                {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.VoidForce.SoulTooltip"));
+                    if (FargoSOTSConfig.Instance.UnfinishedContent)
+                    {
+                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.ChaosForce.SoulTooltip"));
+                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.SpaceForce.SoulTooltip"));
+                    }
+                    else
+                    {
+                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.VoidForce.SoulTooltip"));
+                    }
                 }
             }
         }

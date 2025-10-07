@@ -25,6 +25,8 @@ using FargowiltasSouls.Core.Toggler;
 
 namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class OldCRTTV : BaseSummon
     {
         public override int NPCType => ModContent.NPCType<TheAdvisorHead>();

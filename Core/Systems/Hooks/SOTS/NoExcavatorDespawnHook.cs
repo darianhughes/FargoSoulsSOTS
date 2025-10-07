@@ -3,18 +3,12 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 using MonoMod.RuntimeDetour;
-using SOTS.Items.AbandonedVillage;
-using SOTS.Items.Chaos;
-using SOTS.Items.Invidia;
-using SOTS.Items.Planetarium.Blocks;
-using SOTS.Items.Pyramid;
-using SOTS.Items.Secrets;
-using SOTS;
-using SOTS.NPCs.Boss.Excavator;
 using Microsoft.Xna.Framework;
 
 namespace FargoSoulsSOTS.Core.Systems.Hooks.SOTS
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class NoExcavatorDespawnHook : ModSystem
     {
         /* This works but doesn't prevent the despawn.

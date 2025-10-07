@@ -11,6 +11,8 @@ using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Common.NPCChanges
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class VoidDamageNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;

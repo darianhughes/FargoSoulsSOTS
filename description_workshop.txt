@@ -1,15 +1,25 @@
-An unofficial addon to the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo's Souls Mod[/url] that makes it compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] Secrets of the Shadows[/url].
+An unofficial addon to the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo's Souls Mod[/url] that makes it compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] Secrets of the Shadows[url] & [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929&searchtext=consolaria] Consolaria[url].
 
 v0.1 includes support for Pre-Hardmode, and the mod will continue to be worked on and gain regular updates.
 
+Currently supports:
+[list]
+	[*] Secrets of the Shadows
+	[*] Consolaria
+[/list]
+
 Features:
 [list]
-	[*] Adds enchantments & forces for the Secrets of the Shadows armors
-	[*] Adds a new essence & soul for the Void subclass
-	[*] Adds Fargo's Mutant quality of life support such as banner recipes & alternate summons for Secrets of the Shadows bosses.
-	[*] Eternity Debuffs & AI changes for Secrets of the Shadow's bosses
-	[*] Merges Secrets of the Shadows accessories trees such as the boot crafting tree or shield crafting tree with Fargo's Souls Mod accessories
-	[*] Includes support for other Fargo's addons such as the Calamity - Fargo's Souls DLC.
+	[*] Eterity mode reworks
+	[*] Secrets of the Shadows & Consolaria Enchantments, Forces, & Souls
+	[*] Fargo's Mutant quality of life support such as banner recipes & alternate summons.
+	[*] Merged accessories trees such as the boot crafting tree or shield crafting tree with Fargo's Souls Mod accessories
+	[*] Support for other Fargo's addons such as the Calamity - Fargo's Souls DLC.
+[/list]
+
+Planned Features:
+[list]
+	[*] Spooky Mod compatibility (maybe some day)
 [/list]
 
 If your interested in more mods like this, check out some of my team's other mods:
@@ -29,10 +39,10 @@ You can also check out the official wiki for our mods: https://terrariamods.wiki
 
 If you want to support the development team, see our pateron page: https://www.patreon.com/c/InfernalEclipseofRagnarokTeam
 
-Special thanks to Terrynmuse, Fargowilta, Javyz, tomat, Lucille Karma, VortexOfRainbows, apotofkoolaid, Heart Plus Up!, & N0t_UNowen for their mods!
+Special thanks to the Fargo's Souls Development Team, the Secrets of the Shadows Development Team, the Consolaria Development team, Shipmans AGLA, Lucille Karma, & N0t_UNowen for their mods!
 
-Coding: Akira, Ropro0923
-Sprites: ma3allim, cheesenuggets, Dandel
+Coding: Akira, Ropro0923, StarlightCat
+Sprites: ma3allim, DanHameln, Dandel, Mr.Puzzles, cheesenuggets
 Localization: Pudd1ng (Simplified Chinese)
 
 Some of the code in this mod is reused or refactored from the orignial Secrets of the Shadows codebase as well some code from many of the Fargo Team projects. Make sure to show each of thier individual teams some support! 

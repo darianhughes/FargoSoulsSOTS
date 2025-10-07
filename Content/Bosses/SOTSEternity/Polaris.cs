@@ -6,14 +6,16 @@ using SOTS;
 using Terraria.ModLoader;
 using Terraria;
 using SOTS.NPCs.Boss.Polaris.NewPolaris;
-using FargoSoulsSOTS.Content.Buffs.Emode;
 using Terraria.ID;
 using FargowiltasSouls.Core.Systems;
 using Microsoft.Xna.Framework;
 using SOTS.NPCs.Boss.Polaris;
+using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
 
 namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class Polaris : EModeNPCBehaviour
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<NewPolaris>());

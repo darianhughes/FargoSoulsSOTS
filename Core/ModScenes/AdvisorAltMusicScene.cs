@@ -6,6 +6,8 @@ using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Core.ModScenes
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class AdvisorAltMusicScene : ModSceneEffect
     {
         public override SceneEffectPriority Priority => SceneEffectPriority.BossHigh;

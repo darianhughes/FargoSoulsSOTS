@@ -8,6 +8,8 @@ using FargoSoulsSOTS.Content.Projectiles;
 
 namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     [LegacyName("CursedSarcophagus")]
     public class CursedScroll : ModItem
     {

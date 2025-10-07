@@ -565,7 +565,7 @@ Configs: {
 	}
 
 	ItemConfig: {
-		DisplayName: Item Config
+		DisplayName: Secrets of the Shadows Item Config
 		Headers.ItemReworks: Item Reworks
 
 		FlashsparkBootsRework: {

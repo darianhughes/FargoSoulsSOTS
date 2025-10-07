@@ -9,6 +9,8 @@ using Terraria.DataStructures;
 
 namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class ChaosLure : BaseSummon
     {
         public override string Texture => "SOTS/Items/ElectromagneticLure";

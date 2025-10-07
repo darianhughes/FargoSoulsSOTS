@@ -11,6 +11,8 @@ using Terraria.ID;
 
 namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class PharoahsCurse : EModeNPCBehaviour
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<PharaohsCurse>());

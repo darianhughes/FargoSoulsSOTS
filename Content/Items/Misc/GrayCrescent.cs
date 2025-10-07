@@ -8,6 +8,8 @@ using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Content.Items.Misc
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class GrayCrescent : ModItem
     {
         private SoundStyle GrayCrescentSound = SoundID.Item94;
@@ -93,7 +95,7 @@ namespace FargoSoulsSOTS.Content.Items.Misc
         private bool CanUse(Player player, bool rightClick = false)
         {
             VoidPlayer vp = player.GetModPlayer<VoidPlayer>();
-            FargoSOTSPlayer mp = player.GetModPlayer<FargoSOTSPlayer>();
+            SOTSEffectsPlayer mp = player.GetModPlayer<SOTSEffectsPlayer>();
 
             if (!rightClick && vp.voidMeterMax > 50)
             {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -17,6 +12,8 @@ using ReLogic.Content;
 
 namespace FargoSoulsSOTS.Common.ProjectileChanges
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class BloomHookMinionAnchor : GlobalProjectile
     {
         public override bool InstancePerEntity => true;

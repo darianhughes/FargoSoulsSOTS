@@ -11,11 +11,15 @@ using FargoSoulsSOTS.Content.Buffs.Emode;
 
 namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class Excavator : EModeNPCBehaviour
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchTypeRange(ModContent.NPCType<SOTS.NPCs.Boss.Excavator.Excavator>(), ModContent.NPCType<ExcavatorBody>(), ModContent.NPCType<ExcavatorBody2>(), ModContent.NPCType<ExcavatorDrillTail>(), ModContent.NPCType<ExcavatorTail>());
     }
 
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class ExcavatorHead : EModeNPCBehaviour
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<SOTS.NPCs.Boss.Excavator.Excavator>());

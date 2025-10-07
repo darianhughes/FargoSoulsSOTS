@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using SOTS.NPCs.Boss;                
-using SOTS.NPCs.Boss.Polaris;         
-using SOTS.NPCs.Boss.Lux;           
-using SOTS.NPCs.Boss.Advisor;       
-using SOTS.NPCs.Boss.Curse;         
-using SOTS.NPCs.Boss.Glowmoth;             
+using SOTS.NPCs.Boss;
+using SOTS.NPCs.Boss.Polaris;
+using SOTS.NPCs.Boss.Lux;
+using SOTS.NPCs.Boss.Advisor;
+using SOTS.NPCs.Boss.Curse;
+using SOTS.NPCs.Boss.Glowmoth;
 using Terraria;
 using Terraria.ModLoader;
 using SOTS.NPCs.Boss.Excavator;
@@ -29,11 +29,13 @@ using SOTS.NPCs.Gizmos;
 using SOTS.NPCs.Chaos;
 using SOTS.NPCs.TreasureSlimes;
 using SOTS.Items.Potions;
-using FargoSoulsSOTS.Content.Buffs.Emode;
-using FargoSoulsSOTS.Content.Items.Accessories.Masomode;
+using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
+using FargoSoulsSOTS.Content.Items.Accessories.Masomode.SOTSEternity;
 
 namespace FargoSoulsSOTS.Common.NPCChanges
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class SOTSNPCChanges : GlobalNPC
     {
         public override bool InstancePerEntity => true;

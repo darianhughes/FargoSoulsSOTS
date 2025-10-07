@@ -7,6 +7,8 @@ using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class ExcavationRemote : BaseSummon
     {
         public override string Texture => "SOTS/Items/AbandonedVillage/SeismicStation";

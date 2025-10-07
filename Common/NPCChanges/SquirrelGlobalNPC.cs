@@ -17,34 +17,47 @@ namespace FargoSoulsSOTS.Common.NPCChanges
         {
             if (npc.type == ModContent.NPCType<Squirrel>())
             {
-                bool sellSubspaceMaterials = false;
-                bool soldSubspaceMaterials = false;
-                foreach (Player player in Main.player)
+                if (ModLoader.HasMod("SOTS"))
                 {
-                    foreach (Item item in player.inventory)
-                    {
-                        if (item.type == ModContent.ItemType<SubspaceBoosters>())
-                            sellSubspaceMaterials = true;
-                    }
-                    foreach (Item item in player.armor)
-                    {
-                        if (item.type == ModContent.ItemType<SubspaceBoosters>())
-                            sellSubspaceMaterials = true;
-                    }
-                    foreach (Item item in player.bank.item)
-                    {
-                        if (item.type == ModContent.ItemType<SubspaceBoosters>())
-                            sellSubspaceMaterials = true;
-                    }
+                    SOTSSquirrel.ModifyActiveShop(shopName, items);
                 }
-                for (int i = 0; i < items.Length; i++)
+            }
+        }
+    }
+
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
+    public class SOTSSquirrel
+    {
+        public static void ModifyActiveShop(string shopName, Item[] items)
+        {
+            bool sellSubspaceMaterials = false;
+            bool soldSubspaceMaterials = false;
+            foreach (Player player in Main.player)
+            {
+                foreach (Item item in player.inventory)
                 {
-                    if (items[i] is null && sellSubspaceMaterials && !soldSubspaceMaterials)
-                    {
-                        items[i] = new Item(ModContent.ItemType<FlashsparkBoots>()) { shopCustomPrice = Item.buyPrice(gold: 25) };
-                        items[i + 1] = new Item(ModContent.ItemType<AeolusBoots>()) { shopCustomPrice = Item.buyPrice(gold: 35) };
-                        soldSubspaceMaterials = true;
-                    }
+                    if (item.type == ModContent.ItemType<SubspaceBoosters>())
+                        sellSubspaceMaterials = true;
+                }
+                foreach (Item item in player.armor)
+                {
+                    if (item.type == ModContent.ItemType<SubspaceBoosters>())
+                        sellSubspaceMaterials = true;
+                }
+                foreach (Item item in player.bank.item)
+                {
+                    if (item.type == ModContent.ItemType<SubspaceBoosters>())
+                        sellSubspaceMaterials = true;
+                }
+            }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] is null && sellSubspaceMaterials && !soldSubspaceMaterials)
+                {
+                    items[i] = new Item(ModContent.ItemType<FlashsparkBoots>()) { shopCustomPrice = Item.buyPrice(gold: 25) };
+                    items[i + 1] = new Item(ModContent.ItemType<AeolusBoots>()) { shopCustomPrice = Item.buyPrice(gold: 35) };
+                    soldSubspaceMaterials = true;
                 }
             }
         }

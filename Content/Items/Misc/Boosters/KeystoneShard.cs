@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using FargoSoulsSOTS.Content.Buffs;
-using Microsoft.Xna.Framework;
+using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
 
 namespace FargoSoulsSOTS.Content.Items.Misc.Boosters
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class KeystoneShard : ModItem
     {
         public override void SetStaticDefaults()

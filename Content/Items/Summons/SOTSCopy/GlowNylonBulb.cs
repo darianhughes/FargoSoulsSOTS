@@ -6,6 +6,8 @@ using SOTS.Items.Earth.Glowmoth;
 
 namespace FargoSoulsSOTS.Content.Items.Summons.SOTSCopy
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     [LegacyName("GlowingNylonCandle")]
     public class GlowNylonBulb : BaseSummon
     {

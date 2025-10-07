@@ -6,12 +6,14 @@ using SOTS;
 using Terraria.ModLoader;
 using Terraria;
 using SOTS.NPCs.Boss;
-using FargoSoulsSOTS.Content.Buffs.Emode;
 using FargowiltasSouls.Core.Systems;
 using Terraria.ID;
+using FargoSoulsSOTS.Content.Buffs.Emode.SOTSBuffs;
 
 namespace FargoSoulsSOTS.Content.Bosses.SOTSEternity
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class PutridPinky : EModeNPCBehaviour
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<PutridPinkyPhase2>());

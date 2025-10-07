@@ -5,6 +5,8 @@ using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Core.Systems.Hooks.ssm
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.CommunitySoulsExpansion.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.CommunitySoulsExpansion.Name)]
     public class MicroverseSoulLoadingHook : ModSystem
     {
         private static Hook _hook;

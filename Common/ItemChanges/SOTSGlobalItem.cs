@@ -1,25 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FargoSoulsSOTS.Core.SoulToggles;
-using Fargowiltas;
+﻿using System.Collections.Generic;
 using FargowiltasSouls.Content.Items.Accessories.Masomode;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.Toggler.Content;
-using Microsoft.Xna.Framework;
-using SOTS;
 using SOTS.Items;
 using Terraria;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Common.ItemChanges
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class SOTSGlobalItem : GlobalItem
     {
         public override void SetDefaults(Item item)
@@ -32,7 +24,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            if (item.type == ModContent.ItemType<FlashsparkBoots>() && ItemConfig.Instance.FlashsparkBootsRework)
+            if (item.type == ModContent.ItemType<FlashsparkBoots>() && SOTSItemConfig.Instance.FlashsparkBootsRework)
             {
                 player.waterWalk = false;
                 player.fireWalk = false;
@@ -60,7 +52,7 @@ namespace FargoSoulsSOTS.Common.ItemChanges
                 player.noFallDmg = true;
 
                 //hellfire treads
-                if (ItemConfig.Instance.FlashsparkBootsRework)
+                if (SOTSItemConfig.Instance.FlashsparkBootsRework)
                     player.hellfireTreads = true;
 
             }
@@ -114,14 +106,14 @@ namespace FargoSoulsSOTS.Common.ItemChanges
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type == ModContent.ItemType<FlashsparkBoots>() && ItemConfig.Instance.FlashsparkBootsRework)
+            if (item.type == ModContent.ItemType<FlashsparkBoots>() && SOTSItemConfig.Instance.FlashsparkBootsRework)
             {
                 FullTooltipOveride(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.TooltipOverride.FlashsparkBoots"));
             }
 
             if (item.type == ModContent.ItemType<SubspaceBoosters>())
             {
-                if (ItemConfig.Instance.FlashsparkBootsRework)
+                if (SOTSItemConfig.Instance.FlashsparkBootsRework)
                     AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.HellfireTreads"));
 
                 AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.AeolusBoots"));
@@ -129,6 +121,8 @@ namespace FargoSoulsSOTS.Common.ItemChanges
         }
     }
 
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class FlashsparkEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<DeviEnergyHeader>();

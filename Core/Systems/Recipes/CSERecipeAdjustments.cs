@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using FargoSoulsSOTS.Content.Items.Accessories.Forces;
+using FargoSoulsSOTS.Content.Items.Accessories.Forces.SOTSForce;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using ssm.Content.Items.Accessories;
@@ -28,14 +28,17 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes
                     int energyCount = recipe.requiredItem.Where(i => i.type == ModContent.ItemType<AbomEnergy>()).Sum(i => i.stack);
                     recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
 
-                    if (FargoSOTSConfig.Instance.UnfinishedContent)
+                    if (ModLoader.HasMod("SOTS"))
                     {
-                        recipe.AddIngredient<ChaosForce>();
-                        recipe.AddIngredient<SpaceForce>();
-                    }
-                    else
-                    {
-                        recipe.AddIngredient<VoidForce>();
+                        if (FargoSOTSConfig.Instance.UnfinishedContent)
+                        {
+                            recipe.AddIngredient<ChaosForce>();
+                            recipe.AddIngredient<SpaceForce>();
+                        }
+                        else
+                        {
+                            recipe.AddIngredient<VoidForce>();
+                        }
                     }
 
                     recipe.AddIngredient<AbomEnergy>(energyCount);
@@ -46,7 +49,8 @@ namespace FargoSoulsSOTS.Core.Systems.Recipes
                     int energyCount = recipe.requiredItem.Where(i => i.type == ModContent.ItemType<EternalEnergy>()).Sum(i => i.stack);
                     recipe.RemoveIngredient(ModContent.ItemType<EternalEnergy>());
 
-                    recipe.AddIngredient<MicroverseSoul>();
+                    if (ModLoader.HasMod("SOTS"))
+                        recipe.AddIngredient<MicroverseSoul>();
 
                     recipe.AddIngredient<EternalEnergy>(energyCount);
                 }

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using SOTS;
+﻿using SOTS;
 using Terraria;
 using Terraria.ModLoader;
 
 namespace FargoSoulsSOTS.Core.Systems
 {
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class SOTSCompatibilityMisc : ModSystem
     {
         public static bool DownedGlowmoth => SOTSWorld.downedGlowmoth;

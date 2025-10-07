@@ -1,20 +1,13 @@
 ﻿using System.Collections.Generic;
-using FargoSoulsSOTS.Content.Items.Accessories.Enchantments;
-using FargoSoulsSOTS.Content.Items.Accessories.Forces;
+using FargoSoulsSOTS.Content.Items.Accessories.Enchantments.SOTSEnchant;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.Toggler.Content;
-using SOTS;
-using SOTS.Items;
-using SOTS.Items.DoorItems;
 using SOTS.Items.Planetarium;
 using SOTS.Items.Planetarium.FromChests;
-using SOTS.Items.Wings;
-using SOTS.Void;
 using Terraria;
 using Terraria.GameInput;
-using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -24,167 +17,78 @@ namespace FargoSoulsSOTS.Common.ItemChanges
     {
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
         {
-            Mod sots = ModLoader.GetMod("SOTS");
-            DoorPlayer dp = player.GetModPlayer<DoorPlayer>();
-            SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
-            VoidPlayer voidPlayer = VoidPlayer.ModPlayer(player);
-
             if (item.type == ModContent.ItemType<SupersonicSoul>())
             {
-                ++dp.doorPants;
- 
-                if (player.AddEffect<FlashsparkEffect>(item))
+                if (ModLoader.HasMod("SOTS"))
                 {
-                    ModItem sb = sots.Find<ModItem>("SubspaceBoosters");
-
-                    sb.UpdateAccessory(player, hideVisual);
-
-                    //remove extra things added
-                    player.lavaMax -= 600;
-                    if (player.HasEffect<SupersonicRocketBoots>())
-                        player.rocketBoots = player.vanityRocketBoots = ArmorIDs.RocketBoots.TerrasparkBoots;
-                    else
-                    {
-                        player.rocketBoots = 0;
-                    }
-                    player.moveSpeed -= 0.2f;
-                    player.accRunSpeed = player.HasEffect<RunSpeed>() ? 15.6f : 6.75f;
+                    SOTSAddtions.UpdateSupersonic(item, player, hideVisual);
                 }
             }
 
             if (item.type == ModContent.ItemType<WorldShaperSoul>())
             {
-                player.AddEffect<EarthenEffect>(item);
+                if (ModLoader.HasMod("SOTS"))
+                {
+                    player.AddEffect<EarthenEffect>(item);
+                }
             }
 
             if (item.type == ModContent.ItemType<FlightMasterySoul>())
             {
-                voidPlayer.bonusVoidGain += 3f;
-                voidPlayer.voidRegenSpeed += 0.25f;
-                sotsPlayer.SpiritSymphony = true;
-                MachinaBoosterPlayer modPlayer = player.GetModPlayer<MachinaBoosterPlayer>();
-                int num;
-                bool flag = (num = 1) != 0;
-                modPlayer.CreativeFlightTier2 = num != 0;
-                modPlayer.canCreativeFlight = flag;
-
-                player.AddEffect<GravityAnchorEffect>(item);
-                player.noKnockback = true;
+                if (ModLoader.HasMod("SOTS"))
+                {
+                    SOTSAddtions.UpdateFlightMastery(item, player, hideVisual);
+                }
             }
 
             if (item.type == ModContent.ItemType<TrawlerSoul>())
             {
-                player.AddEffect<TwilightFishingEffect>(item);
+                if (ModLoader.HasMod("SOTS"))
+                {
+                    player.AddEffect<TwilightFishingEffect>(item);
+                }
             }
 
             if (item.type == ModContent.ItemType<DimensionSoul>())
             {
                 //Supersonic
-                ++dp.doorPants;
-
-                if (player.AddEffect<FlashsparkEffect>(item))
+                if (ModLoader.HasMod("SOTS"))
                 {
-                    ModItem sb = sots.Find<ModItem>("SubspaceBoosters");
-
-                    sb.UpdateAccessory(player, hideVisual);
-
-                    //remove extra things added
-                    player.lavaMax -= 600;
-                    if (player.HasEffect<SupersonicRocketBoots>())
-                        player.rocketBoots = player.vanityRocketBoots = ArmorIDs.RocketBoots.TerrasparkBoots;
-                    else
-                    {
-                        player.rocketBoots = 0;
-                    }
-                    player.moveSpeed -= 0.2f;
-                    player.accRunSpeed = player.HasEffect<RunSpeed>() ? 15.6f : 6.75f;
+                    SOTSAddtions.UpdateSupersonic(item, player, hideVisual);
                 }
 
                 //Flight Mastery
-                voidPlayer.bonusVoidGain += 3f;
-                voidPlayer.voidRegenSpeed += 0.25f;
-                sotsPlayer.SpiritSymphony = true;
-                MachinaBoosterPlayer modPlayer = player.GetModPlayer<MachinaBoosterPlayer>();
-                int num;
-                bool flag = (num = 1) != 0;
-                modPlayer.CreativeFlightTier2 = num != 0;
-                modPlayer.canCreativeFlight = flag;
-
-                player.AddEffect<GravityAnchorEffect>(item);
+                if (ModLoader.HasMod("SOTS"))
+                {
+                    SOTSAddtions.UpdateFlightMastery(item, player, hideVisual);
+                }
 
                 //Trawler
-                player.AddEffect<TwilightFishingEffect>(item);
+                if (ModLoader.HasMod("SOTS"))
+                {
+                    player.AddEffect<TwilightFishingEffect>(item);
+                }
 
                 //World Shaper
-                player.AddEffect<EarthenEffect>(item);
+                if (ModLoader.HasMod("SOTS"))
+                {
+                    player.AddEffect<EarthenEffect>(item);
+                }
             }
 
             if (item.type == ModContent.ItemType<TerrariaSoul>())
             {
-                if (FargoSOTSConfig.Instance.UnfinishedContent)
+                if (ModLoader.HasMod("SOTS"))
                 {
-                    if (!FargoSOTSCrossmod.CommunitySoulsExpansion.Loaded)
-                    {
-                        ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
-                        ModContent.GetInstance<SpaceForce>().UpdateAccessory(player, hideVisual);
-                    }
-                }
-                else
-                {
-                    ModContent.GetInstance<VoidForce>().UpdateAccessory(player, hideVisual);
+                    SOTSAddtions.UpdateTerrariaSoul(item, player, hideVisual);
                 }
             }
 
             if (item.type == ModContent.ItemType<EternitySoul>())
             {
-                //Supersonic 
-                ++dp.doorPants;
-
-                if (player.AddEffect<FlashsparkEffect>(item))
+                if (ModLoader.HasMod("SOTS"))
                 {
-                    ModItem sb = sots.Find<ModItem>("SubspaceBoosters");
-
-                    sb.UpdateAccessory(player, hideVisual);
-
-                    //remove extra things added
-                    player.lavaMax -= 600;
-                    if (player.HasEffect<SupersonicRocketBoots>())
-                        player.rocketBoots = player.vanityRocketBoots = ArmorIDs.RocketBoots.TerrasparkBoots;
-                    else
-                    {
-                        player.rocketBoots = 0;
-                    }
-                    player.moveSpeed -= 0.2f;
-                    player.accRunSpeed = player.HasEffect<RunSpeed>() ? 15.6f : 6.75f;
-                }
-
-                //Flight Mastery
-                voidPlayer.bonusVoidGain += 3f;
-                voidPlayer.voidRegenSpeed += 0.25f;
-                sotsPlayer.SpiritSymphony = true;
-                MachinaBoosterPlayer modPlayer = player.GetModPlayer<MachinaBoosterPlayer>();
-                int num;
-                bool flag = (num = 1) != 0;
-                modPlayer.CreativeFlightTier2 = num != 0;
-                modPlayer.canCreativeFlight = flag;
-
-                player.AddEffect<GravityAnchorEffect>(item);
-
-                //Trawler
-                player.AddEffect<TwilightFishingEffect>(item);
-
-                //World Shaper
-                player.AddEffect<EarthenEffect>(item);
-
-                //Terraria Soul
-                if (FargoSOTSConfig.Instance.UnfinishedContent)
-                {
-                    ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
-                    ModContent.GetInstance<SpaceForce>().UpdateAccessory(player, hideVisual);
-                }
-                else
-                {
-                    ModContent.GetInstance<VoidForce>().UpdateAccessory(player, hideVisual);
+                    SOTSAddtions.UpdateEternitySoul(item, player, hideVisual);
                 }
             }
         }
@@ -220,95 +124,114 @@ namespace FargoSoulsSOTS.Common.ItemChanges
         {
             if (item.type == ModContent.ItemType<SupersonicSoul>())
             {
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SubspaceDash"));
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SOTSSupersonicEffects"));
+                if (ModLoader.HasMod("SOTS"))
+                {
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SubspaceDash"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SOTSSupersonicEffects"));
+                }
             }
 
             if (item.type == ModContent.ItemType<WorldShaperSoul>())
             {
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.EarthenEnchant.SimpleTooltip"));
+                if (ModLoader.HasMod("SOTS"))
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.EarthenEnchant.SimpleTooltip"));
             }
 
             if (item.type == ModContent.ItemType<FlightMasterySoul>())
             {
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GravityAnchor"));
-                foreach (TooltipLine tooltip in tooltips)
+                if (ModLoader.HasMod("SOTS"))
                 {
-                    if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GravityAnchor"));
+                    foreach (TooltipLine tooltip in tooltips)
                     {
-                        string str1 = Language.GetTextValue("Mods.SOTS.Common.Unbound");
-                        string str2 = str1;
-                        using (List<string>.Enumerator enumerator = SOTS.SOTS.MachinaBoosterHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
                         {
-                            if (enumerator.MoveNext())
-                                str1 = enumerator.Current;
+                            string str1 = Language.GetTextValue("Mods.SOTS.Common.Unbound");
+                            string str2 = str1;
+                            using (List<string>.Enumerator enumerator = SOTS.SOTS.MachinaBoosterHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
+                            {
+                                if (enumerator.MoveNext())
+                                    str1 = enumerator.Current;
+                            }
+                            using (List<string>.Enumerator enumerator = SOTS.SOTS.SlowFlightHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
+                            {
+                                if (enumerator.MoveNext())
+                                    str2 = enumerator.Current;
+                            }
+                            tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GildedBladeWings", str1, str2)}";
                         }
-                        using (List<string>.Enumerator enumerator = SOTS.SOTS.SlowFlightHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
-                        {
-                            if (enumerator.MoveNext())
-                                str2 = enumerator.Current;
-                        }
-                        tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GildedBladeWings", str1, str2)}";
                     }
                 }
             }
 
             if (item.type == ModContent.ItemType<TrawlerSoul>())
             {
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.TwilightFishing"));
+                if (ModLoader.HasMod("SOTS"))
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.TwilightFishing"));
             }
 
             if (item.type == ModContent.ItemType<DimensionSoul>())
             {
-                foreach (TooltipLine tooltip in tooltips)
+                if (ModLoader.HasMod("SOTS"))
                 {
-                    if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip3")
+                    foreach (TooltipLine tooltip in tooltips)
                     {
-                        string str1 = Language.GetTextValue("Mods.SOTS.Common.Unbound");
-                        string str2 = str1;
-                        using (List<string>.Enumerator enumerator = SOTS.SOTS.MachinaBoosterHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip3")
                         {
-                            if (enumerator.MoveNext())
-                                str1 = enumerator.Current;
+                            string str1 = Language.GetTextValue("Mods.SOTS.Common.Unbound");
+                            string str2 = str1;
+                            using (List<string>.Enumerator enumerator = SOTS.SOTS.MachinaBoosterHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
+                            {
+                                if (enumerator.MoveNext())
+                                    str1 = enumerator.Current;
+                            }
+                            using (List<string>.Enumerator enumerator = SOTS.SOTS.SlowFlightHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
+                            {
+                                if (enumerator.MoveNext())
+                                    str2 = enumerator.Current;
+                            }
+                            tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GildedBladeWings", (object)str1, (object)str2)}";
                         }
-                        using (List<string>.Enumerator enumerator = SOTS.SOTS.SlowFlightHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
-                        {
-                            if (enumerator.MoveNext())
-                                str2 = enumerator.Current;
-                        }
-                        tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.GildedBladeWings", (object)str1, (object)str2)}";
                     }
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SOTSSupersonicEffects"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SubspaceDash"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.TwilightFishing"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.EarthenEnchant.SimpleTooltip"));
                 }
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SOTSSupersonicEffects"));
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.SubspaceDash"));
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.NewTooltips.TwilightFishing"));
-                AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.EarthenEnchant.SimpleTooltip"));
             }
 
             if (item.type == ModContent.ItemType<TerrariaSoul>())
             {
                 if (FargoSOTSConfig.Instance.UnfinishedContent)
                 {
-                    if (!FargoSOTSCrossmod.CommunitySoulsExpansion.Loaded)
+                    if (ModLoader.HasMod("SOTS"))
                     {
-                        tooltips[3].Text += ", ";
-                        tooltips[3].Text += Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName");
+                        if (!FargoSOTSCrossmod.CommunitySoulsExpansion.Loaded)
+                        {
+                            tooltips[3].Text += ", ";
+                            tooltips[3].Text += Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName");
 
-                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.ChaosForce.SoulTooltip"));
-                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.SpaceForce.SoulTooltip"));
+                            AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.ChaosForce.SoulTooltip"));
+                            AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.SpaceForce.SoulTooltip"));
+                        }
                     }
                 }
                 else
                 {
-                    tooltips[3].Text += ", ";
-                    tooltips[3].Text += Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName");
+                    if (ModLoader.HasMod("SOTS"))
+                    {
+                        tooltips[3].Text += ", ";
+                        tooltips[3].Text += Language.GetTextValue("Mods.FargoSoulsSOTS.ActiveSkills.BloomStrike.DisplayName");
 
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.VoidForce.SoulTooltip"));
+                        AddTooltip(tooltips, Language.GetTextValue("Mods.FargoSoulsSOTS.Items.VoidForce.SoulTooltip"));
+                    }
                 }
             }
         }
     }
 
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class GravityAnchorEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<FlightMasteryHeader>();
@@ -321,6 +244,8 @@ namespace FargoSoulsSOTS.Common.ItemChanges
         }
     }
 
+    [ExtendsFromMod(FargoSOTSCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(FargoSOTSCrossmod.SOTS.Name)]
     public class TwilightFishingEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<TrawlerHeader>();
