@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using Fargowiltas.Common.Configs;
 using FargowiltasSouls.Content.Items.Accessories.Eternity;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.Toggler.Content;
 using SOTS.Items;
+using SOTS.Items.Earth.Glowmoth;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -58,6 +60,8 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             }
         }
 
+        public static readonly int[] ALwyasUsableVanillaSummons = [ModContent.ItemType<SuspiciousLookingCandle>()];
+
         public void FullTooltipOveride(List<TooltipLine> tooltips, string stealthTooltip)
         {
             for (int index = 0; index < tooltips.Count; ++index)
@@ -106,6 +110,11 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+            if (item.type == ModContent.ItemType<SuspiciousLookingCandle>() && ModContent.GetInstance<FargoServerConfig>().EasySummons)
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.TooltipOverride.SuspiciousLookingCandle"));
+            }
+
             if (item.type == ModContent.ItemType<FlashsparkBoots>() && SOTSItemConfig.Instance.FlashsparkBootsRework)
             {
                 FullTooltipOveride(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.TooltipOverride.FlashsparkBoots"));

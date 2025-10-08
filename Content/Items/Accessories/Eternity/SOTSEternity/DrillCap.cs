@@ -3,7 +3,6 @@ using FargowiltasSouls.Content.Items;
 using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
-using SecretsOfTheSouls.Core.SoulToggles;
 using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Microsoft.Xna.Framework;
@@ -12,6 +11,7 @@ using Terraria.ObjectData;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using FargowiltasSouls.Content.Buffs.Eternity;
+using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {

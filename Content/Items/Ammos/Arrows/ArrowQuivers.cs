@@ -1,7 +1,9 @@
-﻿using Fargowiltas.Content.Items.Ammos;
+﻿using Consolaria.Content.Items.Weapons.Ammo;
+using Fargowiltas.Content.Items.Ammos;
 using SOTS.Items.AbandonedVillage;
 using SOTS.Items.Conduit;
 using SOTS.Items.Earth;
+using ssm.Core;
 using Terraria.ModLoader;
 
 namespace SecretsOfTheSouls.Content.Items.Ammos.Arrows
@@ -25,5 +27,19 @@ namespace SecretsOfTheSouls.Content.Items.Ammos.Arrows
     public class WormholeQuiver : BaseAmmo
     {
         public override int AmmunitionItem => ModContent.ItemType<SkipArrow>();
+    }
+
+    [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Consolaria.Name)]
+    public class HeartQuiver : BaseAmmo
+    {
+        public override int AmmunitionItem => ModContent.ItemType<HeartArrow>();
+    }
+
+    [ExtendsFromMod(ModCompatibility.Consolaria.Name)]
+    [JITWhenModsEnabled(ModCompatibility.Consolaria.Name)]
+    public class SpectralQuiver : BaseAmmo
+    {
+        public override int AmmunitionItem => ModContent.ItemType<SpectralArrow>();
     }
 }

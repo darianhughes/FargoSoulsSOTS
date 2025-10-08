@@ -2,7 +2,7 @@
 using FargowiltasSouls.Core.Toggler.Content;
 using Terraria.ModLoader;
 
-namespace SecretsOfTheSouls.Core.SoulToggles
+namespace SecretsOfTheSouls.Core.SoulToggles.SOTSToggles
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]

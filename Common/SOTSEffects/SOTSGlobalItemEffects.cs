@@ -176,8 +176,10 @@ namespace SecretsOfTheSouls.Common.GlobalItemAdditions
 
                 if (item.type == ModContent.ItemType<SubspaceBoosters>())
                 {
+                    /*
                     line = new TooltipLine(Mod, "TooltipSquirrel", $"[i:Fargowiltas/Squirrel] [c/AAAAAA:{ExpandedTooltipLoc("CraftableMaterialsSold")}]");
                     tooltips.Add(line);
+                    */
                 }
             }
         }

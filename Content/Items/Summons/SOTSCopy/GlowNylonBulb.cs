@@ -12,6 +12,10 @@ namespace SecretsOfTheSouls.Content.Items.Summons.SOTSCopy
     public class GlowNylonBulb : BaseSummon
     {
         //public override string Texture => "SOTS/Items/Earth/Glowmoth/SuspiciousLookingCandle";
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
         public override int NPCType => ModContent.NPCType<Glowmoth>();
 
         public override void SetStaticDefaults()

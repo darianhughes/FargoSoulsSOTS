@@ -19,7 +19,7 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.QoL.SOTSMutantMod
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return FargoServerConfig.Instance.BannerRecipes;
+            return FargoServerConfig.Instance.ContainerRecipes;
         }
 
         public override void AddRecipes()

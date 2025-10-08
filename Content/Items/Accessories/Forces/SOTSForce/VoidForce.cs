@@ -13,10 +13,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class VoidForce : BaseForce
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Forces/SOTSForce/VoidForce";
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return true;
+            return false;
         }
         public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
         public override void SetStaticDefaults()

@@ -2,7 +2,6 @@
 using Terraria;
 using FargowiltasSouls.Content.Items.Accessories.Enchantments;
 using Microsoft.Xna.Framework;
-using SecretsOfTheSouls.Core.SoulToggles;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using Terraria.ModLoader;
 using FargowiltasSouls.Core.Toggler;
@@ -11,13 +10,14 @@ using SOTS.Items.Conduit;
 using SOTS;
 using SOTS.Void;
 using SecretsOfTheSouls.Core.Players;
-using Steamworks;
 using FargowiltasSouls.Content.Bosses.TrojanSquirrel;
 using SOTS.NPCs.Boss;
 using System;
 using SecretsOfTheSouls.Common.SOTSEffects;
 using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
+using Fargowiltas.Content.Items.Tiles;
+using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
@@ -25,7 +25,6 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class CursedEnchant : BaseEnchant
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/CursedEnchant";
         public override Color nameColor => new(185, 173, 149);
 
         public override void SetDefaults()
@@ -61,7 +60,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<CursedImpale>()
                 .AddIngredient<CurseballTome>()
                 .AddIngredient<CursedApple>()
-                .AddTile(TileID.DemonAltar)
+                .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
     }

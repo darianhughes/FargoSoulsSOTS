@@ -12,9 +12,10 @@ using Terraria.Audio;
 using SOTS.Projectiles.Nature;
 using SecretsOfTheSouls.Core.Players;
 using FargowiltasSouls;
-using SecretsOfTheSouls.Core.SoulToggles;
 using SecretsOfTheSouls.Common.ProjectileChanges;
 using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
+using Fargowiltas.Content.Items.Tiles;
+using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
@@ -22,7 +23,6 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class WormwoodEnchant : BaseEnchant
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/WormwoodEnchant";
         public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
         public override Color nameColor => new(100, 173, 255);
         public override void SetStaticDefaults()
@@ -52,7 +52,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<BotanicalSymbiote>()
                 .AddIngredient<WormWoodScepter>()
                 .AddIngredient<WormWoodHook>()
-                .AddTile(TileID.DemonAltar)
+                .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
     }

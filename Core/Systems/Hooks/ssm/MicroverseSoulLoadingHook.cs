@@ -13,7 +13,7 @@ namespace SecretsOfTheSouls.Core.Systems.Hooks.ssm
 
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return FargoSOTSConfig.Instance.UnfinishedContent;
+            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
 
         public override void Load()

@@ -1,5 +1,4 @@
-﻿using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
-using FargowiltasSouls;
+﻿using FargowiltasSouls;
 using FargowiltasSouls.Core.Globals;
 using FargowiltasSouls.Core.NPCMatching;
 using SOTS;
@@ -8,6 +7,7 @@ using Terraria;
 using FargowiltasSouls.Core.Systems;
 using Terraria.ID;
 using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
+using SOTS.Items.Earth.Glowmoth;
 
 namespace SecretsOfTheSouls.Content.Bosses.SOTSEternity
 {
@@ -28,7 +28,7 @@ namespace SecretsOfTheSouls.Content.Bosses.SOTSEternity
                 if (!player.dead)
                 {
                     if (!SOTSWorld.downedGlowmoth && FargoSoulsUtil.HostCheck)
-                        Item.NewItem(npc.GetSource_Loot(), player.Hitbox, ModContent.ItemType<GlowNylonBulb>());
+                        Item.NewItem(npc.GetSource_Loot(), player.Hitbox, ModContent.ItemType<SuspiciousLookingCandle>());
 
                     DroppedSummon = true;
                 }

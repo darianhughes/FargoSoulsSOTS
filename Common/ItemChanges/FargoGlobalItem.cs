@@ -10,6 +10,8 @@ using Terraria;
 using Terraria.GameInput;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using SOTS.Items.DoorItems;
+using System.Runtime.Intrinsics.Arm;
 
 namespace SecretsOfTheSouls.Common.ItemChanges
 {
@@ -45,7 +47,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             {
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    player.AddEffect<TwilightFishingEffect>(item);
+                    //player.AddEffect<TwilightFishingEffect>(item);
                 }
             }
 
@@ -66,7 +68,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 //Trawler
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    player.AddEffect<TwilightFishingEffect>(item);
+                    //player.AddEffect<TwilightFishingEffect>(item);
                 }
 
                 //World Shaper
@@ -78,10 +80,12 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
             if (item.type == ModContent.ItemType<TerrariaSoul>())
             {
+                /*
                 if (ModLoader.HasMod("SOTS"))
                 {
                     SOTSAddtions.UpdateTerrariaSoul(item, player, hideVisual);
                 }
+                */
             }
 
             if (item.type == ModContent.ItemType<EternitySoul>())
@@ -141,7 +145,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             {
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.GravityAnchor"));
+                    //AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.GravityAnchor"));
                     ApplySpecialTooltips.ModifyTooltips(tooltips, "Tooltip0");
                 }
             }
@@ -156,7 +160,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             {
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    //ApplySpecialTooltips.ModifyTooltips(tooltips, "Tooltip3");
+                    AddTooltip(tooltips, ApplySpecialTooltips.GetBladewingTooltip());
                     AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSSupersonicEffects"));
                     AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SubspaceDash"));
                     AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.TwilightFishing"));
@@ -166,7 +170,8 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
             if (item.type == ModContent.ItemType<TerrariaSoul>())
             {
-                if (FargoSOTSConfig.Instance.UnfinishedContent)
+                /*
+                if (SecretsOfTheSoulsConfig.Instance.UnfinishedContent)
                 {
                     if (ModLoader.HasMod("SOTS"))
                     {
@@ -195,6 +200,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                         AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.VoidForce.SoulTooltip"));
                     }
                 }
+                */
             }
         }
     }
@@ -223,6 +229,20 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class BandofDoorEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<SupersonicHeader>();
+        public override int ToggleItemType => ModContent.ItemType<BandOfDoor>();
+
+        public override void PostUpdateEquips(Player player)
+        {
+            DoorPlayer dp = player.GetModPlayer<DoorPlayer>();
+            ++dp.doorPants;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ApplySpecialTooltips
     {
         public static void ModifyTooltips(List<TooltipLine> tooltips, string tooltipName)
@@ -231,21 +251,27 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             {
                 if (tooltip.Mod == "Terraria" && tooltip.Name == tooltipName)
                 {
-                    string str1 = Language.GetTextValue("Mods.SOTS.Common.Unbound");
-                    string str2 = str1;
-                    using (List<string>.Enumerator enumerator = SOTS.SOTS.MachinaBoosterHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
-                    {
-                        if (enumerator.MoveNext())
-                            str1 = enumerator.Current;
-                    }
-                    using (List<string>.Enumerator enumerator = SOTS.SOTS.SlowFlightHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
-                    {
-                        if (enumerator.MoveNext())
-                            str2 = enumerator.Current;
-                    }
-                    tooltip.Text = $"{tooltip.Text}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.GildedBladeWings", (object)str1, (object)str2)}";
+                    string bwt = GetBladewingTooltip();
+                    tooltip.Text = $"{tooltip.Text}\n{bwt}";
                 }
             }
+        }
+
+        public static string GetBladewingTooltip()
+        {
+            string str1 = Language.GetTextValue("Mods.SOTS.Common.Unbound");
+            string str2 = str1;
+            using (List<string>.Enumerator enumerator = SOTS.SOTS.MachinaBoosterHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
+            {
+                if (enumerator.MoveNext())
+                    str1 = enumerator.Current;
+            }
+            using (List<string>.Enumerator enumerator = SOTS.SOTS.SlowFlightHotKey.GetAssignedKeys((InputMode)0).GetEnumerator())
+            {
+                if (enumerator.MoveNext())
+                    str2 = enumerator.Current;
+            }
+            return Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.GildedBladeWings", str1, str2);
         }
     }
 }

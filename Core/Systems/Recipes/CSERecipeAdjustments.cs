@@ -14,7 +14,7 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return FargoSOTSConfig.Instance.UnfinishedContent;
+            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
 
         public override void PostAddRecipes()
@@ -30,7 +30,7 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes
 
                     if (ModLoader.HasMod("SOTS"))
                     {
-                        if (FargoSOTSConfig.Instance.UnfinishedContent)
+                        if (SecretsOfTheSoulsConfig.Instance.UnfinishedContent)
                         {
                             recipe.AddIngredient<ChaosForce>();
                             recipe.AddIngredient<SpaceForce>();

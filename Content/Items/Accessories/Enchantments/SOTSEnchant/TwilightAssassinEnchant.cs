@@ -7,8 +7,9 @@ using Terraria.ModLoader;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using SOTS.Items.Planetarium.FromChests;
 using SOTS.Items.SpiritStaves;
-using SecretsOfTheSouls.Core.SoulToggles;
 using SOTS.Items;
+using Fargowiltas.Content.Items.Tiles;
+using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
@@ -16,7 +17,6 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class TwilightAssassinEnchant : BaseEnchant
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/TwilightAssassinEnchant";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -42,7 +42,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<ChainedPlasma>()
                 .AddIngredient<DigitalDaito>()
                 .AddIngredient<OtherworldlySpiritStaff>()
-                .AddTile(TileID.DemonAltar)
+                .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
     }

@@ -12,6 +12,7 @@ using FargowiltasSouls.Core.Toggler.Content;
 using Steamworks;
 using SecretsOfTheSouls.Core.Players;
 using FargowiltasSouls;
+using Fargowiltas.Content.Items.Tiles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
@@ -19,7 +20,6 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class EarthenEnchant : BaseEnchant
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/EarthenEnchant";
         public override Color nameColor => new(185, 173, 149);
 
         public override void SetDefaults()
@@ -44,7 +44,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<Earthshaker>()
                 .AddIngredient<ManicMiner>()
                 .AddIngredient<MinersSword>()
-                .AddTile(TileID.DemonAltar)
+                .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
     }

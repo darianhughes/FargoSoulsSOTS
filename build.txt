@@ -1,8 +1,8 @@
 displayName = Secrets of the Souls
-author = Akira, Ropro0923, ma3allim, & the Infernal Eclipse of Ragnarok Team
+author = Akira, ma3allim, & the Infernal Eclipse of Ragnarok Team
 version = 0.1
 modReferences = Fargowiltas, FargowiltasSouls, FargoSeeds, Luminance
-weakReferences = SOTS, RevengeancePlus, ssm, FargowiltasCrossmod
+weakReferences = SOTS, Consolaria, RevengeancePlus, ssm, FargowiltasCrossmod
 sortBefore = ssm
-sortAfter = RevengeancePlus, FargowiltasCrossmod, SOTS
+sortAfter = RevengeancePlus, FargowiltasCrossmod, SOTS, Consolaria
 homepage = https://discord.gg/RXdTXbKY

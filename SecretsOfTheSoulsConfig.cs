@@ -3,9 +3,9 @@ using Terraria.ModLoader.Config;
 
 namespace SecretsOfTheSouls
 {
-    public class FargoSOTSConfig : ModConfig
+    public class SecretsOfTheSoulsConfig : ModConfig
     {
-        public static FargoSOTSConfig Instance;
+        public static SecretsOfTheSoulsConfig Instance;
 
         public override ConfigScope Mode => ConfigScope.ServerSide;
 

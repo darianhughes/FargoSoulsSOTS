@@ -13,7 +13,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return FargoSOTSConfig.Instance.UnfinishedContent;
+            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
@@ -77,7 +77,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                         }
                     }
 
-                    if (FargoSOTSConfig.Instance.UnfinishedContent)
+                    if (SecretsOfTheSoulsConfig.Instance.UnfinishedContent)
                     {
                         AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.ChaosForce.SoulTooltip"));
                         AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.SpaceForce.SoulTooltip"));

@@ -12,6 +12,7 @@ using Terraria.Localization;
 using SecretsOfTheSouls.Content.Projectiles;
 using Fargowiltas.Content.Items.Summons.SwarmSummons;
 using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
+using SecretsOfTheSouls.Content.Items.Materials;
 
 namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
 {
@@ -20,7 +21,6 @@ namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
     public class OverloadPharoahsCurse : SwarmSummonBase
     {
         private const int SearchRangeTiles = 3;
-        public override string Texture => "SOTS/Items/Pyramid/Sarcophagus";
 
         public OverloadPharoahsCurse() : base(ModContent.NPCType<PharaohsCurse>(), nameof(OverloadPharoahsCurse), 50, ModContent.ItemType<CursedScroll>())
         {
@@ -131,7 +131,10 @@ namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(null, "CursedSarcophagus")
+                .AddIngredient<EmptyScroll>()
+                .AddIngredient<SoulResidue>(4)
+                .AddIngredient<CursedMatter>(3)
+                .AddIngredient(ItemID.Emerald, 3)
                 .AddIngredient(ModLoader.GetMod("Fargowiltas"), "Overloader")
                 .AddTile(TileID.DemonAltar)
                 .Register();

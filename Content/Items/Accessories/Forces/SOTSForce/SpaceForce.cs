@@ -11,10 +11,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SpaceForce : BaseForce
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Forces/SOTSForce/SpaceForce";
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return FargoSOTSConfig.Instance.UnfinishedContent;
+            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
         public override void SetStaticDefaults()
         {

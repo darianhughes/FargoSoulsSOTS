@@ -12,10 +12,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ChaosForce : BaseForce
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Forces/SOTSForce/ChaosForce";
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return FargoSOTSConfig.Instance.UnfinishedContent;
+            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
         public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
         public override void SetStaticDefaults()

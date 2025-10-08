@@ -5,8 +5,9 @@ using Microsoft.Xna.Framework;
 using FargowiltasSouls.Core.Toggler;
 using Terraria.ModLoader;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using SecretsOfTheSouls.Core.SoulToggles;
 using SOTS.Items.Permafrost;
+using Fargowiltas.Content.Items.Tiles;
+using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
@@ -14,10 +15,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class FrostArtifactEnchant : BaseEnchant
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/FrostArtifactEnchant";
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return FargoSOTSConfig.Instance.UnfinishedContent;
+            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
         public override void SetStaticDefaults()
         {
@@ -43,7 +43,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<HypericeClusterCannon>()
                 .AddIngredient<FrigidEnchant>()
                 .AddIngredient<PBow>()
-                .AddTile(TileID.CrystalBall)
+                .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
     }

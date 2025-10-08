@@ -6,12 +6,13 @@ using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using SOTS.Items.Chaos;
 using SOTS.Items.Fragments;
-using SecretsOfTheSouls.Core.SoulToggles;
 using FargowiltasSouls.Content.UI.Elements;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using FargowiltasSouls;
 using SecretsOfTheSouls.Core.Players;
+using Fargowiltas.Content.Items.Tiles;
+using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
@@ -19,10 +20,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ElementalEnchant : BaseEnchant
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/ElementalEnchant";
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return FargoSOTSConfig.Instance.UnfinishedContent;
+            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
         public override Color nameColor => new(116, 122, 159);
         public override void SetDefaults()
@@ -45,7 +45,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<HyperlightGeyser>()
                 .AddIngredient<TwilightAssassinEnchant>()
                 .AddIngredient<RoseBow>()
-                .AddTile(TileID.CrystalBall)
+                .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
     }

@@ -21,7 +21,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return FargoSOTSConfig.Instance.UnfinishedContent;
+            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
 
         public override string Texture => "FargowiltasSouls/Content/Items/Placeholder";

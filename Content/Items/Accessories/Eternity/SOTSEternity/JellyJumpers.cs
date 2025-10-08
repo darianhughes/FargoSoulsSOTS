@@ -1,11 +1,11 @@
 ﻿using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
-using SecretsOfTheSouls.Core.SoulToggles;
 using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {

@@ -5,9 +5,10 @@ using Microsoft.Xna.Framework;
 using SOTS.Items.Pyramid;
 using SOTS.Items.Nature;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using SecretsOfTheSouls.Core.SoulToggles;
 using Terraria.ModLoader;
 using FargowiltasSouls.Core.Toggler;
+using Fargowiltas.Content.Items.Tiles;
+using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
@@ -15,7 +16,6 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class PatchLeatherEnchant : BaseEnchant
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/PatchLeatherEnchant";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -41,7 +41,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<SnakeBow>()
                 .AddIngredient<BiomassBlast>()
                 .AddIngredient<AcornBag>()
-                .AddTile(TileID.DemonAltar)
+                .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
     }

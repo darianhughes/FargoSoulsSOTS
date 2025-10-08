@@ -7,8 +7,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using System.Runtime.Intrinsics.Arm;
-using ssm.SoA;
 using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 using SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce;
 
@@ -28,9 +26,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
         public static void UpdateSupersonic(Item item, Player player, bool hideVisual)
         {
-            GetPlayers(player, out DoorPlayer dp, out SOTSPlayer sotsPlayer, out VoidPlayer voidPlayer);
-
-            ++dp.doorPants;
+            player.AddEffect<BandofDoorEffect>(item);
 
             if (player.AddEffect<FlashsparkEffect>(item))
             {
@@ -64,13 +60,13 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             modPlayer.CreativeFlightTier2 = num != 0;
             modPlayer.canCreativeFlight = flag;
 
-            player.AddEffect<GravityAnchorEffect>(item);
-            player.noKnockback = true;
+            //player.AddEffect<GravityAnchorEffect>(item);
+            //player.noKnockback = true;
         }
 
         public static void UpdateMicroverseSoul(Item item, Player player, bool hideVisual)
         {
-            if (FargoSOTSConfig.Instance.UnfinishedContent)
+            if (SecretsOfTheSoulsConfig.Instance.UnfinishedContent)
             {
                 ModContent.GetInstance<ChaosForce>().UpdateAccessory(player, hideVisual);
                 ModContent.GetInstance<SpaceForce>().UpdateAccessory(player, hideVisual);
@@ -83,7 +79,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
         public static void UpdateTerrariaSoul(Item item, Player player, bool hideVisual)
         {
-            if (FargoSOTSConfig.Instance.UnfinishedContent)
+            if (SecretsOfTheSoulsConfig.Instance.UnfinishedContent)
             {
                 if (!SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Loaded)
                 {
@@ -108,7 +104,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             UpdateFlightMastery(item, player, hideVisual);
 
             //Trawler
-            player.AddEffect<TwilightFishingEffect>(item);
+            //player.AddEffect<TwilightFishingEffect>(item);
 
             //World Shapter
             player.AddEffect<EarthenEffect>(item);

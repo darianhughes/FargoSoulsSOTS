@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FargowiltasSouls.Core.Toggler.Content;
+﻿using FargowiltasSouls.Core.Toggler.Content;
 using Terraria.ModLoader;
 
-namespace SecretsOfTheSouls.Core.SoulToggles
+namespace SecretsOfTheSouls.Core.SoulToggles.SOTSToggles
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]

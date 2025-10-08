@@ -23,7 +23,6 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 
         private static void AddSummonConversions()
         {
-            RecipeHelper.CreateSimpleRecipe(ModContent.ItemType<GlowNylonBulb>(), ModContent.ItemType<SuspiciousLookingCandle>(), TileID.WorkBenches);
             RecipeHelper.CreateSimpleRecipe(ModContent.ItemType<OffbrandPeanuts>(), ModContent.ItemType<JarOfPeanuts>(), TileID.WorkBenches);
             RecipeHelper.CreateSimpleRecipe(ModContent.ItemType<OldCRTTV>(), ModContent.ItemType<WorldgenScanner>(), TileID.WorkBenches);
             RecipeHelper.CreateSimpleRecipe(ModContent.ItemType<PolarKey>(), ModContent.ItemType<FrostedKey>(), TileID.WorkBenches);

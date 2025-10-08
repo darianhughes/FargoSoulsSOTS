@@ -17,6 +17,10 @@ namespace SecretsOfTheSouls.Content.Items.Summons.SOTSCopy
         //Ironically, Revengence+ Boss Rush has a very similar issue, but that isn't something we have to worry about here.
 
         //public override string Texture => "SOTS/Items/Pyramid/Sarcophagus";
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
 
         private const int SearchRangeTiles = 3;
 

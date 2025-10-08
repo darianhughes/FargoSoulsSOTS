@@ -85,9 +85,9 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
                     recipe.RemoveIngredient(ItemID.FlyingCarpet);
 
                     recipe.AddIngredient<SubspaceBoosters>();
-                    recipe.AddIngredient<ShoeIce>();
+                    //recipe.AddIngredient<ShoeIce>();
                     recipe.AddIngredient<BandOfDoor>();
-                    recipe.AddIngredient<TheDarkEye>();
+                    //recipe.AddIngredient<TheDarkEye>();
                     recipe.AddIngredient<SpiritSurfer>();
                 }
 
@@ -100,25 +100,25 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
                 {
                     recipe.AddIngredient<TwilightFishingPole>();
                     recipe.AddIngredient<ZephyrousZeppelin>();
-                    recipe.AddIngredient<LuckyPurpleBalloon>();
+                    //recipe.AddIngredient<LuckyPurpleBalloon>();
                 }
 
                 if (recipe.HasResult<FlightMasterySoul>())
                 {
                     recipe.RemoveIngredient(ItemID.EmpressFlightBooster);
-                    recipe.RemoveIngredient(ItemID.GravityGlobe);
+                    recipe.RemoveIngredient(ItemID.CreativeWings);
 
-                    recipe.AddIngredient<GelWings>();
+                    recipe.AddRecipeGroup("SecretsOfTheSouls:PreHMWings");
                     recipe.AddIngredient<GildedBladeWings>();
-                    recipe.AddIngredient<GravityAnchor>();
                 }
 
                 if (recipe.HasResult<TerrariaSoul>())
                 {
+                    /*
                     int energyCount = recipe.requiredItem.Where(i => i.type == ModContent.ItemType<AbomEnergy>()).Sum(i => i.stack);
                     recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
 
-                    if (FargoSOTSConfig.Instance.UnfinishedContent)
+                    if (SecretsOfTheSoulsConfig.Instance.UnfinishedContent)
                     {
                         if (!SecretsOfTheSoulsCrossmod.CommunitySoulsExpansion.Loaded)
                         {
@@ -132,6 +132,7 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
                     }
 
                     recipe.AddIngredient<AbomEnergy>(energyCount);
+                    */
                 }
 
                 if (recipe.HasResult<DubiousCircuitry>())

@@ -1,5 +1,4 @@
-﻿using SecretsOfTheSouls.Core.SoulToggles;
-using FargowiltasSouls.Content.Items;
+﻿using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using Microsoft.Xna.Framework;
@@ -9,6 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
+using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {

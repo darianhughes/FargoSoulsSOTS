@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework;
 using FargowiltasSouls.Core.Toggler;
 using Terraria.ModLoader;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
-using SecretsOfTheSouls.Core.SoulToggles;
 using SOTS.Items.Permafrost;
 using System.Collections.Generic;
 using FargowiltasSouls;
@@ -13,6 +12,8 @@ using SOTS.Buffs;
 using SecretsOfTheSouls.Core.Players;
 using SecretsOfTheSouls.Content.Items.Misc.Boosters;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
+using Fargowiltas.Content.Items.Tiles;
+using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
@@ -20,7 +21,6 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class FrigidEnchant : BaseEnchant
     {
-        public override string Texture => "SecretsOfTheSouls/Content/Items/Accessories/Enchantments/SOTSEnchant/FrigidEnchant";
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
@@ -47,7 +47,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<ShardStaff>()
                 .AddIngredient<ShatterBlade>()
                 .AddIngredient<FrigidJavelin>()
-                .AddTile(TileID.DemonAltar)
+                .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
     }
