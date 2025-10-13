@@ -12,9 +12,11 @@ using SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce;
 using FargowiltasSouls.Core.Toggler.Content;
 using SOTS.Items.AbandonedVillage;
 using FargowiltasSouls.Core.Toggler;
-using SecretsOfTheSouls.Content.Items.Accessories.Souls.SOTSSoul;
 using SOTS.Items;
 using SOTS.Items.Permafrost;
+using SOTS.Items.Tide;
+using SOTS.Items.Evil;
+using SOTS.Items.Conduit;
 
 namespace SecretsOfTheSouls.Common.ItemChanges
 {
@@ -26,10 +28,19 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 SOTSAddtions.UpdateMeleeSoul(item, player, hideVisual);
         }
 
+        public static void UpdateRangedSoul(Item item, Player player, bool hideVisual)
+        {
+            if (SecretsOfTheSoulsCrossmod.SOTS.Loaded)
+                SOTSAddtions.UpdateRangerSoul(item, player, hideVisual);
+        }
+
         public static void UpdateUniverseSoul(Item item, Player player, bool hideVisual)
         {
             //Berserker
             UpdateMeleeSoul(item, player, hideVisual);
+
+            //Sniper
+            UpdateRangedSoul(item, player, hideVisual);
         }
 
         public static void UpdateSupersonic(Item item, Player player, bool hideVisual)
@@ -77,6 +88,21 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             voidPlayer.CrushCapacitor = true;
             ++voidPlayer.BonusCrushRangeMax;
             ++voidPlayer.BonusCrushRangeMin;
+        }
+
+        public static void UpdateRangerSoul(Item item, Player player, bool hideVisual)
+        {
+            GetPlayers(player, out _, out SOTSPlayer sotsPlayer, out VoidPlayer voidPlayer);
+
+            player.AddEffect<RippleWavesEffect>(item);
+            player.AddEffect<NightmareArmsEffect>(item);
+
+            player.AddEffect<BackupBowEffect>(item);
+            sotsPlayer.backUpBowVisual = !hideVisual;
+
+            player.AddEffect<InfinityPouchEffect>(item);
+
+            player.AddEffect<PetAdvisorEffect>(item);
         }
 
         public static void UpdateSupersonic(Item item, Player player, bool hideVisual)
@@ -326,6 +352,81 @@ namespace SecretsOfTheSouls.Common.ItemChanges
         public override void PostUpdateEquips(Player player)
         {
             player.SOTSPlayer().SupernovaEmblem = true;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class RippleWavesEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+        public override int ToggleItemType => ModContent.ItemType<PrismarineNecklace>();
+
+        public override void PostUpdateEquips(Player player)
+        {
+            SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+            ++sotsPlayer.rippleTimer;
+            sotsPlayer.rippleBonusDamage += 10;
+            sotsPlayer.rippleEffect = true;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class NightmareArmsEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+        public override int ToggleItemType => ModContent.ItemType<WitchHeart>();
+        public override bool ExtraAttackEffect => true;
+
+        public override void PostUpdateEquips(Player player)
+        {
+            SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+            sotsPlayer.CritNightmare = true;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class BackupBowEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+        public override int ToggleItemType => ModContent.ItemType<BackupBow>();
+        public override bool ExtraAttackEffect => true;
+
+        public override void PostUpdateEquips(Player player)
+        {
+            SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+            sotsPlayer.backUpBow = true;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class InfinityPouchEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+        public override int ToggleItemType => ModContent.ItemType<InfinityPouch>();
+
+        public override void PostUpdateEquips(Player player)
+        {
+            player.SOTSPlayer().InfinityPouch = true;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class PetAdvisorEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+        public override int ToggleItemType => ModContent.ItemType<InfinityPouch>();
+        public override bool MinionEffect => true;
+
+        public override void PostUpdateEquips(Player player)
+        {
+            SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+            sotsPlayer.typhonRange = 96;
+            sotsPlayer.petAdvisor = true;
         }
     }
 }

@@ -14,6 +14,9 @@ using SOTS.Items.DoorItems;
 using System.Runtime.Intrinsics.Arm;
 using FargowiltasSouls.Content.Items.Accessories;
 using SOTS.Items.Permafrost;
+using System;
+using FargowiltasSouls.Content.Items;
+using System.Linq;
 
 namespace SecretsOfTheSouls.Common.ItemChanges
 {
@@ -26,10 +29,14 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 CrossmodAdditions.UpdateMeleeSoul(item, player, hideVisual);
             }
 
+            if (item.type == ModContent.ItemType<SnipersSoul>())
+            {
+                CrossmodAdditions.UpdateRangedSoul(item, player, hideVisual);
+            }
+
             if (item.type == ModContent.ItemType<UniverseSoul>())
             {
-                //Berserker
-                CrossmodAdditions.UpdateMeleeSoul(item, player, hideVisual);
+                CrossmodAdditions.UpdateUniverseSoul(item, player, hideVisual);
             }
 
             if (item.type == ModContent.ItemType<SupersonicSoul>())
@@ -150,6 +157,23 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             }
         }
 
+        public void ModifyExistingTooltip(List<TooltipLine> tooltips, string itemString, string newTooltip, bool fullReplace = false, bool afterText = true, bool newLine = true)
+        {
+            int insert = tooltips.FindIndex(t => t.Text.Contains(itemString));
+            if (fullReplace)
+            {
+                tooltips[insert].Text = tooltips[insert].Text.Replace(itemString, itemString + newTooltip);
+            }
+            else
+            {
+                if (!newLine)
+                    tooltips[insert].Text = tooltips[insert].Text.Replace(itemString, $"{newTooltip}, {itemString}");
+                else
+                    tooltips[insert].Text = tooltips[insert].Text.Replace(itemString, afterText ? $"{newTooltip}\n{itemString}" : $"{itemString}\n{newTooltip}");
+                //tooltips.Insert(insert + (afterText ? 1 : 0), new TooltipLine(Mod, "DLCTooltip", newTooltip));
+            }
+        }
+
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (item.type == ModContent.ItemType<BerserkerSoul>())
@@ -160,11 +184,23 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 }
             }
 
-            if (item.type == ModContent.ItemType<UniverseSoul>())
+            if (item.type == ModContent.ItemType<SnipersSoul>())
             {
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSBerserker"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSSniper"));
+                }
+            }
+
+            if (item.type == ModContent.ItemType<UniverseSoul>())
+            {
+                if (!SoulsItem.IsNotRuminating(item))
+                {
+                    if (ModLoader.HasMod("SOTS"))
+                    {
+                        ModifyExistingTooltip(tooltips, "[i:1321]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSBerserker"));
+                        ModifyExistingTooltip(tooltips, "[i:1595]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSSniper"));
+                    }
                 }
             }
 
@@ -183,9 +219,11 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
             if (item.type == ModContent.ItemType<WorldShaperSoul>())
             {
+               
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSWorldshaperEffects"));
+                    ModifyExistingTooltip(tooltips, "[i:3624]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSWorldshaperEffects"));
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.MiningMode"));
                     AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.EarthenEnchant.SimpleTooltip"));
                 }
             }
@@ -203,7 +241,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             {
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.TwilightFishing"));
+                    ModifyExistingTooltip(tooltips, "[i:FargowiltasSouls/AnglerEnchant]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.TwilightFishing"));
                     AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.ZombieHand"));
                 }
             }
@@ -228,25 +266,28 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
             if (item.type == ModContent.ItemType<DimensionSoul>())
             {
-                if (ModLoader.HasMod("SOTS"))
+                if (SoulsItem.IsNotRuminating(item))
                 {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.ShardGaurd.Soul"));
-                    //AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.Bulwark"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.AlchemistsCharm"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSSupersonicEffects"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SubspaceDash"));
+                    ModifyExistingTooltip(tooltips, "[i:FargowiltasSouls/ColossusSoul]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.MiningModeShort"));
                 }
-                if (SecretsOfTheSoulsCrossmod.Consolaria.Loaded)
+                else
                 {
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.ShadowboundExo", Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.DOWN" : "Key.UP")));
-                }
-                if (ModLoader.HasMod("SOTS"))
-                {
-                    AddTooltip(tooltips, ApplySpecialTooltips.GetBladewingTooltip(5));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.TwilightFishing"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.ZombieHand"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSWorldshaperEffects"));
-                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.Items.EarthenEnchant.SimpleTooltip"));
+                    if (ModLoader.HasMod("SOTS"))
+                    {
+                        ModifyExistingTooltip(tooltips, "[i:FargowiltasSouls/Devilshield]", $"{ApplySpecialTooltips.GetBladewingTooltip(5)}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SubspaceDash")}");
+                    }
+                    if (SecretsOfTheSoulsCrossmod.Consolaria.Loaded)
+                    {
+                        ModifyExistingTooltip(tooltips, "[i:FargowiltasSouls/Devilshield]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.ShadowboundExo", Language.GetTextValue(Main.ReversedUpDownArmorSetBonuses ? "Key.DOWN" : "Key.UP")));
+                    }
+                    if (ModLoader.HasMod("SOTS"))
+                    {
+                        ModifyExistingTooltip(tooltips, "[i:FargowiltasSouls/Devilshield]", $"{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.ShardGaurd.Soul")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.AlchemistsCharm")}");
+                        ModifyExistingTooltip(tooltips, "[i:PanicNecklace]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSSupersonicEffects"));
+                        ModifyExistingTooltip(tooltips, "[i:RoyalGel]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.TwilightFishingSoD"));
+                        ModifyExistingTooltip(tooltips, "[i:3624]", $"{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSWorldShaperSoD")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.MiningModeSoD")}");
+                        ModifyExistingTooltip(tooltips, "[i:3624]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.ZombieHand"), newLine: false);
+                    }
                 }
             }
 

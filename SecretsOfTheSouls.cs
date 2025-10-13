@@ -5,5 +5,11 @@ namespace SecretsOfTheSouls
 {
 	public class SecretsOfTheSouls : Mod
 	{
+        internal static SecretsOfTheSouls Instance;
+
+        public override void Load()
+        {
+            Instance = this;
+        }
     }
 }

@@ -19,8 +19,14 @@ using SecretsOfTheSouls.Content.Items.Accessories.Souls.SOTSSoul;
 using FargowiltasSouls.Content.Items.Accessories;
 using SOTS.Items.Fragments;
 using SOTS.Items.Chaos;
-using SOTS.Items.Evil;
 using SOTS.Items.Crushers;
+using SOTS.Items.ChestItems;
+using SOTS.Items.Conduit;
+using SOTS.Items.AbandonedVillage;
+using SOTS.Items.CritBonus;
+using SOTS.Items.Inferno;
+using SOTS.Items.Celestial;
+using Fargowiltas.Content.Items.Tiles;
 
 namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 {
@@ -28,6 +34,35 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SOTSMaterialAdditions : ModSystem
     {
+        public override void AddRecipes()
+        {
+            Recipe sniperSoul = Recipe.Create(ModContent.ItemType<SnipersSoul>());
+            sniperSoul.AddIngredient(ItemID.RangerEmblem)
+                .AddRecipeGroup("SecretsOfTheSouls:AnyQuiver")
+                .AddRecipeGroup("FargowiltasSouls:AnySniperScope")
+                .AddRecipeGroup("SecretsOfTheSouls:AnySharktoothNecklace")
+                .AddIngredient<BackupBow>()
+                .AddIngredient<InfinityPouch>()
+                .AddIngredient<Calculator>()
+                .AddIngredient<FocusReticle>()
+                .AddIngredient(ItemID.FlintlockPistol)
+                .AddIngredient(ItemID.Blowgun)
+                .AddIngredient(ItemID.PewMaticHorn)
+                .AddIngredient(ItemID.Megashark)
+                .AddIngredient<PlasmaAccelerator>()
+                .AddIngredient<RebarRifle>()
+                .AddIngredient(ItemID.ElfMelter)
+                .AddIngredient(ItemID.Tsunami)
+                .AddIngredient(ItemID.Xenopopper)
+                .AddIngredient<ChaosChamber>()
+                .AddIngredient<RoseBow>()
+                .AddIngredient<StellarSerpentLauncher>();
+            if (!SecretsOfTheSoulsCrossmod.FargowiltasCrossmod.Loaded && !SecretsOfTheSoulsCrossmod.CalamityMod.Loaded)
+                sniperSoul.AddIngredient<CataclysmSpheres>();
+            sniperSoul.AddTile<CrucibleCosmosSheet>()
+                .Register();
+        }
+
         public override void PostAddRecipes()
         {
             for (int index = 0; index < Recipe.numRecipes; ++index)
@@ -61,8 +96,16 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 
                     recipe.AddIngredient<SupernovaEmblem>();
                     recipe.AddIngredient<Hyperdrive>();
-                    recipe.AddIngredient<AbyssalFury>();
+                    recipe.AddIngredient<KingBlade>();
+                    recipe.AddIngredient<Sawflake>();
+                    recipe.AddIngredient<AquaticEclipse>();
+                    recipe.AddIngredient<SkipScythe>();
                     recipe.AddIngredient<IrradiatedChainReactor>();
+                }
+
+                if (recipe.HasResult<SnipersSoul>() && recipe.HasIngredient(ItemID.PiranhaGun))
+                {
+                    recipe.DisableRecipe();
                 }
 
                 if (recipe.HasResult<AeolusBoots>())
@@ -106,6 +149,11 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 
                 if (recipe.HasResult<WorldShaperSoul>())
                 {
+                    recipe.AddIngredient<RockCandy>();
+                    recipe.AddIngredient<ArchaeologistToolbelt>();
+                    recipe.AddIngredient<DrillHand>();
+                    recipe.AddIngredient<GreedierRing>();
+                    recipe.AddIngredient<Lockpick>();
                     recipe.AddIngredient<EarthenEnchant>();
                 }
 

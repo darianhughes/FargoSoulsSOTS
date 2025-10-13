@@ -44,7 +44,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<ElementalLeggings>()
                 .AddIngredient<HyperlightGeyser>()
                 .AddIngredient<TwilightAssassinEnchant>()
-                .AddIngredient<RoseBow>()
+                .AddIngredient<SupernovaStorm>()
                 .AddTile<EnchantedTreeSheet>()
                 .Register();
         }

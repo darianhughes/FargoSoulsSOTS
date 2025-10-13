@@ -38,10 +38,13 @@ namespace SecretsOfTheSouls.Core.Systems
                 FargoSets.Items.DuplicatableItems.SetValue(FargoSets.Items.DupeType.NotDupableFromDupable, sots.Find<ModItem>("SoulOfPlight").Type);
                 FargoSets.Items.DuplicatableItems.SetValue(FargoSets.Items.DupeType.NotDupableFromDupable, sots.Find<ModItem>("SanguiteBar").Type);
                 FargoSets.Items.DuplicatableItems.SetValue(FargoSets.Items.DupeType.NotDupableFromDupable, sots.Find<ModItem>("PrecariousCluster").Type);
+
+                FargowiltasSouls.Content.Items.FargoGlobalItem.NoRuminateText.Add(ModContent.ItemType<GadgetCoat>());
             }
 
             EnchantedTreeTileEntity.SoulsMods.Add(Mod.Name);
-        }
+            FargowiltasSouls.Content.Items.FargoGlobalItem.SoulsMods.Add(Mod.Name);
+            }
 
         private bool AllowUseSummons(On_Player.orig_ItemCheck_CheckCanUse orig, Player self, Item item)
         {
