@@ -36,9 +36,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
             SetActive(player);
             player.AddEffect<VibrantEffect>(Item);
             player.AddEffect<CursedEffect>(Item);
-            player.AddEffect<TinyPlanetoidEffect>(Item);
-            player.AddEffect<CursedAppleEffect>(Item);
-            player.AddEffect<GhostPepperMinionEffect>(Item);
+            //player.AddEffect<TinyPlanetoidEffect>(Item);
+            //player.AddEffect<CursedAppleEffect>(Item);
+            //player.AddEffect<GhostPepperMinionEffect>(Item);
             player.AddEffect<FrostArtifactEffect>(Item);
         }
 

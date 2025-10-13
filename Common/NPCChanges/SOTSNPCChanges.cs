@@ -63,6 +63,7 @@ namespace SecretsOfTheSouls.Common.NPCChanges
             = new()
             {
                 // [ModContent.NPCType<TheAdvisorHead>()] = (1.12f, 1.12f, 1.30f, 1.22f),
+                [ModContent.NPCType<NewPolaris>()] = (1.08f, eternityDamageMult, 1.20f, masoDamageMult)
             };
 
         private static bool IsSotsBoss(int type) => SotsBossIds.Contains(type);
@@ -81,16 +82,22 @@ namespace SecretsOfTheSouls.Common.NPCChanges
 
         public override void SetDefaults(NPC npc)
         {
+            bool eternity = WorldSavingSystem.EternityMode;
+            bool maso = WorldSavingSystem.MasochistModeReal;
+
             if (npc.type == ModContent.NPCType<Glowmoth>())
                 npc.buffImmune[ModContent.BuffType<Lepidopterism>()] = true;
+
+            if (npc.type == ModContent.NPCType<NewPolaris>())
+                npc.buffImmune[ModContent.BuffType<CryomagneticDisruption>()] = true;
+
+            if (npc.type == ModContent.NPCType<BulletSnakeHead>())
+                npc.lifeMax = (int)(npc.lifeMax * (maso ? 1.75f : 1.5f));
 
             if (!npc.boss || !IsSotsBoss(npc.type))
                 return;
 
-            bool eternity = WorldSavingSystem.EternityMode;
             if (!eternity) return;
-
-            bool maso = WorldSavingSystem.MasochistModeReal;
 
             GetMults(npc.type, out float emHp, out _, out float masoHp, out _);
 

@@ -2,7 +2,6 @@
 using SecretsOfTheSouls.Content.Buffs.Emode;
 using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 using SecretsOfTheSouls.Core.Players;
-using FargowiltasSouls;
 using FargowiltasSouls.Content.Items;
 using FargowiltasSouls.Content.Items.Accessories.Expert;
 using FargowiltasSouls.Content.Items.Materials;
@@ -12,11 +11,17 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using FargowiltasSouls.Content.Buffs.Eternity;
+using FargowiltasSouls;
+using SOTS.Void;
+using Microsoft.Xna.Framework;
+using static System.Net.Mime.MediaTypeNames;
+using Terraria.Localization;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    //[AutoloadEquip(EquipType.Face)]
     public class GadgetCoat : SoulsItem
     {
         public override bool IsLoadingEnabled(Mod mod)
@@ -29,14 +34,6 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
         public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<PlasmaHook>()];
         public override bool Eternity => true;
 
-        public override void Load()
-        {
-            if (Main.netMode != NetmodeID.Server)
-            {
-                EquipLoader.AddEquipTexture(Mod, "SecretsOfTheSouls/Content/Items/Accessories/Eternity/SOTSEternity/DrillCap_Face", EquipType.Head, this);
-            }
-        }
-
         public override void SetStaticDefaults()
         {
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
@@ -48,43 +45,10 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
             Item.accessory = true;
             Item.rare = ItemRarityID.Yellow;
             Item.value = Item.sellPrice(0, 6);
-
-            if (Main.netMode != NetmodeID.Server)
-            {
-                int equipSlotHead = EquipLoader.GetEquipSlot(Mod, Name, EquipType.Head);
-                //ArmorIDs.Face.Sets.PreventHairDraw[Item.headSlot] = true;
-            }
         }
-
-        int counter;
-
-        void PassiveEffect(Player player)
-        {
-            //player.FargoSouls().BoxofGizmos = true;
-            if (player.whoAmI == Main.myPlayer && player.FargoSouls().IsStandingStill && player.itemAnimation == 0 && player.HeldItem != null)
-            {
-                if (++counter > 60)
-                {
-                    player.detectCreature = true;
-
-                    if (counter % 10 == 0)
-                        Main.instance.SpelunkerProjectileHelper.AddSpotToCheck(player.Center);
-                }
-            }
-            else
-            {
-                counter = 0;
-            }
-        }
-
-        public override void UpdateInventory(Player player) => PassiveEffect(player);
-        public override void UpdateVanity(Player player) => PassiveEffect(player);
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            //Box of Gizmos
-            PassiveEffect(player);
-
             //Jelly Jumpers
             player.buffImmune[ModContent.BuffType<Corrosion>()] = true;
 
@@ -105,10 +69,35 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
             player.AddEffect<PlasmaHook>(Item);
 
             //Cooled Fidget Spiner
+            player.AddEffect<FidgetSpinnerEffect>(Item);
 
             //Gadget Coat
             SOTSEffectsPlayer mp = player.GetModPlayer<SOTSEffectsPlayer>();
             mp.GadgetCoat = true;
+        }
+
+        public override void SafeModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            SOTSEffectsPlayer mp = player.GetModPlayer<SOTSEffectsPlayer>();
+
+            int damage = (int)(60 * player.ActualClassDamage(ModContent.GetInstance<VoidRanged>()));
+            Color color = Color.LightGray;
+            float lerp = 0.75f;
+            Color tooltipColor = Color.Lerp(Color.Purple, new(38, 168, 35), lerp);
+            string textValue = Language.GetTextValue("Mods.SOTS.Common.Damage");
+
+            if (IsNotRuminating(Item))
+            {
+                int firstTooltip = tooltips.FindIndex(line => line.Name == "Tooltip0");
+                if (firstTooltip > 0)
+                {
+                    string text = Language.GetTextValue("Mods.SOTS.Common.VoidR", (object)damage.ToString(), (object)textValue);
+                    var damageTooltip = new TooltipLine(Mod, $"{Mod.Name}:DamageTooltip", text);
+                    damageTooltip.OverrideColor = tooltipColor;
+                    tooltips.Insert(firstTooltip, damageTooltip);
+                }
+            }
         }
 
         public override void AddRecipes()
@@ -118,7 +107,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
                 .AddIngredient<JellyJumpers>()
                 .AddIngredient<DrillCap>()
                 .AddIngredient<PlasmaGrasp>()
-                //.AddIngredient<CooledFidgetSpiner>()
+                .AddIngredient<CooledFidgetSpinner>()
                 .AddIngredient<AbsoluteBar>(5)
                 .AddIngredient(ItemID.MartianConduitPlating, 30)
                 .AddIngredient<DeviatingEnergy>(10)

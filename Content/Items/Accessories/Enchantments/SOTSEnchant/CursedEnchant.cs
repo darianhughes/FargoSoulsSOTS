@@ -38,11 +38,11 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.AddEffect<CursedEffect>(Item);
-            player.AddEffect<TinyPlanetoidEffect>(Item);
-            player.AddEffect<CursedAppleEffect>(Item);
-            player.AddEffect<GhostPepperMinionEffect>(Item);
+            //player.AddEffect<TinyPlanetoidEffect>(Item);
+            //player.AddEffect<CursedAppleEffect>(Item);
+            //player.AddEffect<GhostPepperMinionEffect>(Item);
         }
-
+        /*
         public override void EquipFrameEffects(Player player, EquipType type)
         {
             if (player.HasEffect<CursedEffect>())
@@ -50,6 +50,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 SOTSPlayer.ModPlayer(player).petPepper = true;
             }
         }
+        */
 
         public override void AddRecipes()
         {
@@ -59,7 +60,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<TinyPlanetoid>()
                 .AddIngredient<CursedImpale>()
                 .AddIngredient<CurseballTome>()
-                .AddIngredient<CursedApple>()
+                .AddIngredient<HeartInAJar>()
                 .AddTile<EnchantedTreeSheet>()
                 .Register();
         }

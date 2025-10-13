@@ -30,7 +30,8 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 
         public override void SetDefaults()
         {
-            Item.width = Item.height = 20;
+            Item.width = (int)(50 * 0.75f);
+            Item.height = (int)(76 * 0.75f);
             Item.accessory = true;
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(gold: 3);
@@ -39,8 +40,8 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.buffImmune[ModContent.BuffType<Grounded>()] = true;
-            player.buffImmune[ModContent.BuffType<LowGroundBuff>()] = true;
-
+            if (!NPC.AnyNPCs(NPCID.Golem))
+                player.buffImmune[ModContent.BuffType<LowGroundBuff>()] = true;
             player.AddEffect<DrillCapEffect>(Item);
         }
 

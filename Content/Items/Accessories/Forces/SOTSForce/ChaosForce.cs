@@ -31,7 +31,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.AddEffect<TwilightAssassinEffect>(Item);
-            player.AddEffect<HoloEyeMinionEffect>(Item);
+            //player.AddEffect<HoloEyeMinionEffect>(Item);
             player.AddEffect<WormwoodEffect>(Item);
             player.AddEffect<BloomStrike>(Item);
             player.AddEffect<PatchLeatherEffect>(Item);

@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
-using SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Weapons.Misc;
@@ -8,22 +7,26 @@ using SOTS.Items;
 using SOTS.Items.DoorItems;
 using SOTS.Items.Fishing;
 using SOTS.Items.Permafrost;
-using SOTS.Items.Planetarium;
 using SOTS.Items.Planetarium.FromChests;
 using SOTS.Items.Pyramid;
-using SOTS.Items.Slime;
 using SOTS.Items.Wings;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using FargowiltasSouls.Content.Items.Armor.Styx;
 using FargowiltasSouls.Content.Items.Accessories.Eternity;
+using SecretsOfTheSouls.Content.Items.Accessories.Souls.SOTSSoul;
+using FargowiltasSouls.Content.Items.Accessories;
+using SOTS.Items.Fragments;
+using SOTS.Items.Chaos;
+using SOTS.Items.Evil;
+using SOTS.Items.Crushers;
 
 namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    public class FargoSOTSMaterialAdditions : ModSystem
+    public class SOTSMaterialAdditions : ModSystem
     {
         public override void PostAddRecipes()
         {
@@ -50,6 +53,16 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
                     recipe.AddIngredient<SoulOfPlight>(5);
                     recipe.AddIngredient(ItemID.LunarBar, lunarBarCount);
                     recipe.AddIngredient<AbomEnergy>(energyCount);
+                }
+
+                if (recipe.HasResult<BerserkerSoul>())
+                {
+                    recipe.RemoveIngredient(ItemID.WarriorEmblem);
+
+                    recipe.AddIngredient<SupernovaEmblem>();
+                    recipe.AddIngredient<Hyperdrive>();
+                    recipe.AddIngredient<AbyssalFury>();
+                    recipe.AddIngredient<IrradiatedChainReactor>();
                 }
 
                 if (recipe.HasResult<AeolusBoots>())
@@ -98,6 +111,7 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 
                 if (recipe.HasResult<TrawlerSoul>())
                 {
+                    recipe.AddIngredient<ZombieHand>();
                     recipe.AddIngredient<TwilightFishingPole>();
                     recipe.AddIngredient<ZephyrousZeppelin>();
                     //recipe.AddIngredient<LuckyPurpleBalloon>();
@@ -110,6 +124,31 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 
                     recipe.AddRecipeGroup("SecretsOfTheSouls:PreHMWings");
                     recipe.AddIngredient<GildedBladeWings>();
+                }
+
+                if (recipe.HasResult<Devilshield>())
+                {
+                    if (recipe.HasIngredient(ItemID.FrozenTurtleShell))
+                    {
+                        recipe.RemoveIngredient(ItemID.FrozenTurtleShell);
+                        recipe.AddIngredient<ShardGuard>();
+                    }
+                    if (recipe.HasIngredient(ItemID.FrozenShield))
+                    {
+                        recipe.AddIngredient<PermafrostMedallion>();
+                        recipe.AddIngredient<ShatterHeartShield>();
+                        recipe.AddIngredient<DissolvingAurora>();
+                    }
+                }
+
+                if (recipe.HasResult<ColossusSoul>())
+                {
+                    recipe.RemoveIngredient(ItemID.AnkhShield);
+                    recipe.RemoveIngredient(ItemID.CharmofMyths);
+
+                    recipe.AddIngredient<BulwarkOfTheAncients>();
+                    recipe.AddIngredient<AlchemistsCharm>();
+                    recipe.AddIngredient<Sandwich>();
                 }
 
                 if (recipe.HasResult<TerrariaSoul>())
@@ -133,6 +172,15 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 
                     recipe.AddIngredient<AbomEnergy>(energyCount);
                     */
+                }
+
+                if (recipe.HasResult<EternitySoul>())
+                {
+                    int energyCount = recipe.requiredItem.Where(i => i.type == ModContent.ItemType<EternalEnergy>()).Sum(i => i.stack);
+                    recipe.RemoveIngredient(ModContent.ItemType<EternalEnergy>());
+
+                    recipe.AddIngredient<SubspaceVoyagerSoul>();
+                    recipe.AddIngredient<EternalEnergy>(energyCount);
                 }
 
                 if (recipe.HasResult<DubiousCircuitry>())

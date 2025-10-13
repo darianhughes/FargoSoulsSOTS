@@ -9,6 +9,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
+using FargowiltasSouls;
+using SecretsOfTheSouls.Core.Players;
+using System.Collections.Generic;
+using Terraria.Localization;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {
@@ -41,6 +45,27 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
             mp.voidRegenSpeed += 0.05f;
 
             player.AddEffect<CursedExplosionEffect>(Item);
+        }
+
+        public override void SafeModifyTooltips(List<TooltipLine> tooltips)
+        {
+            int damage = 60;
+            Color color = Color.LightGray;
+            float lerp = 0.75f;
+            Color tooltipColor = Color.Lerp(Color.Purple, Color.LightGray, lerp);
+            string textValue = Language.GetTextValue("Mods.SOTS.Common.Damage");
+
+            if (IsNotRuminating(Item))
+            {
+                int firstTooltip = tooltips.FindIndex(line => line.Name == "Tooltip0");
+                if (firstTooltip > 0)
+                {
+                    string text = Language.GetTextValue("Mods.SOTS.Common.Void2", (object)damage.ToString(), (object)textValue);
+                    var damageTooltip = new TooltipLine(Mod, $"{Mod.Name}:DamageTooltip", text);
+                    damageTooltip.OverrideColor = tooltipColor;
+                    tooltips.Insert(firstTooltip, damageTooltip);
+                }
+            }
         }
     }
 

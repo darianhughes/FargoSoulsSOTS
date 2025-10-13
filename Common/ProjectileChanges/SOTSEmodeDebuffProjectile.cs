@@ -15,6 +15,8 @@ using SOTS.Projectiles.Pyramid;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using SOTS.Projectiles.Permafrost;
+using SOTS.NPCs.Boss.Polaris;
 
 namespace SecretsOfTheSouls.Common.ProjectileChanges
 {
@@ -74,6 +76,14 @@ namespace SecretsOfTheSouls.Common.ProjectileChanges
             ModContent.ProjectileType<ThunderColumnFast>(),
         ];
 
+        public List<int> polarisEmodeDebuffProjectile =
+        [
+            ModContent.ProjectileType<SOTS.Projectiles.Permafrost.PolarisLaser>(),
+            ModContent.ProjectileType<PolarisMines>(),
+            ModContent.ProjectileType<PolarMortar>(),
+            ModContent.ProjectileType<PolarisBeam>(),
+        ];
+
         public override void OnHitPlayer(Projectile projectile, Player target, Player.HurtInfo info)
         {
             if (slimedDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
@@ -105,6 +115,11 @@ namespace SecretsOfTheSouls.Common.ProjectileChanges
             if (advisorEmodeDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
             {
                 target.AddBuff(BuffID.Electrified, (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
+            }
+
+            if (polarisEmodeDebuffProjectile.Contains(projectile.type) && WorldSavingSystem.EternityMode)
+            {
+                target.AddBuff(ModContent.BuffType<CryomagneticDisruption>(), 3 * 60);
             }
         }
     }
@@ -146,6 +161,17 @@ namespace SecretsOfTheSouls.Common.ProjectileChanges
             ModContent.NPCType<PhaseEye>(),
         ];
 
+        public List<int> polarisEmodeDebuffNPC =
+        [
+            ModContent.NPCType<BulletSnakeBody>(),
+            ModContent.NPCType<BulletSnakeEnd>(),
+            ModContent.NPCType<BulletSnakeHead>(),
+            ModContent.NPCType<BulletSnakeWing>(),
+            ModContent.NPCType<Polaris>(),
+            ModContent.NPCType<SOTS.NPCs.Boss.Polaris.PolarisLaser>(),
+            ModContent.NPCType<PolarisSpike>(),
+        ];
+
         public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
         {
             if (slimedDebuffNPC.Contains(npc.type) && WorldSavingSystem.EternityMode)
@@ -160,6 +186,11 @@ namespace SecretsOfTheSouls.Common.ProjectileChanges
             if (advisorEmodeDebuffNPC.Contains(npc.type) && WorldSavingSystem.EternityMode)
             {
                 target.AddBuff(BuffID.Electrified, (WorldSavingSystem.MasochistModeReal ? 5 : 3) * 60);
+            }
+
+            if (polarisEmodeDebuffNPC.Contains(npc.type) && WorldSavingSystem.EternityMode)
+            {
+                target.AddBuff(ModContent.BuffType<CryomagneticDisruption>(), 3 * 60);
             }
         }
     }

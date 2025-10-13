@@ -6,6 +6,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
+using Microsoft.Xna.Framework;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {
@@ -22,7 +25,8 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 
         public override void SetDefaults()
         {
-            Item.width = Item.height = 20;
+            Item.width = (int)(62 * 0.6f);
+            Item.height = (int)(60 * 0.6f);
             Item.accessory = true;
             Item.rare = ItemRarityID.LightRed;
             Item.value = Item.sellPrice(0, 3);
@@ -36,6 +40,30 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
             player.autoJump = true;
 
             player.AddEffect<JellyJumpersEffect>(Item);
+        }
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            Texture2D tex = TextureAssets.Item[Type].Value;
+            Rectangle frame = Main.itemAnimations[Type]?.GetFrame(tex) ?? tex.Frame();
+            Vector2 origin = frame.Size() * 0.5f;
+            Vector2 pos = Item.Center - Main.screenPosition;
+            Color drawColor = Item.GetAlpha(Lighting.GetColor((int)(Item.Center.X / 16f), (int)(Item.Center.Y / 16f)));
+
+            const float quarter = 0.6f;
+            Main.EntitySpriteDraw(
+                tex,
+                pos,
+                frame,
+                drawColor,
+                rotation,
+                origin,
+                Item.scale * quarter,
+                SpriteEffects.None,
+                0
+            );
+
+            return false; // suppress default draw
         }
     }
 

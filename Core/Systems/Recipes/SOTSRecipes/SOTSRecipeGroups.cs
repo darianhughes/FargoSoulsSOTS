@@ -9,7 +9,7 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    public class FargoSOTSRecipeGroups : ModSystem
+    public class SOTSRecipeGroups : ModSystem
     {
         public override void AddRecipeGroups()
         {

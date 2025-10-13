@@ -28,10 +28,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
             if (item.type == ModContent.ItemType<StargateSoul>())
             {
-                if (ModLoader.HasMod("SOTS"))
-                {
-                    SOTSAddtions.UpdateEternitySoul(item, player, hideVisual);
-                }
+                CrossmodAdditions.UpdateEternitySoul(item, player, hideVisual);
             }
         }
 

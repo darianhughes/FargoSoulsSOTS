@@ -193,8 +193,8 @@ namespace SecretsOfTheSouls.Core.Players
                 float bonus = MinersCurse * 0.01f;
 
                 Player.moveSpeed += bonus;
-
-                Player.pickSpeed *= MathF.Max(0.05f, 1f - bonus);
+                Player.tileSpeed -= bonus;
+                Player.pickSpeed -= bonus;
             }
 
             if (Player.HasEffect<JellyJumpersEffect>())

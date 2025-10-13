@@ -1,5 +1,4 @@
-﻿using SecretsOfTheSouls.Core.Interfaces;
-using FargowiltasSouls.Content.Items;
+﻿using FargowiltasSouls.Content.Items;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -10,12 +9,13 @@ using SOTS.Void;
 using SOTS.Buffs;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using SecretsOfTheSouls.Core.Players;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
+using FargowiltasSouls;
+using Terraria.Localization;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 {
@@ -33,7 +33,8 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
 
         public override void SetDefaults()
         {
-            Item.width = Item.height = 20;
+            Item.width = (int)(74 * 0.70f);
+            Item.height = (int)(68 * 0.70f);
             Item.accessory = true;
             Item.rare = ItemRarityID.Cyan;
             Item.value = Item.sellPrice(0, 7);
@@ -44,6 +45,30 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
             player.buffImmune[BuffID.Electrified] = true;
 
             player.AddEffect<PlasmaHook>(Item);
+        }
+
+        public override void SafeModifyTooltips(List<TooltipLine> tooltips)
+        {
+            Player player = Main.LocalPlayer;
+            SOTSEffectsPlayer mp = player.GetModPlayer<SOTSEffectsPlayer>();
+
+            int damage = (int)((mp.GadgetCoat ? 40 : 20) * player.ActualClassDamage(ModContent.GetInstance<VoidMelee>()));
+            Color color = Color.LightGray;
+            float lerp = 0.75f;
+            Color tooltipColor = Color.Lerp(Color.Purple, new(225, 90, 90), lerp);
+            string textValue = Language.GetTextValue("Mods.SOTS.Common.Damage");
+
+            if (IsNotRuminating(Item))
+            {
+                int firstTooltip = tooltips.FindIndex(line => line.Name == "Tooltip0");
+                if (firstTooltip > 0)
+                {
+                    string text = Language.GetTextValue("Mods.SOTS.Common.VoidM", (object)damage.ToString(), (object)textValue);
+                    var damageTooltip = new TooltipLine(Mod, $"{Mod.Name}:DamageTooltip", text);
+                    damageTooltip.OverrideColor = tooltipColor;
+                    tooltips.Insert(firstTooltip, damageTooltip);
+                }
+            }
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

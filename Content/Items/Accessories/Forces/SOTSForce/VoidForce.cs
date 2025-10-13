@@ -48,9 +48,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
             player.AddEffect<FrigidEffect>(Item);
             player.AddEffect<PatchLeatherEffect>(Item);
             player.AddEffect<CursedEffect>(Item);
-            player.AddEffect<TinyPlanetoidEffect>(Item);
-            player.AddEffect<CursedAppleEffect>(Item);
-            player.AddEffect<GhostPepperMinionEffect>(Item);
+            //player.AddEffect<TinyPlanetoidEffect>(Item);
+            //player.AddEffect<CursedAppleEffect>(Item);
+            //player.AddEffect<GhostPepperMinionEffect>(Item);
             player.AddEffect<TwilightAssassinEffect>(Item);
             player.AddEffect<HoloEyeMinionEffect>(Item);
         }

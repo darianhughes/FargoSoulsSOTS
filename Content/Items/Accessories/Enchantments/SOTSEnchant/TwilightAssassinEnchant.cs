@@ -31,7 +31,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.AddEffect<TwilightAssassinEffect>(Item);
-            player.AddEffect<HoloEyeMinionEffect>(Item);
+            //player.AddEffect<HoloEyeMinionEffect>(Item);
         }
         public override void AddRecipes()
         {

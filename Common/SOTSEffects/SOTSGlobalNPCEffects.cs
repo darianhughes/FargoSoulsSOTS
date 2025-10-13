@@ -173,7 +173,7 @@ namespace SecretsOfTheSouls.Common.SOTSEffects
                 if (npc.type == ModContent.NPCType<TheAdvisorHead>())
                     Swarm(npc, ModContent.NPCType<TheAdvisorHead>(), -1, ModContent.ItemType<TheAdvisorBossBag>(), ModContent.ItemType<AdvisorTrophy>(), ModContent.ItemType<EnergizerAdvisor>());
                 if (npc.type == ModContent.NPCType<NewPolaris>() || npc.type == ModContent.NPCType<Polaris>())
-                    Swarm(npc, ModContent.NPCType<NewPolaris>(), -1, ModContent.ItemType<PolarisBossBag>(), ModContent.ItemType<PolarisTrophy>(), ModContent.ItemType<EnergizerPolaris>());
+                    Swarm(npc, ModContent.NPCType<NewPolaris>(), ModContent.NPCType<BulletSnakeHead>(), ModContent.ItemType<PolarisBossBag>(), ModContent.ItemType<PolarisTrophy>(), ModContent.ItemType<EnergizerPolaris>());
                 if (npc.type == ModContent.NPCType<Lux>())
                     Swarm(npc, ModContent.NPCType<Lux>(), ModContent.NPCType<FakeLux>(), ModContent.ItemType<LuxBag>(), ModContent.ItemType<LuxTrophy>(), ModContent.ItemType<EnergizerLux>());
                 if (npc.type == ModContent.NPCType<SubspaceSerpentHead>())
