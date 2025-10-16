@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Fargowiltas;
 using Fargowiltas.Common.Configs;
-using Fargowiltas.Content.Items.Tiles;
 using SecretsOfTheSouls.Common.ItemChanges;
 using SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity;
 using SOTS;
@@ -15,7 +14,15 @@ namespace SecretsOfTheSouls.Core.Systems
         public override void Load()
         {
             On_Player.ItemCheck_CheckCanUse += AllowUseSummons;
-            On_Player.SummonItemCheck += AllowMultipleBosses;
+            On_Player.ItemCheck_UseBossSpawners += AllowUseSummons2EvilEdition;
+            //On_Player.SummonItemCheck += AllowMultipleBosses;
+        }
+
+        public override void Unload()
+        {
+            On_Player.ItemCheck_CheckCanUse -= AllowUseSummons;
+            On_Player.ItemCheck_UseBossSpawners -= AllowUseSummons2EvilEdition;
+            //On_Player.SummonItemCheck -= AllowMultipleBosses;
         }
 
         public override void PostSetupContent()
@@ -42,9 +49,8 @@ namespace SecretsOfTheSouls.Core.Systems
                 FargowiltasSouls.Content.Items.FargoGlobalItem.NoRuminateText.Add(ModContent.ItemType<GadgetCoat>());
             }
 
-            EnchantedTreeTileEntity.SoulsMods.Add(Mod.Name);
-            FargowiltasSouls.Content.Items.FargoGlobalItem.SoulsMods.Add(Mod.Name);
-            }
+            Fargowiltas.Fargowiltas.SoulsMods.Add(Mod.Name);
+        }
 
         private bool AllowUseSummons(On_Player.orig_ItemCheck_CheckCanUse orig, Player self, Item item)
         {
@@ -52,24 +58,46 @@ namespace SecretsOfTheSouls.Core.Systems
             {
                 if (ModLoader.HasMod("SOTS"))
                 {
-                    if (SOTSGlobalItem.ALwyasUsableVanillaSummons.Contains(item.type))
+                    if (SOTSGlobalItem.AlwyasUsableSOTSSummons.Contains(item.type))
                         return true;
                 }
                 if (SecretsOfTheSoulsCrossmod.Consolaria.Loaded)
                 {
-
+                    if (ConsolariaGlobalItem.AlwyasUsableConsolariaSummons.Contains(item.type))
+                        return true;
                 }
             }
             return orig(self, item);
         }
 
+        /*
         private bool AllowMultipleBosses(On_Player.orig_SummonItemCheck orig, Player self, Item item)
         {
-            if (ModContent.GetInstance<FargoServerConfig>().EasySummons)
+            if (ModContent.GetInstance<FargoServerConfig>().EasySummons && self.itemAnimation == self.itemAnimationMax)
             {
                 return true;
             }
             return orig(self, item);
+        }
+        */
+
+        private void AllowUseSummons2EvilEdition(On_Player.orig_ItemCheck_UseBossSpawners orig, Player self, int onWhichPlayer, Item item)
+        {
+            if (!ModContent.GetInstance<FargoServerConfig>().EasySummons)
+            {
+                orig(self, onWhichPlayer, item);
+                return;
+            }
+            bool day = Main.dayTime;
+            if (self.ItemTimeIsZero && self.itemAnimation > 0)
+            {
+                if (SecretsOfTheSoulsCrossmod.Consolaria.Loaded)
+                {
+                    if (ConsolariaGlobalItem.NightSettingConsolariaSummons.Contains(item.type))
+                        Main.dayTime = false;
+                }
+            }
+            orig(self, onWhichPlayer, item);
         }
     }
 

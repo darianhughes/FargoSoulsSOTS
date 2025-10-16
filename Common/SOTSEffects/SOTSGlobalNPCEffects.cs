@@ -103,6 +103,22 @@ namespace SecretsOfTheSouls.Common.SOTSEffects
             }
         }
 
+        public override void UpdateLifeRegen(NPC npc, ref int damage)
+        {
+            base.UpdateLifeRegen(npc, ref damage);
+
+            if (npc.HasBuff(ModContent.BuffType<AbyssalInferno>()))
+            {
+                if (npc.lifeRegen > 0)
+                    npc.lifeRegen = 0;
+
+                npc.lifeRegen -= 60;
+
+                if (damage < 30)
+                    damage = 30;
+            }
+        }
+
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
             Player player = Main.player[projectile.owner];

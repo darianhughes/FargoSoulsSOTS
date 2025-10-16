@@ -22,26 +22,12 @@ namespace SecretsOfTheSouls.Content.Bosses.SOTSEternity
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<NewPolaris>());
 
-        public bool DroppedSummon;
         public bool HasSpawnedBulletSnakes;
         public bool HasSpawnedBulletSnakes75;
         public bool HasSpawnedBulletSnakes25;
 
         public override bool SafePreAI(NPC npc)
         {
-            if (npc.HasPlayerTarget && !DroppedSummon)
-            {
-                Player player = Main.player[npc.target];
-
-                if (!player.dead)
-                {
-                    if (!SOTSWorld.downedAmalgamation && FargoSoulsUtil.HostCheck)
-                        Item.NewItem(npc.GetSource_Loot(), player.Hitbox, ModContent.ItemType<PolarKey>());
-
-                    DroppedSummon = true;
-                }
-            }
-
             if (WorldSavingSystem.MasochistModeReal)
             {
                 if (npc.life <= npc.lifeMax * 0.75 && !HasSpawnedBulletSnakes75 && npc.HasPlayerTarget)

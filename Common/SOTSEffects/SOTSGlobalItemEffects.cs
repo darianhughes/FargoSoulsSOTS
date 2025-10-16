@@ -29,7 +29,16 @@ namespace SecretsOfTheSouls.Common.GlobalItemAdditions
             VoidPlayer mp = VoidPlayer.ModPlayer(player);
             if (item.healLife > 0)
             {
-                if (player.HasEffect<VesperaEffect>())
+                if (player.HasEffect<VoidspaceEffect>())
+                {
+                    player.AddBuff(ModContent.BuffType<VoidAttunement>(), 60 * 30);
+
+                    int heal = player.ForceEffect<VesperaEffect>() ? 150 : 100;
+
+                    mp.voidMeter += heal;
+                    VoidPlayer.VoidEffect(player, heal);
+                }
+                else if (player.HasEffect<VesperaEffect>())
                 {
                     player.AddBuff(ModContent.BuffType<VoidAttunement>(), 60 * 25);
 

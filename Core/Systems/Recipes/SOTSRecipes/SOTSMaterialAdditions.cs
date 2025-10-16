@@ -56,10 +56,9 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
                 .AddIngredient(ItemID.Xenopopper)
                 .AddIngredient<ChaosChamber>()
                 .AddIngredient<RoseBow>()
-                .AddIngredient<StellarSerpentLauncher>();
-            if (!SecretsOfTheSoulsCrossmod.FargowiltasCrossmod.Loaded && !SecretsOfTheSoulsCrossmod.CalamityMod.Loaded)
-                sniperSoul.AddIngredient<CataclysmSpheres>();
-            sniperSoul.AddTile<CrucibleCosmosSheet>()
+                .AddIngredient<StellarSerpentLauncher>()
+                .AddIngredient<CataclysmSpheres>()
+                .AddTile<CrucibleCosmosSheet>()
                 .Register();
         }
 

@@ -24,6 +24,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
                 ModContent.ItemType<VibrantEnchant>(),
                 ModContent.ItemType<CursedEnchant>(),
                 ModContent.ItemType<FrostArtifactEnchant>(),
+                ModContent.ItemType<VoidspaceRangerEnchant>()
             ];
         }
         public override void SetDefaults()
@@ -40,6 +41,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
             //player.AddEffect<CursedAppleEffect>(Item);
             //player.AddEffect<GhostPepperMinionEffect>(Item);
             player.AddEffect<FrostArtifactEffect>(Item);
+            player.AddEffect<VoidspaceEffect>(Item);
+            player.AddEffect<AbyssalInfernoEffect>(Item);
+            player.AddEffect<SpaceEffect>(Item);
         }
 
         public override void AddRecipes()

@@ -15,23 +15,8 @@ namespace SecretsOfTheSouls.Content.Bosses.SOTSEternity
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<TheAdvisorHead>());
 
-        public bool DroppedSummon;
-
         public override bool SafePreAI(NPC npc)
         {
-            if (npc.HasPlayerTarget && !DroppedSummon && npc.boss)
-            {
-                Player player = Main.player[npc.target];
-
-                if (!player.dead)
-                {
-                    if (!SOTSWorld.downedAdvisor && FargoSoulsUtil.HostCheck)
-                        Item.NewItem(npc.GetSource_Loot(), player.Hitbox, ModContent.ItemType<OldCRTTV>());
-
-                    DroppedSummon = true;
-                }
-            }
-
             return true;
         }
     }

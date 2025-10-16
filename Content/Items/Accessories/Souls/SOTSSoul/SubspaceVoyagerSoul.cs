@@ -25,7 +25,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Souls.SOTSSoul
     {
         public override List<AccessoryEffect> ActiveSkillTooltips =>
         [
-            AccessoryEffectLoader.GetEffect<BloomStrike>()
+            AccessoryEffectLoader.GetEffect<BloomStrike>(),
+            AccessoryEffectLoader.GetEffect<ChaosTeleport>(),
+            AccessoryEffectLoader.GetEffect<PlasmaHook>()
         ];
 
         public static List<int> Forces =

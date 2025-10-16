@@ -4,8 +4,11 @@ using FargowiltasSouls.Content.Items.Accessories.Eternity;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.Toggler.Content;
+using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
+using SOTS;
 using SOTS.Items;
 using SOTS.Items.Earth.Glowmoth;
+using SOTS.Items.Slime;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -22,6 +25,21 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             {
                 //FargoSets.Items.SquirrelSellsDirectly[item.type] = true;
             }
+        }
+
+        public override bool ConsumeItem(Item item, Player player)
+        {
+            if ((item.type == ModContent.ItemType<SuspiciousLookingCandle>() && !SOTSWorld.downedGlowmoth) ||
+                ((item.type == ModContent.ItemType<JarOfPeanuts>() || item.type == ModContent.ItemType<OffbrandPeanuts>()) && !SOTSWorld.downedPinky) ||
+                (item.type == ModContent.ItemType<OldCRTTV>() && !SOTSWorld.downedAdvisor) ||
+                (item.type == ModContent.ItemType<PolarKey>() && !SOTSWorld.downedAmalgamation) ||
+                (item.type == ModContent.ItemType<ChaosLure>() && !SOTSWorld.downedLux) ||
+                (item.type == ModContent.ItemType<CatalystDynamite>() && !SOTSWorld.downedSubspace)
+                )
+            {
+                return false;
+            }
+            return base.ConsumeItem(item, player);
         }
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)
@@ -60,7 +78,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             }
         }
 
-        public static readonly int[] ALwyasUsableVanillaSummons = [ModContent.ItemType<SuspiciousLookingCandle>()];
+        public static readonly int[] AlwyasUsableSOTSSummons = [ModContent.ItemType<SuspiciousLookingCandle>()];
 
         public void FullTooltipOveride(List<TooltipLine> tooltips, string stealthTooltip)
         {

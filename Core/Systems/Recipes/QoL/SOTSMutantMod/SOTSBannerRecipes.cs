@@ -17,7 +17,7 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.QoL.SOTSMutantMod
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    public class BannerRecipes : ModSystem
+    public class SOTSBannerRecipes : ModSystem
     {
         public override bool IsLoadingEnabled(Mod mod)
         {

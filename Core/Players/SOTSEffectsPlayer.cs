@@ -72,6 +72,7 @@ namespace SecretsOfTheSouls.Core.Players
             }
         }
         public bool hasSpawnedShards = false;
+        public bool hasSpawnedCannons = false;
 
         public override void ResetEffects()
         {
@@ -171,7 +172,12 @@ namespace SecretsOfTheSouls.Core.Players
 
             if (Player.HasBuff(BuffID.PotionSickness))
             {
-                if (Player.HasEffect<VesperaEffect>())
+                if (Player.HasEffect<VoidspaceEffect>())
+                {
+                    float voidRegenBonus = Player.ForceEffect<VoidspaceEffect>() ? 0.5f : 0.75f;
+                    mp.voidRegenSpeed += voidRegenBonus;
+                }
+                else if (Player.HasEffect<VesperaEffect>())
                 {
                     float voidRegenBonus = Player.ForceEffect<VesperaEffect>() ? 0.05f : 0.15f;
                     mp.voidRegenSpeed += voidRegenBonus;
@@ -179,7 +185,13 @@ namespace SecretsOfTheSouls.Core.Players
             }
             if (Player.HasBuff<VoidAttunement>())
             {
-                int voidBonus = Player.ForceEffect<VesperaEffect>() ? 50 : 25;
+                int voidBonus;
+                if (Player.HasEffect<VoidspaceEffect>())
+                {
+                    voidBonus = Player.ForceEffect<VoidspaceEffect>() ? 150 : 100;
+                }
+                else
+                    voidBonus = Player.ForceEffect<VesperaEffect>() ? 50 : 25;
                 mp.voidMeterMax2 += voidBonus;
             }
 

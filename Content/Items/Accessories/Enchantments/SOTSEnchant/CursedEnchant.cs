@@ -25,7 +25,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class CursedEnchant : BaseEnchant
     {
-        public override Color nameColor => new(185, 173, 149);
+        public override Color nameColor => new(172, 119, 207);
 
         public override void SetDefaults()
         {

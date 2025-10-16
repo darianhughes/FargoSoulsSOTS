@@ -14,23 +14,8 @@ namespace SecretsOfTheSouls.Content.Bosses.SOTSEternity
     {
         public override NPCMatcher CreateMatcher() => new NPCMatcher().MatchType(ModContent.NPCType<SOTS.NPCs.Boss.Lux.Lux>());
 
-        public bool DroppedSummon;
-
         public override bool SafePreAI(NPC npc)
         {
-            if (npc.HasPlayerTarget && !DroppedSummon)
-            {
-                Player player = Main.player[npc.target];
-
-                if (!player.dead)
-                {
-                    if (!SOTSWorld.downedLux && FargoSoulsUtil.HostCheck)
-                        Item.NewItem(npc.GetSource_Loot(), player.Hitbox, ModContent.ItemType<ChaosLure>());
-
-                    DroppedSummon = true;
-                }
-            }
-
             return true;
         }
     }
