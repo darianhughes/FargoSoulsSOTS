@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using SecretsOfTheSouls.Common.ItemChanges;
-using SecretsOfTheSouls.Common.SOTSEffects;
 using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 using FargowiltasSouls;
@@ -26,6 +25,8 @@ using Terraria.ModLoader;
 using Fargowiltas.Content.NPCs;
 using SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
+using SecretsOfTheSouls.Common.Effects.SOTSEffects;
+using FargowiltasSouls.Core.ModPlayers;
 
 namespace SecretsOfTheSouls.Core.Players
 {
@@ -195,9 +196,9 @@ namespace SecretsOfTheSouls.Core.Players
                 mp.voidMeterMax2 += voidBonus;
             }
 
-            if (!Player.HasEffect<ChaosTeleport>())
+            if (ChaosCharge > 0)
             {
-                ChaosCharge = 0;
+                ChaosCharge--;
             }
 
             if (Player.HasEffect<EarthenEffect>())
@@ -249,6 +250,11 @@ namespace SecretsOfTheSouls.Core.Players
             {
                 ResetCharge();
             }
+        }
+
+        public override void PostUpdateEquips()
+        {
+            base.PostUpdateEquips();
         }
 
         public override void PostUpdateMiscEffects()

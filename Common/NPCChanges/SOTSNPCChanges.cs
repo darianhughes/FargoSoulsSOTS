@@ -31,6 +31,13 @@ using SOTS.Items.Potions;
 using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 using Fargowiltas.Content.NPCs;
 using SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity;
+using SOTS;
+using Terraria.Localization;
+using Consolaria.Content.NPCs.Bosses.Lepus;
+using Consolaria.Common.ModSystems;
+using Consolaria.Content.NPCs.Bosses.Turkor;
+using Consolaria.Content.NPCs.Bosses.Ocram;
+using Microsoft.CodeAnalysis;
 
 namespace SecretsOfTheSouls.Common.NPCChanges
 {
@@ -62,7 +69,7 @@ namespace SecretsOfTheSouls.Common.NPCChanges
         private static readonly Dictionary<int, (float emHp, float emDmg, float masoHp, float masoDmg)> Overrides
             = new()
             {
-                // [ModContent.NPCType<TheAdvisorHead>()] = (1.12f, 1.12f, 1.30f, 1.22f),
+                // [ModContent.NPCType<TheAdvisorHead>()] = (1.12f, 1.12f, 1.30f, 1.22f), (EXAMPLE)
                 [ModContent.NPCType<NewPolaris>()] = (1.08f, eternityDamageMult, 1.20f, masoDamageMult)
             };
 
@@ -270,38 +277,38 @@ namespace SecretsOfTheSouls.Common.NPCChanges
             if (npc.type == ModContent.NPCType<Glowmoth>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<GlowBulb>()));
-                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.IronCrate, 3));
+                //emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.IronCrate, 3));
             }
             if (npc.type == ModContent.NPCType<PutridPinkyPhase2>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<JellyJumpers>()));
-                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.IronCrate, 5));
+                //emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.IronCrate, 5));
             }
             if (npc.type == ModContent.NPCType<PharaohsCurse>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<AnkhoftheCursedRuler>()));
-                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<PyramidCrate>(), 5));
+                //emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<PyramidCrate>(), 5));
             }
             if (npc.type == ModContent.NPCType<Excavator>())
             {
                 emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<DrillCap>()));
-                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(WorldGen.crimson ? ItemID.CrimsonFishingCrate : ItemID.CorruptFishingCrate, 5));
+                //emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(WorldGen.crimson ? ItemID.CrimsonFishingCrate : ItemID.CorruptFishingCrate, 5));
             }
             if (npc.type == ModContent.NPCType<TheAdvisorHead>())
             {
-                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<PlanetariumCrate>(),5));
+                //emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ModContent.ItemType<PlanetariumCrate>(),5));
             }
             if (npc.type == ModContent.NPCType<Polaris>() || npc.type == ModContent.NPCType<NewPolaris>())
             {
-                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.FrozenCrateHard, 5));
+                //emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.FrozenCrateHard, 5));
             }
             if (npc.type == ModContent.NPCType<Lux>())
             {
-                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.HallowedFishingCrateHard, 5));
+                //emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.HallowedFishingCrateHard, 5));
             }
             if (npc.type == ModContent.NPCType<SubspaceSerpentHead>())
             {
-                emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.LavaCrateHard, 5));
+                //emodeRule.OnSuccess(FargoSoulsUtil.BossBagDropCustom(ItemID.LavaCrateHard, 5));
             }
             #endregion
 
@@ -370,6 +377,126 @@ namespace SecretsOfTheSouls.Common.NPCChanges
                 shop.Add(new Item(ModContent.ItemType<Wormwood>()) { shopCustomPrice = Item.buyPrice(copper: 23) }, Condition.DownedKingSlime);
             }
             base.ModifyShop(shop);
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class SOTSEmodeFirstKillDrop : GlobalNPC
+    {
+        public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+        {
+            List<IItemDropRule> rules = [];
+
+            if (npc.type == ModContent.NPCType<Glowmoth>())
+            {
+                rules.Add(FirstKillDrop(5, ItemID.IronCrate));
+            }
+            else if (npc.type == ModContent.NPCType<PutridPinkyPhase2>())
+            {
+                rules.Add(FirstKillDrop(5, ItemID.IronCrate));
+            }
+            else if (npc.type == ModContent.NPCType<PharaohsCurse>())
+            {
+                rules.Add(FirstKillDrop(5, ModContent.ItemType<PyramidCrate>()));
+            }
+            else if (npc.type == ModContent.NPCType<Excavator>())
+            {
+                rules.Add(FirstKillDrop(5, WorldGen.crimson ? ItemID.CrimsonFishingCrate : ItemID.CorruptFishingCrate));
+            }
+            else if (npc.type == ModContent.NPCType<TheAdvisorHead>())
+            {
+                rules.Add(FirstKillDrop(5, ModContent.ItemType<PlanetariumCrate>()));
+            }
+            else if (npc.type == ModContent.NPCType<Polaris>() || npc.type == ModContent.NPCType<NewPolaris>())
+            {
+                rules.Add(FirstKillDrop(5, ItemID.FrozenCrateHard));
+            }
+            else if (npc.type == ModContent.NPCType<Lux>())
+            {
+                rules.Add(FirstKillDrop(5, ItemID.HallowedFishingCrateHard));
+            }
+            else if (npc.type == ModContent.NPCType<SubspaceSerpentHead>())
+            {
+                rules.Add(FirstKillDrop(5, ItemID.LavaCrateHard));
+            }
+
+            foreach (var rule in rules)
+            {
+                npcLoot.Add(rule);
+            }
+        }
+
+        private static IItemDropRule Drop(int count, int itemID) => ItemDropRule.Common(itemID, minimumDropped: count, maximumDropped: count);
+
+        public static IItemDropRule FirstKillDrop(int amount, int itemID)
+        {
+            IItemDropRule rule = new LeadingConditionRule(new CrossmodFirstKillCondition());
+            rule.OnSuccess(Drop(amount, itemID));
+            return rule;
+        }
+    }
+
+    public class CrossmodFirstKillCondition : IItemDropRuleCondition
+    {
+        public bool CanDrop(DropAttemptInfo info)
+        {
+            bool sotsCanDrop = false;
+            bool consolariaCanDrop = false;
+
+            if (SecretsOfTheSoulsCrossmod.SOTS.Loaded)
+                sotsCanDrop = SOTSDropHelper.SOTSCanDrop(info.npc.type);
+
+            if (SecretsOfTheSoulsCrossmod.Consolaria.Loaded)
+                consolariaCanDrop = ConsolariaDropHelper.ConsolariaCanDrop(info.npc.type);
+
+            return !info.IsInSimulation && WorldSavingSystem.EternityMode && (sotsCanDrop || consolariaCanDrop);
+        }
+        public bool CanShowItemDropInUI() => true;
+
+        public string GetConditionDescription() => Language.GetTextValue("Mods.FargowiltasSouls.Conditions.FirstKill");
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public static class SOTSDropHelper
+    {
+        public static bool SOTSCanDrop(int type)
+        {
+            if (type == ModContent.NPCType<Glowmoth>())
+                return !SOTSWorld.downedGlowmoth;   
+            if (type == ModContent.NPCType<PutridPinkyPhase2>())
+                return !SOTSWorld.downedPinky;
+            if (type == ModContent.NPCType<PharaohsCurse>())
+                return !SOTSWorld.downedCurse;
+            if (type == ModContent.NPCType<Excavator>())
+                return !SOTSWorld.downedExcavator;
+            if (type == ModContent.NPCType<TheAdvisorHead>())
+                return !SOTSWorld.downedAdvisor;
+            if (type == ModContent.NPCType<Polaris>() || type == ModContent.NPCType<NewPolaris>())
+                return !SOTSWorld.downedAmalgamation;
+            if (type == ModContent.NPCType<Lux>())
+                return !SOTSWorld.downedLux;
+            if (type == ModContent.NPCType<SubspaceSerpentHead>())
+                return !SOTSWorld.downedSubspace;
+            return false;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.Consolaria.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.Consolaria.Name)]
+    public static class ConsolariaDropHelper
+    {
+        private static Mod Consolaria => ModLoader.GetMod(SecretsOfTheSoulsCrossmod.Consolaria.Name);
+        public static bool ConsolariaCanDrop(int type)
+        {
+            if (type == Consolaria.Find<ModNPC>("Lepus").Type)
+                return !DownedBossSystem.downedLepus;
+            if (type == ModContent.NPCType<TurkortheUngrateful>())
+                return !DownedBossSystem.downedTurkor;
+            if (type == ModContent.NPCType<Ocram>())
+                return !DownedBossSystem.downedOcram;
+            return false;
         }
     }
 }

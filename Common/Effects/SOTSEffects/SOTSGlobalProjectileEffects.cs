@@ -9,7 +9,7 @@ using SOTS.Void;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace SecretsOfTheSouls.Common.SOTSEffects
+namespace SecretsOfTheSouls.Common.Effects.SOTSEffects
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]

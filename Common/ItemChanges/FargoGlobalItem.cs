@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
@@ -11,12 +10,9 @@ using Terraria.GameInput;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using SOTS.Items.DoorItems;
-using System.Runtime.Intrinsics.Arm;
 using FargowiltasSouls.Content.Items.Accessories;
-using SOTS.Items.Permafrost;
-using System;
 using FargowiltasSouls.Content.Items;
-using System.Linq;
+using SOTS.Items.ChestItems;
 
 namespace SecretsOfTheSouls.Common.ItemChanges
 {
@@ -32,6 +28,16 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             if (item.type == ModContent.ItemType<SnipersSoul>())
             {
                 CrossmodAdditions.UpdateRangedSoul(item, player, hideVisual);
+            }
+
+            if (item.type == ModContent.ItemType<ArchWizardsSoul>())
+            {
+                CrossmodAdditions.UpdateMageSoul(item, player, hideVisual);
+            }
+
+            if (item.type == ModContent.ItemType<ConjuristsSoul>())
+            {
+                CrossmodAdditions.UpdateSummonSoul(item, player, hideVisual);
             }
 
             if (item.type == ModContent.ItemType<UniverseSoul>())
@@ -114,6 +120,15 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 }
             }
 
+            if (item.type == ModContent.ItemType<MasochistSoul>())
+            {
+                if (SecretsOfTheSoulsCrossmod.Heartbeataria.Loaded && !(SecretsOfTheSoulsCrossmod.Consolaria.Loaded))
+                {
+                    ModItem otherworldCore = SecretsOfTheSoulsCrossmod.Heartbeataria.Mod.Find<ModItem>("OtherworldCore");
+                    otherworldCore.UpdateAccessory(player, hideVisual);
+                }
+            }
+
             if (item.type == ModContent.ItemType<TerrariaSoul>())
             {
                 /*
@@ -130,7 +145,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             }
         }
 
-        public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip, bool afterSplash = false)
+        public void AddTooltip(List<TooltipLine> tooltips, string stealthTooltip, bool afterSplash = false, bool inRuminate = false)
         {
             int maxTooltipIndex = -1;
             int maxNumber = -1;
@@ -167,7 +182,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             else
             {
                 if (!newLine)
-                    tooltips[insert].Text = tooltips[insert].Text.Replace(itemString, $"{newTooltip}, {itemString}");
+                    tooltips[insert].Text = tooltips[insert].Text.Replace(itemString, afterText ? $"{newTooltip}, {itemString}" : $"{itemString} {newTooltip}");
                 else
                     tooltips[insert].Text = tooltips[insert].Text.Replace(itemString, afterText ? $"{newTooltip}\n{itemString}" : $"{itemString}\n{newTooltip}");
                 //tooltips.Insert(insert + (afterText ? 1 : 0), new TooltipLine(Mod, "DLCTooltip", newTooltip));
@@ -192,6 +207,24 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 }
             }
 
+            if (item.type == ModContent.ItemType<ArchWizardsSoul>())
+            {
+                if (ModLoader.HasMod("SOTS"))
+                {
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.PlasmaShrimp"));
+                    string wishingStarToolip = WishingStar.IsAlternate ? Language.GetTextValue("Mods.SOTS.Items.WishingStar.AltTooltip") : Language.GetTextValue("Mods.SOTS.Items.WishingStar.DefaultTooltip");
+                    AddTooltip(tooltips, $"[i:SOTS/WishingStar] {wishingStarToolip}");
+                }
+            }
+
+            if (item.type == ModContent.ItemType<ConjuristsSoul>())
+            {
+                if (ModLoader.HasMod("SOTS"))
+                {
+                    AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.FortressGenerator"));
+                }
+            }
+
             if (item.type == ModContent.ItemType<UniverseSoul>())
             {
                 if (!SoulsItem.IsNotRuminating(item))
@@ -200,6 +233,9 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                     {
                         ModifyExistingTooltip(tooltips, "[i:1321]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSBerserker"));
                         ModifyExistingTooltip(tooltips, "[i:1595]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSSniper"));
+                        ModifyExistingTooltip(tooltips, "[i:1595]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.FortressGenerator"));
+                        string wishingStarToolip = WishingStar.IsAlternate ? Language.GetTextValue("Mods.SOTS.Items.WishingStar.AltTooltip") : Language.GetTextValue("Mods.SOTS.Items.WishingStar.DefaultTooltip");
+                        ModifyExistingTooltip(tooltips, "[i:1595]", $"{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.PlasmaShrimp")}\n[i:SOTS/WishingStar] {wishingStarToolip}");
                     }
                 }
             }
@@ -268,7 +304,8 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             {
                 if (SoulsItem.IsNotRuminating(item))
                 {
-                    ModifyExistingTooltip(tooltips, "[i:FargowiltasSouls/ColossusSoul]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.MiningModeShort"));
+                    if (ModLoader.HasMod("SOTS"))
+                        ModifyExistingTooltip(tooltips, "[i:FargowiltasSouls/ColossusSoul]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.MiningModeShort"));
                 }
                 else
                 {
@@ -287,6 +324,24 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                         ModifyExistingTooltip(tooltips, "[i:RoyalGel]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.TwilightFishingSoD"));
                         ModifyExistingTooltip(tooltips, "[i:3624]", $"{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSWorldShaperSoD")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.MiningModeSoD")}");
                         ModifyExistingTooltip(tooltips, "[i:3624]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.ZombieHand"), newLine: false);
+                    }
+                }
+            }
+
+            if (item.type == ModContent.ItemType<MasochistSoul>())
+            {
+                if (SoulsItem.IsNotRuminating(item))
+                {
+                    if (SecretsOfTheSoulsCrossmod.Heartbeataria.Loaded && !(SecretsOfTheSoulsCrossmod.Consolaria.Loaded))
+                    {
+                        ModifyExistingTooltip(tooltips, "[i:FargowiltasSouls/BionomicCluster]", "[i:XDContentMod/OtherworldCore]", afterText: false, newLine: false);
+                    }
+                }
+                else
+                {
+                    if (SecretsOfTheSoulsCrossmod.Heartbeataria.Loaded && !(SecretsOfTheSoulsCrossmod.Consolaria.Loaded))
+                    {
+                        ModifyExistingTooltip(tooltips, "[i:FargowiltasSouls/DubiousCircuitry]", $"[i:XDContentMod/OtherworldCore] {Language.GetTextValue("Mods.XDContentMod.Items.OtherworldCore.Tooltip")}");
                     }
                 }
             }

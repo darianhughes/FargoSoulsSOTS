@@ -35,8 +35,10 @@ using SOTS.NPCs.TreasureSlimes;
 using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 using SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.Energizers.SOTSEnergizers;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
+using FargowiltasSouls.Content.Bosses.MutantBoss;
+using SOTS;
 
-namespace SecretsOfTheSouls.Common.SOTSEffects
+namespace SecretsOfTheSouls.Common.Effects.SOTSEffects
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
@@ -62,6 +64,15 @@ namespace SecretsOfTheSouls.Common.SOTSEffects
         {
             if (npc.type == ModContent.NPCType<Excavator>())
                 excavatorBoss = npc.whoAmI;
+
+            if (npc.type == ModContent.NPCType<MutantBoss>())
+            {
+                //Prevent time freeze during Mutant fight
+                SOTSWorld.GlobalTimeFreeze = 0;
+                SOTSWorld.GlobalFrozen = false;
+                SOTSWorld.GlobalFreezeCounter = 0.0f;
+                SOTSWorld.IsFrozenThisFrame = false;
+            }
 
             return base.PreAI(npc);
         }

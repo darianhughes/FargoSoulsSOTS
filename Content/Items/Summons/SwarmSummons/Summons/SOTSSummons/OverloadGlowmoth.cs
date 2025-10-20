@@ -4,7 +4,7 @@ using SOTS.NPCs.Boss.Glowmoth;
 using SOTS.Items.Earth.Glowmoth;
 using Fargowiltas.Content.Items.Summons.SwarmSummons;
 
-namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.Summons.SOTSSummons
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]

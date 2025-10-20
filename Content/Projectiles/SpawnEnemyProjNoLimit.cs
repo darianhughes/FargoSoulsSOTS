@@ -6,7 +6,8 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using SOTS.NPCs.Boss.Curse;
 using SOTS.Items.Pyramid;
-using SecretsOfTheSouls.Common.SOTSEffects;
+using SecretsOfTheSouls.Common.Effects.ConsolariaEffects;
+using SecretsOfTheSouls.Common.Effects.SOTSEffects;
 
 namespace SecretsOfTheSouls.Content.Projectiles
 {

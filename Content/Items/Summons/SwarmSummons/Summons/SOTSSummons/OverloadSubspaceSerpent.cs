@@ -6,7 +6,7 @@ using SOTS.Items.Celestial;
 using Fargowiltas.Content.Items.Summons.SwarmSummons;
 using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 
-namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.Summons.SOTSSummons
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]

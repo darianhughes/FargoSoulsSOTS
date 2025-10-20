@@ -53,6 +53,12 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.QoL.ConsolariaMutantMod
                     .DisableDecraft()
                     .Register();
             }
+
+            Recipe.Create(ModContent.ItemType<McMoneypantsInvitation>())
+                .AddIngredient<RedEnvelope>(10)
+                .AddTile(TileID.WorkBenches)
+                .DisableDecraft()
+                .Register();
         }
     }
 }

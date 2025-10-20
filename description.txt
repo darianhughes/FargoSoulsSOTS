@@ -1,10 +1,13 @@
 An unofficial addon to the Fargo's Souls Mod that makes it compatible with Secrets of the Shadows & Consolaria.
 
+The mod can be played with any assortment of the supported mods, all of them, or none at all, as the content is dynamically loaded depending on what mods you currently have enabled.
+
 v0.1 includes support for Pre-Hardmode, and the mod will be continued to be worked on and gain regular updates.
 
 Currently supports:
 	- Secrets of the Shadows
 	- Consolaria
+	- Heartbeataria
 
 Features:
 	- Eterity mode reworks
@@ -14,7 +17,7 @@ Features:
 	- Support for other Fargo's addons such as the Calamity - Fargo's Souls DLC.
 
 Planned Features:
-	- Spooky Mod compatibility (maybe some day)
+	- Spooky Mod & Rise of Ages compatibility (maybe some day)
 
 If you run into any issues, have any suggestions, or want to report a bug please join the Discord server linked on the Steam Workshop page.
 

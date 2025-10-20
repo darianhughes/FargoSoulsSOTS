@@ -16,7 +16,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
         {
             return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
-        public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
+        public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>(), AccessoryEffectLoader.GetEffect<ChaosTeleport>()];
         public override void SetStaticDefaults()
         {
             Enchants[Type] =

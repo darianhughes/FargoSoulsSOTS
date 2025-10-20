@@ -5,7 +5,7 @@ using SOTS.NPCs.Boss.Polaris.NewPolaris;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.SOTSSummons
+namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.Summons.SOTSSummons
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]

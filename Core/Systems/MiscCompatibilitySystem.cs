@@ -1,6 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Fargowiltas;
 using Fargowiltas.Common.Configs;
+using Fargowiltas.Content.Items.CaughtNPCs;
 using SecretsOfTheSouls.Common.ItemChanges;
 using SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity;
 using SOTS;
@@ -13,9 +16,28 @@ namespace SecretsOfTheSouls.Core.Systems
     {
         public override void Load()
         {
+            if (SecretsOfTheSoulsCrossmod.Consolaria.Loaded)
+                Add("McMoneyPants", SecretsOfTheSoulsCrossmod.Consolaria.Mod.Find<ModNPC>("McMoneypants").Type);
+            if (SecretsOfTheSoulsCrossmod.Heartbeataria.Loaded)
+                Add("StarMerchant", SecretsOfTheSoulsCrossmod.Heartbeataria.Mod.Find<ModNPC>("StarMerchantNPC").Type);
+
             On_Player.ItemCheck_CheckCanUse += AllowUseSummons;
             On_Player.ItemCheck_UseBossSpawners += AllowUseSummons2EvilEdition;
             //On_Player.SummonItemCheck += AllowMultipleBosses;
+        }
+
+        public static void Add(string internalName, int id)
+        {
+            if (SecretsOfTheSouls.Instance == null)
+            {
+                SecretsOfTheSouls.Instance = ModContent.GetInstance<SecretsOfTheSouls>();
+            }
+            CaughtNPCItem item = new(internalName, id);
+            SecretsOfTheSouls.Instance.AddContent(item);
+            FieldInfo info = typeof(CaughtNPCItem).GetField("CaughtTownies", LumUtils.UniversalBindingFlags);
+            Dictionary<int, int> list = (Dictionary<int, int>)info.GetValue(info);
+            list.Add(id, item.Type);
+            info.SetValue(info, list);
         }
 
         public override void Unload()
@@ -25,10 +47,10 @@ namespace SecretsOfTheSouls.Core.Systems
             //On_Player.SummonItemCheck -= AllowMultipleBosses;
         }
 
+        private static readonly Mod mutant = ModLoader.GetMod("Fargowiltas");
+
         public override void PostSetupContent()
         {
-            Mod mutant = ModLoader.GetMod("Fargowiltas");
-
             if (SecretsOfTheSoulsCrossmod.SOTS.Loaded)
             {
                 SOTSCompatbilityMethods.sotsAddMutantSupport(mutant);

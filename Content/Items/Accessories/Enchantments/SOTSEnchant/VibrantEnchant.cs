@@ -39,8 +39,8 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<VibrantChestplate>()
                 .AddIngredient<VibrantLeggings>()
                 .AddIngredient<VibrantPistol>()
-                .AddIngredient<Shattershine>()
-                .AddIngredient<VibrantBlade>()
+                .AddIngredient<VibrantCannon>()
+                .AddIngredient<VibrantStaff>()
                 .AddTile<EnchantedTreeSheet>()
                 .Register();
         }

@@ -37,8 +37,8 @@ namespace SecretsOfTheSouls.Common.EnergizedGlobalNPCs
         {
             const int k = 1000;
             const int m = k * k;
-            int baseHealth = 28 * k;
-            int baseHealthHM = 160 * k;
+            int baseHealth = 18 * k;
+            int baseHealthHM = 48 * k;
             bool validBoss = true;
 
             if (Fargowiltas.Fargowiltas.SwarmSetDefaults)

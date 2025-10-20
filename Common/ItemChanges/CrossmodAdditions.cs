@@ -17,6 +17,8 @@ using SOTS.Items.Permafrost;
 using SOTS.Items.Tide;
 using SOTS.Items.Evil;
 using SOTS.Items.Conduit;
+using SOTS.Items.Planetarium.FromChests;
+using SOTS.Items.ChestItems;
 
 namespace SecretsOfTheSouls.Common.ItemChanges
 {
@@ -34,6 +36,18 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 SOTSAddtions.UpdateRangerSoul(item, player, hideVisual);
         }
 
+        public static void UpdateMageSoul(Item item, Player player, bool hideVisual)
+        {
+            if (SecretsOfTheSoulsCrossmod.SOTS.Loaded)
+                SOTSAddtions.UpdateMageSoul(item, player, hideVisual);
+        }
+
+        public static void UpdateSummonSoul(Item item, Player player, bool hideVisual)
+        {
+            if (SecretsOfTheSoulsCrossmod.SOTS.Loaded)
+                SOTSAddtions.UpdateSummonSoul(item, player, hideVisual);
+        }
+
         public static void UpdateUniverseSoul(Item item, Player player, bool hideVisual)
         {
             //Berserker
@@ -41,6 +55,12 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
             //Sniper
             UpdateRangedSoul(item, player, hideVisual);
+
+            //Arch Wizard
+            UpdateMageSoul(item, player, hideVisual);
+
+            //Conjurist
+            UpdateSummonSoul(item, player, hideVisual);
         }
 
         public static void UpdateSupersonic(Item item, Player player, bool hideVisual)
@@ -57,6 +77,11 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 SOTSAddtions.UpdateEternitySoul(item, player, hideVisual);
             if (SecretsOfTheSoulsCrossmod.Consolaria.Loaded)
                 ConsolariaAddtions.UpdateSupersonic(item, player, hideVisual);
+            if (SecretsOfTheSoulsCrossmod.Heartbeataria.Loaded)
+            {
+                ModItem otherworldCore = SecretsOfTheSoulsCrossmod.Heartbeataria.Mod.Find<ModItem>("OtherworldCore");
+                otherworldCore.UpdateAccessory(player, hideVisual);
+            }
         }
     }
 
@@ -103,6 +128,22 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             player.AddEffect<InfinityPouchEffect>(item);
 
             player.AddEffect<PetAdvisorEffect>(item);
+        }
+
+        public static void UpdateMageSoul(Item item, Player player, bool hideVisual)
+        {
+            player.AddEffect<PlasmaShrimpEffect>(item);
+            player.AddEffect<WishingStarEffect>(item);
+        }
+
+        public static void UpdateSummonSoul(Item item, Player player, bool hideVisual)
+        {
+            PlatformPlayer modPlayer = player.GetModPlayer<PlatformPlayer>();
+            if (player.AddEffect<FortressGeneratorEffect>(item))
+            {
+                if (hideVisual)
+                    modPlayer.hideChains = true;
+            }
         }
 
         public static void UpdateSupersonic(Item item, Player player, bool hideVisual)
@@ -419,7 +460,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
     public class PetAdvisorEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
-        public override int ToggleItemType => ModContent.ItemType<InfinityPouch>();
+        public override int ToggleItemType => ModContent.ItemType<Calculator>();
         public override bool MinionEffect => true;
 
         public override void PostUpdateEquips(Player player)
@@ -427,6 +468,51 @@ namespace SecretsOfTheSouls.Common.ItemChanges
             SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
             sotsPlayer.typhonRange = 96;
             sotsPlayer.petAdvisor = true;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class PlasmaShrimpEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+        public override int ToggleItemType => ModContent.ItemType<PlasmaShrimp>();
+        public override bool ExtraAttackEffect => true;
+
+        public override void PostUpdateEquips(Player player)
+        {
+            SOTSPlayer sotsPlayer = SOTSPlayer.ModPlayer(player);
+            sotsPlayer.PlasmaShrimpVanity = true;
+            sotsPlayer.PlasmaShrimp = true;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class WishingStarEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+        public override int ToggleItemType => ModContent.ItemType<WishingStar>();
+        public override bool ExtraAttackEffect => true;
+
+        public override void PostUpdateEquips(Player player)
+        {
+            SOTSPlayer.ModPlayer(player).WishingStar = true;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class FortressGeneratorEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<UniverseHeader>();
+        public override int ToggleItemType => ModContent.ItemType<FortressGenerator>();
+
+        public override void PostUpdateEquips(Player player)
+        {
+            PlatformPlayer modPlayer = player.GetModPlayer<PlatformPlayer>();
+            modPlayer.platformPairs += 2;
+            modPlayer.fortress = true;
         }
     }
 }

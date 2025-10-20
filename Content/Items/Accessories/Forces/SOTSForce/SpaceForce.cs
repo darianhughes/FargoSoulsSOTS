@@ -11,10 +11,6 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class SpaceForce : BaseForce
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
-        }
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();

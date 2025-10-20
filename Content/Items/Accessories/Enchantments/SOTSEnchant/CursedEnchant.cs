@@ -13,11 +13,11 @@ using SecretsOfTheSouls.Core.Players;
 using FargowiltasSouls.Content.Bosses.TrojanSquirrel;
 using SOTS.NPCs.Boss;
 using System;
-using SecretsOfTheSouls.Common.SOTSEffects;
 using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 using Fargowiltas.Content.Items.Tiles;
 using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
+using SecretsOfTheSouls.Common.Effects.SOTSEffects;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {

@@ -51,7 +51,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<NatureLeggings>()
                 .AddIngredient<BotanicalSymbiote>()
                 .AddIngredient<WormWoodScepter>()
-                .AddIngredient<WormWoodHook>()
+                .AddIngredient<WormWoodStaff>()
                 .AddTile<EnchantedTreeSheet>()
                 .Register();
         }

@@ -17,5 +17,9 @@ namespace SecretsOfTheSouls
         [DefaultValue(true)]
         [ReloadRequired]
         public bool FlashsparkBootsRework { get; set; }
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool FortressGeneratorRework { get; set; }
     }
 }

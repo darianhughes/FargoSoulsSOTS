@@ -5,7 +5,6 @@ using FargowiltasSouls.Content.Items.Materials;
 using FargowiltasSouls.Content.Items.Weapons.Misc;
 using SOTS.Items;
 using SOTS.Items.DoorItems;
-using SOTS.Items.Fishing;
 using SOTS.Items.Permafrost;
 using SOTS.Items.Planetarium.FromChests;
 using SOTS.Items.Pyramid;
@@ -15,7 +14,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using FargowiltasSouls.Content.Items.Armor.Styx;
 using FargowiltasSouls.Content.Items.Accessories.Eternity;
-using SecretsOfTheSouls.Content.Items.Accessories.Souls.SOTSSoul;
 using FargowiltasSouls.Content.Items.Accessories;
 using SOTS.Items.Fragments;
 using SOTS.Items.Chaos;
@@ -24,9 +22,10 @@ using SOTS.Items.ChestItems;
 using SOTS.Items.Conduit;
 using SOTS.Items.AbandonedVillage;
 using SOTS.Items.CritBonus;
-using SOTS.Items.Inferno;
 using SOTS.Items.Celestial;
 using Fargowiltas.Content.Items.Tiles;
+using SOTS.Items.Tide;
+using SOTS.Items.Slime;
 
 namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 {
@@ -36,8 +35,7 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
     {
         public override void AddRecipes()
         {
-            Recipe sniperSoul = Recipe.Create(ModContent.ItemType<SnipersSoul>());
-            sniperSoul.AddIngredient(ItemID.RangerEmblem)
+           Recipe.Create(ModContent.ItemType<SnipersSoul>())
                 .AddRecipeGroup("SecretsOfTheSouls:AnyQuiver")
                 .AddRecipeGroup("FargowiltasSouls:AnySniperScope")
                 .AddRecipeGroup("SecretsOfTheSouls:AnySharktoothNecklace")
@@ -45,21 +43,65 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
                 .AddIngredient<InfinityPouch>()
                 .AddIngredient<Calculator>()
                 .AddIngredient<FocusReticle>()
-                .AddIngredient(ItemID.FlintlockPistol)
-                .AddIngredient(ItemID.Blowgun)
-                .AddIngredient(ItemID.PewMaticHorn)
+                .AddIngredient(ItemID.Blowpipe)
+                .AddIngredient(ItemID.Boomstick)
+                .AddIngredient(ItemID.BeesKnees)
                 .AddIngredient(ItemID.Megashark)
-                .AddIngredient<PlasmaAccelerator>()
                 .AddIngredient<RebarRifle>()
-                .AddIngredient(ItemID.ElfMelter)
                 .AddIngredient(ItemID.Tsunami)
-                .AddIngredient(ItemID.Xenopopper)
                 .AddIngredient<ChaosChamber>()
                 .AddIngredient<RoseBow>()
                 .AddIngredient<StellarSerpentLauncher>()
-                .AddIngredient<CataclysmSpheres>()
+                .AddIngredient<DimensionShredder>()
                 .AddTile<CrucibleCosmosSheet>()
                 .Register();
+
+            Recipe.Create(ModContent.ItemType<SnipersSoul>())
+                .AddRecipeGroup("SecretsOfTheSouls:AnyQuiver")
+                .AddRecipeGroup("FargowiltasSouls:AnySniperScope")
+                .AddRecipeGroup("SecretsOfTheSouls:AnySharktoothNecklace")
+                .AddIngredient<BackupBow>()
+                .AddIngredient<InfinityPouch>()
+                .AddIngredient<Calculator>()
+                .AddIngredient<FocusReticle>()
+                .AddIngredient<RebarRifle>()
+                .AddIngredient(ItemID.Tsunami)
+                 .AddIngredient<StellarSerpentLauncher>()
+                .AddIngredient<DimensionShredder>()
+                .AddIngredient<AbomEnergy>(10)
+                .AddTile<CrucibleCosmosSheet>()
+                .Register();
+
+            Recipe.Create(ModContent.ItemType<ConjuristsSoul>())
+                .AddIngredient(ItemID.PapyrusScarab)
+                .AddIngredient<FortressGenerator>()
+                .AddIngredient(ItemID.BabyBirdStaff)
+                .AddIngredient(ItemID.VampireFrogStaff)
+                .AddIngredient(ItemID.BlandWhip)
+                .AddIngredient(ItemID.HoundiusShootius)
+                .AddIngredient(ItemID.ImpStaff)
+                .AddIngredient(ItemID.CoolWhip)
+                .AddIngredient(ItemID.OpticStaff)
+                .AddIngredient(ItemID.StormTigerStaff)
+                .AddIngredient<StarcallerStaff>()
+                .AddIngredient(ItemID.EmpressBlade)
+                .AddIngredient<Tesseract>()
+                .AddIngredient<VoidspaceAuraStaff>()
+                .AddIngredient<Lemegeton>()
+                .AddTile<CrucibleCosmosSheet>()
+                .Register();
+
+            Recipe.Create(ModContent.ItemType<ConjuristsSoul>())
+                .AddIngredient(ItemID.PapyrusScarab)
+                .AddIngredient<FortressGenerator>()
+                .AddIngredient(ItemID.StormTigerStaff)
+                .AddIngredient<StarcallerStaff>()
+                .AddIngredient(ItemID.EmpressBlade)
+                .AddIngredient<Tesseract>()
+                .AddIngredient<AbomEnergy>(10)
+                .AddTile<CrucibleCosmosSheet>()
+                .Register();
+
         }
 
         public override void PostAddRecipes()
@@ -89,21 +131,64 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
                     recipe.AddIngredient<AbomEnergy>(energyCount);
                 }
 
-                if (recipe.HasResult<BerserkerSoul>())
+                if (recipe.HasResult<BerserkerSoul>() && !recipe.HasIngredient<AbomEnergy>())
                 {
-                    recipe.RemoveIngredient(ItemID.WarriorEmblem);
+                    recipe.AddIngredient<SupernovaEmblem>();
+                    recipe.AddIngredient<Hyperdrive>();
+                    recipe.AddIngredient<AquaticEclipse>();
+                    recipe.AddIngredient<Sawflake>();
+                    recipe.AddIngredient<SkipScythe>();
+                    recipe.AddIngredient<KingBlade>();
+                    recipe.AddIngredient<SubspaceScissors>();
+                }
+
+                if (recipe.HasResult<BerserkerSoul>() && recipe.HasIngredient<AbomEnergy>())
+                {
+                    int energyCount = recipe.requiredItem.Where(i => i.type == ModContent.ItemType<AbomEnergy>()).Sum(i => i.stack);
+                    recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
 
                     recipe.AddIngredient<SupernovaEmblem>();
                     recipe.AddIngredient<Hyperdrive>();
-                    recipe.AddIngredient<KingBlade>();
                     recipe.AddIngredient<Sawflake>();
-                    recipe.AddIngredient<AquaticEclipse>();
-                    recipe.AddIngredient<SkipScythe>();
-                    recipe.AddIngredient<IrradiatedChainReactor>();
+                    recipe.AddIngredient<SubspaceScissors>();
+
+                    recipe.AddIngredient<AbomEnergy>(energyCount);
                 }
 
-                if (recipe.HasResult<SnipersSoul>() && recipe.HasIngredient(ItemID.PiranhaGun))
+                if (recipe.HasResult<SnipersSoul>() && !recipe.HasIngredient<BackupBow>())
                 {
+                    recipe.DisableRecipe();
+                }
+
+                if (recipe.HasResult<ArchWizardsSoul>() && !recipe.HasIngredient<AbomEnergy>())
+                {
+                    recipe.RemoveIngredient(ItemID.DemonScythe);
+
+                    recipe.AddIngredient<PlasmaShrimp>();
+                    recipe.AddIngredient<WishingStar>();
+                    recipe.AddIngredient<PutridEye>();
+                    recipe.AddIngredient<BrachialLance>();
+                    recipe.AddIngredient<TangleStaff>();
+                    recipe.AddIngredient<StellarShot>();
+                    recipe.AddIngredient<DanceOfDeath>();
+                    recipe.AddIngredient<Apocalypse>();
+                }
+
+                if (recipe.HasResult<ArchWizardsSoul>() && recipe.HasIngredient<AbomEnergy>())
+                {
+                    int energyCount = recipe.requiredItem.Where(i => i.type == ModContent.ItemType<AbomEnergy>()).Sum(i => i.stack);
+                    recipe.RemoveIngredient(ModContent.ItemType<AbomEnergy>());
+
+                    recipe.AddIngredient<PlasmaShrimp>();
+                    recipe.AddIngredient<WishingStar>();
+                    recipe.AddIngredient<TangleStaff>();
+                    recipe.AddIngredient<Apocalypse>();
+
+                    recipe.AddIngredient<AbomEnergy>(energyCount);
+                }
+
+                if (recipe.HasResult<ConjuristsSoul>() && !recipe.HasIngredient<FortressGenerator>())
+                { 
                     recipe.DisableRecipe();
                 }
 
@@ -160,7 +245,7 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
                 {
                     recipe.AddIngredient<ZombieHand>();
                     recipe.AddIngredient<TwilightFishingPole>();
-                    recipe.AddIngredient<ZephyrousZeppelin>();
+                    //recipe.AddIngredient<ZephyrousZeppelin>();
                     //recipe.AddIngredient<LuckyPurpleBalloon>();
                 }
 
@@ -219,15 +304,6 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes.SOTSRecipes
 
                     recipe.AddIngredient<AbomEnergy>(energyCount);
                     */
-                }
-
-                if (recipe.HasResult<EternitySoul>())
-                {
-                    int energyCount = recipe.requiredItem.Where(i => i.type == ModContent.ItemType<EternalEnergy>()).Sum(i => i.stack);
-                    recipe.RemoveIngredient(ModContent.ItemType<EternalEnergy>());
-
-                    recipe.AddIngredient<SubspaceVoyagerSoul>();
-                    recipe.AddIngredient<EternalEnergy>(energyCount);
                 }
 
                 if (recipe.HasResult<DubiousCircuitry>())

@@ -1,11 +1,14 @@
 An unofficial addon to the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo's Souls Mod[/url] that makes it compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] Secrets of the Shadows[url] & [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929&searchtext=consolaria] Consolaria[url].
 
+The mod can be played with any assortment of the supported mods, all of them, or none at all, as the content is dynamically loaded depending on what mods you currently have enabled.
+
 v0.1 includes support for Pre-Hardmode, and the mod will continue to be worked on and gain regular updates.
 
 Currently supports:
 [list]
 	[*] Secrets of the Shadows
 	[*] Consolaria
+	[*] Heartbeataria
 [/list]
 
 Features:
@@ -19,10 +22,10 @@ Features:
 
 Planned Features:
 [list]
-	[*] Spooky Mod compatibility (maybe some day)
+	[*] Spooky Mod & Rise of Ages compatibility (maybe some day)
 [/list]
 
-If your interested in more mods like this, check out some of my team's other mods:
+If your interested in more compatibility mods like this, check out some of my team's other mods:
 [list]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] Infernal Eclipse of Ragnaork[/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3485175010] Infernal Eclipse of Ragnarok: Weapon DLC[/url]
@@ -39,10 +42,9 @@ You can also check out the official wiki for our mods: https://terrariamods.wiki
 
 If you want to support the development team, see our pateron page: https://www.patreon.com/c/InfernalEclipseofRagnarokTeam
 
-Special thanks to the Fargo's Souls Development Team, the Secrets of the Shadows Development Team, the Consolaria Development team, Shipmans AGLA, Lucille Karma, & N0t_UNowen for their mods!
+Special thanks to the Fargo's Souls Development Team & the Bereft Souls Development Team as they directly helped in the development of this mod!
+Other special thanks goes to the Secrets of the Shadows Development Team, the Consolaria Development team, Shipmans AGLA, Lucille Karma, & N0t_UNowen for their mods, so make sure to show them some support as well!
 
 Coding: Akira, Ropro0923, StarlightCat
 Sprites: ma3allim, DanHameln, Dandel, Mr.Puzzles, cheesenuggets
 Localization: Pudd1ng (Simplified Chinese)
-
-Some of the code in this mod is reused or refactored from the orignial Secrets of the Shadows codebase as well some code from many of the Fargo Team projects. Make sure to show each of thier individual teams some support! 

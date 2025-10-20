@@ -42,7 +42,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<VoidspaceLeggings>()
                 .AddIngredient<CataclysmSpheres>()
                 .AddIngredient<VesperaEnchant>()
-                .AddIngredient<DimensionShredder>()
+                .AddIngredient<PlasmaCutterButOnAChain>()
                 .AddTile<EnchantedTreeSheet>()
                 .Register();
         }

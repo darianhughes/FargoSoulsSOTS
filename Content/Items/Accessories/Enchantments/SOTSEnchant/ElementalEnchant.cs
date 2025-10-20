@@ -13,6 +13,10 @@ using FargowiltasSouls;
 using SecretsOfTheSouls.Core.Players;
 using Fargowiltas.Content.Items.Tiles;
 using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
+using System.Collections.Generic;
+using SOTS.Void;
+using SOTS.Projectiles.Chaos;
+using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
@@ -24,16 +28,17 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
         {
             return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
-        public override Color nameColor => new(116, 122, 159);
+        //public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<ChaosTeleport>()];
+        public override Color nameColor => new(231, 95, 203);
         public override void SetDefaults()
         {
             base.SetDefaults();
-            Item.rare = ItemRarityID.Lime;
-            Item.value = Item.sellPrice(77, 3, 26);
+            Item.rare = ItemRarityID.Yellow;
+            Item.value = 250000;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.AddEffect<ChaosTeleport>(Item);
+            //player.AddEffect<ChaosTeleport>(Item);
             player.AddEffect<ElementalEffect>(Item);
         }
         public override void AddRecipes()
@@ -42,9 +47,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<ElementalHelmet>()
                 .AddIngredient<ElementalBreastplate>()
                 .AddIngredient<ElementalLeggings>()
-                .AddIngredient<HyperlightGeyser>()
-                .AddIngredient<TwilightAssassinEnchant>()
-                .AddIngredient<SupernovaStorm>()
+                .AddIngredient<SOTS.Items.Chaos.HyperlightGeyser>()
+                .AddIngredient<SOTS.Items.Chaos.RealityShatter>()
+                .AddIngredient<EtherealScepter>()
                 .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
@@ -54,28 +59,37 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ChaosTeleport : AccessoryEffect
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return false;
+        }
+
         public override bool ActiveSkill => true;
-        public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
-        private int Cooldown = 60 * 25;
+        public override Header ToggleHeader => null;
+        private int Cooldown;
         public override void ActiveSkillJustPressed(Player player, bool stunned)
         {
             var FargoSOTSPlayer = player.GetModPlayer<SOTSEffectsPlayer>();
-            Tile TeleportTile = Framing.GetTileSafely((int)Main.MouseWorld.X / 16, (int)Main.MouseWorld.Y / 16);
-            if (!stunned && !TeleportTile.HasTile && FargoSOTSPlayer.ChaosCharge >= Cooldown)
+            bool flag = !player.mount.Active && player.grappling[0] < 0 && !player.frozen && !player.CCed && !player.dead;
+
+            if (!stunned && FargoSOTSPlayer.ChaosCharge == 0 && (flag ? 1 : 0) != 0 && player.whoAmI == Main.myPlayer)
             {
-                player.Teleport(new(Main.MouseWorld.X, Main.MouseWorld.Y), 1);
-                FargoSOTSPlayer.ChaosCharge = 0;
+                Vector2 mousePos = Main.MouseWorld - new Vector2(0f, player.height * 0.5f);
+                Vector2 dir = mousePos - player.Center;
+
+                int dmg = (int)player.GetTotalDamage(ModContent.GetInstance<VoidGeneric>()).ApplyTo(80);
+
+                Projectile.NewProjectile(player.GetSource_Misc("SotSouls:Blink"), player.Center, Utils.SafeNormalize(dir, Vector2.Zero), ModContent.ProjectileType<ElementalRelocatorBeam>(), dmg, 0f, player.whoAmI, mousePos.X, mousePos.Y, player.ForceEffect<ChaosTeleport>() ? 25 : 15);
+
+                FargoSOTSPlayer.ChaosCharge = Cooldown;
             }
         }
         public override void PostUpdateEquips(Player player)
         {
             var FargoSOTSPlayer = player.GetModPlayer<SOTSEffectsPlayer>();
-            if (player.ForceEffect<ChaosTeleport>())
-                Cooldown = 60 * 40;
-            if (FargoSOTSPlayer.ChaosCharge < Cooldown)
-                FargoSOTSPlayer.ChaosCharge++;
-            CooldownBarManager.Activate("ChaosTeleport", ModContent.Request<Texture2D>("SecretsOfTheSouls/Assets/Textures/Content/Items/Accessories/Enchantments/ElementalEnchant").Value, new(116, 122, 159),
-                () => (float)FargoSOTSPlayer.ChaosCharge / Cooldown, true, activeFunction: player.HasEffect<ChaosTeleport>);
+            Cooldown = player.ForceEffect<ChaosTeleport>() ? 60 * 40 : 60 * 25;
+            CooldownBarManager.Activate("ChaosTeleport", ModContent.Request<Texture2D>("SecretsOfTheSouls/Assets/Textures/Content/Items/Accessories/Enchantments/ElementalEnchant").Value, new(231, 95, 203),
+                () => 1 - (float)FargoSOTSPlayer.ChaosCharge / Cooldown, displayAtFull: false, activeFunction: player.HasEffect<ChaosTeleport>);
         }
     }
 
@@ -83,7 +97,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ElementalEffect : AccessoryEffect
     {
-        public override Header ToggleHeader => null;
+        public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
         public override void PostUpdateEquips(Player player)
         {
             var dissolvingPlayer = player.GetModPlayer<DissolvingElementsPlayer>();

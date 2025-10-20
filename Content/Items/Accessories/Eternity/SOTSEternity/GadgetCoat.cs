@@ -103,7 +103,6 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient<BoxofGizmos>()
                 .AddIngredient<JellyJumpers>()
                 .AddIngredient<DrillCap>()
                 .AddIngredient<PlasmaGrasp>()

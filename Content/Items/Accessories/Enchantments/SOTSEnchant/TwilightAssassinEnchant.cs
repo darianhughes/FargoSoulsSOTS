@@ -39,9 +39,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<TwilightAssassinsCirclet>()
                 .AddIngredient<TwilightAssassinsChestplate>()
                 .AddIngredient<TwilightAssassinsLeggings>()
-                .AddIngredient<ChainedPlasma>()
                 .AddIngredient<DigitalDaito>()
-                .AddIngredient<OtherworldlySpiritStaff>()
+                .AddIngredient<SkywardBlades>()
+                .AddIngredient<CodeCorrupter>()
                 .AddTile<EnchantedTreeSheet>()
                 .Register();
         }

@@ -16,7 +16,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 
-namespace SecretsOfTheSouls.Common.GlobalItemAdditions
+namespace SecretsOfTheSouls.Common.Effects.SOTSEffects
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]

@@ -11,7 +11,7 @@ using Fargowiltas.Content.NPCs;
 using Fargowiltas.Content.Items.Summons.Deviantt;
 using Fargowiltas.Content.Items.Tiles;
 
-namespace SecretsOfTheSouls.Common.NPCChanges
+namespace SecretsOfTheSouls.Common.NPCChanges.TownNPC
 {
     public class DevianttGlobalNPC : GlobalNPC
     {

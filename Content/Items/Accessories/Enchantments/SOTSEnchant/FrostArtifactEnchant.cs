@@ -43,7 +43,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<FrostArtifactHelmet>()
                 .AddIngredient<FrostArtifactChestplate>()
                 .AddIngredient<FrostArtifactTrousers>()
-                .AddIngredient<HypericeClusterCannon>()
+                .AddIngredient<Metalmalgamation>()
                 .AddIngredient<FrigidEnchant>()
                 .AddIngredient<PBow>()
                 .AddTile<EnchantedTreeSheet>()

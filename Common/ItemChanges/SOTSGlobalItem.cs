@@ -74,7 +74,12 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 //hellfire treads
                 if (SOTSItemConfig.Instance.FlashsparkBootsRework)
                     player.hellfireTreads = true;
+            }
 
+            if (item.type == ModContent.ItemType<FortressGenerator>() && SOTSItemConfig.Instance.FortressGeneratorRework)
+            {
+                player.noKnockback = false;
+                player.hasPaladinShield = false;
             }
         }
 
@@ -144,6 +149,11 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                     AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.HellfireTreads"));
 
                 AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.AeolusBoots"));
+            }
+
+            if (item.type == ModContent.ItemType<FortressGenerator>() && SOTSItemConfig.Instance.FortressGeneratorRework)
+            {
+                FullTooltipOveride(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.TooltipOverride.FortressGenerator"));
             }
         }
     }

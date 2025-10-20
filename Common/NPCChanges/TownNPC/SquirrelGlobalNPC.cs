@@ -17,10 +17,12 @@ namespace SecretsOfTheSouls.Common.NPCChanges
         {
             if (npc.type == ModContent.NPCType<Squirrel>())
             {
+                /*
                 if (ModLoader.HasMod("SOTS"))
                 {
                     SOTSSquirrel.ModifyActiveShop(shopName, items);
                 }
+                */
             }
         }
     }

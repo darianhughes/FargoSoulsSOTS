@@ -39,8 +39,8 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<VesperaBreastplate>()
                 .AddIngredient<VesperaLeggings>()
                 .AddIngredient<VesperaNanDao>()
-                .AddIngredient<IlluminantStaff>()
-                .AddIngredient<MantisGrip>()
+                .AddIngredient<VesperaLongbow>()
+                .AddIngredient<VesperaFishingRod>()
                 .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
