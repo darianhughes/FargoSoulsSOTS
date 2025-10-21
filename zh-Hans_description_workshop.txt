@@ -29,7 +29,7 @@ v0.1 为困难模式前的流程添加支持内容，本模组会持续维护，
 [list]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3485175010] 诸神黄昏：炼狱蚀光武器DLC [/url]
-	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3557455275&searchtext=Homeward+Ragnaork] 诸神黄昏：炼狱蚀光-旅人归途拓展包 [/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3557455275&searchtext=Homeward+Ragnaork] 旅人黄昏 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3535746309] 跨模组投手融合 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus的灾厄/瑟银平衡 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3556808030] 炼狱-暗影奥秘圣域生成修改器 [/url]
