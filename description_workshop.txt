@@ -1,4 +1,4 @@
-An unofficial addon to the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo's Souls Mod[/url] that makes it compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] Secrets of the Shadows[url] & [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929&searchtext=consolaria] Consolaria[url].
+An unofficial addon to the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo's Souls Mod[/url] that makes it compatible with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] Secrets of the Shadows[/url] & [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929&searchtext=consolaria] Consolaria[/url].
 
 The mod can be played with any assortment of the supported mods, all of them, or none at all, as the content is dynamically loaded depending on what mods you currently have enabled.
 
