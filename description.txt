@@ -26,5 +26,5 @@ Special thanks to the Fargo's Souls Development Team, the Secrets of the Shadows
 Some of the code in this mod is reused or refactored from the orignial Secrets of the Shadows codebase as well some code from many of the Fargo Team projects. Make sure to show each of thier indivutual teams some support! 
 
 Coding: Akira, Ropro0923, StarlightCat
-Sprites: ma3allim, DanHameln, Dandel, Mr.Puzzles, cheesenuggets
+Sprites: ma3allim, DanHameln, Dandel, Mr.Puzzles, cheesenuggets, Leo
 Localization: Pudd1ng (Simplified Chinese)

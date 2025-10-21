@@ -15,8 +15,8 @@ using Fargowiltas.Content.Items.Tiles;
 using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 using System.Collections.Generic;
 using SOTS.Void;
-using SOTS.Projectiles.Chaos;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
+using Terraria.Localization;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {
@@ -40,6 +40,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
         {
             //player.AddEffect<ChaosTeleport>(Item);
             player.AddEffect<ElementalEffect>(Item);
+            player.AddEffect<PolarizerEffect>(Item);
         }
         public override void AddRecipes()
         {
@@ -47,9 +48,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
                 .AddIngredient<ElementalHelmet>()
                 .AddIngredient<ElementalBreastplate>()
                 .AddIngredient<ElementalLeggings>()
-                .AddIngredient<SOTS.Items.Chaos.HyperlightGeyser>()
                 .AddIngredient<SOTS.Items.Chaos.RealityShatter>()
                 .AddIngredient<EtherealScepter>()
+                .AddIngredient<UltimatePolarizer>()
                 .AddTile<EnchantedTreeSheet>()
                 .Register();
         }
@@ -98,18 +99,172 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     public class ElementalEffect : AccessoryEffect
     {
         public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
+        public override int ToggleItemType => ModContent.ItemType<ElementalEnchant>();
         public override void PostUpdateEquips(Player player)
         {
             var dissolvingPlayer = player.GetModPlayer<DissolvingElementsPlayer>();
-            dissolvingPlayer.DissolvingNature = 0;
-            dissolvingPlayer.DissolvingEarth = 0;
-            dissolvingPlayer.DissolvingAurora = 0;
-            dissolvingPlayer.DissolvingAether = 0;
-            dissolvingPlayer.DissolvingDeluge = 0;
-            dissolvingPlayer.DissolvingAurora = 0;
-            dissolvingPlayer.DissolvingUmbra = 0;
-            dissolvingPlayer.DissolvingNether = 0;
-            dissolvingPlayer.DissolvingBrilliance = 0;
+            if (!dissolvingPlayer.PolarizeNature)
+                dissolvingPlayer.DissolvingNature = 0;
+            if (!dissolvingPlayer.PolarizeEarth)
+                dissolvingPlayer.DissolvingEarth = 0;
+            if (!dissolvingPlayer.PolarizeAurora)
+                dissolvingPlayer.DissolvingAurora = 0;
+            if (!dissolvingPlayer.PolarizeAether)
+                dissolvingPlayer.DissolvingAether = 0;
+            if (!dissolvingPlayer.PolarizeDeluge)
+                dissolvingPlayer.DissolvingDeluge = 0;
+            if (!dissolvingPlayer.PolarizeUmbra)
+                dissolvingPlayer.DissolvingUmbra = 0;
+            if (!dissolvingPlayer.PolarizeNether)
+                dissolvingPlayer.DissolvingNether = 0;
+            if (!dissolvingPlayer.PolarizeBrilliance)
+                dissolvingPlayer.DissolvingBrilliance = 0;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class PolarizerEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<ChaosForceHeader>();
+        public override int ToggleItemType => ModContent.ItemType<UltimatePolarizer>();
+
+        public override void UpdateBadLifeRegen(Player player)
+        {
+            var dissolvingPlayer = player.GetModPlayer<DissolvingElementsPlayer>();
+            bool hasForce = Main.LocalPlayer.ForceEffect<PolarizerEffect>();
+
+            if (dissolvingPlayer.PolarizeNether)
+            {
+                player.GetAttackSpeed(DamageClass.Melee) += dissolvingPlayer.DissolvingNether * 0.02f;
+                if (hasForce)
+                {
+                    ref StatModifier local = ref player.GetDamage(DamageClass.Melee);
+                    local += dissolvingPlayer.DissolvingNether * 0.02f;
+                }
+            }
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class  ElementalPolarizerEnhancementTooltips : GlobalItem
+    {
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            DissolvingElementsPlayer dissolvingElementsPlayer = DissolvingElementsPlayer.ModPlayer(Main.LocalPlayer);
+            bool hasEffect = Main.LocalPlayer.HasEffect<PolarizerEffect>();
+            bool hasForce = Main.LocalPlayer.ForceEffect<PolarizerEffect>();
+
+            if (hasEffect)
+            {
+                if (item.type == ModContent.ItemType<DissolvingNether>() & dissolvingElementsPlayer.PolarizeNether)
+                {
+                    foreach (TooltipLine tooltip in tooltips)
+                    {
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
+                        {
+                            if (hasForce)
+                                tooltip.Text = $"{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingNetherFlipped")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingNetherElemental")}";
+                            else
+                                tooltip.Text += $"\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingNetherElemental")}";
+                        }
+                    }
+                }
+                if (item.type == ModContent.ItemType<DissolvingAether>() & dissolvingElementsPlayer.PolarizeAether)
+                {
+                    foreach (TooltipLine tooltip in tooltips)
+                    {
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
+                        {
+                            if (hasForce)
+                                tooltip.Text = $"{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingAetherFlipped")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingAetherElemental")}";
+                            else
+                                tooltip.Text += $"\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingAetherElemental")}";
+                        }
+                    }
+
+                }
+                if (item.type == ModContent.ItemType<DissolvingNature>() & dissolvingElementsPlayer.PolarizeNature)
+                {
+                    foreach (TooltipLine tooltip in tooltips)
+                    {
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
+                        {
+                            if (hasForce)
+                                tooltip.Text = $"{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingNatureFlipped")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingNatureElemental")}";
+                            else
+                                tooltip.Text += $"\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingNatureElemental")}";
+                        }
+                    }
+
+                }
+                if (item.type == ModContent.ItemType<DissolvingEarth>() & dissolvingElementsPlayer.PolarizeEarth)
+                {
+                    foreach (TooltipLine tooltip in tooltips)
+                    {
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
+                        {
+                            if (hasForce)
+                                tooltip.Text = $"{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingEarthFlipped")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingEarthElemental")}";
+                            else
+                                tooltip.Text += $"\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingEarthElemental")}";
+                        }
+                    }
+                }
+                if (item.type == ModContent.ItemType<DissolvingAurora>() & dissolvingElementsPlayer.PolarizeAurora)
+                {
+                    foreach (TooltipLine tooltip in tooltips)
+                    {
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
+                        {
+                            if (hasForce)
+                                tooltip.Text = $"{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingAuroraFlipped")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingAuroraElemental")}";
+                            else
+                                tooltip.Text += $"\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingAuroraElemental")}";
+                        }
+                    }
+                }
+                if (item.type == ModContent.ItemType<DissolvingDeluge>() & dissolvingElementsPlayer.PolarizeDeluge)
+                {
+                    foreach (TooltipLine tooltip in tooltips)
+                    {
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
+                        {
+                            if (hasForce)
+                                tooltip.Text = $"{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingDelugeFlipped")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingDelugeElemental")}";
+                            else
+                                tooltip.Text += $"\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingDelugeElemental")}";
+                        }
+                    }
+                }
+                if (item.type == ModContent.ItemType<DissolvingBrilliance>() & dissolvingElementsPlayer.PolarizeBrilliance)
+                {
+                    foreach (TooltipLine tooltip in tooltips)
+                    {
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
+                        {
+                            if (hasForce)
+                                tooltip.Text = $"{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingBrillianceFlipped")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingBrillianceElemental")}";
+                            else
+                                tooltip.Text += $"\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingBrillianceElemental")}";
+                        }
+                    }
+                }
+                if (item.type == ModContent.ItemType<DissolvingUmbra>() & dissolvingElementsPlayer.PolarizeUmbra)
+                {
+                    foreach (TooltipLine tooltip in tooltips)
+                    {
+                        if (tooltip.Mod == "Terraria" && tooltip.Name == "Tooltip0")
+                        {
+                            if (hasForce)
+                                tooltip.Text = $"{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingUmbraFlipped")}\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingUmbraElemental")}";
+                            else
+                                tooltip.Text += $"\n{Language.GetTextValue("Mods.SecretsOfTheSouls.DissolvingElements.DissolvingUmbraElemental")}";
+                        }
+                    }
+                }
+            }
         }
     }
 }

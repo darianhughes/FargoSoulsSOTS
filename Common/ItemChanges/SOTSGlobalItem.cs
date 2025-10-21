@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using Fargowiltas.Common.Configs;
+using FargowiltasSouls;
 using FargowiltasSouls.Content.Items.Accessories.Eternity;
 using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using FargowiltasSouls.Core.Toggler.Content;
+using Microsoft.Xna.Framework;
+using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 using SOTS;
 using SOTS.Items;
 using SOTS.Items.Earth.Glowmoth;
+using SOTS.Items.Fragments;
 using SOTS.Items.Slime;
 using Terraria;
 using Terraria.Localization;
@@ -40,6 +44,16 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 return false;
             }
             return base.ConsumeItem(item, player);
+        }
+
+        public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+        {
+            var dp = player.GetModPlayer<DissolvingElementsPlayer>();
+
+            if (dp.DissolvingDeluge != 0 && dp.PolarizeDeluge && player.HasEffect<ElementalEffect>() && item.CountsAsClass(DamageClass.Ranged))
+            {
+                velocity *= dp.DissolvingDeluge * 0.01f;
+            }
         }
 
         public override void UpdateAccessory(Item item, Player player, bool hideVisual)

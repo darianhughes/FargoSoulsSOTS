@@ -27,6 +27,7 @@ using SecretsOfTheSouls.Content.Items.Accessories.Eternity.SOTSEternity;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 using SecretsOfTheSouls.Common.Effects.SOTSEffects;
 using FargowiltasSouls.Core.ModPlayers;
+using SOTS.Items.Fragments;
 
 namespace SecretsOfTheSouls.Core.Players
 {
@@ -79,6 +80,29 @@ namespace SecretsOfTheSouls.Core.Players
         {
             debuffCorrosion = false;
             GadgetCoat = false;
+        }
+
+        public override void UpdateDead()
+        {
+            if (Player.HasEffect<PolarizerEffect>())
+            {
+                UpdateElementalUmbra();
+            }
+        }
+
+        private void UpdateElementalUmbra()
+        {
+            DissolvingElementsPlayer dissolvingElementsPlayer = DissolvingElementsPlayer.ModPlayer(Player);
+            if (dissolvingElementsPlayer.DissolvingUmbra != 0 && dissolvingElementsPlayer.PolarizeUmbra)
+            {
+                VoidPlayer voidPlayer = VoidPlayer.ModPlayer(Player);
+                voidPlayer.bonusVoidGain += dissolvingElementsPlayer.DissolvingUmbra;
+                if (Player.ForceEffect<PolarizerEffect>())
+                {
+                    ref StatModifier local = ref Player.GetDamage(ModContent.GetInstance<VoidGeneric>());
+                    local += dissolvingElementsPlayer.DissolvingUmbra * 0.02f;
+                }
+            }
         }
 
         public override void UpdateEquips()
@@ -254,7 +278,67 @@ namespace SecretsOfTheSouls.Core.Players
 
         public override void PostUpdateEquips()
         {
-            base.PostUpdateEquips();
+            if (Player.HasEffect<PolarizerEffect>())
+            {
+                var dp = Player.GetModPlayer<DissolvingElementsPlayer>();
+                bool hasForce = Player.ForceEffect<PolarizerEffect>();
+
+                if (dp.DissolvingAether != 0 && dp.PolarizeAether)
+                {
+                    Player.statManaMax2 += dp.DissolvingAether * 20;
+                    if (hasForce)
+                    {
+                        ref StatModifier local = ref this.Player.GetDamage(DamageClass.Magic);
+                        local += dp.DissolvingAether * 0.02f;
+                    }
+                }
+
+                if (dp.PolarizeNature)
+                {
+                    Player.statLifeMax2 += dp.DissolvingNature * 5;
+                    if (hasForce)
+                    {
+                        Player.lifeRegen += dp.DissolvingNature;
+                    }
+                }
+
+                if (dp.PolarizeEarth)
+                {
+                    Player.GetArmorPenetration(DamageClass.Generic) += dp.DissolvingEarth;
+                    if (hasForce)
+                    {
+                        Player player = Player;
+                        player.statDefense += dp.DissolvingEarth;
+                    }
+                }
+
+                if (dp.PolarizeAurora)
+                {
+                    Player.wingTimeMax += dp.DissolvingAurora;
+                    if (hasForce)
+                    {
+                        Player.moveSpeed += dp.DissolvingAurora * 0.02f;
+                    }
+                }
+
+                if (dp.DissolvingDeluge != 0 && dp.PolarizeDeluge && hasForce)
+                {
+                    ref StatModifier local = ref this.Player.GetDamage(DamageClass.Ranged);
+                    local += dp.DissolvingDeluge * 0.02f;
+                }
+
+                if (dp.PolarizeBrilliance)
+                {
+                    Player.whipRangeMultiplier += 0.02f;
+                    if (hasForce)
+                    {
+                        ref StatModifier local = ref this.Player.GetDamage(DamageClass.Summon);
+                        local += dp.DissolvingBrilliance * 0.02f;
+                    }
+                }
+
+                UpdateElementalUmbra();
+            }
         }
 
         public override void PostUpdateMiscEffects()

@@ -12,11 +12,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ChaosForce : BaseForce
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
-        }
-        public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>(), AccessoryEffectLoader.GetEffect<ChaosTeleport>()];
+        public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
         public override void SetStaticDefaults()
         {
             Enchants[Type] =
@@ -35,8 +31,11 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
             player.AddEffect<WormwoodEffect>(Item);
             player.AddEffect<BloomStrike>(Item);
             player.AddEffect<PatchLeatherEffect>(Item);
-            player.AddEffect<ChaosTeleport>(Item);
+            //player.AddEffect<ChaosTeleport>(Item);
             player.AddEffect<ElementalEffect>(Item);
+            player.AddEffect<PolarizerEffect>(Item);
+
+            player.AddEffect<ChaosEffect>(Item);
         }
 
         public override void AddRecipes()
@@ -54,9 +53,8 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
 
-    public class ChoasEffect : AccessoryEffect
+    public class ChaosEffect : AccessoryEffect
     {
         public override Header ToggleHeader => null;
-        public override int ToggleItemType => ModContent.ItemType<ChaosForce>();
     }
 }

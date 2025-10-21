@@ -46,5 +46,5 @@ Special thanks to the Fargo's Souls Development Team & the Bereft Souls Developm
 Other special thanks goes to the Secrets of the Shadows Development Team, the Consolaria Development team, Shipmans AGLA, Lucille Karma, & N0t_UNowen for their mods, so make sure to show them some support as well!
 
 Coding: Akira, Ropro0923, StarlightCat
-Sprites: ma3allim, DanHameln, Dandel, Mr.Puzzles, cheesenuggets
+Sprites: ma3allim, DanHameln, Dandel, Mr.Puzzles, cheesenuggets, Leo
 Localization: Pudd1ng (Simplified Chinese)

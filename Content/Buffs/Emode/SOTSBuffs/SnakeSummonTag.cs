@@ -1,6 +1,9 @@
 ﻿using Terraria.ID;
 using Terraria;
 using Terraria.ModLoader;
+using FargowiltasSouls.Core.AccessoryEffectSystem;
+using SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce;
+using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 
 namespace SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs
 {
@@ -26,11 +29,15 @@ namespace SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
         {
+            Player player = Main.player[projectile.owner];
+            if (player.HasEffect<ChaosEffect>() && player.HasEffect<PatchLeatherEffect>() &&  projectile.IsMinionOrSentryRelated)
+            {
+                npc.AddBuff(BuffID.Venom, 60 * 3);
+            }
+
             if (npc.HasBuff<SnakeSummonTag>() && projectile.IsMinionOrSentryRelated)
             {
                 modifiers.FlatBonusDamage += SnakeSummonTag.TagDamage * ProjectileID.Sets.SummonTagDamageMultiplier[projectile.type];
-
-                Player player = Main.player[projectile.owner];
 
                 if (player.HeldItem.CountsAsClass(DamageClass.Summon) || player.HeldItem.CountsAsClass(DamageClass.SummonMeleeSpeed))
                 {
