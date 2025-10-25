@@ -1,35 +1,52 @@
-本模组是[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo魂 [/url]模组的非官方附属模组，旨在使其与[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] 暗影奥秘 [/url]模组兼容并添加联动内容
+本模组是[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2815540735&searchtext=Fargo%27s+Souls+Mod] Fargo魂 [/url]模组的非官方附属模组，旨在使其与[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows] 暗影奥秘 [/url]模组和[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929&searchtext=consolaria] Consolaria [url]模组兼容并添加联动内容
+
+本模组可与任意组合的支持模组一同游玩，也可单独运行，其内容会根据你当前启用的模组动态加载。
 
 v0.1 为困难模式前的流程添加支持内容，本模组会持续维护，并定期推出更新内容。
 
+当前支持：
+[list]
+	[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2843112914&searchtext=Secrets+of+the+Shadows]暗影奥秘[/url]
+	[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2864843929&searchtext=consolaria]Consolaria[/url]
+	[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2958674071]Heartbeataria[/url]
+[/list]
+
 模组内容：
 [list]
-	[*] 为暗影奥秘盔甲添加各种魔石与力
-	[*] 虚空职业添加全新的精华与魂
-	[*] 增加了对[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2570931073]Fargo突变[/url]的体验优化支持，例如旗帜合成配方与暗影奥秘Boss的替代召唤方式
-	[*] 为暗影奥秘的Boss添加永恒模式减益与AI改动
-	[*] 合并暗影奥秘饰品的合成树（如靴子、盾牌系列的合成树）到Fargo魂模组的饰品体系中
+	[*] 永恒模式兼容重做
+	[*] 为暗影奥秘和Consolaria添加各种魔石、力与魂
+	[*] 添加了对[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2570931073]Fargo突变[/url]的体验优化支持，例如旗帜合成配方与Boss的替代召唤物
+	[*] 合并饰品的合成树（如靴子、盾牌系列的合成树）到Fargo魂模组的饰品体系中
 	[*] 支持其他Fargo系列的附属模组，例如[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3044249615]灾厄–Fargo魂DLC[/url]
 [/list]
 
-如果您对更多类似模组感兴趣，请查看我们团队的一些其他模组：
+未来计划：
+[list]
+	[*] [https://steamcommunity.com/sharedfiles/filedetails/?id=2833852432 惊惧]与[https://steamcommunity.com/sharedfiles/filedetails/?id=3456940039 岁月升涌]的兼容支持（也许某一天……）
+[/list]
+
+如果您对更多类似模组感兴趣，请查看我们团队的其他模组：
 [list]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3456517686] 诸神黄昏：炼狱蚀光 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3485175010] 诸神黄昏：炼狱蚀光武器DLC [/url]
-	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3557455275&searchtext=Homeward+Ragnaork] 诸神黄昏：炼狱蚀光-旅人归途拓展包 [/url]
+	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3557455275&searchtext=Homeward+Ragnaork] 旅人黄昏 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3535746309] 跨模组投手融合 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3452171528&searchtext=tpackbuilder] WHummus的灾厄/瑟银平衡 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3556808030] 炼狱-暗影奥秘圣域生成修改器 [/url]
 	[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3503267205] Permafrost Keep Quest Skipper [/url]
 [/list]
 
+如果遇到问题，请加入[url=https://discord.gg/tc5nZdRvaU]官方Discord服务器[/url]反馈
+
+您也可以访问[url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/zh]诸神黄昏：炼狱蚀光中文Wiki[/url]以查看相关信息
+
 如果您想要支持我们的开发团队，请访问我们的[url=https://www.patreon.com/c/InfernalEclipseofRagnarokTeam]Patreon页面[/url]
 
-特别感谢 Fargo魂 与 暗影奥秘 团队的模组，
-以及[url=https://steamcommunity.com/profiles/76561199125907379] N0t_UNowen [/url]提供的部分永恒模式减益代码
+特别感谢[u]Fargo魂开发团队[/u]和[u]Bereft Souls开发团队[/u]对本模组开发的直接帮助
+以及[u]暗影奥秘开发团队[/u]、[u]Consolaria开发团队[/u]、[u]Shipmans AGLA[/u]、[u]Lucille Karma[/u]和[u]N0t_UNowen[/u]的模组，请大家也去支持他们！
 
 [list]
-[*] 程序：Akira
-[*] 美术：ma3allim
+[*] 程序：Akira、Ropro0923、StarlightCat
+[*] 美术：ma3allim、DanHameln、Dandel、Mr.Puzzles、cheesenuggets、Leo
 [*] 翻译：Pudd1ng (简体中文)
 [/list]
