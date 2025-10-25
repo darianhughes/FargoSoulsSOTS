@@ -10,6 +10,7 @@ using Consolaria.Content.Items.Placeable;
 using Consolaria.Content.NPCs.Bosses.Turkor;
 using Consolaria.Content.NPCs.Bosses.Ocram;
 using SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.Energizers.ConsolariaEnergizers;
+using SecretsOfTheSouls.Core.Players;
 
 namespace SecretsOfTheSouls.Common.Effects.ConsolariaEffects
 {
@@ -19,6 +20,25 @@ namespace SecretsOfTheSouls.Common.Effects.ConsolariaEffects
     {
         private static Mod Consolaria => ModLoader.GetMod(SecretsOfTheSoulsCrossmod.Consolaria.Name);
         public override bool InstancePerEntity => true;
+
+        public override void AI(NPC npc)
+        {
+            if (npc.type == ModContent.NPCType<DisasterBunny>() && npc.HasValidTarget)
+            {
+                Player player = Main.player[npc.target];
+                if (player.GetModPlayer<ConsolariaEffectsPlayer>().ostaraEnchant)
+                {
+                    npc.target = 255;
+                    npc.netUpdate = true;
+                }
+            }
+        }
+
+        public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
+        {
+            if (npc.type == ModContent.NPCType<DisasterBunny>() && target.GetModPlayer<ConsolariaEffectsPlayer>().ostaraEnchant)
+                modifiers.Cancel();
+        }
 
         public override bool PreKill(NPC npc)
         {

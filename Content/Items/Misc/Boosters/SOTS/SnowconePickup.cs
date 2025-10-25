@@ -1,16 +1,20 @@
 ﻿using System.Reflection;
+using SOTS.Void;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria;
 using Terraria.ModLoader;
-using SecretsOfTheSouls.Content.Buffs.Emode.SOTSBuffs;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
 
-namespace SecretsOfTheSouls.Content.Items.Misc.Boosters
+namespace SecretsOfTheSouls.Content.Items.Misc.Boosters.SOTS
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    public class KeystoneShard : ModItem
+    public class SnowconePickup : ModItem
     {
+        public override string Texture => "SOTS/Items/Void/StrawberryIcecream";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.IsAPickup[Type] = true;
@@ -21,7 +25,14 @@ namespace SecretsOfTheSouls.Content.Items.Misc.Boosters
 
         public static void PickupEffect(Player player)
         {
-            player.AddBuff(ModContent.BuffType<VoidEmpowerment>(), 60 * 5);
+            VoidPlayer mp = VoidPlayer.ModPlayer(player);
+
+            player.Heal((int)(player.statLifeMax2 * 0.25f));
+            player.statMana += (int)(player.statManaMax2 * 0.20f);
+
+            int voidHeal = (int)(mp.voidMeterMax2 * 0.20f);
+            mp.voidMeter += voidHeal;
+            VoidPlayer.VoidEffect(player, voidHeal);
         }
 
         public override bool OnPickup(Player player)
@@ -53,5 +64,26 @@ namespace SecretsOfTheSouls.Content.Items.Misc.Boosters
             PullItem_PickupMethod.Invoke(player, args);
             return true;
         }
+
+        /*
+        public override Color? GetAlpha(Color lightColor) => Color.Purple;
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            Texture2D tex = TextureAssets.Item[Item.type].Value;
+            Vector2 origin = new(tex.Width / 2f, tex.Height / 2f);
+            Main.EntitySpriteDraw(
+                tex,
+                Item.Center - Main.screenPosition,
+                null,
+                Color.Purple,
+                rotation,
+                origin,
+                scale,
+                SpriteEffects.None,
+                0);
+            return false;
+        }
+        */
     }
 }

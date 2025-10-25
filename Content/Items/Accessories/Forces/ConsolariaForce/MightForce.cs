@@ -3,6 +3,7 @@ using FargowiltasSouls.Core.AccessoryEffectSystem;
 using FargowiltasSouls.Core.Toggler;
 using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.ConsolariaEnchant;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.ConsolariaForce
@@ -15,14 +16,18 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.ConsolariaForce
         {
             return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
         }
-        public override string Texture => "FargowiltasSouls/Content/Items/Placeholder";
 
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
+
             Enchants[Type] =
             [
                 ModContent.ItemType<OstaraEnchant>(),
+                ModContent.ItemType<DragonEnchant>()
             ];
+
+            Main.RegisterItemAnimation(Type, new DrawAnimationVertical(4, 13));
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -5,9 +5,9 @@ using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using SOTS.Void;
-using SecretsOfTheSouls.Content.Items.Misc.Boosters;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
+using SecretsOfTheSouls.Content.Items.Misc.Boosters.SOTS;
 
 namespace SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity
 {

@@ -15,6 +15,8 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.SOTSForce
         public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<BloomStrike>()];
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
+
             Enchants[Type] =
             [
                 ModContent.ItemType<ElementalEnchant>(),

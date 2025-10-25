@@ -10,11 +10,11 @@ using Fargowiltas.Content.Items.Tiles;
 using SecretsOfTheSouls.Core.SoulToggles.SOTSToggles;
 using FargowiltasSouls;
 using SOTS.Buffs;
-using SecretsOfTheSouls.Content.Items.Misc.Boosters;
 using SecretsOfTheSouls.Content.Projectiles.Eternity.SOTSEternity;
 using SecretsOfTheSouls.Core.Players;
 using System.Collections.Generic;
 using System;
+using SecretsOfTheSouls.Content.Items.Misc.Boosters.SOTS;
 
 namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
 {

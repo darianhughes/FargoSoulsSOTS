@@ -8,13 +8,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 
-namespace SecretsOfTheSouls.Content.Items.Misc.Boosters
+namespace SecretsOfTheSouls.Content.Items.Misc.Boosters.SOTS
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    public class SnowconePickup : ModItem
+    public class VoidShatterShardPickup : ModItem
     {
-        public override string Texture => "SOTS/Items/Void/StrawberryIcecream";
+        public override string Texture => "SOTS/Projectiles/Permafrost/ShatterShard";
         public override void SetStaticDefaults()
         {
             ItemID.Sets.IsAPickup[Type] = true;
@@ -27,10 +27,10 @@ namespace SecretsOfTheSouls.Content.Items.Misc.Boosters
         {
             VoidPlayer mp = VoidPlayer.ModPlayer(player);
 
-            player.Heal((int)(player.statLifeMax2 * 0.25f));
-            player.statMana += (int)(player.statManaMax2 * 0.20f);
+            player.Heal((int)(player.statLifeMax2 * 0.1f));
+            player.statMana += (int)(player.statManaMax2 * 0.05f);
 
-            int voidHeal = (int)(mp.voidMeterMax2 * 0.20f);
+            int voidHeal = (int)(mp.voidMeterMax2 * 0.05f);
             mp.voidMeter += voidHeal;
             VoidPlayer.VoidEffect(player, voidHeal);
         }
@@ -64,8 +64,6 @@ namespace SecretsOfTheSouls.Content.Items.Misc.Boosters
             PullItem_PickupMethod.Invoke(player, args);
             return true;
         }
-
-        /*
         public override Color? GetAlpha(Color lightColor) => Color.Purple;
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
@@ -84,6 +82,5 @@ namespace SecretsOfTheSouls.Content.Items.Misc.Boosters
                 0);
             return false;
         }
-        */
     }
 }
