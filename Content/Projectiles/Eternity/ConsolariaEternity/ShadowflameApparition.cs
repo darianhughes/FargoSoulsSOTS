@@ -13,7 +13,7 @@ namespace SecretsOfTheSouls.Content.Projectiles.Eternity.ConsolariaEternity
         private int DashCooldown = 18;
         private float ArrivalDistance = 18f;
 
-        public override string Texture => $"Terraria/NPC_{NPCID.ShadowFlameApparition}";
+        public override string Texture => $"Terraria/Images/NPC_{NPCID.ShadowFlameApparition}";
 
         public override void SetStaticDefaults()
         {
