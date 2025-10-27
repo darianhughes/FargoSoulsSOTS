@@ -24,10 +24,6 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ElementalEnchant : BaseEnchant
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
-        }
         //public override List<AccessoryEffect> ActiveSkillTooltips => [AccessoryEffectLoader.GetEffect<ChaosTeleport>()];
         public override Color nameColor => new(231, 95, 203);
         public override void SetDefaults()

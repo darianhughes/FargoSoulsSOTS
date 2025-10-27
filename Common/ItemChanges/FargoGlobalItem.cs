@@ -1,15 +1,9 @@
 ﻿using System.Collections.Generic;
 using FargowiltasSouls.Content.Items.Accessories.Souls;
-using FargowiltasSouls.Core.AccessoryEffectSystem;
-using FargowiltasSouls.Core.Toggler;
-using FargowiltasSouls.Core.Toggler.Content;
-using SOTS.Items.Planetarium;
-using SOTS.Items.Planetarium.FromChests;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using SOTS.Items.DoorItems;
 using FargowiltasSouls.Content.Items.Accessories;
 using FargowiltasSouls.Content.Items;
 using SOTS.Items.ChestItems;
@@ -212,7 +206,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 if (ModLoader.HasMod("SOTS"))
                 {
                     AddTooltip(tooltips, Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.PlasmaShrimp"));
-                    string wishingStarToolip = WishingStar.IsAlternate ? Language.GetTextValue("Mods.SOTS.Items.WishingStar.AltTooltip") : Language.GetTextValue("Mods.SOTS.Items.WishingStar.DefaultTooltip");
+                    string wishingStarToolip = ApplySpecialTooltips.IsAlternate ? Language.GetTextValue("Mods.SOTS.Items.WishingStar.AltTooltip") : Language.GetTextValue("Mods.SOTS.Items.WishingStar.DefaultTooltip");
                     AddTooltip(tooltips, $"[i:SOTS/WishingStar] {wishingStarToolip}");
                 }
             }
@@ -234,7 +228,7 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                         ModifyExistingTooltip(tooltips, "[i:1321]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSBerserker"));
                         ModifyExistingTooltip(tooltips, "[i:1595]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.SOTSSniper"));
                         ModifyExistingTooltip(tooltips, "[i:1595]", Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.FortressGenerator"));
-                        string wishingStarToolip = WishingStar.IsAlternate ? Language.GetTextValue("Mods.SOTS.Items.WishingStar.AltTooltip") : Language.GetTextValue("Mods.SOTS.Items.WishingStar.DefaultTooltip");
+                        string wishingStarToolip = ApplySpecialTooltips.IsAlternate ? Language.GetTextValue("Mods.SOTS.Items.WishingStar.AltTooltip") : Language.GetTextValue("Mods.SOTS.Items.WishingStar.DefaultTooltip");
                         ModifyExistingTooltip(tooltips, "[i:1595]", $"{Language.GetTextValue("Mods.SecretsOfTheSouls.NewTooltips.PlasmaShrimp")}\n[i:SOTS/WishingStar] {wishingStarToolip}");
                     }
                 }
@@ -385,42 +379,6 @@ namespace SecretsOfTheSouls.Common.ItemChanges
 
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    public class GravityAnchorEffect : AccessoryEffect
-    {
-        public override Header ToggleHeader => Header.GetHeader<FlightMasteryHeader>();
-        public override int ToggleItemType => ModContent.ItemType<GravityAnchor>();
-
-        public override void PostUpdateEquips(Player player)
-        {
-            if (player.gravity < Player.defaultGravity)
-                player.gravity = Player.defaultGravity;
-        }
-    }
-
-    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    public class TwilightFishingEffect : AccessoryEffect
-    {
-        public override Header ToggleHeader => Header.GetHeader<TrawlerHeader>();
-        public override int ToggleItemType => ModContent.ItemType<TwilightFishingPole>();
-    }
-
-    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    public class BandofDoorEffect : AccessoryEffect
-    {
-        public override Header ToggleHeader => Header.GetHeader<SupersonicHeader>();
-        public override int ToggleItemType => ModContent.ItemType<BandOfDoor>();
-
-        public override void PostUpdateEquips(Player player)
-        {
-            DoorPlayer dp = player.GetModPlayer<DoorPlayer>();
-            ++dp.doorPants;
-        }
-    }
-
-    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
-    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ApplySpecialTooltips
     {
         public static void ModifyTooltips(List<TooltipLine> tooltips, string tooltipName, int voidIncrease)
@@ -434,6 +392,8 @@ namespace SecretsOfTheSouls.Common.ItemChanges
                 }
             }
         }
+
+        public static bool IsAlternate => WishingStar.IsAlternate;
 
         public static string GetBladewingTooltip(int voidIncrease)
         {

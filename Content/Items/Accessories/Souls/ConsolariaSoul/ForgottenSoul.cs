@@ -18,7 +18,9 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Souls.ConsolariaSoul
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return SecretsOfTheSoulsCrossmod.Consolaria.Loaded; //|| SecretsOfTheSoulsCrossmod.RiseOfAges.Loaded; 
+            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent && (SecretsOfTheSoulsCrossmod.Consolaria.Loaded 
+                //|| SecretsOfTheSoulsCrossmod.RiseOfAges.Loaded
+                ); 
         }
 
         public static List<int> Forces
