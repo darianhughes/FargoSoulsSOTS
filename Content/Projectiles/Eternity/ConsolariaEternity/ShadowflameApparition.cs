@@ -12,6 +12,8 @@ namespace SecretsOfTheSouls.Content.Projectiles.Eternity.ConsolariaEternity
         private float DashSpeed = 18f;
         private int DashCooldown = 18;
         private float ArrivalDistance = 18f;
+        private int PhaseFrames = 10;
+        private float OvershootBoost = 1.0f;
 
         public override string Texture => $"Terraria/Images/NPC_{NPCID.ShadowFlameApparition}";
 
@@ -19,6 +21,8 @@ namespace SecretsOfTheSouls.Content.Projectiles.Eternity.ConsolariaEternity
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 6;
             ProjectileID.Sets.TrailingMode[Type] = 0;
+
+            Main.projFrames[Type] = Main.npcFrameCount[NPCID.ShadowFlameApparition];
         }
 
         public override void SetDefaults()
@@ -33,87 +37,85 @@ namespace SecretsOfTheSouls.Content.Projectiles.Eternity.ConsolariaEternity
 
             Projectile.timeLeft = 300;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
+            Projectile.localNPCHitCooldown = 12;
+            Projectile.extraUpdates = 1;
         }
-
         public override void AI()
         {
-            int target = -1;
-            float bestDist = 1200f;
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
-                NPC npc = Main.npc[i];
-                if (npc.CanBeChasedBy(this) && !npc.friendly && npc.active)
-                {
-                    float dist = Vector2.Distance(Projectile.Center, npc.Center);
-                    if (dist < bestDist)
-                    {
-                        bestDist = dist;
-                        target = i;
-                    }
-                }
-            }
+            if (Projectile.velocity.LengthSquared() > 0.01f)
+                Projectile.spriteDirection = Projectile.direction = (Projectile.velocity.X >= 0f ? 1 : -1);
+            Projectile.rotation = 0f;
+
+            Projectile.frameCounter++;
+            if (Projectile.frameCounter >= 6) { Projectile.frameCounter = 0; Projectile.frame = (Projectile.frame + 1) % Main.projFrames[Type]; }
 
             int hitsDone = (int)Projectile.localAI[1];
 
             if (hitsDone >= MaxHits)
             {
                 Projectile.alpha += 12;
-                Projectile.velocity *= 0.92f;
-                if (Projectile.alpha > 250)
-                    Projectile.Kill();
+                Projectile.velocity *= 0.96f;
+                if (Projectile.alpha > 250) Projectile.Kill();
                 return;
+            }
+
+            if (Projectile.localAI[2] > 0f)
+            {
+                Projectile.localAI[2]--;
+                return;
+            }
+
+            int target = -1;
+            float bestDist = 1200f;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(this))
+                {
+                    float d = Vector2.Distance(Projectile.Center, n.Center);
+                    if (d < bestDist) { bestDist = d; target = i; }
+                }
             }
 
             Projectile.localAI[0]++;
 
-            if (target >= 0)
+            if (target >= 0 && Projectile.localAI[0] >= DashCooldown)
             {
-                NPC npcTarget = Main.npc[target];
-
-                if (Projectile.localAI[0] >= DashCooldown)
-                {
-                    Vector2 toTarget = npcTarget.Center - Projectile.Center;
-                    if (toTarget == Vector2.Zero) toTarget = new Vector2(0.001f, 0);
-                    Projectile.velocity = Vector2.Normalize(toTarget) * DashSpeed;
-                    Projectile.localAI[0] = 0f;
-                }
-
-                if (Vector2.Distance(Projectile.Center, npcTarget.Center) < ArrivalDistance)
-                {
-                    Projectile.velocity *= 0.6f;
-                }
-            }
-            else
-            {
-                Projectile.velocity *= 0.96f;
-                Projectile.alpha += 4;
-                if (Projectile.alpha > 255) Projectile.Kill();
+                Vector2 to = Main.npc[target].Center - Projectile.Center;
+                if (to == Vector2.Zero) to = Vector2.UnitX;
+                to.Normalize();
+                Projectile.velocity = to * DashSpeed * (1f + OvershootBoost * 0.0f);
+                Projectile.localAI[0] = 0f;
             }
 
-            if (Main.rand.NextBool(3))
+            if (target < 0)
             {
-                int d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 100, default, 1.0f);
+                Projectile.velocity *= 0.98f;
+                Projectile.alpha = (int)MathHelper.Clamp(Projectile.alpha + 3, 0, 255);
+                if (Projectile.alpha >= 255) Projectile.Kill();
+            }
+
+            if (Main.rand.NextBool(4))
+            {
+                int d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame, 0f, 0f, 100);
                 Main.dust[d].noGravity = true;
+                Main.dust[d].velocity = Projectile.velocity * 0.2f;
             }
-
-            if (Projectile.velocity.LengthSquared() > 0.01f)
-                Projectile.spriteDirection = Projectile.direction = (Projectile.velocity.X >= 0f ? 1 : -1);
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Projectile.localAI[1] = (float)((int)Projectile.localAI[1] + 1);
+            Projectile.localAI[1] = (int)Projectile.localAI[1] + 1;
+            Projectile.localAI[2] = PhaseFrames;
+            target.AddBuff(BuffID.ShadowFlame, 180);
 
-            target.AddBuff(BuffID.ShadowFlame, 60 * 3);
-
-            // knock projectile away a bit so it can re-target or re-dash
-            Projectile.velocity = Vector2.Normalize(Projectile.Center - target.Center) * 6f;
-
-            // visual burst
             for (int i = 0; i < 8; i++)
             {
-                int d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Shadowflame, Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(-3f, 3f), 100, default, 1.2f);
+                int d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height,
+                                      DustID.Shadowflame,
+                                      Main.rand.NextFloat(-2.5f, 2.5f),
+                                      Main.rand.NextFloat(-2.5f, 2.5f),
+                                      120, default, 1.1f);
                 Main.dust[d].noGravity = true;
             }
         }
@@ -122,15 +124,19 @@ namespace SecretsOfTheSouls.Content.Projectiles.Eternity.ConsolariaEternity
         {
             Texture2D tex = ModContent.Request<Texture2D>(Texture).Value;
 
-            Vector2 origin = new Vector2(tex.Width, tex.Height) / 2f;
+            int frames = Main.projFrames[Type];
+            int frameHeight = tex.Height / frames;
+            Rectangle src = new Rectangle(0, frameHeight * Projectile.frame, tex.Width, frameHeight);
 
+            Vector2 origin = new Vector2(src.Width * 0.5f, src.Height * 0.5f);
             SpriteEffects fx = Projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+
             Color drawColor = Color.White * (1f - Projectile.alpha / 255f);
 
             Main.EntitySpriteDraw(
                 tex,
                 Projectile.Center - Main.screenPosition,
-                null,
+                src,
                 drawColor,
                 0f,
                 origin,

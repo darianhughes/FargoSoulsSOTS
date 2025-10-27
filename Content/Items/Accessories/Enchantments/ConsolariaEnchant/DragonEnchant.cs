@@ -67,16 +67,21 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Enchantments.ConsolariaEnc
 
         public override void OnHitNPCWithItem(Player player, Item item, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (item.CountsAsClass(DamageClass.Melee))
-            {
-                int dmg = (int)player.GetTotalDamage(DamageClass.Melee).ApplyTo(125);
-                ShootTripleShadowflames(player, dmg, item.knockBack);
-            }
+            int dmg = (int)player.GetTotalDamage(DamageClass.Melee).ApplyTo(125);
+            ShootTripleShadowflames(player, dmg, item.knockBack);
         }
 
-        public override void OnHitByProjectile(Player player, Projectile proj, Player.HurtInfo hurtInfo)
+        public override void OnHitNPCWithProj(Player player, Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-           if (proj.CountsAsClass(DamageClass.Melee) && player.ForceEffect<DragonEffect>())
+            if (proj.type == ModContent.ProjectileType<ShadowflameApparitionProj>())
+                return;
+
+            if (proj.CountsAsClass(DamageClass.SummonMeleeSpeed))
+            {
+                int dmg = (int)player.GetTotalDamage(DamageClass.Melee).ApplyTo(125);
+                ShootTripleShadowflames(player, dmg, proj.knockBack);
+            }
+            else if (player.ForceEffect<DragonEffect>())
             {
                 int dmg = (int)player.GetTotalDamage(DamageClass.Melee).ApplyTo(75);
                 ShootTripleShadowflames(player, dmg, proj.knockBack);
