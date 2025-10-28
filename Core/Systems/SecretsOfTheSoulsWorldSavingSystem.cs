@@ -10,7 +10,6 @@ namespace SecretsOfTheSouls.Core.Systems
     {
         public static bool downedConstruct = false;
         public static bool downedTreasureSlime = false;
-        public static bool downedCursedCoffin = false;
 
         //public static List<int> DroppedSummon = [];
 
@@ -18,7 +17,6 @@ namespace SecretsOfTheSouls.Core.Systems
         {
             downedConstruct = false;
             downedTreasureSlime = false;
-            downedCursedCoffin = false;
         }
 
         public override void NetSend(BinaryWriter writer)
@@ -26,7 +24,6 @@ namespace SecretsOfTheSouls.Core.Systems
             BitsByte downedFlags = new();
             downedFlags[0] = downedConstruct;
             downedFlags[1] = downedTreasureSlime;
-            downedFlags[2] = downedCursedCoffin;
             writer.Write(downedFlags);
         }
 
@@ -36,7 +33,6 @@ namespace SecretsOfTheSouls.Core.Systems
 
             downedConstruct = downedFlags[0];
             downedTreasureSlime = downedFlags[1];
-            downedCursedCoffin = downedFlags[2];
         }
 
         public override void SaveWorldData(TagCompound tag)
@@ -49,8 +45,6 @@ namespace SecretsOfTheSouls.Core.Systems
                 downed.Add("downedConstruct");
             if (downedTreasureSlime)
                 downed.Add("downedTreasureSlime");
-            if (downedCursedCoffin)
-                downed.Add("downedCursedCoffin");
             tag["downed"] = downed;
         }
 
@@ -59,7 +53,6 @@ namespace SecretsOfTheSouls.Core.Systems
             var downed = tag.GetList<string>("downed");
             downedConstruct = downed.Contains("downedConstruct");
             downedTreasureSlime = downed.Contains("downedTreasureSlime");
-            downedCursedCoffin = downed.Contains("downedCursedCoffin");
         }
     }
 }

@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace SecretsOfTheSouls.Core.Systems
+namespace SecretsOfTheSouls.Core.Systems.Hooks.PyramidMerge
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
@@ -53,7 +53,7 @@ namespace SecretsOfTheSouls.Core.Systems
             {
                 if (Main.netMode != NetmodeID.Server)
                 {
-                    Main.NewText("The gate is locked tight, sealed by an evil boss's magic and a dark curse...",
+                    Main.NewText("The gate is locked and the keyhole is obscured by a dark curse...",
                         new Color(175, 100, 175)); // Purple-red mix
                 }
                 return false;
@@ -64,18 +64,18 @@ namespace SecretsOfTheSouls.Core.Systems
             {
                 if (Main.netMode != NetmodeID.Server)
                 {
-                    Main.NewText("The gate remains sealed... You sense it requires the power of an evil world boss.",
+                    Main.NewText("The gate is locked... perhaps you kind find the key in the depths of the evil biome?",
                         new Color(200, 100, 100)); // Red-ish color
                 }
                 return false;
             }
 
-            // Check if Cursed Coffin has been defeated (using Fargo's tracking system)
+            // Check if Cursed Coffin has been defeated
             if (!defeatedCursedCoffin)
             {
                 if (Main.netMode != NetmodeID.Server)
                 {
-                    Main.NewText("The gate's keyhole is obscured by a dark curse... Defeat the guardian of the pyramid arena.",
+                    Main.NewText("The gate's keyhole is obscured by a dark curse...",
                         new Color(150, 75, 200)); // Purple-ish color
                 }
                 return false;

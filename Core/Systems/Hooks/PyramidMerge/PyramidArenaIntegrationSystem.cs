@@ -6,7 +6,7 @@ using System.Reflection;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace SecretsOfTheSouls.Core.Systems
+namespace SecretsOfTheSouls.Core.Systems.Hooks.PyramidMerge
 {
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
@@ -282,10 +282,10 @@ namespace SecretsOfTheSouls.Core.Systems
                                     // TileFrameY includes style row offset: each row is 2 tiles tall (36 pixels)
 
                                     // Get column within the pot (0 = left, 1 = right)
-                                    int colOffset = (tile.TileFrameX / 18) % 2;
+                                    int colOffset = tile.TileFrameX / 18 % 2;
 
                                     // Get row within the pot (0 = top, 1 = bottom)
-                                    int rowOffset = (tile.TileFrameY / 18) % 2;
+                                    int rowOffset = tile.TileFrameY / 18 % 2;
 
                                     // Calculate bottom-left tile position
                                     int potOriginX = scanX - colOffset;
@@ -574,7 +574,7 @@ namespace SecretsOfTheSouls.Core.Systems
                     cursor.RemoveRange(2);
 
                     // Emit: conv.r4, ldc.r4 0.6, mul, conv.i4
-                    cursor.EmitDelegate<System.Func<int, int>>(size => (int)(size * 0.6f));
+                    cursor.EmitDelegate<Func<int, int>>(size => (int)(size * 0.6f));
 
                     Mod.Logger.Info("Successfully patched midPoint: size / 2 → size * 0.6");
                 }
@@ -732,7 +732,7 @@ namespace SecretsOfTheSouls.Core.Systems
                 int length = (spawnX - storedEndingTileX) / finalDirection + 5;
 
                 // Calculate mirrored spawn position on opposite side of corridor
-                int mirroredSpawnX = storedEndingTileX + (-length / 5) * finalDirection + 5 * finalDirection;
+                int mirroredSpawnX = storedEndingTileX + -length / 5 * finalDirection + 5 * finalDirection;
                 int mirroredEndX = mirroredSpawnX - WorldGen.genRand.Next(30, 51) * finalDirection;
 
                 // Execute mirrored path with same direction (not negated)
@@ -806,10 +806,10 @@ namespace SecretsOfTheSouls.Core.Systems
                 const int arenaWidth = 60;
                 const int arenaHeight = 35;
 
-                int shellX = arenaTopCenterX - (arenaWidth / 2) - thickness;
+                int shellX = arenaTopCenterX - arenaWidth / 2 - thickness;
                 int shellY = arenaTopCenterY - thickness;
-                int shellWidth = arenaWidth + (thickness * 2);
-                int shellHeight = arenaHeight + (thickness * 2);
+                int shellWidth = arenaWidth + thickness * 2;
+                int shellHeight = arenaHeight + thickness * 2;
 
                 // Adjust for corridor side (remove padding on that side)
                 if (direction == -1)
@@ -895,7 +895,7 @@ namespace SecretsOfTheSouls.Core.Systems
                             if (tile.HasTile && tile.TileType == Terraria.ID.TileID.Pots)
                             {
                                 // Calculate style from TileFrameX/Y
-                                int style = (tile.TileFrameX / 36) + ((tile.TileFrameY / 36) * 100);
+                                int style = tile.TileFrameX / 36 + tile.TileFrameY / 36 * 100;
                                 Mod.Logger.Info($"  Pot at ({checkX}, {checkY}): TileFrameX={tile.TileFrameX}, TileFrameY={tile.TileFrameY}, calculated style={style}");
                             }
                         }
@@ -1139,7 +1139,7 @@ namespace SecretsOfTheSouls.Core.Systems
                 if (tile.HasTile && tile.TileType == pyramidGateTileType)
                 {
                     // Calculate gate origin from tile frame
-                    int gateOriginX = x - (tile.TileFrameX / 18) + 2;
+                    int gateOriginX = x - tile.TileFrameX / 18 + 2;
 
                     WorldGen.KillTile(gateOriginX, originalGateY, noItem: true);
                     RemoveGoldBricksAndReplaceWalls(gateOriginX, originalGateY, pyramidBrickWallType, pyramidWallType);
@@ -1197,7 +1197,7 @@ namespace SecretsOfTheSouls.Core.Systems
             // Scan from arena entrance outward into corridor
             for (int distance = 1; distance <= maxScanDistance; distance++)
             {
-                int checkX = startX + (distance * scanDirection);
+                int checkX = startX + distance * scanDirection;
 
                 if (!WorldGen.InWorld(checkX, floorY, 30))
                 {
@@ -1218,7 +1218,7 @@ namespace SecretsOfTheSouls.Core.Systems
                 // Verify all 7 tiles in the gap are air (HasTile = false)
                 for (int i = 0; i < requiredGapWidth; i++)
                 {
-                    int gapX = gapStartX + (i * scanDirection);
+                    int gapX = gapStartX + i * scanDirection;
                     if (!WorldGen.InWorld(gapX, floorY, 30))
                     {
                         validGap = false;
@@ -1240,7 +1240,7 @@ namespace SecretsOfTheSouls.Core.Systems
 
                 // Check that there's PyramidSlabTile on both sides of the gap
                 int leftSideX = gapStartX - scanDirection;
-                int rightSideX = gapStartX + (requiredGapWidth * scanDirection);
+                int rightSideX = gapStartX + requiredGapWidth * scanDirection;
 
                 if (!WorldGen.InWorld(leftSideX, floorY, 30) || !WorldGen.InWorld(rightSideX, floorY, 30))
                 {
@@ -1259,7 +1259,7 @@ namespace SecretsOfTheSouls.Core.Systems
                 {
                     // Found valid gap with PyramidBrickTile on both sides
                     // Return the center of the gap
-                    int gapEndX = gapStartX + ((requiredGapWidth - 1) * scanDirection);
+                    int gapEndX = gapStartX + (requiredGapWidth - 1) * scanDirection;
                     int gateCenterX = (gapStartX + gapEndX) / 2;
 
                     Mod.Logger.Info($"  -> VALID! Placing gate at center X={gateCenterX}");
