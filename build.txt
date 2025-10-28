@@ -6,3 +6,4 @@ weakReferences = SOTS, Consolaria, RevengeancePlus, ssm, FargowiltasCrossmod, XD
 sortBefore = ssm
 sortAfter = RevengeancePlus, FargowiltasCrossmod, SOTS, Consolaria, XDContentMod
 homepage = https://discord.gg/RXdTXbKY
+buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .git\*, .github\*, LICENSE, README.md, .editorconfig, .gitignore, .gitattributes, Effects\Compiler\*, lib\*
