@@ -10,8 +10,11 @@ using SecretsOfTheSouls.Content.Items.Accessories.Enchantments.SOTSEnchant;
 using SecretsOfTheSouls.Content.Items.Summons.SOTSCopy;
 using SOTS;
 using SOTS.Items;
+using SOTS.Items.DoorItems;
 using SOTS.Items.Earth.Glowmoth;
 using SOTS.Items.Fragments;
+using SOTS.Items.Planetarium.FromChests;
+using SOTS.Items.Planetarium;
 using SOTS.Items.Slime;
 using Terraria;
 using Terraria.Localization;
@@ -178,5 +181,41 @@ namespace SecretsOfTheSouls.Common.ItemChanges
     {
         public override Header ToggleHeader => Header.GetHeader<DeviEnergyHeader>();
         public override int ToggleItemType => ModContent.ItemType<SubspaceBoosters>();
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class GravityAnchorEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<FlightMasteryHeader>();
+        public override int ToggleItemType => ModContent.ItemType<GravityAnchor>();
+
+        public override void PostUpdateEquips(Player player)
+        {
+            if (player.gravity < Player.defaultGravity)
+                player.gravity = Player.defaultGravity;
+        }
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class TwilightFishingEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<TrawlerHeader>();
+        public override int ToggleItemType => ModContent.ItemType<TwilightFishingPole>();
+    }
+
+    [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
+    public class BandofDoorEffect : AccessoryEffect
+    {
+        public override Header ToggleHeader => Header.GetHeader<SupersonicHeader>();
+        public override int ToggleItemType => ModContent.ItemType<BandOfDoor>();
+
+        public override void PostUpdateEquips(Player player)
+        {
+            DoorPlayer dp = player.GetModPlayer<DoorPlayer>();
+            ++dp.doorPants;
+        }
     }
 }

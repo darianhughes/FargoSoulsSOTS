@@ -34,10 +34,13 @@ namespace SecretsOfTheSouls.Core.Systems.Recipes
                     int energyCount = recipe.requiredItem.Where(i => i.type == ModContent.ItemType<EternalEnergy>()).Sum(i => i.stack);
                     recipe.RemoveIngredient(ModContent.ItemType<EternalEnergy>());
 
-                    if (SecretsOfTheSoulsCrossmod.SOTS.Loaded)
-                        recipe.AddIngredient<SubspaceVoyagerSoul>();
-                    if (SecretsOfTheSoulsCrossmod.Consolaria.Loaded)
-                        recipe.AddIngredient<ForgottenSoul>();
+                    if (SecretsOfTheSoulsConfig.Instance.UnfinishedContent)
+                    {
+                        if (SecretsOfTheSoulsCrossmod.SOTS.Loaded)
+                            recipe.AddIngredient<SubspaceVoyagerSoul>();
+                        if (SecretsOfTheSoulsCrossmod.Consolaria.Loaded)
+                            recipe.AddIngredient<ForgottenSoul>();
+                    }
 
                     recipe.AddIngredient<EternalEnergy>(energyCount);
                 }

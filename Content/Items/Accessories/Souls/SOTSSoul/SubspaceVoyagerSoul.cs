@@ -31,6 +31,11 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Souls.SOTSSoul
     [AutoloadEquip(EquipType.Face)]
     public class SubspaceVoyagerSoul : BaseSoul
     {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return SecretsOfTheSoulsConfig.Instance.UnfinishedContent;
+        }
+
         public override List<AccessoryEffect> ActiveSkillTooltips =>
         [
             AccessoryEffectLoader.GetEffect<BloomStrike>(),

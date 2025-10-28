@@ -27,7 +27,7 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.ConsolariaForce
                 ModContent.ItemType<DragonEnchant>()
             ];
 
-            Main.RegisterItemAnimation(Type, new DrawAnimationVertical(4, 13));
+            //Main.RegisterItemAnimation(Type, new DrawAnimationVertical(4, 13));
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

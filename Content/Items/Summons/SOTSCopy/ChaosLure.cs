@@ -13,7 +13,6 @@ namespace SecretsOfTheSouls.Content.Items.Summons.SOTSCopy
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class ChaosLure : BaseSummon
     {
-        public override string Texture => "SOTS/Items/ElectromagneticLure";
         public override int NPCType => ModContent.NPCType<Lux>();
 
         public override void SetStaticDefaults()
@@ -25,6 +24,7 @@ namespace SecretsOfTheSouls.Content.Items.Summons.SOTSCopy
             this.SetResearchCost(1);
 
             ItemID.Sets.SortingPriorityBossSpawns[Type] = ItemID.Sets.SortingPriorityBossSpawns[ItemID.LihzahrdPowerCell];
+            Main.RegisterItemAnimation(Type, new DrawAnimationVertical(ticksperframe: 4, frameCount: 10));
         }
 
         public override void AddRecipes()

@@ -1,5 +1,4 @@
-﻿using Fargowiltas.Content.Items.Ammos;
-using SOTS.Items.AbandonedVillage;
+﻿using SOTS.Items.AbandonedVillage;
 using SOTS.Items.Conduit;
 using SOTS.Items.Earth;
 using SOTS.Items.SoldStuff;
@@ -8,6 +7,7 @@ using Terraria.ModLoader;
 
 namespace SecretsOfTheSouls.Content.Items.Ammos.Bullets
 {
+    /*
     [ExtendsFromMod(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class BorePouch : BaseAmmo
@@ -43,4 +43,5 @@ namespace SecretsOfTheSouls.Content.Items.Ammos.Bullets
     {
         public override int AmmunitionItem => ModContent.ItemType<SkipBullet>();
     }
+    */
 }

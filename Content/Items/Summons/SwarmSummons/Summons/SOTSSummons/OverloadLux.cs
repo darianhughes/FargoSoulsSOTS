@@ -1,7 +1,5 @@
 ﻿using SOTS;
 using SOTS.NPCs.Boss.Lux;
-using Terraria.DataStructures;
-using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Fargowiltas.Content.Items.Summons.SwarmSummons;
@@ -13,15 +11,13 @@ namespace SecretsOfTheSouls.Content.Items.Summons.SwarmSummons.Summons.SOTSSummo
     [JITWhenModsEnabled(SecretsOfTheSoulsCrossmod.SOTS.Name)]
     public class OverloadLux : SwarmSummonBase
     {
-        public override string Texture => "SOTS/Items/ElectromagneticLure";
-
         public OverloadLux() : base(ModContent.NPCType<Lux>(), nameof(OverloadLux), 50, ModContent.ItemType<ChaosLure>())
         {
         }
 
         public override void SetStaticDefaults()
         {
-            Main.RegisterItemAnimation(Type, new DrawAnimationVertical(4, 6, false));
+            //Main.RegisterItemAnimation(Type, new DrawAnimationVertical(4, 6, false));
             ItemID.Sets.AnimatesAsSoul[Type] = true;
             this.SetResearchCost(1);
 
