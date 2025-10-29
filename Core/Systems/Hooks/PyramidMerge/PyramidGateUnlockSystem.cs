@@ -64,7 +64,7 @@ namespace SecretsOfTheSouls.Core.Systems.Hooks.PyramidMerge
             {
                 if (Main.netMode != NetmodeID.Server)
                 {
-                    Main.NewText("The gate is locked... perhaps you kind find the key in the depths of the evil biome?",
+                    Main.NewText("The gate is locked... perhaps you could find the key in the depths of the evil biome?",
                         new Color(200, 100, 100)); // Red-ish color
                 }
                 return false;

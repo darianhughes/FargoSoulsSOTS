@@ -18,14 +18,12 @@ namespace SecretsOfTheSouls.Common.NPCChanges
 
         public override void OnKill(NPC npc)
         {
-            // Check if this is the first time the Cursed Coffin has been defeated
             if (!WorldSavingSystem.DownedBoss[(int)WorldSavingSystem.Downed.CursedCoffin])
             {
-                // Display the special message to all players
                 if (Main.netMode != NetmodeID.Server)
                 {
                     Main.NewText("The coffin's curse fades, opening the keyhole on the mysterious gate...",
-                        new Color(175, 75, 255)); // Purple color
+                        new Color(175, 75, 255));
                 }
             }
         }
