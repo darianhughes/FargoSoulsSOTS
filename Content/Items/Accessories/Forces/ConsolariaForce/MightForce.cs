@@ -24,7 +24,8 @@ namespace SecretsOfTheSouls.Content.Items.Accessories.Forces.ConsolariaForce
             Enchants[Type] =
             [
                 ModContent.ItemType<OstaraEnchant>(),
-                ModContent.ItemType<DragonEnchant>()
+                ModContent.ItemType<DragonEnchant>(),
+                ModContent.ItemType<AncientDragonEnchant>()
             ];
 
             //Main.RegisterItemAnimation(Type, new DrawAnimationVertical(4, 13));
