@@ -10,7 +10,7 @@ namespace SecretsOfTheSouls.Core.Systems
     {
         public static bool downedConstruct = false;
         public static bool downedTreasureSlime = false;
-        public static bool curseTextPlayed = false;
+        //public static bool curseTextPlayed = false;
 
         //public static List<int> DroppedSummon = [];
 
@@ -18,7 +18,7 @@ namespace SecretsOfTheSouls.Core.Systems
         {
             downedConstruct = false;
             downedTreasureSlime = false;
-            curseTextPlayed = false;
+            //curseTextPlayed = false;
         }
 
         public override void NetSend(BinaryWriter writer)
@@ -26,7 +26,7 @@ namespace SecretsOfTheSouls.Core.Systems
             BitsByte downedFlags = new();
             downedFlags[0] = downedConstruct;
             downedFlags[1] = downedTreasureSlime;
-            downedFlags[2] = curseTextPlayed;
+            //downedFlags[2] = curseTextPlayed;
             writer.Write(downedFlags);
         }
 
@@ -36,7 +36,7 @@ namespace SecretsOfTheSouls.Core.Systems
 
             downedConstruct = downedFlags[0];
             downedTreasureSlime = downedFlags[1];
-            curseTextPlayed = downedFlags[2];
+            //curseTextPlayed = downedFlags[2];
         }
 
         public override void SaveWorldData(TagCompound tag)
@@ -49,8 +49,8 @@ namespace SecretsOfTheSouls.Core.Systems
                 downed.Add("downedConstruct");
             if (downedTreasureSlime)
                 downed.Add("downedTreasureSlime");
-            if (curseTextPlayed)
-                downed.Add("curseTextPlayed");
+            //if (curseTextPlayed)
+                //downed.Add("curseTextPlayed");
             tag["downed"] = downed;
         }
 
@@ -59,7 +59,7 @@ namespace SecretsOfTheSouls.Core.Systems
             var downed = tag.GetList<string>("downed");
             downedConstruct = downed.Contains("downedConstruct");
             downedTreasureSlime = downed.Contains("downedTreasureSlime");
-            curseTextPlayed = downed.Contains("curseTextPlayed");
+            //curseTextPlayed = downed.Contains("curseTextPlayed");
         }
     }
 }
