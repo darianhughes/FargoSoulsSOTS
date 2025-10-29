@@ -250,6 +250,45 @@ namespace SecretsOfTheSouls.Core.Systems.Hooks.PyramidMerge
                     }
                 }
 
+                // Remove all crates from arena area
+                // This prevents crates from spawning inside the Cursed Coffin boss arena
+                if (storedArenaLeft != 0 && storedArenaRight != 0 && storedArenaBottom != 0)
+                {
+                    int pyramidCrateType = ModContent.Find<ModTile>(sotsMod.Name, "PyramidCrateTile")?.Type ?? -1;
+                    int vanillaCrateType = 376; // TileID.FishingCrate (vanilla oasis crates)
+
+                    if (pyramidCrateType != -1)
+                    {
+                        int arenaTop = storedMarkerY; // Arena starts at marker position
+                        int removedCount = 0;
+
+                        // Scan entire arena bounds for any crates
+                        for (int scanX = storedArenaLeft; scanX <= storedArenaRight; scanX++)
+                        {
+                            for (int scanY = arenaTop; scanY <= storedArenaBottom; scanY++)
+                            {
+                                if (!WorldGen.InWorld(scanX, scanY, 30))
+                                    continue;
+
+                                Tile tile = Main.tile[scanX, scanY];
+
+                                // Check for both SOTS pyramid crates and vanilla oasis crates
+                                if (tile.HasTile && (tile.TileType == pyramidCrateType || tile.TileType == vanillaCrateType))
+                                {
+                                    // Kill the crate (works on any tile of the 2x2, removes entire crate)
+                                    WorldGen.KillTile(scanX, scanY, noItem: true);
+                                    removedCount++;
+                                }
+                            }
+                        }
+
+                        if (removedCount > 0)
+                        {
+                            Mod.Logger.Info($"Removed {removedCount} crates from arena area (bounds: X={storedArenaLeft}-{storedArenaRight}, Y={arenaTop}-{storedArenaBottom})");
+                        }
+                    }
+                }
+
                 // Convert SOTS pyramid pots to vanilla pyramid pots above gate level
                 // Two-pass approach: first clear all pots, then place vanilla pots
                 if (storedCorridorFloorY != -1)
@@ -368,6 +407,130 @@ namespace SecretsOfTheSouls.Core.Systems.Hooks.PyramidMerge
                         }
 
                         Mod.Logger.Info($"Converted {potFloorPositions.Count} SOTS PyramidPots → {placedCount} Vanilla Pyramid Pots above gate (Y < {gateY})");
+                    }
+                }
+
+                // Convert SOTS pyramid crates to vanilla oasis crates above gate level
+                // Two-pass approach: first clear all SOTS crates, then place vanilla oasis crates
+                if (storedCorridorFloorY != -1)
+                {
+                    int pyramidCrateType = ModContent.Find<ModTile>(sotsMod.Name, "PyramidCrateTile")?.Type ?? -1;
+                    int vanillaCrateType = 376; // TileID.FishingCrate (vanilla oasis crates)
+
+                    if (pyramidCrateType != -1)
+                    {
+                        int gateY = storedCorridorFloorY;
+                        const int scanWidth = 300;
+
+                        // Pass 1: Find all SOTS pyramid crate positions and clear them
+                        System.Collections.Generic.List<Point> crateFloorPositions = new System.Collections.Generic.List<Point>();
+                        for (int scanX = pyramidX - scanWidth; scanX <= pyramidX + scanWidth; scanX++)
+                        {
+                            for (int scanY = pyramidY; scanY < gateY; scanY++)
+                            {
+                                if (!WorldGen.InWorld(scanX, scanY, 30))
+                                    continue;
+
+                                Tile tile = Main.tile[scanX, scanY];
+
+                                // Check if this is a SOTS pyramid crate (2x2 multi-tile)
+                                // Only process vanilla oasis crates are left alone
+                                if (tile.HasTile && tile.TileType == pyramidCrateType)
+                                {
+                                    // Get frame coordinates to identify origin tile (bottom-left)
+                                    int frameX = tile.TileFrameX;
+                                    int frameY = tile.TileFrameY;
+
+                                    // Crates are 2x2 with frame dimensions 18x18 per tile
+                                    // Origin (bottom-left) has frameX=0, frameY=18
+                                    if (frameX == 0 && frameY == 18)
+                                    {
+                                        // This is the bottom-left origin tile
+                                        // Record the floor position (one tile below the crate)
+                                        int floorX = scanX;
+                                        int floorY = scanY + 1;
+
+                                        // Verify floor tile exists
+                                        if (WorldGen.InWorld(floorX, floorY, 30))
+                                        {
+                                            Tile floorTile = Main.tile[floorX, floorY];
+                                            if (floorTile.HasTile)
+                                            {
+                                                crateFloorPositions.Add(new Point(floorX, floorY));
+
+                                                // Kill the crate (removing from origin tile kills entire 2x2)
+                                                WorldGen.KillTile(scanX, scanY, noItem: true);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // Pass 2: Place vanilla oasis crates at all collected floor positions
+                        int placedCount = 0;
+                        int pyramidBrickType = ModContent.Find<ModTile>(sotsMod.Name, "PyramidBrickTile")?.Type ?? -1;
+                        int pyramidSlabType = ModContent.Find<ModTile>(sotsMod.Name, "PyramidSlabTile")?.Type ?? -1;
+
+                        foreach (Point floorPos in crateFloorPositions)
+                        {
+                            int floorX = floorPos.X;
+                            int floorY = floorPos.Y;
+
+                            if (!WorldGen.InWorld(floorX, floorY, 30))
+                                continue;
+
+                            Tile floorTile = Main.tile[floorX, floorY];
+                            if (!floorTile.HasTile)
+                                continue;
+
+                            // Clear the 2x2 area above the floor to ensure clean placement
+                            for (int dx = 0; dx < 2; dx++)
+                            {
+                                for (int dy = 1; dy <= 2; dy++)
+                                {
+                                    int clearX = floorX + dx;
+                                    int clearY = floorY - dy;
+                                    if (WorldGen.InWorld(clearX, clearY, 30))
+                                    {
+                                        Main.tile[clearX, clearY].ClearTile();
+                                    }
+                                }
+                            }
+
+                            // Ensure floor tiles are valid pyramid tiles (not air)
+                            for (int dx = 0; dx < 2; dx++)
+                            {
+                                Tile floor = Main.tile[floorX + dx, floorY];
+                                if (!floor.HasTile)
+                                {
+                                    // Restore floor tile if it got cleared
+                                    floor.HasTile = true;
+                                    floor.TileType = (ushort)(pyramidBrickType != -1 ? pyramidBrickType : pyramidSlabType);
+                                }
+                            }
+
+                            // Place vanilla oasis crate
+                            // Use random style 0-2 to match SOTS's natural generation
+                            // Crate placement position is one tile above floor (floorY - 1)
+                            // Use forced: true to match SOTS's GenerateCrate behavior
+                            int crateStyle = WorldGen.genRand.Next(3); // Styles 0, 1, or 2
+                            bool placed = WorldGen.PlaceTile(floorX, floorY - 1, vanillaCrateType, mute: true, forced: true, -1, crateStyle);
+
+                            if (placed)
+                            {
+                                placedCount++;
+                            }
+                            else
+                            {
+                                Mod.Logger.Debug($"Failed to place oasis crate at ({floorX}, {floorY - 1}), floor type: {floorTile.TileType}");
+                            }
+                        }
+
+                        if (crateFloorPositions.Count > 0)
+                        {
+                            Mod.Logger.Info($"Converted {crateFloorPositions.Count} SOTS Pyramid Crates → {placedCount} Vanilla Oasis Crates above gate (Y < {gateY})");
+                        }
                     }
                 }
 
@@ -666,7 +829,8 @@ namespace SecretsOfTheSouls.Core.Systems.Hooks.PyramidMerge
                         }
 
                         // Store replacement range for post-generation restoration
-                        replacedTilesStartX = scanStartX;
+                        // Use firstReplacedX (not scanStartX) to capture the actual range of replaced tiles
+                        replacedTilesStartX = firstReplacedX;
                         replacedTilesEndX = lastReplacedX;
                         replacedTilesY = gateFloorY;
 
@@ -1355,8 +1519,36 @@ namespace SecretsOfTheSouls.Core.Systems.Hooks.PyramidMerge
 
         private void HookGeneratePyramidRoom(orig_GeneratePyramidRoom orig, int x, int y, int direction, Mod mod)
         {
-            if (IsAboveGateThreshold(y))
-                return;
+            // Direction: 0 = left, 1 = right, 2 = up, 3 = down
+            //
+            // CRITICAL: Before placing the room, GeneratePyramidRoom carves a CORRIDOR in the specified direction.
+            // For upward rooms (direction == 2), the corridor carves up to 300 tiles UPWARD from spawn point,
+            // clearing ALL tiles except TrueSandstone/CursedTumor (PyramidGateTile is NOT protected!).
+            //
+            // This corridor WILL destroy the gate if it passes through, so we must block upward rooms
+            // from spawning anywhere that could carve into the gate area.
+            //
+            // Gate protection calculation:
+            // - Gate is at gateY (= arenaBottom - 1)
+            // - Threshold is at gateThresholdY (= gateY + 7, i.e., 7 tiles below gate)
+            // - Upward corridor can carve up to 300 tiles (in practice stops at pyramid edge ~30-50 tiles)
+            // - We add extra padding (50 tiles) to ensure no upward corridor can reach the gate
+
+            const int upwardCorridorPadding = 50; // Padding to prevent upward corridors from reaching gate
+
+            if (direction == 2)
+            {
+                // For upward rooms, check if the corridor's upward extent would reach protected zone
+                // If room spawns at y and carves upward, check (y - padding) against threshold
+                if (IsAboveGateThreshold(y - upwardCorridorPadding))
+                    return;
+            }
+            else
+            {
+                // For other directions (left/right/down), only check the spawn point
+                if (IsAboveGateThreshold(y))
+                    return;
+            }
 
             orig(x, y, direction, mod);
         }
