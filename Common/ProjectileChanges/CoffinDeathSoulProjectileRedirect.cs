@@ -5,6 +5,9 @@ using Microsoft.Xna.Framework;
 using FargowiltasSouls.Content.Bosses.CursedCoffin;
 using System.Collections.Generic;
 using Terraria.DataStructures;
+using SecretsOfTheSouls.Core.Systems;
+using Terraria.Chat;
+using Terraria.Localization;
 
 namespace SecretsOfTheSouls.Common.ProjectileChanges
 {
@@ -14,53 +17,67 @@ namespace SecretsOfTheSouls.Common.ProjectileChanges
     {
         public override bool InstancePerEntity => true;
 
+        // Fargo types we target
         private static int CoffinDarkSoulsProjType = ModContent.ProjectileType<CoffinDarkSouls>();
         private static int CursedCoffinNpcType = ModContent.NPCType<CursedCoffin>();
 
+        // Simple, hot‑reload friendly tunables
+        private static float HomingRampDurationTicks = 120f;      // 2.0s
+        private static float ExpectedDistanceTiles = 50f;         // ref distance mentioned by user
+        private static float MaxAccelPerTick = 0.95f;             // cleaner, slightly gentler field
+        private static float SpeedMax = 8f;                       // slightly lower max speed
+        private static float HitRadiusPx = 18f;                   // despawn radius at gate center
+
+        private static int GateRescanIntervalTicks = 60 * 10;    // global cache refresh
+        private static int GateNoResultCooldownTicks = 60 * 10;   // cooldown after 0 results
+        private static int LocalSearchCooldownMin = 12;           // per‑proj query staggering
+        private static int LocalSearchCooldownMax = 24;
+
+        // Quick near-ring easing (simple, effective)
+        private static float NearRingTiles = 6f;                  // within 6 tiles of gate
+        private static float NearRingDamp = 0.9f;                 // damp velocity per tick
+        private static float NearRingSpeedMax = 6f;               // lower local max speed
+        // Scale down initial outward poof speed from Fargo's burst (death-burst only)
+        private static float OutwardSpawnSpeedScale = 0.7f;
+
+        // Per‑projectile state
+        private int ageTicks;
         private int localSearchCooldown;
-        private float observedMaxSpeed;
+        private bool hasTarget;
+        private Vector2 targetWorld;
+        private bool phasingOut;           // began gate-entry animation
+        private int phaseTicks;            // ticks spent phasing
+        private const int PhaseTotal = 12; // quick scale-down duration
 
-        private float SpeedCap = 8f;
-        private float AccelPerTick = 0.3f;
-        private float HitRadius = 16f;
+        // Message persistence handled via SecretsOfTheSoulsWorldSavingSystem.coffinMessagePlayed
 
-        private static class PyramidGateCache
+        // Cached list of 5‑wide PyramidGate centers (one point per gate)
+        private static class PyramidGates
         {
-            public static readonly List<Point> Gates = new();
+            public static readonly List<Point> CenterTiles = new();
             public static uint LastScanTick;
             public static uint NoGateUntilTick;
-            private const uint RescanIntervalTicks = 60 * 10;
-            private const uint NoGateCooldownTicks = 60 * 10;
 
-            private static bool scanning;
-
-            public static bool TryGetNearest(Vector2 fromWorld, out Vector2 gateWorld)
+            public static bool TryNearest(Vector2 fromWorld, out Vector2 gateWorld)
             {
                 gateWorld = default;
 
-                // If we learned recently that no gates exist, skip quickly.
-                if (Main.GameUpdateCount < NoGateUntilTick && Gates.Count == 0)
+                // Ensure we scan immediately on first request or when empty
+                if (CenterTiles.Count == 0 || (Main.GameUpdateCount - LastScanTick) >= GateRescanIntervalTicks)
+                    Scan();
+
+                if (CenterTiles.Count == 0)
                     return false;
 
-                // If our cache is stale AND not currently scanning, refresh.
-                if (!scanning && (Main.GameUpdateCount - LastScanTick) >= RescanIntervalTicks)
-                {
-                    scanning = true;
-                    RefreshNow();
-                    scanning = false;
-                }
-
-                if (Gates.Count == 0)
-                    return false;
-
-                // Find nearest in cached list
                 Point fromTile = fromWorld.ToTileCoordinates();
                 float bestD2 = float.MaxValue;
                 Point best = default;
-                for (int i = 0; i < Gates.Count; i++)
+                for (int i = 0; i < CenterTiles.Count; i++)
                 {
-                    var p = Gates[i];
-                    float d2 = (new Vector2(p.X, p.Y) - new Vector2(fromTile.X, fromTile.Y)).LengthSquared();
+                    Point p = CenterTiles[i];
+                    float dx = p.X - fromTile.X;
+                    float dy = p.Y - fromTile.Y;
+                    float d2 = dx * dx + dy * dy;
                     if (d2 < bestD2) { bestD2 = d2; best = p; }
                 }
 
@@ -68,39 +85,49 @@ namespace SecretsOfTheSouls.Common.ProjectileChanges
                 return true;
             }
 
-            private static void RefreshNow()
+            private static void Scan()
             {
                 LastScanTick = Main.GameUpdateCount;
-                Gates.Clear();
+                CenterTiles.Clear();
 
                 int gateTileType = ModContent.TileType<PyramidGateTile>();
+                var seen = new HashSet<Point>();
 
                 for (int x = 0; x < Main.maxTilesX; x++)
                 {
                     for (int y = 0; y < Main.maxTilesY; y++)
                     {
                         Tile t = Framing.GetTileSafely(x, y);
-                        if (t.HasTile && t.TileType == gateTileType)
-                            Gates.Add(new Point(x, y));
+                        if (!t.HasTile || t.TileType != gateTileType)
+                            continue;
+
+                        // Compute left/top of the 5‑wide and grab the center tile
+                        int left = x - t.TileFrameX / 18;
+                        int top = y - t.TileFrameY / 18;
+                        Point center = new(left + 2, top);
+                        if (seen.Add(center))
+                            CenterTiles.Add(center);
                     }
                 }
 
-                if (Gates.Count == 0)
-                    NoGateUntilTick = Main.GameUpdateCount + NoGateCooldownTicks;
+                if (CenterTiles.Count == 0)
+                    NoGateUntilTick = Main.GameUpdateCount + (uint)GateNoResultCooldownTicks;
             }
         }
 
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            localSearchCooldown = Main.rand.Next(6, 18);
+            ageTicks = 0;
+            hasTarget = false;
+            localSearchCooldown = Main.rand.Next(LocalSearchCooldownMin, LocalSearchCooldownMax);
+            phasingOut = false;
+            phaseTicks = 0;
         }
 
         public override void PostAI(Projectile projectile)
         {
-            //only do this if cursed coffin is killed for the first time
-            if (projectile.type != CoffinDarkSoulsProjType 
-                //|| WorldSavingSystem.DownedBoss[(int)WorldSavingSystem.Downed.CursedCoffin]
-                )
+            // Only affect Fargo's Coffin Dark Souls, and only after the Coffin dies
+            if (projectile.type != CoffinDarkSoulsProjType)
                 return;
 
             int idx = (int)projectile.ai[0];
@@ -109,49 +136,139 @@ namespace SecretsOfTheSouls.Common.ProjectileChanges
 
             NPC coffin = Main.npc[idx];
             if (coffin.active || coffin.type != CursedCoffinNpcType)
-                return; // only affect death-burst souls
-
-            // Staggered per-entity cooldown before asking cache
-            if (localSearchCooldown-- > 0)
                 return;
-            localSearchCooldown = Main.rand.Next(12, 24);
 
-            // Ask global cache (VERY cheap; scans at most once/10s globally)
-            if (!PyramidGateCache.TryGetNearest(projectile.Center, out Vector2 gateWorld))
-                return; // no gate known → keep default Souls behavior
-
-            // Despawn on contact
-            if (Vector2.DistanceSquared(projectile.Center, gateWorld) <= (HitRadius * HitRadius))
+            ageTicks++;
+            if (ageTicks == 1)
             {
-                projectile.Kill();
-                return;
+                // Reduce initial outward burst speed for a cleaner look
+                projectile.velocity *= OutwardSpawnSpeedScale;
             }
 
-            // Cancel Fargo’s per-tick upward accel (ai[1] is added to Y in their AI)
+            // Periodically find nearest gate center (cached globally)
+            if (--localSearchCooldown <= 0)
+            {
+                localSearchCooldown = Main.rand.Next(LocalSearchCooldownMin, LocalSearchCooldownMax);
+                if (PyramidGates.TryNearest(projectile.Center, out Vector2 nearest))
+                {
+                    targetWorld = nearest;
+                    hasTarget = true;
+                }
+            }
+
+            if (!hasTarget)
+                return;
+
+            // Smoothly turn on the homing field over 1.5 seconds
+            float ramp = MathHelper.SmoothStep(0f, 1f, MathHelper.Clamp(ageTicks / HomingRampDurationTicks, 0f, 1f));
+
+            // 5x5 tile square centered on gate center tile (more forgiving capture)
+            Point centerTile = targetWorld.ToTileCoordinates();
+            Point projTile = projectile.Center.ToTileCoordinates();
+            bool insideGateSquare = System.Math.Abs(projTile.X - centerTile.X) <= 2 && System.Math.Abs(projTile.Y - centerTile.Y) <= 2;
+            if (!phasingOut && (insideGateSquare || Vector2.DistanceSquared(projectile.Center, targetWorld) <= HitRadiusPx * HitRadiusPx))
+            {
+                // Begin quick scale-down + effects, then despawn
+                phasingOut = true;
+                phaseTicks = 0;
+                // one-time impact burst
+                Terraria.Audio.SoundEngine.PlaySound(Terraria.ID.SoundID.DD2_WitherBeastAuraPulse, projectile.Center);
+            }
+
+            if (phasingOut)
+            {
+                // Slow to a stop and shrink
+                projectile.velocity *= 0.85f;
+                projectile.scale *= 0.9f;
+                projectile.Opacity *= 0.85f;
+
+                // Purple-y dust poof
+                for (int i = 0; i < 6; i++)
+                {
+                    var d = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, Terraria.ID.DustID.Shadowflame, 0f, 0f, 150, default, 1.1f);
+                    d.velocity = (d.position - projectile.Center).SafeNormalize(Main.rand.NextVector2Unit()) * Main.rand.NextFloat(1.2f, 3.6f);
+                    d.noGravity = true;
+                }
+
+                phaseTicks++;
+                if (phaseTicks >= PhaseTotal)
+                {
+                    int coffinId = (int)projectile.ai[0];
+                    projectile.Kill();
+                    TryAnnounceLockRevealedIfLast(coffinId);
+                }
+                return; // skip homing while phasing out
+            }
+
+            // Completely cancel Fargo's per-tick upward accel (keep pure radial expansion)
             if (projectile.ai[1] != 0f)
                 projectile.velocity.Y -= projectile.ai[1];
 
-            // Direction to gate (normalized)
-            Vector2 dir = gateWorld - projectile.Center;
-            if (dir.LengthSquared() < 1f)
+            // Apply homing as a simple acceleration toward the gate center
+            float expectedDistPx = ExpectedDistanceTiles * 16f;
+            Vector2 dir = (targetWorld - projectile.Center).SafeNormalize(Vector2.Zero);
+            float dist = Vector2.Distance(projectile.Center, targetWorld);
+            float distFactor = MathHelper.Clamp(dist / expectedDistPx, 0.25f, 1f);
+            float accel = MaxAccelPerTick * ramp * distFactor;
+
+            projectile.velocity += dir * accel;
+
+            // Clamp top speed for smooth visuals
+            float speed = projectile.velocity.Length();
+            if (speed > SpeedMax)
+                projectile.velocity *= (SpeedMax / speed);
+
+            // Near-ring damping: slow down and cap speed when close to the gate
+            float nearPx = NearRingTiles * 16f;
+            if (dist < nearPx)
+            {
+                projectile.velocity *= NearRingDamp;
+                speed = projectile.velocity.Length();
+                if (speed > NearRingSpeedMax)
+                    projectile.velocity *= (NearRingSpeedMax / speed);
+            }
+        }
+
+        private static void TryAnnounceLockRevealedIfLast(int coffinId)
+        {
+            if (coffinId < 0 || coffinId >= Main.npc.Length)
                 return;
-            dir.Normalize();
 
-            // Non-decreasing speed policy until despawn
-            float current = projectile.velocity.Length();
-            if (current > observedMaxSpeed)
-                observedMaxSpeed = current;
+            // Any remaining death-burst souls for this coffin?
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile p = Main.projectile[i];
+                if (!p.active || p.type != CoffinDarkSoulsProjType)
+                    continue;
 
-            float nextSpeed = observedMaxSpeed + AccelPerTick;
-            if (nextSpeed > SpeedCap)
-                nextSpeed = SpeedCap;
-            if (nextSpeed < observedMaxSpeed)
-                nextSpeed = observedMaxSpeed;
+                int id = (int)p.ai[0];
+                if (id == coffinId)
+                {
+                    // One still remains; abort for now.
+                    return;
+                }
+            }
 
-            observedMaxSpeed = nextSpeed;
+            // None remain: show the reveal message now (first time only per world)
+            if (SecretsOfTheSoulsWorldSavingSystem.coffinMessagePlayed)
+                return;
 
-            // Lock velocity to exact direction*magnitude (turning doesn’t bleed speed)
-            projectile.velocity = dir * nextSpeed;
+            var color = new Color(175, 75, 255);
+            string text = "The coffin's curse fades, opening the keyhole on the mysterious gate...";
+
+            if (Main.netMode == Terraria.ID.NetmodeID.Server)
+            {
+                // Server: persist and broadcast
+                SecretsOfTheSoulsWorldSavingSystem.coffinMessagePlayed = true;
+                ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral(text), color);
+            }
+            else if (Main.netMode == Terraria.ID.NetmodeID.SinglePlayer)
+            {
+                // Singleplayer: local persist + local text
+                SecretsOfTheSoulsWorldSavingSystem.coffinMessagePlayed = true;
+                Main.NewText(text, color);
+            }
+            // Multiplayer clients do nothing; they will receive the server broadcast
         }
     }
 }
