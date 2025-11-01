@@ -138,6 +138,11 @@ namespace SecretsOfTheSouls.Common.ProjectileChanges
             if (coffin.active || coffin.type != CursedCoffinNpcType)
                 return;
 
+            // If the reveal message has already been played in this world, do nothing
+            // so Fargo's vanilla soul death animation proceeds unchanged.
+            if (SecretsOfTheSoulsWorldSavingSystem.coffinMessagePlayed)
+                return;
+
             ageTicks++;
             if (ageTicks == 1)
             {
